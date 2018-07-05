@@ -20,6 +20,7 @@ import com.weibiaogan.litong.mvp.contract.MyIntroContract
 import com.weibiaogan.litong.mvp.presenter.MyIntroPresenter
 import com.weibiaogan.litong.ui.login.ChangePWActivity
 import com.weibiaogan.litong.ui.modify.ModifyBindActivity
+import com.weibiaogan.litong.ui.pay.ChangePayPwActivity
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import com.xx.baseutilslibrary.common.ImageChooseHelper
 import kotlinx.android.synthetic.main.activity_myintro.*
@@ -111,7 +112,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
             }
         //修改支付密码
             R.id.ll_change_pay_pw -> {
-
+                startActivity(ChangePayPwActivity::class.java)
             }
         //修改性别
             R.id.ll_sex -> {

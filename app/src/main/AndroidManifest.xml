@@ -62,7 +62,7 @@
         <activity android:name=".ui.location.GeoToScreenActivity" />
 
 
-        <activity android:name="com.weibiaogan.litong.ui.home.RegistractionActivity" />
+
 
 
         <activity android:name="com.weibiaogan.litong.ui.AboutActivity" />
@@ -71,6 +71,9 @@
         <activity android:name="com.weibiaogan.litong.ui.pay.ChangePayPwActivity" />
         <activity android:name="com.weibiaogan.litong.ui.modify.ModifyBindActivity" />
         <activity android:name=".ui.mine.ChangeNicknameActivity" />
+        <activity android:name=".ui.pay.WalletActivity"/>
+        <activity android:name=".ui.pay.CommissionActivity"/>
+        <activity android:name=".ui.pay.CommissionSuccessfulActivity"/>
 
 
         <activity
