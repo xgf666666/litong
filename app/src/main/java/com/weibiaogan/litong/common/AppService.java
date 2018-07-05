@@ -52,7 +52,21 @@ public interface AppService {
     Observable<BaseResponseEntity<LoginBean>> login(@Field("sign") String sign,
                                                     @Field("phone") String phone);
 
-
+    /**
+     * 用户更改支付密码
+     *
+     * @param userId
+     * @param token
+     * @param code
+     * @param balancePayment
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("User/update_balance_payment")
+    Observable<BaseResponseEntity<Object>> updateBalancePayment(
+            @Field("userId") String userId, @Field("token") String token,
+            @Field("code") String code,
+            @Field("balance_payment") String balancePayment);
 
 
 

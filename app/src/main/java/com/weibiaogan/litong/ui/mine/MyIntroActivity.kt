@@ -119,6 +119,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
             }
         //修改昵称
             R.id.ll_name -> {
+                startActivity(ChangeNicknameActivity::class.java)
 
             }
             R.id.ll_change_phone_area -> {
