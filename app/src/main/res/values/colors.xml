@@ -83,6 +83,21 @@
     <color name="text_color_primary">@color/colorPrimary</color>
 
 
+    <!--button color-->
+    <color name="button_primary_color_normal">@color/colorPrimary</color>
+    <color name="button_primary_color_pressed">#1e62d2</color>
+
+    <color name="button_alert_color_normal">@color/alert_color</color>
+    <color name="button_alert_color_pressed">#cf0101</color>
+
+    <color name="button_white_color_normal">@color/white</color>
+    <color name="button_white_color_pressed">#efefef</color>
+
+    <color name="button_line_color">#888888</color>
+
+    <color name="button_disable_color">#EEEEEE</color>
+
+
     <color name="color_temp">#df08ca</color>
 
 

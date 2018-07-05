@@ -54,6 +54,16 @@
                     android:layout_marginTop="20dp"
                     android:src="@mipmap/img_face" />
 
+                <ImageView
+                    android:id="@+id/iv_avatar_vip"
+                    android:src="@mipmap/ic_facetop_vip_y"
+                    android:layout_alignRight="@id/iv_avatar"
+                    android:layout_alignLeft="@id/iv_avatar"
+                    android:layout_alignTop="@id/iv_avatar"
+                    android:layout_marginTop="-15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
                 <TextView
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
@@ -134,6 +144,52 @@
             </RelativeLayout>
 
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/app_color_bg" />
+
+            <LinearLayout
+                android:id="@+id/ll_vip_area"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="21dp"
+                    android:src="@mipmap/ic_user_vip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="了解会员特权"
+                    android:textColor="@color/text_color_first"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="0px"
+                    android:layout_height="1px"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="已开通"
+                    android:textColor="@color/text_color_third"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:src="@mipmap/ic_pull_right" />
+            </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
@@ -302,6 +358,41 @@
                     android:textSize="14sp"
                     android:visibility="gone"
                     tools:text="￥0.00" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:src="@mipmap/ic_pull_right" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_backlist_area"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="21dp"
+                    android:src="@mipmap/ic_user_blacklist" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="黑名单管理"
+                    android:textColor="@color/text_color_first"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="0px"
+                    android:layout_height="1px"
+                    android:layout_weight="1" />
+
 
                 <ImageView
                     android:layout_width="wrap_content"

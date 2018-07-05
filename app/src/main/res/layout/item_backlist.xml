@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_color">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@mipmap/img_face" />
+
+        <TextView
+            android:layout_marginTop="14dp"
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:textColor="@color/text_color_first"
+            android:textSize="@dimen/text_dimen_third"
+            tools:text="戴永明" />
+
+        <TextView
+            android:layout_alignBaseline="@id/tv_name"
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tv_name"
+            android:textColor="@color/text_color_first"
+            android:textSize="@dimen/text_dimen_third"
+            tools:text="188****8866" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="13dp"
+            android:textColor="@color/text_color_second"
+            android:textSize="@dimen/text_dimen_fourth"
+            tools:text="700m" />
+
+        <TextView
+            android:id="@+id/tv_service_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_name"
+            android:layout_below="@id/tv_name"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/text_color_second"
+            android:textSize="@dimen/text_dimen_fourth"
+            tools:text="服务类型：水泥刷墙等等" />
+
+        <ImageView
+            android:id="@+id/iv_location_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_name"
+            android:layout_below="@id/tv_service_type"
+            android:layout_marginTop="13dp"
+            android:src="@mipmap/ic_list_location" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_location_icon"
+            android:layout_below="@id/tv_service_type"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@id/iv_location_icon"
+            android:textColor="@color/text_color_second"
+            android:textSize="@dimen/text_dimen_fourth"
+            tools:text="广州市番禺区大石礼村地址最多一行" />
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@id/iv_avatar"
+            android:layout_marginTop="9dp"
+            android:background="@color/line_color" />
+
+        <TextView
+            android:id="@+id/tv_remove_blacklist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/view_line"
+            android:layout_marginBottom="6dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="6dp"
+            android:paddingRight="4dp"
+            android:paddingLeft="4dp"
+            android:background="@drawable/selector_buttom_white"
+            android:textColor="@color/text_color_first"
+            android:textSize="@dimen/text_dimen_third"
+            tools:text="移出黑名单" />
+    </RelativeLayout>
+</FrameLayout>
