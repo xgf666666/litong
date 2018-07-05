@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="titlebar_height">48dp</dimen>
+
+    <dimen name="dp50">50dp</dimen>
+
+
+    <dimen name="text_dimen_first">17sp</dimen>
+    <dimen name="text_dimen_second">15sp</dimen>
+    <dimen name="text_dimen_third">14sp</dimen>
+    <dimen name="text_dimen_fourth">12sp</dimen>
+    <dimen name="text_dimen_fitth">10sp</dimen>
+
+
+
+
+
+</resources>

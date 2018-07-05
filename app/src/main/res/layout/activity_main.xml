@@ -1,9 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="利通"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/titlebar_title_size" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="名创酒品"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/titlebar_title_size">
+
+            <!--<LinearLayout
+                android:id="@+id/ll_search_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/select_white_orange_rectangle_r30"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/search_" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="探索商品"
+                    android:minEms="15" />
+            </LinearLayout>-->
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/iv_setup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/set_up_"
+            android:visibility="gone" />
+
+        <ToggleButton
+            android:id="@+id/tb_cart_setup"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorAccent"
+            android:button="@null"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textOff="编辑"
+            android:textOn="完成" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:background="@color/colorDivler" />
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <RadioButton
+            style="@style/MainRadioTheme"
+            android:drawableTop="@drawable/selector_tab_home"
+            android:text="首页" />
+
+        <RadioButton
+            style="@style/MainRadioTheme"
+            android:drawableTop="@drawable/selector_tab_project"
+            android:text="发布项目" />
+
+        <RadioButton
+            style="@style/MainRadioTheme"
+            android:drawableTop="@drawable/selector_tab_orders"
+            android:text="我要接单" />
+
+        <RadioButton
+            style="@style/MainRadioTheme"
+            android:drawableTop="@drawable/selector_tab_mine"
+            android:text="我的" />
+    </RadioGroup>
+</LinearLayout>

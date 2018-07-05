@@ -1,11 +1,66 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:listDivider">@drawable/divider_bg</item>
+    </style>
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/translate_in</item>
+        <item name="android:windowExitAnimation">@anim/translate_out</item>
     </style>
 
+    <!--选择对话框样式 从下向上-->
+    <style name="bottom_to_top_dialog_style" parent="dialog_style">
+        <item name="android:windowAnimationStyle">@style/AnimBottom</item>
+    </style>
+    <!--弹出对话框样式基类-->
+    <style name="dialog_style" parent="Theme.AppCompat.Dialog">
+        <!--<item name="android:windowAnimationStyle">@style/AnimBottom</item>-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="MainRadioTheme">
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@color/selector_main_tab</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="buttone_primary" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/btn_height</item>
+        <item name="android:background">@drawable/selector_buttom_primary</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:layout_marginLeft">50dp</item>
+        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="FullScreenTheme" parent="ScreenTheme">
+    </style>
+
+    <!--选择对话框样式 没有动画效果的-->
+    <style name="avatar_dialog_style" parent="dialog_style">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in2</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out2</item>
+    </style>
+
+    <dimen name="btn_height">44dp</dimen>
+    <dimen name="titlebar_title_size">18sp</dimen>
 </resources>

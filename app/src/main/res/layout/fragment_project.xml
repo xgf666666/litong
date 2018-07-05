@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/title_publish_project"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/titlebar_title_size" />
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="@dimen/titlebar_height"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
+            android:src="@drawable/right_arrows"
+            android:tint="@color/colorWhite"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="项目名称"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_project_name"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:hint="输入项目名称"
+                    android:paddingLeft="10dp"
+
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="完结时间"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_project_endTime"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:hint="请输入项目完结时间"
+                    android:paddingLeft="10dp"
+
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="项目地址"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_project_location"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_weight="9"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:hint="请输入项目具体地址"
+                        android:paddingLeft="10dp"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_project_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="14dp"
+                        android:clickable="true"
+                        android:src="@mipmap/btn_location" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="工人类型"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_project_worker_selector_1"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/shape_edittext_bg_white_gray"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:textSize="15sp">
+
+                        <TextView
+                            android:id="@+id/tv_project_worker_selector_1"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="请选择" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@mipmap/btn_triangle_down" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_project_worker_selector_2"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/shape_edittext_bg_white_gray"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:textSize="15sp">
+
+                        <TextView
+                            android:id="@+id/tv_project_worker_selector_2"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="请选择" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@mipmap/btn_triangle_down" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="项目总价"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_project_cost"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:hint="请输入项目总价"
+                    android:paddingLeft="10dp"
+
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="首款比例"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_project_first_ratio"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+
+                        android:layout_weight="2"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:hint="40%"
+                        android:paddingLeft="10dp"
+
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="二期比例"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/et_project_second_ratio"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:hint="40%"
+                        android:paddingLeft="10dp"
+
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="15sp"
+                    tools:text="尾款比例为：20%" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="14dp"
+                android:background="@color/app_color_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="top"
+                    android:layout_marginTop="14dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+
+                    android:text="项目描述"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_project_introduction"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="14dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="top"
+                    android:hint="请输入项目描述"
+                    android:lines="4"
+                    android:maxLines="4"
+                    android:minLines="4"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="14dp"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="添加图片"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/btn_addimg" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/bt_submit"
+        style="@style/buttone_primary"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="3dp"
+        android:text="提交审核" />
+
+</LinearLayout>

@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">LiTong</string>
+    <string name="app_name">利通</string>
+    <string name="takePhoto">拍照</string>
+    <string name="check_from_disk">从手机相册选择</string>
+    <string name="qv_add">+</string>
+    <string name="qv_remove">-</string>
+    <string name="about_us">关于我们</string>
+    <string name="title_login">登录</string>
+    <string name="introduction">利通，做最好的供需接单平台</string>
+    <string name="copyright">Copyright.@2106-2017 AII Rights Reserved</string>
+    <string name="take_photo">拍照</string>
+    <string name="choose_from_lib">从相册选择</string>
+    <string name="sharing_success">分享成功</string>
+    <string name="stop_sharing">分享取消</string>
+    <string name="title_new_user_register">新用户注册</string>
+    <string name="change_nicename">修改昵称</string>
+    <string name="title_publish_project">发布项目</string>
+    <string name="tv_cancel">取消</string>
+    <string name="tv_confirm">确定</string>
 </resources>

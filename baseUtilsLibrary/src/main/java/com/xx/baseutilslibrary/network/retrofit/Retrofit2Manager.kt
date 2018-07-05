@@ -5,9 +5,11 @@ import com.xx.baseutilslibrary.network.exception.NullProviderException
 import com.xx.baseutilslibrary.network.gson.XxGsonConverterFactory
 import com.xx.baseutilslibrary.network.provider.JApiConfigProvider
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import com.xx.baseutilslibrary.network.LiveDataCallAdapterFactory
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
@@ -37,7 +39,9 @@ class Retrofit2Manager {
                 field = Retrofit.Builder()
                         .baseUrl(apiConfigProvider!!.apiBaseUrl)
                         .client(okHttpClient)
+                        .addConverterFactory(GsonConverterFactory.create())
                         .addConverterFactory(XxGsonConverterFactory.create()!!)
+                        .addCallAdapterFactory(LiveDataCallAdapterFactory())
                         .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                         .build()
             }

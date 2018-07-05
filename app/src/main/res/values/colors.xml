@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <!--用于导航栏、主要按钮、按钮高亮-->
+    <color name="colorPrimary">#3078EF</color>
+    <color name="colorPrimaryDark">#3078EF</color>
+    <color name="colorAccent">#3078EF</color>
+    <color name="colorAccentLight">#3078EF</color>
+
+
+    <color name="text_normal">#3078EF</color>
+    <color name="color_brand">#af1609</color>
+    <color name="tab_on">#123456</color>
+    <color name="tab_off">#123456</color>
+
+    <color name="colorText999999">#999999</color>
+    <color name="colorText010101">#010101</color>
+    <color name="colorText000000">#000000</color>
+    <color name="colorCCCCCC">#CCCCCC</color>
+    <color name="colorf4f4f4">#f4f4f4</color>
+    <color name="colorB3B3B3">#B3B3B3</color>
+    <color name="colorE5E5E5">#E5E5E5</color>
+    <color name="color747474">#747474</color>
+
+
+    <color name="colorText">#333333</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorBlue">#3883df</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorDivler">#e7e7e7</color>
+    <color name="colorTextGray">#71778f</color>
+    <color name="colorGray">#e4e4e4</color>
+    <color name="colorThinGray">#fafafa</color>
+    <color name="colorDeepGray">#cfcfcf</color>
+    <color name="colorDuskiness">#484848</color>
+    <color name="white">@color/colorWhite</color>
+    <color name="colorA0A0A0">#A0A0A0</color>
+    <color name="subtitle">#808080</color>
+    <color name="color999999">#999999</color>
+    <color name="color888888">#888888</color>
+    <color name="color666666">#666666</color>
+    <color name="colorFF0000">#FF0000</color>
+    <color name="colorFF7649">#FF7649</color>
+    <color name="colorBFBFBF">#BFBFBF</color>
+
+
+
+
+    <!--线条边框颜色-->
+    <color name="line_color">#dddddd</color>
+    <!--背景颜色-->
+    <color name="background_color">#EEEEEE</color>
+    <!--输入框背景色-->
+    <color name="editText_bg_color">#EEEEEE</color>
+    <!--价格颜色-->
+    <color name="price_color">#ff0000</color>
+    <!--警告按钮-->
+    <color name="alert_color">#ff0000</color>
+    <!--搭配色、需要突出的消息栏-->
+    <color name="collocation_color">#ffad1d</color>
+    <!--提示性质消息栏背景色-->
+    <color name="prompt_color">#d6e4fc</color>
+
+
+    <!--TextView colors-->
+    <!--主要文字颜色、选项卡默认文字颜色-->
+    <color name="text_color_main">@color/text_color_first</color>
+    <color name="text_color_first">#222222</color>
+    <!--次要文字颜色-->
+    <color name="text_color_second">#666666</color>
+    <color name="text_color_third">#888888</color>
+    <color name="text_color_fourth">@color/color_temp</color>
+    <color name="text_color_fitth">@color/color_temp</color>
+    <color name="text_color_sixth">@color/color_temp</color>
+    <color name="text_color_hint">@color/color_temp</color>
+    <color name="text_color_unenable">@color/color_temp</color>
+    <color name="text_color_white">@color/white</color>
+    <color name="text_color_primary">@color/colorPrimary</color>
+
+
+    <color name="color_temp">#df08ca</color>
+
+
+    <color name="label_color_bg_green">#3DC553</color>
+    <color name="label_color_bg_accent">@color/colorAccent</color>
+
+    <color name="app_color_bg">#ededed</color>
+    <color name="black">#000000</color>
+
 </resources>
