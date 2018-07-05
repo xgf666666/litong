@@ -45,7 +45,8 @@ fun View.setOnPerCheckLoginClickListner(back:(v:View)->Unit){
         if (com.weibiaogan.litong.common.Constants.isLogin()) {
             back.invoke(it)
         }else{
-            val intent = android.content.Intent(it.context, com.weibiaogan.litong.ui.login.LoginActivity::class.java)
+//            val intent = android.content.Intent(it.context, com.weibiaogan.litong.ui.login.LoginActivity::class.java)
+            val intent = android.content.Intent(it.context, com.weibiaogan.litong.ui.project.PayCenterActivity::class.java)
             it.context.startActivity(intent)
         }
     }
