@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="130dp"
+        android:background="@drawable/shape_white_side_black_r5">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/colorDuskiness"
+            android:text="行业特殊附件"/>
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="@dimen/sp_12"
+            android:textColor="@color/colorDuskiness"
+            android:text="某些行业需要提供特殊的材料,如果您未按照行业特殊材料要求进行提交,将会导致审核被拒绝。"/>
+
+        <LinearLayout
+            android:id="@+id/ll_btn"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_height="40dp">
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlue"
+                android:gravity="center"
+                android:textSize="@dimen/sp_14"
+                android:text="@string/tv_cancel"/>
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBlack"/>
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlue"
+                android:gravity="center"
+                android:textSize="@dimen/sp_14"
+                android:text="@string/tv_confirm"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/view_line"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorBlack"
+            android:layout_marginTop="20dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
