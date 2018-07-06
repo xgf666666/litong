@@ -2,16 +2,17 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="@color/button_primary_color_pressed" />
+
+            <solid android:color="@color/button_alert_color_pressed" />
             <!--<gradient android:centerColor="#DDF77CC3" android:endColor="#DDFFB999" android:startColor="#DD76B7FD" />-->
-            <corners android:radius="5dp" />
+            <corners android:radius="2dp" />
         </shape>
     </item>
     <item>
         <shape>
             <!--<gradient android:centerColor="#F77CC3" android:endColor="#FFB999" android:startColor="#76B7FD" />-->
-            <solid android:color="@color/button_primary_color_normal" />
-            <corners android:radius="5dp" />
+            <solid android:color="@color/button_alert_color_normal" />
+            <corners android:radius="2dp" />
         </shape>
     </item>
 </selector>

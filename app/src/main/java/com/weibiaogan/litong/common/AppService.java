@@ -52,7 +52,21 @@ public interface AppService {
     Observable<BaseResponseEntity<LoginBean>> login(@Field("sign") String sign,
                                                     @Field("phone") String phone);
 
-
+    /**
+     * 用户更改支付密码
+     *
+     * @param userId
+     * @param token
+     * @param code
+     * @param balancePayment
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("User/update_balance_payment")
+    Observable<BaseResponseEntity<Object>> updateBalancePayment(
+            @Field("userId") String userId, @Field("token") String token,
+            @Field("code") String code,
+            @Field("balance_payment") String balancePayment);
 
 
 
@@ -151,7 +165,26 @@ public interface AppService {
             @Field("code") String code,
             @Field("new_user_pwd") String newUserPwd);
 
-
+    /**
+     * 支付宝充值
+     *
+     * @param userId
+     * @param token
+     * @param price
+     * @param account
+     * @param type
+     * @param balance_payment
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Withdraw/withdraw_add")
+    Observable<BaseResponseEntity<List<Object>>> withdrawAdd(@Field("userId") String userId
+            , @Field("token") String token
+            , @Field("price") String price
+            , @Field("account") String account
+            , @Field("type") String type
+            , @Field("balance_payment") String balance_payment
+    );
 
     /**
      * 账单查询

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="提现申请成功"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/titlebar_title_size" />
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="@dimen/titlebar_height"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
+            android:src="@drawable/right_arrows"
+            android:tint="@color/colorWhite" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_marginTop="34dp"
+        android:layout_gravity="center"
+        android:drawablePadding="20dp"
+        android:textSize="@dimen/text_dimen_first"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/text_color_first"
+        android:drawableTop="@mipmap/img_check"
+        android:text="申请成功"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="21dp"
+        android:layout_gravity="center"
+        android:drawablePadding="20dp"
+        android:textSize="@dimen/text_dimen_first"
+
+        android:textColor="@color/text_color_second"
+        android:text="请注意查收账户！"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/bt_submit"
+        style="@style/buttone_primary"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="41dp"
+        android:text="完成" />
+
+
+
+</LinearLayout>
