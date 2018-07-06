@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
 import com.bigkoo.convenientbanner.holder.Holder
 import com.weibiaogan.litong.R
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * date: 2018/5/6
  * describe:
  */
-class HomeFragment : BaseMvpLcecFragment<SwipeRefreshLayout, Any,HomeConstract.Model, HomeConstract.View, HomePresenter>(), HomeConstract.View, View.OnClickListener {
+class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, HomeConstract.View, HomePresenter>(), HomeConstract.View, View.OnClickListener {
 
     val banner_imgs : List<Int> = arrayListOf(R.mipmap.img_banner,R.mipmap.img_banner,R.mipmap.img_banner)
 

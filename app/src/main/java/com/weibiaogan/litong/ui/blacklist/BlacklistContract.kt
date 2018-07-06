@@ -1,4 +1,4 @@
-package com.weibiaogan.litong.mvp.contract
+package com.weibiaogan.litong.ui.blacklist
 
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecView

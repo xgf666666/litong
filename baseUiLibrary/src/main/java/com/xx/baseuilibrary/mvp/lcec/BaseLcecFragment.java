@@ -46,16 +46,16 @@ public abstract class BaseLcecFragment<ContentView extends View, Data> extends B
         viewCheckNet = view.findViewById(XxResourceUtil.getId(view.getContext(), "view_check_net"));
 
         if (viewLoading == null) {
-            throw new NullPointerException("viewLoading没有被设置在布局中");
+            throw new NullPointerException(this.getClass().getName()+" viewLoading没有被设置在布局中");
         }
         if (viewContent == null) {
-            throw new NullPointerException("view_content没有被设置在布局中");
+            throw new NullPointerException(this.getClass().getName()+" view_content没有被设置在布局中");
         }
         if (viewError == null) {
-            throw new NullPointerException("view_error没有被设置在布局中");
+            throw new NullPointerException(this.getClass().getName()+" view_error没有被设置在布局中");
         }
         if (viewCheckNet == null) {
-            throw new NullPointerException("view_check_net没有被设置在布局中");
+            throw new NullPointerException(this.getClass().getName()+" view_check_net没有被设置在布局中");
         }
         //----------
         mViews = new ArrayList<>();

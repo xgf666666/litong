@@ -1,16 +1,10 @@
 package com.weibiaogan.litong.ui.blacklist
 
-import android.support.v7.widget.LinearLayoutManager
-import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.weibiaogan.litong.R
-import com.weibiaogan.litong.extensions.loadImag
-import com.weibiaogan.litong.mvp.contract.BlacklistContract
-import com.weibiaogan.litong.mvp.presenter.BlacklistPresenter
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecActivity
-import kotlinx.android.synthetic.main.activity_blacklist.*
 
 /**
  * author: Gubr
@@ -18,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_blacklist.*
  * describe:
  */
 
-class BlacklistActivity:BaseMvpLcecActivity<RelativeLayout,List<Any>,BlacklistContract.Model,BlacklistContract.View,BlacklistPresenter>(){
+class BlacklistActivity:BaseMvpLcecActivity<RelativeLayout,List<Any>, BlacklistContract.Model, BlacklistContract.View, BlacklistPresenter>(){
     override fun loadData(refresh: Boolean) {
 
     }
