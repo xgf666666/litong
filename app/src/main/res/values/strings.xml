@@ -45,4 +45,8 @@
     <string name="work_list_title">工人列表</string>
     <string name="work_detail_title">工人详情</string>
     <string name="work_evaluate_title">工人评价</string>
+    <string name="evaluate_work_title">评论工人</string>
+    <string name="evaluate_text">评论</string>
+    <string name="evaluate_star_num">好评度</string>
+    <string name="evaluate_work_add_img">添加图片</string>
 </resources>

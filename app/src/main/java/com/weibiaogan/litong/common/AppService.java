@@ -2,6 +2,7 @@ package com.weibiaogan.litong.common;
 
 import android.arch.lifecycle.LiveData;
 
+import com.weibiaogan.litong.entity.HomeBean;
 import com.weibiaogan.litong.entity.ImageBean;
 import com.weibiaogan.litong.entity.LoginBean;
 import com.weibiaogan.litong.entity.UserCenterBean;
@@ -15,8 +16,10 @@ import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface AppService {
     /**
@@ -256,5 +259,15 @@ public interface AppService {
             , @Field("code") String code
             , @Field("new_user_pwd") String new_user_pwd);
 
+
+    /**
+     *
+     * @param page
+     * @param lat  经度
+     * @param lng  纬度
+     * @return
+     */
+    @GET("Index/index")
+    Observable<BaseResponseEntity<HomeBean>> homeData(@Query("page") String page , @Query("lat") String lat , @Query("lng") String lng);
 
 }

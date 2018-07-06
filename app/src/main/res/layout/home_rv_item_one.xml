@@ -7,6 +7,7 @@
     android:background="@color/colorWhite">
 
     <TextView
+        android:id="@+id/home_rv_item_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/home_rv_work"
@@ -14,30 +15,12 @@
         android:textColor="@color/text_color_first"
         android:textSize="@dimen/text_dimen_third"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/home_rv_item_padding">
+   <android.support.v7.widget.RecyclerView
+       android:id="@+id/home_rv_item_rv"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
 
-        <include
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            layout="@layout/home_item_one_view" />
-        <include
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            layout="@layout/home_item_one_view"
-            android:layout_marginLeft="9dp"/>
-        <include
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            layout="@layout/home_item_one_view"
-            android:layout_marginLeft="9dp"/>
-
-    </LinearLayout>
+   </android.support.v7.widget.RecyclerView>
 
 
 

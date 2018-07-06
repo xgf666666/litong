@@ -6,6 +6,7 @@
     android:gravity="center">
 
     <ImageView
+        android:id="@+id/iv_home_item_two_face"
         android:layout_width="@dimen/home_item_two_img_width"
         android:layout_height="@dimen/home_item_two_img_width"
         android:src="@mipmap/ic_launcher"
@@ -20,6 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/tv_home_item_two_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_dimen_fourth"
@@ -29,6 +31,7 @@
             />
 
         <TextView
+            android:id="@+id/tv_home_item_two_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_dimen_fitth"
@@ -38,6 +41,7 @@
             />
 
         <TextView
+            android:id="@+id/tv_home_item_two_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_dimen_fitth"
