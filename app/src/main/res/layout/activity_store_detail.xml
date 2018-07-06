@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_color_bg">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/store_detail_title"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/titlebar_title_size" />
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="@dimen/titlebar_height"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
+            android:src="@drawable/right_arrows"
+            android:tint="@color/colorWhite" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginLeft="@dimen/margin_14"
+        android:layout_marginRight="@dimen/margin_14">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/store_detail_img_height"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_14"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:textSize="@dimen/text_dimen_first"
+            android:textColor="@color/text_color_first"
+            android:text="name"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_12"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:layout_marginRight="@dimen/margin_39">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_dimen_third"
+                android:textColor="@color/text_color_third"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_dimen_third"
+                android:textColor="@color/text_color_third"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_dimen_third"
+                android:textColor="@color/text_color_third"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_dimen_third"
+                android:textColor="@color/text_color_third"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginLeft="@dimen/margin_14"
+        android:layout_marginRight="@dimen/margin_14"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_14"
+            android:text="@string/store_detail_location"
+            android:drawableLeft="@mipmap/ic_list_location"
+            android:drawablePadding="@dimen/margin_9"
+            android:textSize="@dimen/text_dimen_second"
+            android:textColor="@color/text_color_first"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="distance"
+            android:drawableRight="@mipmap/ic_pull_right"
+            android:layout_gravity="right|center"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/margin_19"
+            android:textColor="@color/text_color_third"
+            android:textSize="@dimen/text_dimen_second"
+            android:drawablePadding="@dimen/margin_9"/>
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -14,7 +14,64 @@
     <dimen name="text_dimen_fitth">10sp</dimen>
 
 
+    <!--首页-->
+    <dimen name="home_title_left">12dp</dimen>
+    <dimen name="home_title_right">@dimen/margin_14</dimen>
+    <dimen name="home_title_search_left">17dp</dimen>
+    <dimen name="home_title_text_width">99dp</dimen>
+    <dimen name="home_title_search_padding">7dp</dimen>
+    <dimen name="home_banner_height">150dp</dimen>
+    <dimen name="home_work_padding">5dp</dimen>
+    <dimen name="home_work_ll_padding">10dp</dimen>
+    <dimen name="home_rv_top">8dp</dimen>
+    <dimen name="home_rv_item_padding">@dimen/margin_14</dimen>
+
+    <dimen name="home_item_one_circle_width">44dp</dimen>
+    <dimen name="home_item_one_padding">8dp</dimen>
+    <dimen name="home_item_one_text_padding">10dp</dimen>
+
+    <dimen name="home_item_two_img_width">60dp</dimen>
+    <dimen name="home_item_two_left">@dimen/margin_14</dimen>
+    <dimen name="home_item_two_txt_top">12dp</dimen>
+    <dimen name="home_item_two_txt_bottom">@dimen/margin_9</dimen>
+
+    <dimen name="home_item_three_img_width">170dp</dimen>
+    <dimen name="home_item_three_img_height">100dp</dimen>
+    <dimen name="home_item_three_text_margin">@dimen/margin_9</dimen>
 
 
+    <!--搜索历史列表-->
+    <dimen name="search_project_title_txt_right">25dp</dimen>
+    <dimen name="search_project_title_txt_left">@dimen/margin_14</dimen>
+    <dimen name="search_project_search_bg_left">20dp</dimen>
+    <dimen name="search_project_icon_margin">8dp</dimen>
+    <dimen name="search_project_list_img_width">98dp</dimen>
+    <dimen name="search_project_list_txt_left">7dp</dimen>
+    <dimen name="search_project_list_txt_right">21dp</dimen>
+    <dimen name="search_project_list_9">@dimen/margin_9</dimen>
 
+    <!--店铺列表-->
+    <dimen name="store_list_img_width">73dp</dimen>
+
+    <!--店铺详情-->
+    <dimen name="store_detail_img_height">200dp</dimen>
+
+    <!--工人列表-->
+    <dimen name="work_list_img_width">69dp</dimen>
+    <dimen name="work_list_img_height">62dp</dimen>
+
+    <!--工人评价-->
+    <dimen name="work_evaluate_img_width">69dp</dimen>
+    <dimen name="work_evaluate_img_height">62dp</dimen>
+    <dimen name="work_evaluate_item_img_height">89dp</dimen>
+
+    <dimen name="margin_14">14dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_9">9dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+    <dimen name="margin_39">39dp</dimen>
+    <dimen name="margin_19">19dp</dimen>
+    <dimen name="margin_3">3dp</dimen>
+    <dimen name="margin_45">45dp</dimen>
 </resources>
