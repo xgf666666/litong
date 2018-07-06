@@ -68,7 +68,7 @@ public abstract class BaseLcecFragment<ContentView extends View, Data> extends B
             @Override
             public void onClick(View v) {
                 //点击错误重新加载页面
-                showLoading();
+//                showLoading();
                 loadData(true);
             }
         });
@@ -81,7 +81,7 @@ public abstract class BaseLcecFragment<ContentView extends View, Data> extends B
             }
         });
         //初始显示加载中对话框
-        showLoading();
+//        showLoading();
     }
 
 

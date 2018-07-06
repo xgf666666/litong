@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.mine.ShopAddActivity"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="商家入驻"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/titlebar_title_size" />
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="@dimen/titlebar_height"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
+            android:src="@drawable/right_arrows"
+            android:tint="@color/colorWhite" />
+    </FrameLayout>
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="利通"
+        android:layout_marginTop="66dp"
+        android:textColor="@color/color3078EF"
+        android:textSize="33dp" />
+    <TextView
+        android:id="@+id/tv_banben"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="v.11"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/color888888"
+        android:textSize="@dimen/text_dimen_fourth" />
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="利通，做最好的供需接单平台"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/color666666"
+        android:textSize="@dimen/text_dimen_first" />
+    <TextView
+        android:id="@+id/tv_kefu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="申请入驻请电话联系客服"
+        android:layout_marginTop="77dp"
+        android:textColor="@color/color888888"
+        android:textSize="@dimen/text_dimen_third" />
+    <Button
+        android:id="@+id/bt_submit"
+        style="@style/buttone_primary"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="11dp"
+        android:text="拨打客服" />
+    <TextView
+        android:id="@+id/tv_kefuPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="客服电话：888888888"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/color888888"
+        android:textSize="@dimen/text_dimen_third" />
+
+
+
+
+
+</LinearLayout>

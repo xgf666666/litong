@@ -1,34 +1,32 @@
 package com.weibiaogan.litong.adapter
 
-import android.support.v7.widget.CardView
+import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.weibiaogan.litong.R
+import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
 
 /**
  * author: xiaoguagnfei
  * date: 2018/7/5
  * describe:
  */
-class OrderAdapter : RecyclerView.Adapter<OrderAdapter.ProjectHolder>() {
-
+class OrderAdapter(context: Context) : RecyclerView.Adapter<OrderAdapter.ProjectHolder>() {
+    var context: Context? = context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectHolder {
-        return ProjectHolder(LayoutInflater.from(parent.context).inflate(R.layout.rl_order,parent,false))
-
+        return ProjectHolder(View.inflate(parent.context,R.layout.rl_order,null))
     }
-
-
     override fun getItemCount(): Int =10
 
 
 
     override fun onBindViewHolder(holder: ProjectHolder, position: Int) {
-        holder.rl_father?.setOnClickListener{}
+        holder.rl_father?.setOnClickListener{context!!.startActivity(Intent(context,OrdersDetailActivity::class.java))}
 
     }
 

@@ -41,7 +41,7 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<Any>, OrdersCont
 
     override fun initData() {
         recyclerView.layoutManager=LinearLayoutManager(context)
-        orderAdapter= OrderAdapter()
+        orderAdapter= OrderAdapter(context!!)
         recyclerView.adapter=orderAdapter
         swiperefreshlayout.setOnRefreshListener(this)
 

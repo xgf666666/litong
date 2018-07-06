@@ -4,6 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <FrameLayout
+        android:id="@+id/fl_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="我的发布"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/titlebar_title_size" />
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="@dimen/titlebar_height"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
+            android:src="@drawable/right_arrows"
+            android:tint="@color/colorWhite" />
+    </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
@@ -31,6 +53,7 @@
             android:textSize="@dimen/text_dimen_fourth"
             android:background="@drawable/sp_complete"
             android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
 
     </LinearLayout>
@@ -57,7 +80,7 @@
 
     </RelativeLayout>
 
-    <include
+   <!--  <include
         android:id="@+id/view_loading"
         layout="@layout/view_loading"
         android:visibility="gone" />
@@ -70,5 +93,5 @@
     <include
         android:id="@+id/view_check_net"
         layout="@layout/view_check_net"
-        android:visibility="gone" />
+        android:visibility="gone" />-->
 </LinearLayout>

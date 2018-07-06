@@ -84,7 +84,12 @@
             android:name=".ui.project.PayCenterActivity"
             android:launchMode="singleTop" />
         <activity android:name=".ui.orders.OrdersDetailActivity" />
-        <activity android:name=".ui.mine.MyPublishProjectActivity"></activity>
+        <activity android:name=".ui.mine.SureWorkerActivity" />
+        <activity android:name=".ui.mine.MyPublishProjectActivity" />
+        <activity android:name=".ui.mine.BosIdentyActivity" />
+        <activity android:name=".ui.mine.ShopAddActivity" />
+        <activity android:name=".ui.mine.WorkerIDentyOneActivity" />
+        <activity android:name=".ui.mine.WorkerIDentyTwoActivity"></activity>
     </application>
 
 </manifest>

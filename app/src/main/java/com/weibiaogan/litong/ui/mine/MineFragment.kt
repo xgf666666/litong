@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.ui.mine
 
 import android.Manifest
+import android.content.Intent
 import android.os.Environment
 import android.support.v4.widget.NestedScrollView
 import android.view.View
@@ -18,6 +19,7 @@ import com.weibiaogan.litong.mvp.contract.MineContract
 import com.weibiaogan.litong.mvp.presenter.MinePresenter
 import com.weibiaogan.litong.ui.blacklist.BlacklistActivity
 import com.weibiaogan.litong.ui.login.LoginActivity
+import com.weibiaogan.litong.ui.project.PayCenterActivity
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import com.xx.baseutilslibrary.common.ImageChooseHelper
 import kotlinx.android.synthetic.main.fragment_mywine.*
@@ -62,10 +64,12 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         view?.findViewById<View>(R.id.login_view)?.findViewById<TextView>(R.id.tv_login)?.setOnClickListener { startActivity(LoginActivity::class.java) }
         ll_wallet_area.setOnPerCheckLoginClickListner { toast("未写") }
         ll_orders_area.setOnPerCheckLoginClickListner { toast("未写") }
-        ll_project_area.setOnPerCheckLoginClickListner { toast("跳发布") }
+        ll_project_area.setOnClickListener{ startActivity(Intent(context,MyPublishProjectActivity::class.java)) }
         ll_shop_area.setOnPerCheckLoginClickListner { toast("店铺入驻") }
         tv_service_phone.setOnClickListener { toast("打电话") }
         ll_backlist_area.setOnPerCheckLoginClickListner { startActivity(BlacklistActivity::class.java) }
+        ll_vip_area.setOnClickListener{startActivity(PayCenterActivity::class.java)}
+        ll_shop_area.setOnPerCheckLoginClickListner { startActivity(ShopAddActivity::class.java) }
 
     }
 
@@ -156,7 +160,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
             }
             getPresenter().getData()
         } else {
-            showView(login_view)
+//            showView(login_view)
 //            showContent()
 //            startActivity(LoginActivity::class.java)
         }
