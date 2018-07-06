@@ -74,6 +74,7 @@
         <activity android:name="com.weibiaogan.litong.ui.login.ChangePWActivity" />
         <activity android:name="com.weibiaogan.litong.ui.pay.ChangePayPwActivity" />
         <activity android:name="com.weibiaogan.litong.ui.modify.ModifyBindActivity" />
+        <activity android:name=".ui.blacklist.BlacklistActivity"/>
         <activity android:name=".ui.mine.ChangeNicknameActivity" />
         <activity android:name=".ui.pay.WalletActivity"/>
         <activity android:name=".ui.pay.CommissionActivity"/>

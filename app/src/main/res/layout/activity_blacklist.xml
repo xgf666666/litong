@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="老酒回购"
+            android:text="黑名单管理"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/titlebar_title_size" />
 
