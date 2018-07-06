@@ -61,17 +61,26 @@
 
 
 
-        <activity android:name="com.weibiaogan.litong.ui.home.RegistractionActivity" />
+        <!--<activity android:name="com.weibiaogan.litong.ui.home.RegistractionActivity" />-->
 
 
 
         <activity android:name="com.weibiaogan.litong.ui.AboutActivity" />
 
         <activity android:name="com.weibiaogan.litong.ui.login.ChangePWActivity" />
-        <activity android:name="com.weibiaogan.litong.ui.pay.ChangePayPwActivity" />
+        <!--<activity android:name="com.weibiaogan.litong.ui.pay.ChangePayPwActivity" />-->
         <activity android:name="com.weibiaogan.litong.ui.modify.ModifyBindActivity" />
 
 
+        <!--项目搜索-->
+        <activity android:name=".ui.search.SearchProjectActivity"/>
+        <!--店铺-->
+        <activity android:name=".ui.store.StoreDetailActivity"/>
+        <activity android:name=".ui.store.StoreListActivity"/>
+        <!--工人-->
+        <activity android:name=".ui.work.WorkDetailActivity"/>
+        <activity android:name=".ui.work.WorkEvaluateActivity"/>
+        <activity android:name=".ui.work.WorkListActivity"/>
 
         <activity
             android:name="com.weibiaogan.litong.wxapi.WXPayEntryActivity"

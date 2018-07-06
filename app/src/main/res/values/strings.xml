@@ -17,4 +17,32 @@
     <string name="title_publish_project">发布项目</string>
     <string name="tv_cancel">取消</string>
     <string name="tv_confirm">确定</string>
+
+    <!--首页-->
+    <string name="home_title_search">搜索项目</string>
+    <string name="home_work">找工人</string>
+    <string name="home_material">找材料</string>
+    <string name="home_project">找项目</string>
+    <string name="home_history">历史项目</string>
+    <string name="home_rv_work">- 为您推荐工人 -</string>
+    <string name="home_rv_material">- 我要买材料 -</string>
+    <string name="home_rv_project">- 接单做项目 -</string>
+
+    <!--搜索项目列表-->
+    <string name="search_project_title">搜索</string>
+    <string name="search_project_hint">搜索内容</string>
+
+    <!--店铺列表-->
+    <string name="store_list_title">店铺</string>
+    <string name="store_list_all">全部店铺</string>
+    <string name="store_list_distance">按距离排序</string>
+    <string name="store_detail_title">店铺详情</string>
+
+    <!--店铺详情-->
+    <string name="store_detail_location">导航</string>
+
+    <!--工人列表-->
+    <string name="work_list_title">工人列表</string>
+    <string name="work_detail_title">工人详情</string>
+    <string name="work_evaluate_title">工人评价</string>
 </resources>
