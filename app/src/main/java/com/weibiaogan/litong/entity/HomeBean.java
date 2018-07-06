@@ -61,6 +61,15 @@ public class HomeBean {
         private String end_time;
         private String all_price;
         private int distance;
+        private String pt_imgs;
+
+        public void setPt_imgs(String mPt_imgs) {
+            pt_imgs = mPt_imgs;
+        }
+
+        public String getPt_imgs() {
+            return pt_imgs;
+        }
 
         public int getPt_id() {
             return pt_id;
@@ -203,6 +212,15 @@ public class HomeBean {
         private String user_phone;
         private String user_img;
         private int distance;
+        private String nickname;
+
+        public void setNickname(String mNickname) {
+            nickname = mNickname;
+        }
+
+        public String getNickname() {
+            return nickname;
+        }
 
         public int getUser_id() {
             return user_id;

@@ -2,7 +2,6 @@ package com.weibiaogan.litong.ui.home
 
 import android.content.Context
 import android.content.Intent
-import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.ImageView
@@ -11,6 +10,7 @@ import com.bigkoo.convenientbanner.ConvenientBanner
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
 import com.bigkoo.convenientbanner.holder.Holder
 import com.weibiaogan.litong.R
+import com.weibiaogan.litong.adapter.home.HomeAdapter
 import com.weibiaogan.litong.entity.HomeBean
 import com.weibiaogan.litong.mvp.contract.HomeConstract
 import com.weibiaogan.litong.mvp.presenter.HomePresenter
@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
  */
 class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, HomeConstract.View, HomePresenter>(), HomeConstract.View, View.OnClickListener {
     override fun getHomeData(bean: HomeBean?) {
-        rv_home_bottom.adapter = HomeAdapter(getListMulti(bean))
+        rv_home_bottom.adapter = HomeAdapter(getListMulti(), bean)
     }
 
     val banner_imgs : List<Int> = arrayListOf(R.mipmap.img_banner,R.mipmap.img_banner,R.mipmap.img_banner)
@@ -88,7 +88,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         bean.worker = workList
         bean.project = pList
         bean.store = sList
-        rv_home_bottom.adapter = HomeAdapter(getListMulti(bean))
+        rv_home_bottom.adapter = HomeAdapter(getListMulti(), bean)
 
         rv_home_bottom.isNestedScrollingEnabled = false
 
@@ -97,11 +97,11 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         //presenter.getHomeData(1,)
     }
 
-    fun getListMulti(bean : HomeBean?) : List<HomeAdapter.HomeMultiItem>{
+    fun getListMulti() : List<HomeAdapter.HomeMultiItem>{
         var multiList = arrayListOf<HomeAdapter.HomeMultiItem>()
-        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_ONE,bean!!))
-        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_TWO,bean!!))
-        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_THREE,bean!!))
+        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_ONE))
+        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_TWO))
+        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_THREE))
         return multiList
     }
 
