@@ -23,7 +23,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name=".App"
+        android:name="com.weibiaogan.litong.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -72,7 +72,7 @@
         <activity android:name="com.weibiaogan.litong.ui.AboutActivity" />
 
         <activity android:name="com.weibiaogan.litong.ui.login.ChangePWActivity" />
-        <activity android:name="com.weibiaogan.litong.ui.pay.ChangePayPwActivity" />
+        <!--<activity android:name="com.weibiaogan.litong.ui.pay.ChangePayPwActivity" />-->
         <activity android:name="com.weibiaogan.litong.ui.modify.ModifyBindActivity" />
         <activity android:name=".ui.mine.ChangeNicknameActivity" />
         <activity android:name=".ui.pay.WalletActivity"/>

@@ -9,9 +9,11 @@ import io.reactivex.Observable
  * describe:黑名单列表
  */
 class BlacklistModel : BlacklistContract.Model {
-    override fun getData(): Observable<BaseResponseEntity<List<Any>>> {
-        //
-        return Observable.just(BaseResponseEntity<List<Any>>(1))
+    override fun getData(userId: String, token: String, status: String): Observable<BaseResponseEntity<List<Any>>> {
+
+        return Observable.just(BaseResponseEntity<List<Any>>(1, listOf(Any(), Any(),Any(), Any())))
     }
+
+
 
 }

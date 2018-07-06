@@ -16,6 +16,7 @@ import com.weibiaogan.litong.extensions.setOnPerCheckLoginClickListner
 import com.weibiaogan.litong.extensions.toast
 import com.weibiaogan.litong.mvp.contract.MineContract
 import com.weibiaogan.litong.mvp.presenter.MinePresenter
+import com.weibiaogan.litong.ui.blacklist.BlacklistActivity
 import com.weibiaogan.litong.ui.login.LoginActivity
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import com.xx.baseutilslibrary.common.ImageChooseHelper
@@ -64,7 +65,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         ll_project_area.setOnPerCheckLoginClickListner { toast("跳发布") }
         ll_shop_area.setOnPerCheckLoginClickListner { toast("店铺入驻") }
         tv_service_phone.setOnClickListener { toast("打电话") }
-
+        ll_backlist_area.setOnPerCheckLoginClickListner { startActivity(BlacklistActivity::class.java) }
 
     }
 

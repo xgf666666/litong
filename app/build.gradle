@@ -26,15 +26,15 @@ android {
                 JPUSH_APPKEY : "a73caa288faefa4682fb8a34", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
                 qqappid      : "1106602798",//腾讯开放平台Appid替换
-                GAODE_AMAPKEY:"bc1bdfc95d5e0753c2d11c47982412ee",//高德地图key
+                GAODE_AMAPKEY: "bc1bdfc95d5e0753c2d11c47982412ee",//高德地图key
         ]
 
 
-        buildConfigField "boolean","IS_DEV","false"
+        buildConfigField "boolean", "IS_DEV", "false"
 
         buildConfigField "String", "DEV_DOMAIN", "\"http://litong.goodbooy.cn\""
 
-        buildConfigField "String","RELEASE_DOMAIN","\"http://litong.goodbooy.cn\""
+        buildConfigField "String", "RELEASE_DOMAIN", "\"http://litong.goodbooy.cn\""
 
 
     }
