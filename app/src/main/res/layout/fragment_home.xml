@@ -24,23 +24,20 @@
             android:background="@color/colorAccent"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_navibar_location"
-                android:layout_gravity="left|center"
-                android:layout_marginLeft="@dimen/home_title_left"/>
-
             <TextView
+                android:id="@+id/tv_home_location"
                 android:layout_width="@dimen/home_title_text_width"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_dimen_third"
                 android:textColor="@color/text_color_white"
                 android:layout_gravity="center"
                 android:text="富力"
+                android:drawableLeft="@mipmap/ic_navibar_location"
+                android:layout_marginLeft="@dimen/margin_14"
                 android:lines="1"/>
 
             <LinearLayout
+                android:id="@+id/ll_home_search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -70,67 +67,86 @@
 
         </LinearLayout>
 
-        <com.bigkoo.convenientbanner.ConvenientBanner
-            android:id="@+id/home_convenien_banner"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/home_banner_height"
-            app:canLoop="true">
+            android:layout_height="match_parent">
 
-        </com.bigkoo.convenientbanner.ConvenientBanner>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="@dimen/home_work_ll_padding">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableTop="@mipmap/ic_home_worker"
-                android:text="@string/home_work"
-                android:drawablePadding="@dimen/home_work_padding"
-                android:gravity="center"
-                android:textColor="@color/text_color_first"
-                android:textSize="@dimen/text_dimen_fourth"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableTop="@mipmap/ic_home_material"
-                android:text="@string/home_material"
-                android:drawablePadding="@dimen/home_work_padding"
-                android:gravity="center"
-                android:textColor="@color/text_color_first"
-                android:textSize="@dimen/text_dimen_fourth"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableTop="@mipmap/ic_home_project"
-                android:text="@string/home_project"
-                android:drawablePadding="@dimen/home_work_padding"
-                android:gravity="center"
-                android:textColor="@color/text_color_first"
-                android:textSize="@dimen/text_dimen_fourth"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableTop="@mipmap/ic_home_history"
-                android:text="@string/home_history"
-                android:drawablePadding="@dimen/home_work_padding"
-                android:gravity="center"
-                android:textColor="@color/text_color_first"
-                android:textSize="@dimen/text_dimen_fourth"/>
-        </LinearLayout>
+                <com.bigkoo.convenientbanner.ConvenientBanner
+                    android:id="@+id/cb_home_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/home_banner_height"
+                    app:canLoop="true">
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/home_rv_top"/>
+                </com.bigkoo.convenientbanner.ConvenientBanner>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="@dimen/home_work_ll_padding">
+                    <TextView
+                        android:id="@+id/tv_home_work"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/ic_home_worker"
+                        android:text="@string/home_work"
+                        android:drawablePadding="@dimen/home_work_padding"
+                        android:gravity="center"
+                        android:textColor="@color/text_color_first"
+                        android:textSize="@dimen/text_dimen_fourth"/>
+                    <TextView
+                        android:id="@+id/tv_home_material"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/ic_home_material"
+                        android:text="@string/home_material"
+                        android:drawablePadding="@dimen/home_work_padding"
+                        android:gravity="center"
+                        android:textColor="@color/text_color_first"
+                        android:textSize="@dimen/text_dimen_fourth"/>
+                    <TextView
+                        android:id="@+id/tv_home_project"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/ic_home_project"
+                        android:text="@string/home_project"
+                        android:drawablePadding="@dimen/home_work_padding"
+                        android:gravity="center"
+                        android:textColor="@color/text_color_first"
+                        android:textSize="@dimen/text_dimen_fourth"/>
+                    <TextView
+                        android:id="@+id/tv_home_history"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/ic_home_history"
+                        android:text="@string/home_history"
+                        android:drawablePadding="@dimen/home_work_padding"
+                        android:gravity="center"
+                        android:textColor="@color/text_color_first"
+                        android:textSize="@dimen/text_dimen_fourth"/>
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_home_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/home_rv_top"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
     </LinearLayout>
 </FrameLayout>
 

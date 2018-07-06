@@ -64,6 +64,9 @@
     <dimen name="work_evaluate_img_width">69dp</dimen>
     <dimen name="work_evaluate_img_height">62dp</dimen>
     <dimen name="work_evaluate_item_img_height">89dp</dimen>
+    <dimen name="evaluate_work_edit_height">100dp</dimen>
+    <dimen name="evaluate_work_img_width">106dp</dimen>
+    <dimen name="evaluate_work_img_height">106dp</dimen>
 
     <dimen name="margin_14">14dp</dimen>
     <dimen name="margin_16">16dp</dimen>

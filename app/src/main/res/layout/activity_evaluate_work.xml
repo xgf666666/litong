@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/evaluate_work_title"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/titlebar_title_size" />
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="@dimen/titlebar_height"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
+            android:src="@drawable/right_arrows"
+            android:tint="@color/colorWhite" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/evaluate_text"
+        android:layout_marginLeft="@dimen/margin_14"
+        android:layout_marginTop="@dimen/margin_19"
+        android:textColor="@color/text_color_third"
+        android:textSize="@dimen/text_dimen_second"/>
+    
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/evaluate_work_edit_height"
+        android:background="@drawable/shape_gray_r5"
+        android:layout_marginLeft="@dimen/margin_14"
+        android:layout_marginRight="@dimen/margin_14"
+        android:layout_marginTop="@dimen/margin_9"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_14"
+        android:layout_marginLeft="@dimen/margin_14">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/evaluate_star_num"
+            android:textColor="@color/text_color_third"
+            android:textSize="@dimen/text_dimen_second"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_16"
+            layout="@layout/view_select_star"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/evaluate_work_add_img"
+        android:layout_marginLeft="@dimen/margin_14"
+        android:layout_marginTop="@dimen/margin_19"
+        android:textColor="@color/text_color_third"
+        android:textSize="@dimen/text_dimen_second"/>
+
+    <ImageView
+        android:layout_width="@dimen/evaluate_work_img_width"
+        android:layout_height="@dimen/evaluate_work_img_height"
+        android:layout_marginLeft="@dimen/margin_14"
+        android:layout_marginTop="@dimen/margin_9"
+        android:background="@color/colorGray"
+        android:src="@mipmap/btn_addimg"
+        android:scaleType="center"/>
+
+</LinearLayout>
