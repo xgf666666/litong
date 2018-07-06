@@ -81,7 +81,7 @@ public abstract class BaseLcecFragment<ContentView extends View, Data> extends B
             }
         });
         //初始显示加载中对话框
-//        showLoading();
+        showLoading();
     }
 
 
