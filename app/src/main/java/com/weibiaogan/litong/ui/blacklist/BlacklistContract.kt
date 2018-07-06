@@ -13,17 +13,19 @@ import io.reactivex.Observable
 interface BlacklistContract {
     interface View : BaseMvpLcecView<List<Any>> {
 
-        fun showData();
+
 
         fun addData(data: List<Any>?)
     }
 
     abstract class Presenter : BaseMvpPresenter<Model, View>() {
-        abstract fun getData()
+        abstract fun getData(isRefresh: Boolean, page: Int)
+
+        abstract fun loadData()
     }
 
     interface Model {
-        fun getData(): Observable<BaseResponseEntity<List<Any>>>
+        fun getData(userId: String, token: String, status: String): Observable<BaseResponseEntity<List<Any>>>
 
     }
 }

@@ -2,25 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.weibiaogan.litong">
 
+
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <!-- 允许程序打开网络套接字 -->
+    <!--允许程序打开网络套接字-->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 允许程序设置内置sd卡的写权限 -->
+    <!--允许程序设置内置sd卡的写权限-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 允许程序获取网络状态 -->
+    <!--允许程序获取网络状态-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 允许程序访问WiFi网络信息 -->
+    <!--允许程序访问WiFi网络信息-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- 允许程序读写手机状态和身份 -->
+    <!--允许程序读写手机状态和身份-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name=".App"
+        android:name="com.weibiaogan.litong.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -31,7 +34,7 @@
             android:name="com.amap.api.v2.apikey"
             android:value="${GAODE_AMAPKEY}" />
 
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.weibiaogan.litong.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,10 +42,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.weibiaogan.litong.MainActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="com.weibiaogan.litong.ui.login.LoginActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="login_action" />
@@ -51,21 +54,48 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.login.RegisterActivity" />
-        <activity android:name=".ui.login.ForgetPWActivity" />
-        <activity android:name=".ui.mine.MyIntroActivity" />
+        <activity android:name="com.weibiaogan.litong.ui.login.RegisterActivity" />
+        <activity android:name="com.weibiaogan.litong.ui.login.ForgetPWActivity" />
+        <activity android:name="com.weibiaogan.litong.ui.mine.MyIntroActivity" />
+
+
         <activity android:name=".ui.location.GeoToScreenActivity" />
-        <activity android:name=".ui.AboutActivity" />
-        <activity android:name=".ui.login.ChangePWActivity" />
-        <activity android:name=".ui.pay.ChangePayPwActivity" />
-        <activity android:name=".ui.modify.ModifyBindActivity" />
+
+
+
+
+
+        <!--<activity android:name="com.weibiaogan.litong.ui.home.RegistractionActivity" />-->
+
+
+
+        <activity android:name="com.weibiaogan.litong.ui.AboutActivity" />
+
+        <activity android:name="com.weibiaogan.litong.ui.login.ChangePWActivity" />
+        <!--<activity android:name="com.weibiaogan.litong.ui.pay.ChangePayPwActivity" />-->
+        <activity android:name="com.weibiaogan.litong.ui.modify.ModifyBindActivity" />
+        <activity android:name=".ui.mine.ChangeNicknameActivity" />
+        <activity android:name=".ui.pay.WalletActivity"/>
+        <activity android:name=".ui.pay.CommissionActivity"/>
+        <activity android:name=".ui.pay.CommissionSuccessfulActivity"/>
+
+        <!--项目搜索-->
+        <activity android:name=".ui.search.SearchProjectActivity"/>
+        <!--店铺-->
+        <activity android:name=".ui.store.StoreDetailActivity"/>
+        <activity android:name=".ui.store.StoreListActivity"/>
+        <!--工人-->
+        <activity android:name=".ui.work.WorkDetailActivity"/>
+        <activity android:name=".ui.work.WorkEvaluateActivity"/>
+        <activity android:name=".ui.work.WorkListActivity"/>
+
         <activity
-            android:name=".wxapi.WXPayEntryActivity"
+            android:name="com.weibiaogan.litong.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.weibiaogan.litong.wxapi.WXEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -80,10 +110,6 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity
-            android:name=".ui.project.PayCenterActivity"
-            android:launchMode="singleTop" />
-        <activity android:name=".ui.orders.OrdersDetailActivity"></activity>
     </application>
 
 </manifest>
