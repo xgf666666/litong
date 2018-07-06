@@ -91,6 +91,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         rv_home_bottom.adapter = HomeAdapter(getListMulti(bean))
 
         rv_home_bottom.isNestedScrollingEnabled = false
+
         (cb_home_top as ConvenientBanner<Int>).setPages(CBViewHolderCreator { ImageHolderView() } , banner_imgs).setPointViewVisible(true).startTurning(1000)
 
         //presenter.getHomeData(1,)

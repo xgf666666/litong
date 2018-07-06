@@ -20,8 +20,8 @@ class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeA
 
     init {
         addItemType(HomeMultiItem.ITEM_TYPE_ONE, R.layout.home_rv_item_one)
-        addItemType(HomeMultiItem.ITEM_TYPE_TWO, R.layout.home_rv_item_one)
-        addItemType(HomeMultiItem.ITEM_TYPE_THREE, R.layout.home_rv_item_one)
+        addItemType(HomeMultiItem.ITEM_TYPE_TWO, R.layout.home_rv_item_two)
+        addItemType(HomeMultiItem.ITEM_TYPE_THREE, R.layout.home_rv_item_three)
     }
     override fun convert(helper: BaseViewHolder?, item: HomeMultiItem?) {
         when(helper?.itemViewType){
@@ -30,6 +30,8 @@ class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeA
             HomeMultiItem.ITEM_TYPE_THREE -> setItemThreeView(helper, item)
         }
     }
+
+
 
     fun setItemOneView(helper: BaseViewHolder? , item : HomeMultiItem?){
         helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_work)
