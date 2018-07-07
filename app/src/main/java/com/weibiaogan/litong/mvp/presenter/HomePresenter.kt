@@ -15,7 +15,7 @@ class HomePresenter : HomeConstract.Presenter() {
     override fun getHomeData(page: String, lat: String, lnt: String) {
         getModel().getHomeData(page,lat, lnt, object : XxBaseHttpObserver<HomeBean>() {
             override fun onCompleted(msg: String?, entity: HomeBean?) {
-                getView()?.getHomeData(entity)
+                getView()?.setData(entity)
             }
 
             override fun onError(error: String?) {

@@ -8,9 +8,11 @@ import android.widget.RadioButton
 import com.blankj.utilcode.util.ActivityUtils
 import com.weibiaogan.litong.common.Constants.KEY_INTENT_MAIN
 import com.weibiaogan.litong.ui.home.HomeFragment
+import com.weibiaogan.litong.ui.location.GeoToScreenActivity
 import com.weibiaogan.litong.ui.orders.OrdersFragment
 import com.weibiaogan.litong.ui.mine.MineFragment
 import com.weibiaogan.litong.ui.project.Projectragment
+import com.weibiaogan.litong.ui.search.SearchProjectActivity
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -49,6 +51,9 @@ class MainActivity : BaseMvpViewActivity() {
 
         }
 
+        ll_home_search.setOnClickListener {  startActivity(Intent(mContext, SearchProjectActivity::class.java)) }
+        tv_home_location.setOnClickListener { startActivity(Intent(mContext, GeoToScreenActivity::class.java)) }
+
     }
 
     private fun changeTitle(i: Int) {
@@ -62,9 +67,9 @@ class MainActivity : BaseMvpViewActivity() {
 
     fun setTitleText(txt : String){
         if (txt.equals("首页")){
-            fl_title.visibility = View.GONE
+            ll_home_title.visibility = View.VISIBLE
         }else{
-            fl_title.visibility = View.VISIBLE
+            ll_home_title.visibility = View.GONE
             tv_title.text = txt
         }
     }
@@ -156,6 +161,7 @@ class MainActivity : BaseMvpViewActivity() {
             radio!!.getChildAt(i)!!.id = i
         }
         initFragments()
+        changeTitle(0)
         radio.check(INDEX_HOME)
     }
 

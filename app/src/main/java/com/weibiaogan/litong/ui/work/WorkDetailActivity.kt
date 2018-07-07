@@ -1,5 +1,6 @@
 package com.weibiaogan.litong.ui.work
 
+import android.content.Intent
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.entity.WorkDetailBean
 import com.weibiaogan.litong.extensions.loadImag
@@ -25,7 +26,7 @@ class WorkDetailActivity : BaseActivity(){
     }
 
     override fun initEvent() {
-
+        fl_work_detail_goto.setOnClickListener { startActivity(Intent(mContext,WorkEvaluateActivity::class.java)) }
     }
 
     fun setData(bean: WorkDetailBean){

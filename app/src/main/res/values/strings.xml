@@ -50,6 +50,7 @@
     <string name="evaluate_star_num">好评度</string>
     <string name="evaluate_work_add_img">添加图片</string>
     <string name="work_detail_evaluate">需求方对工人的评价</string>
+    <string name="order_detail_evaluate">需求方评价记录</string>
 
     <!--我的接单-->
     <string name="my_receipt_loading">进行中</string>
@@ -57,6 +58,9 @@
     <string name="my_receipt_look">查看</string>
     <string name="my_receipt_evaluate">评价</string>
     <string name="evaluate_demand_title">评论需求方</string>
+
+    <!--找项目-->
+    <string name="project_title">项目列表</string>
 
 
 </resources>

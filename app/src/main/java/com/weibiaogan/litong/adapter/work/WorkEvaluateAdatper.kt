@@ -13,7 +13,7 @@ import de.hdodenhof.circleimageview.CircleImageView
  * date: 2018/7/6
  * describe:
  */
-class WorkEvaluateAdatper(workList : List<WorkEvaluateBean?>) : BaseQuickAdapter<WorkEvaluateBean,BaseViewHolder>(R.layout.work_list_item,workList){
+class WorkEvaluateAdatper(workList : List<WorkEvaluateBean?>) : BaseQuickAdapter<WorkEvaluateBean,BaseViewHolder>(R.layout.activity_work_evaluate,workList){
 
     override fun convert(helper: BaseViewHolder?, item: WorkEvaluateBean?) {
         //helper?.setText(R.id.tv_work_item_distance,item?.distance.toString() + "m")

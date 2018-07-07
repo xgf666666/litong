@@ -2,12 +2,13 @@ package com.weibiaogan.litong.ui.orders
 
 import android.app.AlertDialog
 import android.view.View
+import android.content.Intent
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.mvp.contract.OrdersDetailCOntract
-import com.weibiaogan.litong.mvp.model.OrderdDetailModel
 import com.weibiaogan.litong.mvp.presenter.OrderDetailPresenter
+import com.weibiaogan.litong.ui.work.WorkEvaluateActivity
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
-import kotlinx.android.synthetic.main.activity_sure_worker.*
+import kotlinx.android.synthetic.main.activity_orders_detail.*
 
 /**
  * author: xiaoguangfei
@@ -56,8 +57,8 @@ class OrdersDetailActivity : BaseMvpActivity<OrderDetailPresenter>(),OrdersDetai
      * 初始化事件
      */
     override fun initEvent() {
-        ib_back.setOnClickListener{finish()}
-
+        ib_back.setOnClickListener{ finish() }
+        rl_order_jilu.setOnClickListener { startActivity(Intent(mContext, WorkEvaluateActivity::class.java)) }
     }
     fun showDialog(){
 

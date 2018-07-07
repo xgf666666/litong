@@ -13,10 +13,11 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
 import com.bigkoo.convenientbanner.holder.Holder
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.adapter.home.HomeAdapter
+import com.weibiaogan.litong.ui.project.ProjectListActivity
 import com.weibiaogan.litong.entity.HomeBean
 import com.weibiaogan.litong.mvp.contract.HomeConstract
 import com.weibiaogan.litong.mvp.presenter.HomePresenter
-import com.weibiaogan.litong.ui.search.SearchProjectActivity
+import com.weibiaogan.litong.ui.project.HistoryProjectActivity
 import com.weibiaogan.litong.ui.store.StoreListActivity
 import com.weibiaogan.litong.ui.work.WorkListActivity
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
@@ -29,10 +30,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * describe:
  */
 class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, HomeConstract.View, HomePresenter>(), HomeConstract.View, View.OnClickListener {
-    override fun getHomeData(bean: HomeBean?) {
-        rv_home_bottom.adapter = HomeAdapter(getListMulti(), bean)
-    }
-
     val banner_imgs : List<Int> = arrayListOf(R.mipmap.img_banner,R.mipmap.img_banner,R.mipmap.img_banner)
     var headView : View? = null
 
@@ -53,8 +50,6 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         headView?.findViewById<TextView>(R.id.tv_home_material)?.setOnClickListener(this)
         headView?.findViewById<TextView>(R.id.tv_home_project)?.setOnClickListener(this)
         headView?.findViewById<TextView>(R.id.tv_home_history)?.setOnClickListener(this)
-        //tv_home_location.setOnClickListener(this)
-        ll_home_search.setOnClickListener(this)
     }
 
     override fun initData() {
@@ -112,16 +107,16 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
     }
 
     override fun setData(data: Any?) {
-        showContent()
+        //showContent()
+        rv_home_bottom.adapter = HomeAdapter(getListMulti(), data as HomeBean)
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.tv_home_project -> Unit
+            R.id.tv_home_project -> startActivity(Intent(mContext, ProjectListActivity::class.java))
             R.id.tv_home_work -> startActivity(Intent(mContext,WorkListActivity::class.java))
             R.id.tv_home_material -> startActivity(Intent(mContext,StoreListActivity::class.java))
-            R.id.tv_home_history -> Unit
-            R.id.ll_home_search -> startActivity(Intent(mContext,SearchProjectActivity::class.java))
+            R.id.tv_home_history -> startActivity(Intent(mContext,HistoryProjectActivity::class.java))
         }
     }
 

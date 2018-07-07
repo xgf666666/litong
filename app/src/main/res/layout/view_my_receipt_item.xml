@@ -96,7 +96,7 @@
                 android:textColor="@color/text_color_first"
                 android:layout_marginTop="@dimen/margin_14"
                 android:gravity="center"
-                android:visibility="gone"
+                android:visibility="visible"
                 />
 
         </LinearLayout>

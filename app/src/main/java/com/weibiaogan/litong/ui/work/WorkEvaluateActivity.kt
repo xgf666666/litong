@@ -16,7 +16,7 @@ class WorkEvaluateActivity : BaseActivity(){
     override fun getActivityLayoutId(): Int = R.layout.activity_work_list
 
     override fun initData() {
-        tv_work_title.setText(resources.getString(R.string.work_list_title))
+        tv_work_title.setText(resources.getString(R.string.work_evaluate_title))
 
         var wList = arrayListOf<WorkEvaluateBean>()
 

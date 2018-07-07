@@ -1,8 +1,10 @@
 package com.weibiaogan.litong.ui.store
 
+import android.content.Intent
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.entity.StoreDetailBean
 import com.weibiaogan.litong.extensions.loadImag
+import com.weibiaogan.litong.ui.location.GeoToScreenActivity
 import com.xx.baseuilibrary.BaseActivity
 import kotlinx.android.synthetic.main.activity_store_detail.*
 
@@ -27,7 +29,7 @@ class StoreDetailActivity : BaseActivity(){
     }
 
     override fun initEvent() {
-
+        tv_store_detail_goto_distance.setOnClickListener { startActivity(Intent(mContext,GeoToScreenActivity::class.java)) }
     }
 
     fun setData(bean: StoreDetailBean){

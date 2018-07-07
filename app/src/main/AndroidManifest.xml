@@ -83,7 +83,9 @@
         <activity android:name=".ui.work.WorkListActivity"/>
         <!--我的接单-->
         <activity android:name=".ui.receipt.MyReceiptActivity"/>
-        <activity android:name=".ui.receipt.EvaluateDemandActivity"/>
+        <activity android:name=".ui.receipt.EvaluateActivity"/>
+        <!--找项目-->
+        <activity android:name=".ui.project.ProjectListActivity"/>
 
         <activity
             android:name=".wxapi.WXPayEntryActivity"
