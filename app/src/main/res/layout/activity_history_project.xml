@@ -4,28 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <FrameLayout
-        android:id="@+id/fl_header"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/titlebar_height"
-        android:background="@color/colorAccent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="我的发布"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/titlebar_title_size" />
-
-        <ImageButton
-            android:id="@+id/ib_back"
-            android:layout_width="@dimen/titlebar_height"
-            android:layout_height="match_parent"
-            android:background="?selectableItemBackground"
-            android:src="@drawable/right_arrows"
-            android:tint="@color/colorWhite" />
-    </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -36,32 +14,32 @@
         android:layout_marginTop="6dp"
         android:layout_marginBottom="6dp">
         <TextView
-            android:id="@+id/tv_ing"
+            android:id="@+id/tv_all"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="进行中"
+            android:text="全部"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/text_dimen_fourth"
             android:background="@drawable/selector_fabu"/>
         <TextView
+            android:id="@+id/tv_time"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="已完成"
+            android:text="按时间"
             android:gravity="center"
             android:textColor="@color/color3078EF"
             android:textSize="@dimen/text_dimen_fourth" />
 
     </LinearLayout>
 
+
     <RelativeLayout
         android:id="@+id/view_content"
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp">
+        android:layout_height="match_parent">
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swiperefreshlayout"
@@ -72,13 +50,13 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/ll_bottom_area">
-            </android.support.v7.widget.RecyclerView>
+                android:layout_above="@+id/ll_bottom_area"></android.support.v7.widget.RecyclerView>
+
         </android.support.v4.widget.SwipeRefreshLayout>
 
     </RelativeLayout>
 
-   <!--  <include
+    <include
         android:id="@+id/view_loading"
         layout="@layout/view_loading"
         android:visibility="gone" />
@@ -91,5 +69,5 @@
     <include
         android:id="@+id/view_check_net"
         layout="@layout/view_check_net"
-        android:visibility="gone" />-->
+        android:visibility="gone" />
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.weibiaogan.litong.adapter
+package com.weibiaogan.litong.adapter.mine
 
 import android.content.Context
 import android.content.Intent
@@ -19,7 +19,7 @@ import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
 class OrderAdapter(context: Context) : RecyclerView.Adapter<OrderAdapter.ProjectHolder>() {
     var context: Context? = context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectHolder {
-        return ProjectHolder(View.inflate(parent.context,R.layout.rl_order,null))
+        return ProjectHolder(View.inflate(parent.context, R.layout.rl_order, null))
     }
     override fun getItemCount(): Int =10
 

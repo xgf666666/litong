@@ -7,8 +7,8 @@ import android.view.View
 import android.widget.RadioButton
 import com.blankj.utilcode.util.ActivityUtils
 import com.weibiaogan.litong.common.Constants.KEY_INTENT_MAIN
-import com.weibiaogan.litong.ui.orders.OrdersFragment
 import com.weibiaogan.litong.ui.home.HomeFragment
+import com.weibiaogan.litong.ui.orders.OrdersFragment
 import com.weibiaogan.litong.ui.mine.MineFragment
 import com.weibiaogan.litong.ui.project.Projectragment
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
@@ -152,7 +152,7 @@ class MainActivity : BaseMvpViewActivity() {
 //        }
 
         //重置RadioGroup子项id
-        for (i in 0 until radio.childCount) {
+        for (i in 0 until radio!!.childCount!!) {
             radio!!.getChildAt(i)!!.id = i
         }
         initFragments()

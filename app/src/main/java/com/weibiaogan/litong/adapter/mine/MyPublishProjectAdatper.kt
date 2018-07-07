@@ -1,4 +1,4 @@
-package com.weibiaogan.litong.adapter
+package com.weibiaogan.litong.adapter.mine
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -18,8 +18,8 @@ class MyPublishProjectAdatper:RecyclerView.Adapter<MyPublishProjectAdatper.Proje
     override fun onBindViewHolder(holder: ProjectHolder, position: Int) {
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPublishProjectAdatper.ProjectHolder {
-        return ProjectHolder(View.inflate(parent.context,R.layout.item_mypublishproject,null))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectHolder {
+        return ProjectHolder(View.inflate(parent.context, R.layout.item_mypublishproject, null))
     }
 
 

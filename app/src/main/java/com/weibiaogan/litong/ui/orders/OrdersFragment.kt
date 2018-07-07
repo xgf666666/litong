@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.RelativeLayout
 import com.weibiaogan.litong.R
-import com.weibiaogan.litong.adapter.OrderAdapter
+import com.weibiaogan.litong.adapter.mine.OrderAdapter
 import com.weibiaogan.litong.mvp.contract.OrdersContract
 import com.weibiaogan.litong.mvp.presenter.OrdersPresenter
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
@@ -22,7 +22,7 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<Any>, OrdersCont
      * Called when a swipe gesture triggers a refresh.
      */
 
-    private var orderAdapter:OrderAdapter?=null
+    private var orderAdapter: OrderAdapter?=null
 
 
     override fun getFragmentLayoutId(): Int = R.layout.fragment_orders

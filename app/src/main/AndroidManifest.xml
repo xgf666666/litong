@@ -115,7 +115,9 @@
         <activity android:name=".ui.mine.BosIdentyActivity" />
         <activity android:name=".ui.mine.ShopAddActivity" />
         <activity android:name=".ui.mine.WorkerIDentyOneActivity" />
-        <activity android:name=".ui.mine.WorkerIDentyTwoActivity"></activity>
+        <activity android:name=".ui.mine.WorkerIDentyTwoActivity" />
+        <activity android:name=".ui.blacklist.BlacklistActivity" />
+        <activity android:name=".ui.project.HistoryProjectActivity"></activity>
     </application>
 
 </manifest>

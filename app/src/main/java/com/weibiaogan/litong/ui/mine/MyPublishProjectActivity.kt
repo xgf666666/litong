@@ -4,7 +4,7 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import com.umeng.socialize.utils.DeviceConfig.context
 import com.weibiaogan.litong.R
-import com.weibiaogan.litong.adapter.MyPublishProjectAdatper
+import com.weibiaogan.litong.adapter.mine.MyPublishProjectAdatper
 import com.weibiaogan.litong.mvp.contract.MyPublishProjectContract
 import com.weibiaogan.litong.mvp.presenter.MyPublishProjectPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_my_publish_project.*
  * describe:我的发布
  */
 class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),MyPublishProjectContract.View, SwipeRefreshLayout.OnRefreshListener {
-        private var myPublishProjectAdatper :MyPublishProjectAdatper?=null
+        private var myPublishProjectAdatper : MyPublishProjectAdatper?=null
 
     /**
      * 初始化事件
