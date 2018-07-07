@@ -18,7 +18,7 @@ import com.weibiaogan.litong.ui.work.WorkDetailActivity
  * date: 2018/7/6
  * describe:
  */
-class HomeAdapter(datas : List<HomeMultiItem>, val bean : HomeBean?) : BaseMultiItemQuickAdapter<HomeAdapter.HomeMultiItem,BaseViewHolder>(datas){
+class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeAdapter.HomeMultiItem,BaseViewHolder>(datas){
 
     init {
         addItemType(HomeMultiItem.ITEM_TYPE_ONE, R.layout.home_rv_item_one)
@@ -27,15 +27,15 @@ class HomeAdapter(datas : List<HomeMultiItem>, val bean : HomeBean?) : BaseMulti
     }
     override fun convert(helper: BaseViewHolder?, item: HomeMultiItem?) {
         when(helper?.itemViewType){
-            HomeMultiItem.ITEM_TYPE_ONE -> setItemOneView(helper)
-            HomeMultiItem.ITEM_TYPE_TWO -> setItemTwoView(helper)
-            HomeMultiItem.ITEM_TYPE_THREE -> setItemThreeView(helper)
+            HomeMultiItem.ITEM_TYPE_ONE -> setItemOneView(helper,item?.bean)
+            HomeMultiItem.ITEM_TYPE_TWO -> setItemTwoView(helper,item?.bean)
+            HomeMultiItem.ITEM_TYPE_THREE -> setItemThreeView(helper,item?.bean)
         }
     }
 
 
 
-    fun setItemOneView(helper: BaseViewHolder?){
+    fun setItemOneView(helper: BaseViewHolder?,bean : HomeBean?){
         helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_work)
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,3,GridLayoutManager.VERTICAL,false)
@@ -45,7 +45,7 @@ class HomeAdapter(datas : List<HomeMultiItem>, val bean : HomeBean?) : BaseMulti
         view?.isNestedScrollingEnabled = false
     }
 
-    fun setItemTwoView(helper: BaseViewHolder?){
+    fun setItemTwoView(helper: BaseViewHolder?,bean : HomeBean?){
         helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_material)
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,2,GridLayoutManager.VERTICAL,false)
@@ -55,7 +55,7 @@ class HomeAdapter(datas : List<HomeMultiItem>, val bean : HomeBean?) : BaseMulti
         view?.isNestedScrollingEnabled = false
     }
 
-    fun setItemThreeView(helper: BaseViewHolder?){
+    fun setItemThreeView(helper: BaseViewHolder?,bean : HomeBean?){
         helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_project)
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,2,GridLayoutManager.VERTICAL,false)
@@ -65,7 +65,7 @@ class HomeAdapter(datas : List<HomeMultiItem>, val bean : HomeBean?) : BaseMulti
         view?.isNestedScrollingEnabled = false
     }
 
-    class HomeMultiItem(val type : Int) : MultiItemEntity{
+    class HomeMultiItem(val type : Int,val bean : HomeBean) : MultiItemEntity{
 
         companion object {
             val ITEM_TYPE_ONE = 0x01

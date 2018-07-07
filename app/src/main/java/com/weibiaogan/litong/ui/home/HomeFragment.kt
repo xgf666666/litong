@@ -32,6 +32,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, HomeConstract.View, HomePresenter>(), HomeConstract.View, View.OnClickListener {
     val banner_imgs : List<Int> = arrayListOf(R.mipmap.img_banner,R.mipmap.img_banner,R.mipmap.img_banner)
     var headView : View? = null
+    var adapter = HomeAdapter(getListMulti(HomeBean()))
 
     override fun getFragmentLayoutId(): Int {
         return R.layout.fragment_home
@@ -56,7 +57,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         showContent()
         headView = LayoutInflater.from(mContext).inflate(R.layout.home_head_view, null, false)
         rv_home_bottom.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
-        var bean = HomeBean()
+        /*var bean = HomeBean()
         //var adList = arrayListOf<HomeBean.AdveBean>()
         var workList = arrayListOf<HomeBean.WorkerBean>()
         var pList = arrayListOf<HomeBean.ProjectBean>()
@@ -87,28 +88,30 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         }
         bean.worker = workList
         bean.project = pList
-        bean.store = sList
-        var adapter = HomeAdapter(getListMulti(), bean)
+        bean.store = sList*/
+        //var adapter = HomeAdapter(getListMulti(), bean)
 
         headView?.findViewById<ConvenientBanner<Int>>(R.id.cb_home_top)?.setPages(CBViewHolderCreator { ImageHolderView() } , banner_imgs)?.setPointViewVisible(true)?.startTurning(2000)
 
         adapter.addHeaderView(headView)
 
         rv_home_bottom.adapter = adapter
-        //presenter.getHomeData(1,)
+
+        presenter.getHomeData("1","11","11")
     }
 
-    fun getListMulti() : List<HomeAdapter.HomeMultiItem>{
+    fun getListMulti(bean : HomeBean) : List<HomeAdapter.HomeMultiItem>{
         var multiList = arrayListOf<HomeAdapter.HomeMultiItem>()
-        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_ONE))
-        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_TWO))
-        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_THREE))
+        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_ONE,bean))
+        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_TWO,bean))
+        multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_THREE,bean))
         return multiList
     }
 
     override fun setData(data: Any?) {
         //showContent()
-        rv_home_bottom.adapter = HomeAdapter(getListMulti(), data as HomeBean)
+        //adapter.setNewData(getListMulti())
+        adapter.setNewData(getListMulti(data as HomeBean))
     }
 
     override fun onClick(v: View?) {
