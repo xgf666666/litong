@@ -357,7 +357,7 @@
         android:layout_height="10dp" />
 
     <LinearLayout
-        android:id="@+id/ll_name"
+        android:id="@+id/ll_workRenzheng"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
@@ -408,7 +408,7 @@
         android:layout_height="1dp" />
 
     <LinearLayout
-        android:id="@+id/ll_sex"
+        android:id="@+id/ll_bos_renzheng"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"

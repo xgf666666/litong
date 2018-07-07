@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,7 +5,6 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebar_height"
         android:background="@color/colorAccent">
@@ -15,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/title_publish_project"
+            android:text="工人认证"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/titlebar_title_size" />
 
@@ -25,8 +23,7 @@
             android:layout_height="match_parent"
             android:background="?selectableItemBackground"
             android:src="@drawable/right_arrows"
-            android:tint="@color/colorWhite"
-            android:visibility="gone" />
+            android:tint="@color/colorWhite" />
     </FrameLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -38,111 +35,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="项目名称"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/et_project_name"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginRight="14dp"
-                    android:layout_weight="9"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:hint="输入项目名称"
-                    android:paddingLeft="10dp"
-
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="14dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="完结时间"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/et_project_endTime"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginRight="14dp"
-                    android:layout_weight="9"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:hint="请输入项目完结时间"
-                    android:paddingLeft="10dp"
-
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="14dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="项目地址"
-                    android:textSize="15sp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="9"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/et_project_location"
-                        android:layout_width="0dp"
-                        android:layout_height="44dp"
-                        android:layout_marginRight="14dp"
-                        android:layout_weight="9"
-                        android:background="@drawable/shape_edittext_bg"
-                        android:hint="请输入项目具体地址"
-                        android:paddingLeft="10dp"
-                        android:textSize="15sp" />
-
-                    <ImageView
-                        android:id="@+id/iv_project_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="14dp"
-                        android:clickable="true"
-                        android:src="@mipmap/btn_location" />
-                </LinearLayout>
-
-
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -177,8 +69,7 @@
                         android:textSize="15sp">
 
                         <TextView
-                            android:id="@+id/tv_project_worker_selector_1"
-
+                            android:id="@+id/tv_select_one"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -227,127 +118,159 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_marginTop="14dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:layout_marginTop="28dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:layout_weight="1"
                     android:gravity="center"
-                    android:text="项目总价"
+                    android:text="是否有车"
+                    android:layout_marginLeft="14dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
+                <CheckBox
+                    android:id="@+id/cb_carShi"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:background="@drawable/select_renzheng"
+                    android:layout_marginLeft="33dp"
+                    android:button="@null" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="是"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
+                <CheckBox
+                    android:id="@+id/cb_carFou"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:background="@drawable/select_renzheng"
+                    android:layout_marginLeft="51dp"
+                    android:button="@null" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="否"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/color888888"
                     android:textSize="15sp" />
 
-                <EditText
-                    android:id="@+id/et_project_cost"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginRight="14dp"
-                    android:layout_weight="9"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:hint="请输入项目总价"
-                    android:paddingLeft="10dp"
-
-                    android:textSize="15sp" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="44dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="保险情况"
+                    android:layout_marginLeft="14dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
+                <CheckBox
+                    android:id="@+id/cb_baoShi"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:background="@drawable/select_renzheng"
+                    android:layout_marginLeft="33dp"
+                    android:layout_gravity="center_vertical"
+                    android:button="@null" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="是"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
+                <CheckBox
+                    android:id="@+id/cb_baoFou"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:background="@drawable/select_renzheng"
+                    android:layout_marginLeft="51dp"
+                    android:layout_gravity="center_vertical"
+                    android:button="@null" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="否"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
-                android:layout_marginTop="14dp"
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="27dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="首款比例"
+                    android:text="个人/公司"
                     android:textSize="15sp" />
 
                 <LinearLayout
-                    android:layout_width="0px"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/et_project_first_ratio"
-                        android:layout_width="0dp"
-                        android:layout_height="44dp"
-
-                        android:layout_weight="2"
-                        android:background="@drawable/shape_edittext_bg"
-                        android:hint="40%"
-                        android:paddingLeft="10dp"
-
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="二期比例"
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:id="@+id/et_project_second_ratio"
-                        android:layout_width="0dp"
+                    <RelativeLayout
+                        android:id="@+id/rl_personOr"
+                        android:layout_width="match_parent"
                         android:layout_height="44dp"
                         android:layout_marginRight="14dp"
-                        android:layout_weight="2"
-                        android:background="@drawable/shape_edittext_bg"
-                        android:hint="40%"
+                        android:layout_weight="3"
+                        android:background="@drawable/shape_edittext_bg_white_gray"
+                        android:orientation="horizontal"
                         android:paddingLeft="10dp"
+                        android:textSize="15sp">
 
-                        android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/tv_project_worker_selector_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textSize="@dimen/text_dimen_second"
+                            android:text="个人" />
+
+                        <ImageView
+                            android:id="@+id/iv_select"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@mipmap/btn_triangle_down" />
+                    </RelativeLayout>
+
                 </LinearLayout>
 
+
             </LinearLayout>
+
+
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_marginTop="14dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginRight="14dp"
-                    android:layout_weight="9"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:textColor="@color/text_color_primary"
-                    android:textSize="15sp"
-                    tools:text="尾款比例为：20%" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="14dp"
-                android:layout_marginRight="14dp"
-                android:layout_marginTop="14dp"
-                android:background="@color/app_color_bg" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
                 android:layout_marginTop="14dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -355,13 +278,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_gravity="top"
                     android:layout_marginTop="14dp"
                     android:layout_weight="1"
                     android:gravity="center"
-
-                    android:text="项目描述"
+                    android:text="资质"
                     android:textSize="15sp" />
 
                 <EditText
@@ -370,22 +291,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="14dp"
                     android:layout_weight="9"
+                    android:layout_marginLeft="37dp"
                     android:background="@drawable/shape_edittext_bg"
                     android:gravity="top"
                     android:hint="请输入项目描述"
                     android:lines="4"
                     android:maxLines="4"
                     android:minLines="4"
-                    android:paddingLeft="10dp"
                     android:paddingTop="14dp"
                     android:textSize="15sp" />
             </LinearLayout>
-
             <LinearLayout
-                android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="14dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -393,31 +311,96 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_gravity="top"
+                    android:layout_marginTop="14dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="添加图片"
+                    android:text="从业经验"
                     android:textSize="15sp" />
 
-                <LinearLayout
-
+                <EditText
+                    android:id="@+id/et_conye"
                     android:layout_width="0dp"
-                    android:layout_height="44dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginRight="14dp"
                     android:layout_weight="9"
+                    android:layout_marginLeft="13dp"
                     android:background="@drawable/shape_edittext_bg"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-
-                    >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/btn_addimg" />
-                </LinearLayout>
+                    android:gravity="top"
+                    android:lines="4"
+                    android:maxLines="4"
+                    android:minLines="4"
+                    android:paddingTop="14dp"
+                    android:textSize="15sp" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="14dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="职业技能"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_zhiye"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="14dp"
+                    android:layout_weight="9"
+                    android:layout_marginLeft="13dp"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="top"
+                    android:lines="4"
+                    android:maxLines="4"
+                    android:minLines="4"
+                    android:paddingTop="14dp"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="14dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="服务类型"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_service"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="14dp"
+                    android:layout_weight="9"
+                    android:layout_marginLeft="13dp"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="top"
+                    android:lines="4"
+                    android:maxLines="4"
+                    android:minLines="4"
+                    android:paddingTop="14dp"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+
+
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

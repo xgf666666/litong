@@ -8,4 +8,5 @@ import com.weibiaogan.litong.mvp.contract.OrdersDetailCOntract
  * describe:
  */
 class OrderdDetailModel:OrdersDetailCOntract.Model {
+
 }

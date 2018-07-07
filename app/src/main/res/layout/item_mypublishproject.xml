@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp">
+    <TextView
+        android:id="@+id/tv_state"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="已取消"
+        android:gravity="center_vertical|right"
+        android:paddingRight="20dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color888888"/>
+    <RelativeLayout
+        android:id="@+id/rl_father"
+        android:layout_width="match_parent"
+        android:layout_height="91dp">
+    <ImageView
+        android:id="@+id/iv_head"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_margin="8dp"/>
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="羡慕激发大家发非打飞机放大镜放大镜代发放大 "
+        android:textSize="@dimen/text_dimen_third"
+        android:textColor="@color/color222222"
+        android:layout_toRightOf="@id/iv_head"
+        android:layout_alignTop="@+id/iv_head"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="7dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$200000 "
+        android:textSize="@dimen/text_dimen_first"
+        android:layout_toRightOf="@+id/iv_head"
+        android:layout_marginLeft="7dp"
+        android:textColor="#FF0000"
+        android:layout_alignBottom="@+id/iv_head"
+        android:layout_marginRight="20dp"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color888888"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="108dp">
+        <TextView
+            android:id="@+id/tv_one"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="取消项目 "
+            android:textSize="@dimen/text_dimen_third"
+            android:textColor="@color/color222222"
+            android:background="@drawable/sp_project_item"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:layout_marginRight="4dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/tv_two"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="取消项目 "
+            android:textSize="@dimen/text_dimen_third"
+            android:textColor="@color/color222222"
+            android:background="@drawable/sp_project_item"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="4dp"/>
+        <TextView
+            android:id="@+id/tv_three"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="取消项目 "
+            android:textSize="@dimen/text_dimen_third"
+            android:textColor="@color/color222222"
+            android:background="@drawable/sp_project_item"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="4dp"/>
+    </LinearLayout>
+</LinearLayout>

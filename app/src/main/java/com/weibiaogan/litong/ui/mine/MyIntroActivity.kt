@@ -15,6 +15,8 @@ import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.dialog.ChooseImageDialogWrapper
 import com.weibiaogan.litong.entity.UserCenterBean
 import com.weibiaogan.litong.extensions.loadImag
+import com.weibiaogan.litong.extensions.setOnPerCheckLoginClickListner
+import com.weibiaogan.litong.extensions.startActivity
 import com.weibiaogan.litong.extensions.toast
 import com.weibiaogan.litong.mvp.contract.MyIntroContract
 import com.weibiaogan.litong.mvp.presenter.MyIntroPresenter
@@ -72,6 +74,8 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
         ll_sex.setOnClickListener(this)
         ll_name.setOnClickListener(this)
         ll_change_phone_area.setOnClickListener(this)
+        ll_bos_renzheng.setOnPerCheckLoginClickListner{startActivity(BosIdentyActivity::class.java)}
+        ll_workRenzheng.setOnPerCheckLoginClickListner { startActivity(WorkerIDentyOneActivity::class.java) }
     }
 
     override fun setData(o: UserCenterBean?) {
