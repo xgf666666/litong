@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.extensions.startActivity
+import com.weibiaogan.litong.mvp.contract.WorkerIdentyContract
+import com.weibiaogan.litong.mvp.presenter.WorkeridentyPresenter
+import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_bos_identy.*
 
 /**
@@ -13,11 +16,31 @@ import kotlinx.android.synthetic.main.activity_bos_identy.*
  */
 
 
-class WorkerIDentyOneActivity : AppCompatActivity() {
+class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerIdentyContract.View{
+    /**
+     * 创建P层
+     *
+     * @return P层对象
+     */
+    override fun createPresenter(): WorkeridentyPresenter =WorkeridentyPresenter()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_worker_identy_one)
-        bt_submit.setOnClickListener{startActivity(WorkerIDentyTwoActivity::class.java)}
+    /**
+     * 获取布局资源文件id
+     *
+     * @return 布局资源文件id
+     */
+    override fun getActivityLayoutId(): Int =R.layout.activity_worker_identy_one
+
+    /**
+     * 初始化数据状态
+     */
+    override fun initData() {
     }
+
+    /**
+     * 初始化事件
+     */
+    override fun initEvent() {
+    }
+
 }

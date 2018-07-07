@@ -1,5 +1,7 @@
 package com.weibiaogan.litong.ui.orders
 
+import android.app.AlertDialog
+import android.view.View
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.mvp.contract.OrdersDetailCOntract
 import com.weibiaogan.litong.mvp.model.OrderdDetailModel
@@ -19,7 +21,6 @@ class OrdersDetailActivity : BaseMvpActivity<OrderDetailPresenter>(),OrdersDetai
      * @param data 数据
      */
     override fun setData(data: List<Any>?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     /**
@@ -29,7 +30,6 @@ class OrdersDetailActivity : BaseMvpActivity<OrderDetailPresenter>(),OrdersDetai
      * @param refresh   是否是刷新
      */
     override fun showError(throwable: Throwable, refresh: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     /**
@@ -49,6 +49,7 @@ class OrdersDetailActivity : BaseMvpActivity<OrderDetailPresenter>(),OrdersDetai
      * 初始化数据状态
      */
     override fun initData() {
+//        showDialog()
     }
 
     /**
@@ -57,6 +58,13 @@ class OrdersDetailActivity : BaseMvpActivity<OrderDetailPresenter>(),OrdersDetai
     override fun initEvent() {
         ib_back.setOnClickListener{finish()}
 
+    }
+    fun showDialog(){
+
+        var view= View.inflate(mContext,R.layout.dialog_orderdetail,null)
+
+        var dialog=AlertDialog.Builder(mContext)
+        dialog.setView(view).show()
     }
 
 
