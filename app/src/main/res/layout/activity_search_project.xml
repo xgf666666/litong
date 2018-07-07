@@ -34,6 +34,7 @@
                 android:layout_margin="@dimen/search_project_icon_margin"/>
 
             <EditText
+                android:id="@+id/et_search_project_edit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
@@ -47,6 +48,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_search_project_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search_project_title"
@@ -59,6 +61,7 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_search_project_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/search_project_icon_margin"

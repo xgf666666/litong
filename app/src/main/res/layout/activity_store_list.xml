@@ -35,20 +35,22 @@
         android:paddingTop="6dp"
         android:paddingBottom="6dp">
         <TextView
+            android:id="@+id/tv_store_list_all"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/shape_blue_r3"
+            android:background="@drawable/select_store_list_shape"
             android:text="@string/store_list_all"
             android:gravity="center"
             android:textSize="@dimen/text_dimen_fourth"
             android:textColor="@color/text_color_white"
             android:padding="8dp"/>
         <TextView
+            android:id="@+id/tv_store_list_distance"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/shape_white_r3"
+            android:background="@drawable/select_store_list_shape"
             android:text="@string/store_list_distance"
             android:gravity="center"
             android:textSize="@dimen/text_dimen_fourth"
@@ -58,6 +60,7 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_store_list_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/search_project_title_txt_left">

@@ -88,6 +88,9 @@
         <activity android:name=".ui.work.WorkDetailActivity"/>
         <activity android:name=".ui.work.WorkEvaluateActivity"/>
         <activity android:name=".ui.work.WorkListActivity"/>
+        <!--我的接单-->
+        <activity android:name=".ui.receipt.MyReceiptActivity"/>
+        <activity android:name=".ui.receipt.EvaluateDemandActivity"/>
 
         <activity
             android:name="com.weibiaogan.litong.wxapi.WXPayEntryActivity"

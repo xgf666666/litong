@@ -53,10 +53,19 @@ class MainActivity : BaseMvpViewActivity() {
 
     private fun changeTitle(i: Int) {
         when (i) {
-            0 -> tv_title.text="首页"
-            1 -> tv_title.text="发布项目"
-            2 -> tv_title.text="我要接单"
-            3 -> tv_title.text="我的"
+            0 -> setTitleText("首页")
+            1 -> setTitleText("发布项目")
+            2 -> setTitleText("我要接单")
+            3 -> setTitleText("我的")
+        }
+    }
+
+    fun setTitleText(txt : String){
+        if (txt.equals("首页")){
+            fl_title.visibility = View.GONE
+        }else{
+            fl_title.visibility = View.VISIBLE
+            tv_title.text = txt
         }
     }
 

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.bigkoo.convenientbanner.ConvenientBanner
+        android:id="@+id/cb_home_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_banner_height"
+        app:canLoop="true">
+
+    </com.bigkoo.convenientbanner.ConvenientBanner>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="@dimen/home_work_ll_padding">
+        <TextView
+            android:id="@+id/tv_home_work"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_home_worker"
+            android:text="@string/home_work"
+            android:drawablePadding="@dimen/home_work_padding"
+            android:gravity="center"
+            android:textColor="@color/text_color_first"
+            android:textSize="@dimen/text_dimen_fourth"/>
+        <TextView
+            android:id="@+id/tv_home_material"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_home_material"
+            android:text="@string/home_material"
+            android:drawablePadding="@dimen/home_work_padding"
+            android:gravity="center"
+            android:textColor="@color/text_color_first"
+            android:textSize="@dimen/text_dimen_fourth"/>
+        <TextView
+            android:id="@+id/tv_home_project"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_home_project"
+            android:text="@string/home_project"
+            android:drawablePadding="@dimen/home_work_padding"
+            android:gravity="center"
+            android:textColor="@color/text_color_first"
+            android:textSize="@dimen/text_dimen_fourth"/>
+        <TextView
+            android:id="@+id/tv_home_history"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_home_history"
+            android:text="@string/home_history"
+            android:drawablePadding="@dimen/home_work_padding"
+            android:gravity="center"
+            android:textColor="@color/text_color_first"
+            android:textSize="@dimen/text_dimen_fourth"/>
+    </LinearLayout>
+
+</LinearLayout>

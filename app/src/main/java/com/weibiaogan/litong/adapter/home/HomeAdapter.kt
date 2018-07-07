@@ -1,5 +1,6 @@
 package com.weibiaogan.litong.adapter.home
 
+import android.content.Intent
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
@@ -7,6 +8,10 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.entity.HomeBean
+import com.weibiaogan.litong.entity.StoreDetailBean
+import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
+import com.weibiaogan.litong.ui.store.StoreDetailActivity
+import com.weibiaogan.litong.ui.work.WorkDetailActivity
 
 /**
  * author: HuaiXianZhong
@@ -17,8 +22,8 @@ class HomeAdapter(datas : List<HomeMultiItem>, val bean : HomeBean?) : BaseMulti
 
     init {
         addItemType(HomeMultiItem.ITEM_TYPE_ONE, R.layout.home_rv_item_one)
-        addItemType(HomeMultiItem.ITEM_TYPE_TWO, R.layout.home_rv_item_two)
-        addItemType(HomeMultiItem.ITEM_TYPE_THREE, R.layout.home_rv_item_three)
+        addItemType(HomeMultiItem.ITEM_TYPE_TWO, R.layout.home_rv_item_one)
+        addItemType(HomeMultiItem.ITEM_TYPE_THREE, R.layout.home_rv_item_one)
     }
     override fun convert(helper: BaseViewHolder?, item: HomeMultiItem?) {
         when(helper?.itemViewType){
@@ -34,7 +39,9 @@ class HomeAdapter(datas : List<HomeMultiItem>, val bean : HomeBean?) : BaseMulti
         helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_work)
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,3,GridLayoutManager.VERTICAL,false)
-        view?.adapter = ItemOneAdapter(bean?.worker)
+        var adapter = ItemOneAdapter(bean?.worker)
+        adapter.setOnItemClickListener { adapter, view, position -> mContext.startActivity(Intent(mContext,WorkDetailActivity::class.java)) }
+        view?.adapter = adapter
         view?.isNestedScrollingEnabled = false
     }
 
@@ -42,7 +49,9 @@ class HomeAdapter(datas : List<HomeMultiItem>, val bean : HomeBean?) : BaseMulti
         helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_material)
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,2,GridLayoutManager.VERTICAL,false)
-        view?.adapter = ItemTwoAdapter(bean?.store)
+        var adapter = ItemTwoAdapter(bean?.store)
+        adapter.setOnItemClickListener { adapter, view, position -> mContext.startActivity(Intent(mContext,StoreDetailActivity::class.java)) }
+        view?.adapter = adapter
         view?.isNestedScrollingEnabled = false
     }
 
@@ -50,7 +59,9 @@ class HomeAdapter(datas : List<HomeMultiItem>, val bean : HomeBean?) : BaseMulti
         helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_project)
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,2,GridLayoutManager.VERTICAL,false)
-        view?.adapter = ItemThreeAdapter(bean?.project)
+        var adapter = ItemThreeAdapter(bean?.project)
+        adapter.setOnItemClickListener { adapter, view, position -> mContext.startActivity(Intent(mContext,OrdersDetailActivity::class.java)) }
+        view?.adapter = adapter
         view?.isNestedScrollingEnabled = false
     }
 

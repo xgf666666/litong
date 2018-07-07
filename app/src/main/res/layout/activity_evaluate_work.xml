@@ -9,6 +9,7 @@
         android:background="@color/colorAccent">
 
         <TextView
+            android:id="@+id/tv_evaluate_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -35,6 +36,7 @@
         android:textSize="@dimen/text_dimen_second"/>
     
     <EditText
+        android:id="@+id/et_evaluate_edit"
         android:layout_width="match_parent"
         android:layout_height="@dimen/evaluate_work_edit_height"
         android:background="@drawable/shape_gray_r5"
@@ -73,6 +75,7 @@
         android:textSize="@dimen/text_dimen_second"/>
 
     <ImageView
+        android:id="@+id/iv_evaluate_add_img"
         android:layout_width="@dimen/evaluate_work_img_width"
         android:layout_height="@dimen/evaluate_work_img_height"
         android:layout_marginLeft="@dimen/margin_14"
@@ -80,5 +83,34 @@
         android:background="@color/colorGray"
         android:src="@mipmap/btn_addimg"
         android:scaleType="center"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#22000000"/>
+
+    <TextView
+        android:id="@+id/tv_evaluate_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/shape_blue_r3"
+        android:text="@string/tv_confirm"
+        android:textColor="@color/text_color_white"
+        android:textSize="@dimen/text_dimen_first"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/margin_14"
+        android:layout_marginRight="@dimen/margin_14"
+        android:padding="@dimen/margin_12"
+        android:layout_marginBottom="@dimen/margin_3"
+        android:layout_marginTop="@dimen/margin_3"
+        />
 
 </LinearLayout>

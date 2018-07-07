@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_color_bg">
-    <include layout="@layout/view_loading"
-             android:visibility="gone"/>
-    <include layout="@layout/view_error"
-             android:visibility="gone"/>
-    <include layout="@layout/view_check_net"
-             android:visibility="gone"/>
+
+    <include
+        layout="@layout/view_loading"
+        android:visibility="gone" />
+
+    <include
+        layout="@layout/view_error"
+        android:visibility="gone" />
+
+    <include
+        layout="@layout/view_check_net"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/view_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/titlebar_height"
@@ -28,124 +34,49 @@
                 android:id="@+id/tv_home_location"
                 android:layout_width="@dimen/home_title_text_width"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_dimen_third"
-                android:textColor="@color/text_color_white"
                 android:layout_gravity="center"
-                android:text="富力"
-                android:drawableLeft="@mipmap/ic_navibar_location"
                 android:layout_marginLeft="@dimen/margin_14"
-                android:lines="1"/>
+                android:drawableLeft="@mipmap/ic_navibar_location"
+                android:lines="1"
+                android:text="富力"
+                android:textColor="@color/text_color_white"
+                android:textSize="@dimen/text_dimen_third" />
 
             <LinearLayout
                 android:id="@+id/ll_home_search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/home_title_right"
-                android:layout_marginLeft="@dimen/home_title_search_left"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_marginLeft="@dimen/home_title_search_left"
+                android:layout_marginRight="@dimen/home_title_right"
+                android:layout_weight="1"
                 android:background="@drawable/shape_edittext_bg"
+                android:gravity="center"
                 android:padding="@dimen/home_title_search_padding">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_navibar_search"
-                    />
+                    android:src="@mipmap/ic_navibar_search" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
                     android:layout_marginLeft="@dimen/home_title_search_padding"
                     android:layout_marginRight="@dimen/home_title_search_padding"
-                    android:textSize="@dimen/text_dimen_third"
+                    android:background="@null"
+                    android:text="@string/home_title_search"
                     android:textColor="@color/text_color_third"
-                    android:text="@string/home_title_search"/>
+                    android:textSize="@dimen/text_dimen_third" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <ScrollView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_home_bottom"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <com.bigkoo.convenientbanner.ConvenientBanner
-                    android:id="@+id/cb_home_top"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/home_banner_height"
-                    app:canLoop="true">
-
-                </com.bigkoo.convenientbanner.ConvenientBanner>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:padding="@dimen/home_work_ll_padding">
-                    <TextView
-                        android:id="@+id/tv_home_work"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/ic_home_worker"
-                        android:text="@string/home_work"
-                        android:drawablePadding="@dimen/home_work_padding"
-                        android:gravity="center"
-                        android:textColor="@color/text_color_first"
-                        android:textSize="@dimen/text_dimen_fourth"/>
-                    <TextView
-                        android:id="@+id/tv_home_material"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/ic_home_material"
-                        android:text="@string/home_material"
-                        android:drawablePadding="@dimen/home_work_padding"
-                        android:gravity="center"
-                        android:textColor="@color/text_color_first"
-                        android:textSize="@dimen/text_dimen_fourth"/>
-                    <TextView
-                        android:id="@+id/tv_home_project"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/ic_home_project"
-                        android:text="@string/home_project"
-                        android:drawablePadding="@dimen/home_work_padding"
-                        android:gravity="center"
-                        android:textColor="@color/text_color_first"
-                        android:textSize="@dimen/text_dimen_fourth"/>
-                    <TextView
-                        android:id="@+id/tv_home_history"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/ic_home_history"
-                        android:text="@string/home_history"
-                        android:drawablePadding="@dimen/home_work_padding"
-                        android:gravity="center"
-                        android:textColor="@color/text_color_first"
-                        android:textSize="@dimen/text_dimen_fourth"/>
-                </LinearLayout>
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_home_bottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/home_rv_top"/>
-
-            </LinearLayout>
-
-        </ScrollView>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </FrameLayout>
