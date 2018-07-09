@@ -20,6 +20,33 @@ public class WorkListBean {
     private String user_phone;
     private String user_img;
     private int distance;
+    private String worker_address;
+    private String worker_service;
+    private String nickname;
+
+    public void setNickname(String mNickname) {
+        nickname = mNickname;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setWorker_service(String mWorker_service) {
+        worker_service = mWorker_service;
+    }
+
+    public String getWorker_service() {
+        return worker_service;
+    }
+
+    public void setWorker_address(String mWorker_address) {
+        worker_address = mWorker_address;
+    }
+
+    public String getWorker_address() {
+        return worker_address;
+    }
 
     public int getUser_id() {
         return user_id;

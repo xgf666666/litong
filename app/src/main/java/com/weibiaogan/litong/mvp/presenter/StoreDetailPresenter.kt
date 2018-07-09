@@ -1,5 +1,8 @@
 package com.weibiaogan.litong.mvp.presenter
 
+import com.weibiaogan.litong.common.Constants
+import com.weibiaogan.litong.extensions.loadDefulat
+import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.StoreListConstract
 import com.weibiaogan.litong.mvp.contract.WorkDetailConstract
 import com.weibiaogan.litong.mvp.contract.WorkListConstract
@@ -15,5 +18,18 @@ import com.weibiaogan.litong.mvp.model.WorkListModel
  * describe:
  */
 class StoreDetailPresenter : StoreDetailConstract.Presenter(){
+    override fun storeDetail(store_id: String, lat: String, lng: String) {
+        if (Constants.isLogin()) {
+            val userId = Constants.getToken().user_id.toString()
+            val token = Constants.getToken().token
+            getModel().storeDetail(userId, token, store_id, lat, lng).loadDefulat(getView()!!)
+                    .ui({
+                        getView()?.getStoreDetailData(it.data!!)
+                    }, {
+                        getView()?.showToast(it)
+                    })
+        }
+    }
+
     override fun createModel(): StoreDetailConstract.Model = StoreDetailModel()
 }

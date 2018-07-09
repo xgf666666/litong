@@ -31,6 +31,15 @@ public class StoreDetailBean {
     private int add_time;
     private String business_hours;
     private int distance;
+    private String st_phone;
+
+    public void setSt_phone(String mSt_phone) {
+        st_phone = mSt_phone;
+    }
+
+    public String getSt_phone() {
+        return st_phone;
+    }
 
     public int getSt_id() {
         return st_id;

@@ -1,11 +1,19 @@
 package com.weibiaogan.litong.mvp.model
 
+import com.weibiaogan.litong.common.AppApi
+import com.weibiaogan.litong.entity.WorkEvaluateBean
 import com.weibiaogan.litong.mvp.contract.WorkEvaluateConstract
 import com.weibiaogan.litong.mvp.contract.WorkListConstract
+import com.xx.baseutilslibrary.network.entity.BaseResponseEntity
+import io.reactivex.Observable
 
 /**
  * author: HuaiXianZhong
  * date: 2018/7/7
  * describe:
  */
-class WorkEvaluateModel : WorkEvaluateConstract.Model{}
+class WorkEvaluateModel : WorkEvaluateConstract.Model{
+    override fun workEvaluate(userId: String, token: String, work_user_id: String): Observable<BaseResponseEntity<List<WorkEvaluateBean>>> {
+        return AppApi.Api().workEvaluate(userId,token,work_user_id)
+    }
+}

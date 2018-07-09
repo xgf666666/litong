@@ -17,7 +17,7 @@ class ItemTwoAdapter(datas : List<HomeBean.StoreBean>?) : BaseQuickAdapter<HomeB
     override fun convert(helper: BaseViewHolder?, item: HomeBean.StoreBean?) {
         helper?.setText(R.id.tv_home_item_two_name,item?.st_name)
         helper?.setText(R.id.tv_home_item_two_type,item?.st_type)
-        helper?.setText(R.id.tv_home_item_two_distance,item?.distance.toString() + "m")
+        helper?.setText(R.id.tv_home_item_two_distance,item?.distance?.changeKm())
         helper?.getView<ImageView>(R.id.iv_home_item_two_face)?.loadImag(item?.st_img!! , plach = R.mipmap.img_face)
     }
 

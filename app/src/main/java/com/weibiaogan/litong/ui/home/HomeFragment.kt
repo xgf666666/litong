@@ -15,6 +15,7 @@ import com.weibiaogan.litong.R
 import com.weibiaogan.litong.adapter.home.HomeAdapter
 import com.weibiaogan.litong.ui.project.ProjectListActivity
 import com.weibiaogan.litong.entity.HomeBean
+import com.weibiaogan.litong.extensions.loadImag
 import com.weibiaogan.litong.mvp.contract.HomeConstract
 import com.weibiaogan.litong.mvp.presenter.HomePresenter
 import com.weibiaogan.litong.ui.project.HistoryProjectActivity
@@ -30,7 +31,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * describe:
  */
 class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, HomeConstract.View, HomePresenter>(), HomeConstract.View, View.OnClickListener {
-    val banner_imgs : List<Int> = arrayListOf(R.mipmap.img_banner,R.mipmap.img_banner,R.mipmap.img_banner)
+    //val banner_imgs : List<Int> = arrayListOf(R.mipmap.img_banner,R.mipmap.img_banner,R.mipmap.img_banner)
+    val banner_imgs = arrayListOf<String>()
+
     var headView : View? = null
     var adapter = HomeAdapter(getListMulti(HomeBean()))
 
@@ -54,7 +57,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
     }
 
     override fun initData() {
-        showContent()
+        //showContent()
         headView = LayoutInflater.from(mContext).inflate(R.layout.home_head_view, null, false)
         rv_home_bottom.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         /*var bean = HomeBean()
@@ -90,9 +93,6 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         bean.project = pList
         bean.store = sList*/
         //var adapter = HomeAdapter(getListMulti(), bean)
-
-        headView?.findViewById<ConvenientBanner<Int>>(R.id.cb_home_top)?.setPages(CBViewHolderCreator { ImageHolderView() } , banner_imgs)?.setPointViewVisible(true)?.startTurning(2000)
-
         adapter.addHeaderView(headView)
 
         rv_home_bottom.adapter = adapter
@@ -109,9 +109,16 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
     }
 
     override fun setData(data: Any?) {
-        //showContent()
+        showContent()
         //adapter.setNewData(getListMulti())
-        adapter.setNewData(getListMulti(data as HomeBean))
+        for (bean in (data as HomeBean).adve){
+            banner_imgs.add(bean.ad_img)
+        }
+        headView?.findViewById<ConvenientBanner<String>>(R.id.cb_home_top)?.
+                setPages( { ImageHolderView() } , banner_imgs)?.
+                setPointViewVisible(true)?.startTurning(2000)
+
+        adapter.setNewData(getListMulti(data))
     }
 
     override fun onClick(v: View?) {
@@ -123,11 +130,11 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         }
     }
 
-    inner class ImageHolderView : Holder<Int>{
+    inner class ImageHolderView : Holder<String>{
         var imageview : ImageView? = null
 
-        override fun UpdateUI(context: Context?, position: Int, data: Int?) {
-            imageview?.setImageResource(data ?: R.mipmap.img_banner)
+        override fun UpdateUI(context: Context?, position: Int, data: String?) {
+            imageview?.loadImag(data!!)
         }
 
         override fun createView(context: Context?): View {

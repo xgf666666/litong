@@ -3,7 +3,9 @@ package com.weibiaogan.litong.mvp.contract
 import com.weibiaogan.litong.entity.HomeBean
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecView
+import com.xx.baseutilslibrary.network.entity.BaseResponseEntity
 import com.xx.baseutilslibrary.network.rx.XxBaseHttpObserver
+import io.reactivex.Observable
 
 /**
  * author: Gubr
@@ -22,7 +24,7 @@ interface HomeConstract {
 
     public interface Model {
 
-        fun getHomeData(page : String , lat : String , lnt : String , xxBaseHttpObserver: XxBaseHttpObserver<HomeBean>)
+        fun getHomeData(page : String , lat : String , lnt : String)
 
     }
 }

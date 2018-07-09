@@ -6,7 +6,10 @@ import android.view.View
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.adapter.store.StoreListAdapter
 import com.weibiaogan.litong.entity.StoreListBean
+import com.weibiaogan.litong.mvp.contract.StoreListConstract
+import com.weibiaogan.litong.mvp.presenter.StoreListPresenter
 import com.xx.baseuilibrary.BaseActivity
+import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_store_list.*
 
 /**
@@ -14,31 +17,27 @@ import kotlinx.android.synthetic.main.activity_store_list.*
  * date: 2018/7/5
  * describe:  店铺列表 页面
  */
-class StoreListActivity : BaseActivity(), View.OnClickListener {
+class StoreListActivity : BaseMvpActivity<StoreListConstract.Presenter>(), View.OnClickListener , StoreListConstract.View{
 
-    var adapter : StoreListAdapter? = null
+    var adapter : StoreListAdapter = StoreListAdapter(arrayListOf())
+
+    override fun createPresenter(): StoreListConstract.Presenter {
+        return StoreListPresenter()
+    }
 
     override fun getActivityLayoutId(): Int = R.layout.activity_store_list
 
     override fun initData() {
-        tv_store_list_all.setText(resources.getText(R.string.store_list_all))
-        tv_store_list_distance.setText(resources.getText(R.string.store_list_distance))
+        tv_store_list_all.text = resources.getText(R.string.store_list_all)
+        tv_store_list_distance.text = resources.getText(R.string.store_list_distance)
         setTextBtn(true)
-        var sList = arrayListOf<StoreListBean>()
-        for (i in 0..10){
-            var bean =  StoreListBean()
-            bean.st_img = ""
-            bean.distance = 700
-            bean.st_name = "akfjsldg"
-            bean.st_address = "jfdalkgnmgn"
-            bean.st_type = "fasjdgl"
-            sList.add(bean)
-        }
-        adapter = StoreListAdapter(sList)
+
         rv_store_list_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_store_list_rv.adapter = adapter
 
-        adapter?.setOnItemClickListener { adapter, view, position -> startActivity(Intent(mContext,StoreDetailActivity::class.java)) }
+        getPresenter().storeList("1","11","11")
+
+        adapter?.setOnItemClickListener { adapter, view, position -> StoreDetailActivity.startStoreDetail(this@StoreListActivity,(adapter as StoreListAdapter).data.get(position).st_id) }
     }
 
     private fun setTextBtn(isAll: Boolean) {
@@ -63,5 +62,9 @@ class StoreListActivity : BaseActivity(), View.OnClickListener {
             R.id.tv_store_list_all -> setTextBtn(true)
             R.id.tv_store_list_distance -> setTextBtn(false)
         }
+    }
+
+    override fun getStoreListData(data: List<StoreListBean>) {
+        adapter.setNewData(data)
     }
 }

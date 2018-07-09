@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_star_view"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/btn_star_normal"
-        android:layout_marginLeft="@dimen/margin_3"
-        android:layout_marginRight="@dimen/margin_3"/>
+        android:src="@mipmap/btn_star_normal" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/btn_star_normal"
-        android:layout_marginLeft="@dimen/margin_3"
-        android:layout_marginRight="@dimen/margin_3"/>
+        android:src="@mipmap/btn_star_normal" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/btn_star_normal"
-        android:layout_marginLeft="@dimen/margin_3"
-        android:layout_marginRight="@dimen/margin_3"/>
+        android:src="@mipmap/btn_star_normal" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/btn_star_normal"
-        android:layout_marginLeft="@dimen/margin_3"
-        android:layout_marginRight="@dimen/margin_3"/>
+        android:src="@mipmap/btn_star_normal" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/btn_star_normal"
-        android:layout_marginLeft="@dimen/margin_3"
-        android:layout_marginRight="@dimen/margin_8"/>
+        android:src="@mipmap/btn_star_normal" />
 
 </LinearLayout>

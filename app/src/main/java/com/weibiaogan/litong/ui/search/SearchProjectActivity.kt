@@ -18,32 +18,20 @@ import kotlinx.android.synthetic.main.activity_search_project.*
  */
 class SearchProjectActivity : BaseMvpActivity<SearchProjectContract.Presenter>(){
 
-    var adapter : SearchProjectAdapter? = null
+    var adapter : SearchProjectAdapter = SearchProjectAdapter(arrayListOf())
 
     override fun createPresenter(): SearchProjectContract.Presenter = SearchProjectPresenter()
 
     override fun getActivityLayoutId(): Int = R.layout.activity_search_project
 
     override fun initData() {
-        var bean = SearchProjectBean()
-        var list = arrayListOf<SearchProjectBean.DataBean>()
-        for (i in 0..10){
-            var data = SearchProjectBean.DataBean()
-            data.pt_name = "fjalgjlkg"
-            data.all_price = "23000"
-            data.end_time = "2018.01.02"
-            data.pt_imgs = ""
-            list.add(data)
-        }
-        bean.data = list
-        adapter = SearchProjectAdapter(bean.data)
-
         rv_search_project_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_search_project_rv.adapter = adapter
-        adapter?.setOnItemClickListener { adapter, view, position -> startActivity(Intent(mContext,OrdersDetailActivity::class.java)) }
     }
 
     override fun initEvent() {
+        adapter?.setOnItemClickListener { adapter, view, position -> startActivity(Intent(mContext,OrdersDetailActivity::class.java)) }
 
+        var search = et_search_project_edit.text.toString().trim()
     }
 }

@@ -1,10 +1,13 @@
 package com.weibiaogan.litong.mvp.contract
 
 import com.weibiaogan.litong.entity.HomeBean
+import com.weibiaogan.litong.entity.WorkEvaluateBean
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpView
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecView
+import com.xx.baseutilslibrary.network.entity.BaseResponseEntity
 import com.xx.baseutilslibrary.network.rx.XxBaseHttpObserver
+import io.reactivex.Observable
 
 /**
  * author: HuaiXianZhong
@@ -14,14 +17,14 @@ import com.xx.baseutilslibrary.network.rx.XxBaseHttpObserver
 interface WorkEvaluateConstract {
 
     public interface View : BaseMvpView {
-
+        fun getWorkEvaluateData(data : List<WorkEvaluateBean>)
     }
 
     public abstract class Presenter : BaseMvpPresenter<Model, View>() {
-
+        abstract fun workEvaluate(work_user_id: String)
     }
 
     public interface Model {
-
+        fun workEvaluate(userId : String , token : String , work_user_id : String) : Observable<BaseResponseEntity<List<WorkEvaluateBean>>>
     }
 }

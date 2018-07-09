@@ -58,11 +58,11 @@
             android:textSize="@dimen/text_dimen_second"
             android:gravity="center"
             android:layout_gravity="center"/>
-        <include
+        <com.weibiaogan.litong.widget.StarView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_16"
-            layout="@layout/view_select_star"/>
+            />
     </LinearLayout>
 
     <TextView

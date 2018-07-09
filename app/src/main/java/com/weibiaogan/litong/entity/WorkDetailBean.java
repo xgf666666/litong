@@ -7,25 +7,24 @@ package com.weibiaogan.litong.entity;
  */
 public class WorkDetailBean {
 
-
     /**
-     * user_id : 1
-     * user_phone : 13682873453
+     * user_id : 3918
+     * user_phone : 13066230849
      * user_pwd : fa509a31fab15f6613c0b8742e51fba9
      * user_img : /uploads/20180517/fcea65fad4a4c81ac9f41520c1add22f.png
      * user_qrcode : /uploads/user_qrcode/18926146071.png
-     * user_sex : 2
-     * user_qq : null
-     * user_addtime : 1525762728
+     * user_sex : 1
+     * user_qq :
+     * user_addtime : 1526867345
      * user_int : 0
      * gr_id : 1
-     * token : Z0quVkgQ5TGh4jtktx
-     * balance : 9799.00
-     * returns_balance : 0.40
+     * token : NyJJJKMwChZ9xz1KAx
+     * balance : 0.00
+     * returns_balance : 0.00
      * buy_balance : 0.00
-     * balance_payment : fa509a31fab15f6613c0b8742e51fba9
-     * pid : 0
-     * invite : 13682873453
+     * balance_payment : null
+     * pid : 13682873453
+     * invite : 15812691921
      * nickname : 我就是我不一样的烟火
      * openid :
      * province :
@@ -33,12 +32,16 @@ public class WorkDetailBean {
      * area :
      * address :
      * is_del : 0
-     * boss_stat : 2
+     * boss_stat : 0
      * worker_stat : 2
      * qqid :
-     * lat_long : 23.1173500000,113.3217200000
-     * boss_lat_long : 113.321803,23.117347
-     * distance : 69322
+     * lat_long : 23.1173470000,113.3218030000
+     * boss_lat_long :
+     * members_end_time : 0
+     * worker_free : 1
+     * worker_address : 广州市天河区珠江新城富力中心
+     * worker_service : 建筑泥瓦工，挖掘机，徒手搬运
+     * distance : 10752692
      */
 
     private int user_id;
@@ -47,7 +50,7 @@ public class WorkDetailBean {
     private String user_img;
     private String user_qrcode;
     private int user_sex;
-    private Object user_qq;
+    private String user_qq;
     private int user_addtime;
     private int user_int;
     private int gr_id;
@@ -55,7 +58,7 @@ public class WorkDetailBean {
     private String balance;
     private String returns_balance;
     private String buy_balance;
-    private String balance_payment;
+    private Object balance_payment;
     private String pid;
     private String invite;
     private String nickname;
@@ -70,6 +73,10 @@ public class WorkDetailBean {
     private String qqid;
     private String lat_long;
     private String boss_lat_long;
+    private int members_end_time;
+    private int worker_free;
+    private String worker_address;
+    private String worker_service;
     private int distance;
 
     public int getUser_id() {
@@ -120,11 +127,11 @@ public class WorkDetailBean {
         this.user_sex = user_sex;
     }
 
-    public Object getUser_qq() {
+    public String getUser_qq() {
         return user_qq;
     }
 
-    public void setUser_qq(Object user_qq) {
+    public void setUser_qq(String user_qq) {
         this.user_qq = user_qq;
     }
 
@@ -184,11 +191,11 @@ public class WorkDetailBean {
         this.buy_balance = buy_balance;
     }
 
-    public String getBalance_payment() {
+    public Object getBalance_payment() {
         return balance_payment;
     }
 
-    public void setBalance_payment(String balance_payment) {
+    public void setBalance_payment(Object balance_payment) {
         this.balance_payment = balance_payment;
     }
 
@@ -302,6 +309,38 @@ public class WorkDetailBean {
 
     public void setBoss_lat_long(String boss_lat_long) {
         this.boss_lat_long = boss_lat_long;
+    }
+
+    public int getMembers_end_time() {
+        return members_end_time;
+    }
+
+    public void setMembers_end_time(int members_end_time) {
+        this.members_end_time = members_end_time;
+    }
+
+    public int getWorker_free() {
+        return worker_free;
+    }
+
+    public void setWorker_free(int worker_free) {
+        this.worker_free = worker_free;
+    }
+
+    public String getWorker_address() {
+        return worker_address;
+    }
+
+    public void setWorker_address(String worker_address) {
+        this.worker_address = worker_address;
+    }
+
+    public String getWorker_service() {
+        return worker_service;
+    }
+
+    public void setWorker_service(String worker_service) {
+        this.worker_service = worker_service;
     }
 
     public int getDistance() {

@@ -14,11 +14,8 @@ import io.reactivex.Observer
  * describe:首页
  */
 class HomeModel : HomeConstract.Model {
-    override fun getHomeData(page: String, lat: String, lnt: String, xxBaseHttpObserver: XxBaseHttpObserver<HomeBean>) {
-        AppApi.Api().homeData(page,lat,lnt)
-                .compose(RxHelper.io_main())
-                .compose(RxHelper.start_finish(xxBaseHttpObserver))
-                .subscribe(xxBaseHttpObserver)
+    override fun getHomeData(page: String, lat: String, lnt: String){
+        //return AppApi.Api().homeData(page,lat, lnt)
     }
 
 

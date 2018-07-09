@@ -18,8 +18,8 @@ class ItemThreeAdapter(datas : List<HomeBean.ProjectBean>?) : BaseQuickAdapter<H
         helper?.setText(R.id.tv_home_item_three_name,item?.pt_name)
         helper?.setText(R.id.tv_home_item_three_price,"￥ "+item?.all_price)
         helper?.setText(R.id.tv_home_item_three_time,"截止时间 ："+item?.end_time)
-        helper?.setText(R.id.tv_home_item_three_distance,item?.distance.toString() + "m")
-        helper?.getView<ImageView>(R.id.iv_home_item_three_img)?.loadImag("",plach = R.mipmap.img_face)
+        helper?.setText(R.id.tv_home_item_three_distance,item?.distance?.changeKm())
+        helper?.getView<ImageView>(R.id.iv_home_item_three_img)?.loadImag(item?.pt_imgs!!,plach = R.mipmap.img_face)
     }
 
 }

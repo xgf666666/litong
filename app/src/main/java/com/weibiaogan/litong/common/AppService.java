@@ -5,7 +5,13 @@ import android.arch.lifecycle.LiveData;
 import com.weibiaogan.litong.entity.HomeBean;
 import com.weibiaogan.litong.entity.ImageBean;
 import com.weibiaogan.litong.entity.LoginBean;
+import com.weibiaogan.litong.entity.SearchProjectBean;
+import com.weibiaogan.litong.entity.StoreDetailBean;
+import com.weibiaogan.litong.entity.StoreListBean;
 import com.weibiaogan.litong.entity.UserCenterBean;
+import com.weibiaogan.litong.entity.WorkDetailBean;
+import com.weibiaogan.litong.entity.WorkEvaluateBean;
+import com.weibiaogan.litong.entity.WorkListBean;
 import com.xx.baseutilslibrary.network.entity.ApiResponse;
 import com.xx.baseutilslibrary.network.entity.BaseResponseEntity;
 
@@ -261,13 +267,80 @@ public interface AppService {
 
 
     /**
+     * 首页数据
      *
-     * @param page
+     * @param page 当前页数
      * @param lat  经度
      * @param lng  纬度
      * @return
      */
     @GET("Index/index")
     Observable<BaseResponseEntity<HomeBean>> homeData(@Query("page") String page , @Query("lat") String lat , @Query("lng") String lng);
+
+    /**
+     * 工人列表
+     * @param userId
+     * @param token
+     * @param page
+     * @param lat
+     * @param lng
+     * @return
+     */
+    @GET("Worker/worker_list")
+    Observable<BaseResponseEntity<List<WorkListBean>>> workList(@Header("userId") String userId, @Header("token") String token,
+                                                                @Query("page") String page , @Query("lat") String lat , @Query("lng") String lng);
+
+    /**
+     * 工人详情
+     * @param userId
+     * @param token
+     * @param user_id
+     * @param lat
+     * @param lng
+     * @return
+     */
+    @GET("Worker/worker_detail")
+    Observable<BaseResponseEntity<WorkDetailBean>> workDetail(@Header("userId") String userId, @Header("token") String token,
+                                                              @Query("worker_user_id") String user_id , @Query("lat") String lat , @Query("lng") String lng);
+
+    /**
+     * 工人评论
+     * @param userId
+     * @param token
+     * @param user_id
+     * @return
+     */
+    @GET("Worker/worker_comments")
+    Observable<BaseResponseEntity<List<WorkEvaluateBean>>> workEvaluate(@Header("userId") String userId, @Header("token") String token,
+                                                                        @Query("worker_user_id") String user_id);
+
+    /**
+     * 店铺列表
+     * @param userId
+     * @param token
+     * @param page
+     * @param lat
+     * @param lng
+     * @return
+     */
+    @GET("Store/store_list")
+    Observable<BaseResponseEntity<List<StoreListBean>>> storeList(@Header("userId") String userId, @Header("token") String token,
+                                                                  @Query("page") String page , @Query("lat") String lat , @Query("lng") String lng);
+
+    /**
+     * 店铺详情
+     * @param userId
+     * @param token
+     * @param store_id
+     * @param lat
+     * @param lng
+     * @return
+     */
+    @GET("Store/store_detail")
+    Observable<BaseResponseEntity<StoreDetailBean>> storeDetail(@Header("userId") String userId, @Header("token") String token,
+                                                                @Query("store_id") String store_id , @Query("lat") String lat , @Query("lng") String lng);
+
+    @GET("Hotkey/pro_search")
+    Observable<BaseResponseEntity<SearchProjectBean>> searchProject(@Query("pt_name") String pt_name , @Query("page") String page);
 
 }
