@@ -69,7 +69,15 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         ll_shop_area.setOnPerCheckLoginClickListner { toast("店铺入驻") }
         tv_service_phone.setOnClickListener { toast("打电话") }
         ll_backlist_area.setOnPerCheckLoginClickListner { startActivity(BlacklistActivity::class.java) }
-        ll_vip_area.setOnClickListener{startActivity(PayCenterActivity::class.java)}
+        ll_vip_area.setOnPerCheckLoginClickListner{
+            if (Constants.getUserData()!=null){
+                if (Constants.getUserData().user.grid==1){
+                    var intent=Intent(context,PayCenterActivity::class.java)
+                    intent.putExtra("FLAG","1")
+                    startActivity(intent)
+                }
+            }
+           }
         ll_shop_area.setOnPerCheckLoginClickListner { startActivity(ShopAddActivity::class.java) }
 
     }

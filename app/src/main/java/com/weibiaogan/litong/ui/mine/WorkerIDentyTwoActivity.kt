@@ -8,6 +8,7 @@ import com.weibiaogan.litong.mvp.contract.WorkerIdentyTwoContrat
 import com.weibiaogan.litong.mvp.presenter.WorkerIdentyTwoPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 
+
 /**
  * author: xiaoguagnfei
  * date: 2018/7/6

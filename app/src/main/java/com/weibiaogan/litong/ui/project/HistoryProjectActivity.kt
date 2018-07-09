@@ -6,7 +6,11 @@ import com.weibiaogan.litong.R
 import com.weibiaogan.litong.mvp.contract.HistoryprojectContract
 import com.weibiaogan.litong.mvp.presenter.HistoryprojectPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
-
+/**
+* author: xiaoguagnfei
+* date: 2018/7/5
+* describe:支付中心界面
+*/
 class HistoryProjectActivity : BaseMvpActivity<HistoryprojectPresenter>(),HistoryprojectContract.View {
     /**
      * 创建P层

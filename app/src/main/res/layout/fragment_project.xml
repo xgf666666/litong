@@ -401,22 +401,45 @@
 
                 <LinearLayout
 
-                    android:layout_width="0dp"
+                    android:layout_width="106dp"
                     android:layout_height="44dp"
                     android:layout_marginRight="14dp"
-                    android:layout_weight="9"
                     android:background="@drawable/shape_edittext_bg"
                     android:gravity="center_vertical"
                     android:orientation="vertical"
-                    android:paddingLeft="10dp"
-
-                    >
-
+                    android:paddingLeft="10dp">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/btn_addimg" />
                 </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_xuzhi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="21dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="12dp">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cb_weixin"
+                    android:button="@null"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_dimen_second"
+                    android:textColor="@color/color888888"
+                    android:text="我已阅读"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_dimen_second"
+                    android:textColor="@color/color3078EF"
+                    android:text="《项目发布须知》"
+                    />
             </LinearLayout>
         </LinearLayout>
 

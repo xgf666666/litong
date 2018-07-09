@@ -2,9 +2,12 @@ package com.weibiaogan.litong.common;
 
 import android.arch.lifecycle.LiveData;
 
+import com.sina.weibo.sdk.constant.WBConstants;
 import com.weibiaogan.litong.entity.HomeBean;
 import com.weibiaogan.litong.entity.ImageBean;
 import com.weibiaogan.litong.entity.LoginBean;
+import com.weibiaogan.litong.entity.MemberBean;
+import com.weibiaogan.litong.entity.MemberpowrBean;
 import com.weibiaogan.litong.entity.SearchProjectBean;
 import com.weibiaogan.litong.entity.StoreDetailBean;
 import com.weibiaogan.litong.entity.StoreListBean;
@@ -276,6 +279,14 @@ public interface AppService {
      */
     @GET("Index/index")
     Observable<BaseResponseEntity<HomeBean>> homeData(@Query("page") String page , @Query("lat") String lat , @Query("lng") String lng);
+    /**
+     * 会员充值
+     * @param userId
+     * @param token
+     * @return
+     */
+    @GET("User/user_grade")
+    Observable<BaseResponseEntity<MemberBean>> vip(@Header("userId") String userId,@Header("token") String token);
 
     /**
      * 工人列表
@@ -343,4 +354,14 @@ public interface AppService {
     @GET("Hotkey/pro_search")
     Observable<BaseResponseEntity<SearchProjectBean>> searchProject(@Query("pt_name") String pt_name , @Query("page") String page);
 
-}
+
+    /**
+        * 会员充值 -会员特权
+        * @param userId
+        * @param token
+        * @return
+        */
+     @GET("User/user_grade_member")
+    Observable<BaseResponseEntity<MemberpowrBean>> vipPwor(@Header("userId") String userId, @Header("token") String token);
+        }
+

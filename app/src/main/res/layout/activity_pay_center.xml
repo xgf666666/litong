@@ -27,14 +27,30 @@
             android:src="@drawable/btn_close"
             android:tint="@color/colorWhite" />
     </FrameLayout>
-    <TextView
+    <RelativeLayout
+        android:id="@+id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="#dddddd">
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:text="项目已生成,请尽快支付保证金"
         android:textColor="@color/color3078EF"
-        android:textSize="@dimen/text_dimen_second"
-        android:background="#E1EDFF"/>
+        android:textSize="@dimen/text_dimen_second" />
+        <ImageView
+            android:id="@+id/iv_going"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_pull_right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"/>
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="154dp"
@@ -53,11 +69,13 @@
                 android:textSize="@dimen/text_dimen_first"
                 android:gravity="center_horizontal"/>
              <TextView
+                 android:id="@+id/tv_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="￥1988:00"
                 android:textColor="#222222"
                 android:textSize="28sp"
+                 android:gravity="center_horizontal"
                  android:layout_marginTop="10dp"/>
         </LinearLayout>
     </RelativeLayout>

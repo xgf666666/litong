@@ -60,33 +60,29 @@
         <activity android:name=".ui.pay.ChangePayPwActivity" />
         <activity android:name=".ui.modify.ModifyBindActivity" />
 
+        <!-- <activity android:name="com.weibiaogan.litong.ui.home.RegistractionActivity" /> -->
 
 
-
-
-        <!--<activity android:name="com.weibiaogan.litong.ui.home.RegistractionActivity" />-->
-
-        <!--<activity android:name="com.weibiaogan.litong.ui.pay.ChangePayPwActivity" />-->
+        <!-- <activity android:name="com.weibiaogan.litong.ui.pay.ChangePayPwActivity" /> -->
         <activity android:name=".ui.mine.ChangeNicknameActivity" />
-        <activity android:name=".ui.pay.WalletActivity"/>
-        <activity android:name=".ui.pay.CommissionActivity"/>
-        <activity android:name=".ui.pay.CommissionSuccessfulActivity"/>
+        <activity android:name=".ui.pay.WalletActivity" />
+        <activity android:name=".ui.pay.CommissionActivity" />
+        <activity android:name=".ui.pay.CommissionSuccessfulActivity" />
 
-        <!--项目搜索-->
-        <activity android:name=".ui.search.SearchProjectActivity"/>
-        <!--店铺-->
-        <activity android:name=".ui.store.StoreDetailActivity"/>
-        <activity android:name=".ui.store.StoreListActivity"/>
-        <!--工人-->
-        <activity android:name=".ui.work.WorkDetailActivity"/>
-        <activity android:name=".ui.work.WorkEvaluateActivity"/>
-        <activity android:name=".ui.work.WorkListActivity"/>
-        <!--我的接单-->
-        <activity android:name=".ui.receipt.MyReceiptActivity"/>
-        <activity android:name=".ui.receipt.EvaluateActivity"/>
-        <!--找项目-->
-        <activity android:name=".ui.project.ProjectListActivity"/>
-
+        <!-- 项目搜索 -->
+        <activity android:name=".ui.search.SearchProjectActivity" />
+        <!-- 店铺 -->
+        <activity android:name=".ui.store.StoreDetailActivity" />
+        <activity android:name=".ui.store.StoreListActivity" />
+        <!-- 工人 -->
+        <activity android:name=".ui.work.WorkDetailActivity" />
+        <activity android:name=".ui.work.WorkEvaluateActivity" />
+        <activity android:name=".ui.work.WorkListActivity" />
+        <!-- 我的接单 -->
+        <activity android:name=".ui.receipt.MyReceiptActivity" />
+        <activity android:name=".ui.receipt.EvaluateActivity" />
+        <!-- 找项目 -->
+        <activity android:name=".ui.project.ProjectListActivity" />
         <activity
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
@@ -119,7 +115,9 @@
         <activity android:name=".ui.mine.WorkerIDentyOneActivity" />
         <activity android:name=".ui.mine.WorkerIDentyTwoActivity" />
         <activity android:name=".ui.blacklist.BlacklistActivity" />
-        <activity android:name=".ui.project.HistoryProjectActivity"></activity>
+        <activity android:name=".ui.project.HistoryProjectActivity" />
+        <activity android:name=".ui.mine.KnowMemberActivity" />
+        <activity android:name=".ui.project.ProjectPublicNoteActivity"></activity>
     </application>
 
 </manifest>
