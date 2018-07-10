@@ -10,7 +10,7 @@ import com.weibiaogan.litong.adapter.work.WorkEvaluateAdatper
 import com.weibiaogan.litong.entity.WorkEvaluateBean
 import com.weibiaogan.litong.mvp.contract.WorkEvaluateConstract
 import com.weibiaogan.litong.mvp.presenter.WorkEvaluatePresenter
-import com.xx.baseuilibrary.BaseActivity
+import com.weibiaogan.litong.utils.addData
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_work_list.*
 
@@ -60,7 +60,8 @@ class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),
     }
 
     override fun getWorkEvaluateData(data: WorkEvaluateBean) {
-        if (refresh_work_list.isLoading){
+        refresh_work_list.addData(adapter,data.data)
+        /*if (refresh_work_list.isLoading){
             adapter.addData(data.data)
             refresh_work_list.finishLoadMore()
             if (data.data.isEmpty()){
@@ -79,7 +80,7 @@ class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),
             adapter.setNewData(data.data)
             refresh_work_list.isEnableLoadMore = true
             refresh_work_list.isEnableRefresh = true
-        }
+        }*/
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout?) {

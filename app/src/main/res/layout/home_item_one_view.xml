@@ -28,6 +28,7 @@
             android:layout_marginTop="@dimen/home_item_one_padding"
             android:textColor="@color/text_color_first"
             android:textSize="@dimen/text_dimen_fourth"
+            android:lines="1"
             android:text="name"/>
 
         <TextView
@@ -37,6 +38,7 @@
             android:layout_marginTop="@dimen/home_item_one_padding"
             android:textColor="@color/text_color_first"
             android:textSize="@dimen/text_dimen_fourth"
+            android:lines="1"
             android:text="phone"/>
 
         <TextView
@@ -47,6 +49,7 @@
             android:textSize="@dimen/text_dimen_fitth"
             android:textColor="@color/text_color_third"
             android:layout_marginBottom="@dimen/home_item_one_padding"
+            android:lines="1"
             android:text="type"/>
 
     </LinearLayout>

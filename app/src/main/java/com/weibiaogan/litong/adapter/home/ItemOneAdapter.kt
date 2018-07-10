@@ -5,6 +5,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.entity.HomeBean
 import com.weibiaogan.litong.extensions.loadImag
+import com.weibiaogan.litong.utils.changeKm
 import de.hdodenhof.circleimageview.CircleImageView
 
 /**
@@ -12,13 +13,6 @@ import de.hdodenhof.circleimageview.CircleImageView
  * date: 2018/7/6
  * describe: 我要找工人
  */
-fun Int.changeKm() : String{
-    if (this >= 1000){
-        return (this / 1000).toString() + "km"
-    }else{
-        return this.toString() + "m"
-    }
-}
 class ItemOneAdapter(datas : List<HomeBean.WorkerBean>?) : BaseQuickAdapter<HomeBean.WorkerBean,BaseViewHolder>(R.layout.home_item_one_view,datas) {
 
     override fun convert(helper: BaseViewHolder?, item: HomeBean.WorkerBean?) {

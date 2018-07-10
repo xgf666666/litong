@@ -6,6 +6,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.entity.HomeBean
 import com.weibiaogan.litong.extensions.loadImag
+import com.weibiaogan.litong.utils.changeKm
 
 /**
  * author: HuaiXianZhong

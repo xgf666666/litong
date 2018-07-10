@@ -3,9 +3,9 @@ package com.weibiaogan.litong.adapter.work
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.weibiaogan.litong.R
-import com.weibiaogan.litong.adapter.home.changeKm
 import com.weibiaogan.litong.entity.WorkListBean
 import com.weibiaogan.litong.extensions.loadImag
+import com.weibiaogan.litong.utils.changeKm
 import de.hdodenhof.circleimageview.CircleImageView
 
 /**

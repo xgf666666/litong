@@ -12,6 +12,7 @@ import com.weibiaogan.litong.entity.SearchProjectBean
 import com.weibiaogan.litong.mvp.contract.SearchProjectContract
 import com.weibiaogan.litong.mvp.presenter.SearchProjectPresenter
 import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
+import com.weibiaogan.litong.utils.addData
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_search_project.*
 
@@ -64,7 +65,8 @@ class SearchProjectActivity : BaseMvpActivity<SearchProjectContract.Presenter>()
     }
 
     override fun getSearchResult(bean: List<SearchProjectBean>) {
-        if (refresh_search_project.isLoading){
+        refresh_search_project.addData(adapter,bean)
+        /*if (refresh_search_project.isLoading){
             adapter.addData(bean)
             refresh_search_project.finishLoadMore()
             if (bean.isEmpty()){
@@ -83,6 +85,6 @@ class SearchProjectActivity : BaseMvpActivity<SearchProjectContract.Presenter>()
                 refresh_search_project.isEnableRefresh = false
                 refresh_search_project.isEnableLoadMore = false
             }
-        }
+        }*/
     }
 }

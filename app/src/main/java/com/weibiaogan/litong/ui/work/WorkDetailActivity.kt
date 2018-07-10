@@ -2,13 +2,12 @@ package com.weibiaogan.litong.ui.work
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
 import com.weibiaogan.litong.R
-import com.weibiaogan.litong.adapter.home.changeKm
 import com.weibiaogan.litong.entity.WorkDetailBean
 import com.weibiaogan.litong.extensions.loadImag
 import com.weibiaogan.litong.mvp.contract.WorkDetailConstract
 import com.weibiaogan.litong.mvp.presenter.WorkDetailPresenter
+import com.weibiaogan.litong.utils.changeKm
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_work_detail.*
 

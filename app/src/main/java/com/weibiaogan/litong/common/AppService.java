@@ -5,6 +5,8 @@ import android.arch.lifecycle.LiveData;
 import com.weibiaogan.litong.entity.HomeBean;
 import com.weibiaogan.litong.entity.ImageBean;
 import com.weibiaogan.litong.entity.LoginBean;
+import com.weibiaogan.litong.entity.MemberBean;
+import com.weibiaogan.litong.entity.MemberpowrBean;
 import com.weibiaogan.litong.entity.ProjectBean;
 import com.weibiaogan.litong.entity.SearchProjectBean;
 import com.weibiaogan.litong.entity.StoreDetailBean;
@@ -157,7 +159,7 @@ public interface AppService {
     @POST("User/update_user")
     Observable<BaseResponseEntity<Object>> updateUser(
             @Field("userId") String userId, @Field("token") String token,
-            @FieldMap Map<String, String> map);
+            @FieldMap String map);
 
 
     /**
@@ -368,4 +370,42 @@ public interface AppService {
     @GET("Publishproject/project_list")
     Observable<BaseResponseEntity<List<ProjectBean>>> historyProject(@Header("userId") String userId, @Header("token") String token,
                                                  @Query("stat") String stat,@Query("lat") String lat,@Query("lng") String lng,@Query("page") String page,@Query("type") String type);
+
+    /**
+     * 会员充值 -会员特权
+     * @param userId
+     * @param token
+     * @return
+     */
+    @GET("User/user_grade_member")
+    Observable<BaseResponseEntity<MemberpowrBean>> vipPwor(@Header("userId") String userId, @Header("token") String token);
+
+    /**
+     * 会员充值 -会员特权
+     * @param userId
+     * @param token
+     * @return
+     */
+    @GET("User/del_user")
+    Observable<BaseResponseEntity<Object>> loginOff (@Header("userId") String userId, @Header("token") String token);
+
+    @POST("User/update_user")
+    Observable<BaseResponseEntity<Object>> updateUserSex(
+            @Header("userId") String userId, @Header("token") String token,
+            @Field ("user_sex") String user_img);
+    @FormUrlEncoded
+    @POST("User/update_user")
+    Observable<BaseResponseEntity<Object>> updateUserName(
+            @Header("userId") String userId, @Header("token") String token,
+            @Field ("nickname") String user_img);
+
+    /**
+     * 会员充值
+     * @param userId
+     * @param token
+     * @return
+     */
+    @GET("User/user_grade")
+    Observable<BaseResponseEntity<MemberBean>> vip(@Header("userId") String userId, @Header("token") String token);
+
 }

@@ -9,6 +9,7 @@ import com.weibiaogan.litong.adapter.work.WorkListAdapter
 import com.weibiaogan.litong.entity.WorkListBean
 import com.weibiaogan.litong.mvp.contract.WorkListConstract
 import com.weibiaogan.litong.mvp.presenter.WorkListPresenter
+import com.weibiaogan.litong.utils.addData
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_work_list.*
 
@@ -53,7 +54,8 @@ class WorkListActivity : BaseMvpActivity<WorkListConstract.Presenter>(),WorkList
     }
 
     override fun getWorkListData(data: List<WorkListBean>) {
-        if (refresh_work_list.isLoading){
+        refresh_work_list.addData(adapter,data)
+        /*if (refresh_work_list.isLoading){
             adapter.addData(data)
             refresh_work_list.finishLoadMore()
             if (data.isEmpty()){
@@ -73,7 +75,6 @@ class WorkListActivity : BaseMvpActivity<WorkListConstract.Presenter>(),WorkList
                 refresh_work_list.isEnableRefresh = false
             }
 
-        }
-
+        }*/
     }
 }

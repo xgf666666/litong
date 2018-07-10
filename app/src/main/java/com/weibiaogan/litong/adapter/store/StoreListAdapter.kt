@@ -4,9 +4,9 @@ import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.weibiaogan.litong.R
-import com.weibiaogan.litong.adapter.home.changeKm
 import com.weibiaogan.litong.entity.StoreListBean
 import com.weibiaogan.litong.extensions.loadImag
+import com.weibiaogan.litong.utils.changeKm
 
 /**
  * author: HuaiXianZhong

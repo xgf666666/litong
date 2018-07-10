@@ -3,14 +3,12 @@ package com.weibiaogan.litong.ui.store
 import android.content.Context
 import android.content.Intent
 import com.weibiaogan.litong.R
-import com.weibiaogan.litong.adapter.home.changeKm
 import com.weibiaogan.litong.entity.StoreDetailBean
 import com.weibiaogan.litong.extensions.loadImag
 import com.weibiaogan.litong.mvp.contract.StoreDetailConstract
 import com.weibiaogan.litong.mvp.presenter.StoreDetailPresenter
 import com.weibiaogan.litong.ui.location.GeoToScreenActivity
-import com.weibiaogan.litong.ui.work.WorkDetailActivity
-import com.xx.baseuilibrary.BaseActivity
+import com.weibiaogan.litong.utils.changeKm
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_store_detail.*
 

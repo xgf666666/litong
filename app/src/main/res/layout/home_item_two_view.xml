@@ -29,6 +29,7 @@
             android:textColor="@color/text_color_first"
             android:text="store name"
             android:layout_marginTop="@dimen/home_item_two_txt_top"
+            android:lines="1"
             />
 
         <TextView
@@ -39,6 +40,7 @@
             android:textColor="@color/text_color_third"
             android:text="store name"
             android:layout_marginTop="@dimen/home_item_two_txt_bottom"
+            android:lines="2"
             />
 
         <TextView
@@ -47,6 +49,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_dimen_fitth"
             android:textColor="@color/text_color_third"
+            android:lines="1"
             android:text="store name"
             android:layout_marginTop="@dimen/home_item_two_txt_bottom"
             />

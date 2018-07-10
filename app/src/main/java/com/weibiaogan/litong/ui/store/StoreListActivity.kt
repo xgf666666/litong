@@ -9,6 +9,7 @@ import com.weibiaogan.litong.adapter.store.StoreListAdapter
 import com.weibiaogan.litong.entity.StoreListBean
 import com.weibiaogan.litong.mvp.contract.StoreListConstract
 import com.weibiaogan.litong.mvp.presenter.StoreListPresenter
+import com.weibiaogan.litong.utils.addData
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_store_list.*
 
@@ -89,7 +90,8 @@ class StoreListActivity : BaseMvpActivity<StoreListConstract.Presenter>(), View.
     }
 
     override fun getStoreListData(data: List<StoreListBean>) {
-        if (refresh_store_list.isRefreshing){
+        refresh_store_list.addData(adapter,data)
+        /*if (refresh_store_list.isRefreshing){
             adapter.setNewData(data)
             refresh_store_list.finishRefresh()
             refresh_store_list.isEnableLoadMore = true
@@ -108,6 +110,6 @@ class StoreListActivity : BaseMvpActivity<StoreListConstract.Presenter>(), View.
                 refresh_store_list.isEnableRefresh = false
                 refresh_store_list.isEnableLoadMore = false
             }
-        }
+        }*/
     }
 }
