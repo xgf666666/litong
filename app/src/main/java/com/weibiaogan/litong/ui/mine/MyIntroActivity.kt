@@ -2,11 +2,14 @@ package com.weibiaogan.litong.ui.mine
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import com.blankj.utilcode.util.PermissionUtils
+import com.bumptech.glide.load.resource.bitmap.BitmapDrawableResource
 import com.flyco.dialog.listener.OnOperItemClickL
 import com.flyco.dialog.widget.ActionSheetDialog
 import com.weibiaogan.litong.BuildConfig
@@ -16,6 +19,8 @@ import com.weibiaogan.litong.aspect.CheckLogin
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.dialog.ChooseImageDialogWrapper
 import com.weibiaogan.litong.entity.UserCenterBean
+import com.weibiaogan.litong.extensions.loadImag
+import com.weibiaogan.litong.extensions.setOnPerCheckLoginClickListner
 import com.weibiaogan.litong.extensions.toast
 import com.weibiaogan.litong.mvp.contract.MyIntroContract
 import com.weibiaogan.litong.mvp.presenter.MyIntroPresenter
@@ -34,6 +39,7 @@ import kotlinx.android.synthetic.main.activity_myintro.*
 class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.View, View.OnClickListener {
 
 
+
     override fun createPresenter(): MyIntroPresenter {
         return MyIntroPresenter()
     }
@@ -43,7 +49,6 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
     }
 
     override fun initData() {
-
         imageChooseHelper = ImageChooseHelper.Builder()
                 .setUpActivity(this)
                 .setAuthority("${BuildConfig.APPLICATION_ID}.fileprovider")//设置文件提供者
@@ -52,9 +57,9 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                 .setCompressQuality(100)//压缩质量[1,100]
                 .setSize(120, 120)//裁剪尺寸
                 .setOnFinishChooseAndCropImageListener { bitmap, file ->
-                    //显示选好得图片
+//                    显示选好得图片
                     iv_avatar.setImageBitmap(bitmap)
-                    Log.i("bitmap",bitmap.toString())
+
                     //上传头像
                     getPresenter().fileStore(file)
                 }
@@ -62,8 +67,13 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
 
 
 
-        setDataUser(Constants.getUserData())
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setDataUser(Constants.getUserData())
     }
 
     override fun initEvent() {
@@ -75,6 +85,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
         ll_change_phone_area.setOnClickListener(this)
         ll_bos_renzheng.setOnPerCheckLoginClickListner{startActivity(BosIdentyActivity::class.java)}
         ll_workRenzheng.setOnPerCheckLoginClickListner { startActivity(WorkerIDentyOneActivity::class.java) }
+        tv_back.setOnClickListener(this)
     }
 
     override fun setData(o: UserCenterBean?) {
@@ -95,7 +106,8 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                     "未知"
                 }
             }
-            iv_avatar.loadImag(o.user.userImg, null, R.drawable.personal_center_, R.drawable.personal_center_)
+            Log.i("iamgeview",BuildConfig.DEV_DOMAIN+"/"+o.user.userImg)
+            iv_avatar.loadImag(BuildConfig.DEV_DOMAIN+"/"+o.user.userImg, null, R.drawable.personal_center_, R.drawable.personal_center_)
             tv_name.text = o.user.nickname
             tv_sex.text = sexStr
             tv_phone.text = o.user.userPhone.replaceRange(4, 7, "****")
@@ -129,12 +141,24 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
             R.id.ll_change_phone_area -> {
                 startActivity(ModifyBindActivity::class.java)
             }
+            R.id.tv_back->{
+                    getPresenter().loginOff()
+                }
+
         }
     }
 
-    override fun successful() {
-        getPresenter().getUserData()
-        toast("修改成功")
+    override fun successful(fanhui: String?) {
+        iv_avatar.loadImag(BuildConfig.DEV_DOMAIN+"/"+fanhui, null, R.drawable.personal_center_, R.drawable.personal_center_)
+
+    }
+    override fun sexSuccessful() {
+        tv_sex.setText(sex)
+    }
+    override fun loginOff() {
+        toast("退出成功")
+        Constants.loginOut()
+        finish()
     }
 
     private lateinit var imageChooseHelper: ImageChooseHelper
@@ -162,17 +186,16 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                 .request()
     }
 
-
+   lateinit var sex:String
     private fun showChangeSexDialog() {
         val items = arrayOf<String>("男", "女", "保密")
         val itemsInt = arrayOf("2", "1", "3")
         val dialog = ActionSheetDialog(this, items, null).isTitleShow(false)
-        dialog
-                .setOnOperItemClickL(object : OnOperItemClickL {
+        dialog.setOnOperItemClickL(object : OnOperItemClickL {
                     override fun onOperItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
-                        val sex = itemsInt[position]
-                        getPresenter().updateUser(sex)
+                         sex = items[position]
+                        val s=itemsInt[position]
+                        getPresenter().updateUserSex(s)
                         dialog.dismiss()
                     }
                 })

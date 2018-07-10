@@ -28,7 +28,9 @@ public interface MyIntroContract {
     interface View extends BaseMvpView {
         public void setData(UserCenterBean o);
 
-        void successful();
+        void successful(String fanhui);
+        void  sexSuccessful();
+        void loginOff();
     }
 
     abstract class Presenter extends BaseMvpPresenter<Model, View> {
@@ -47,9 +49,15 @@ public interface MyIntroContract {
         LiveData<ApiResponse<BaseResponseEntity<UserCenterBean>>> UserIndex2(@NotNull String userId, @Nullable String token);
 
         @NotNull
-        Observable<BaseResponseEntity<Object>> updateUser(@NotNull String userId, @Nullable String token, @NotNull Map<String, String> map);
+        Observable<BaseResponseEntity<Object>> updateUser(@NotNull String userId, @Nullable String token, @NotNull String map);
 
         @NotNull
         Observable<BaseResponseEntity<ImageBean>> imgup(@NotNull String imagBase64);
+        @NotNull
+        Observable<BaseResponseEntity<Object>> updateUserSex(@NotNull String userId, @Nullable String token, @NotNull String sex);
+
+        //退出登录
+        @NotNull
+        Observable<BaseResponseEntity<Object>> loginOff(@NotNull String userId, @Nullable String token);
     }
 }

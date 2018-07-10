@@ -55,7 +55,7 @@ class ChangePwPresenter : ChangePwContract.Presenter() {
 
     }
 
-
+        //发送验证码
     override fun sendVCode() {
         val phone = getView()?.getphone()!!
         if (!RegexUtils.isMobileSimple(phone)) {

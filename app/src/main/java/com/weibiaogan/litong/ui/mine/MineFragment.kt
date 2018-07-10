@@ -55,7 +55,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
     }
 
     override fun initEvent(view: View?) {
-        iv_avatar.setOnPerCheckLoginClickListner {
+        rl_avatar.setOnPerCheckLoginClickListner {
             if (Constants.getUserData() != null) {
                 startActivity(MyIntroActivity::class.java)
             }
@@ -169,9 +169,9 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
             }
             getPresenter().getData()
         } else {
-//            showView(login_view)
-//            showContent()
-//            startActivity(LoginActivity::class.java)
+            showView(login_view)
+            showContent()
+            startActivity(LoginActivity::class.java)
         }
     }
 

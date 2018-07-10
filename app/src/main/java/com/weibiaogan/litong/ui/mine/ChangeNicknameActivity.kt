@@ -2,6 +2,8 @@ package com.weibiaogan.litong.ui.mine
 
 import android.view.View
 import com.weibiaogan.litong.R
+import com.weibiaogan.litong.common.Constants
+import com.weibiaogan.litong.entity.UserCenterBean
 import com.weibiaogan.litong.mvp.contract.ChangeNicknameContract
 import com.weibiaogan.litong.mvp.presenter.ChangeNicknamePresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
@@ -13,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_changenickname.*
  * describe:
  */
 class ChangeNicknameActivity : BaseMvpActivity<ChangeNicknamePresenter>(), ChangeNicknameContract.View, View.OnClickListener {
+
 
 
     override fun getName(): String {
@@ -53,9 +56,12 @@ class ChangeNicknameActivity : BaseMvpActivity<ChangeNicknamePresenter>(), Chang
         }
     }
 
-    override fun successful() {
-        finish()
-    }
+
+override fun successful(name: String?) {
+     var userCenterBean: UserCenterBean =Constants.getUserData()
+    userCenterBean.user.setNickname(name)
+    finish()
+}
 }
 
 

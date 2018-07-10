@@ -25,6 +25,7 @@ public interface MineContract {
     interface View extends BaseMvpLcecView<UserCenterBean> {
 
         void setData(@Nullable UserCenterBean data);
+
     }
 
     abstract class Presenter extends BaseMvpPresenter<Model,View>{

@@ -10,8 +10,8 @@ import com.xx.baseutilslibrary.network.rx.XxBaseHttpObserver
  * describe:修改昵称
  */
 class ChangeNicknameModel : ChangeNicknameContract.Model {
-    override fun updateUser(userId: String, token: String?, map: MutableMap<String, String>) =
-            AppApi.Api().updateUser("$userId", token, map)
+    override fun updateUser(userId: String, token: String?, nickname: String) =
+            AppApi.Api().updateUserName("$userId", token, nickname)
 
     override fun changeUserInfo(name: String?, httpObserver: XxBaseHttpObserver<Any>) {
 

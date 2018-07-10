@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.ui.login
 
 import com.weibiaogan.litong.R
+import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.toast
 import com.weibiaogan.litong.mvp.contract.ChangePwContract
 import com.weibiaogan.litong.mvp.presenter.ChangePwPresenter
@@ -25,7 +26,7 @@ class ChangePWActivity : BaseMvpActivity<ChangePwPresenter>(), ChangePwContract.
 
     override fun initData() {
 
-        phone="15812691920"
+        phone=Constants.getPhone()
         tv_phone.setText(phone?.replaceRange(4,7,"****"))
 
     }

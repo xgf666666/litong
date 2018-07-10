@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.mvp.presenter
 
 import android.text.TextUtils
+import android.util.Log
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
@@ -25,10 +26,11 @@ class ChangeNicknamePresenter :  ChangeNicknameContract.Presenter() {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
             val map = mapOf("nickname" to name!!)
-            getModel().updateUser("$userId", token, map)
+            getModel().updateUser(userId, token, name)
                     .loadDefulat(getView()!!)
                     .ui({
-                        getView()?.successful()
+                        Log.i("getView",it.msg)
+                        getView()?.successful(name)
                     }, {
                         getView()?.showToast(it)
                     })

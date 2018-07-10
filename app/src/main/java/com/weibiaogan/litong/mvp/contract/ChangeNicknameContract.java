@@ -23,7 +23,7 @@ public interface ChangeNicknameContract {
         @NotNull
         String getName();
 
-        void successful();
+        void successful(String name);
     }
 
     public abstract class Presenter extends BaseMvpPresenter<Model, View> {
@@ -36,6 +36,6 @@ public interface ChangeNicknameContract {
         void changeUserInfo(@Nullable String name, @NotNull XxBaseHttpObserver<Object> xxBaseHttpObserver);
 
         @NotNull
-        Observable<BaseResponseEntity<Object>> updateUser(@NotNull String s, @Nullable String token, @NotNull Map<String, String> map);
+        Observable<BaseResponseEntity<Object>> updateUser(@NotNull String s, @Nullable String token, @NotNull String nickname);
     }
 }

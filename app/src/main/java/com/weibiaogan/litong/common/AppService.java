@@ -152,14 +152,25 @@ public interface AppService {
      * @param userId
      * @param token  nickname	string	是
      *               user_sex	string	是
-     *               user_img	string	是
+     *               user_img	string	是 @FieldMap Map<String, String> map
      * @return
      */
     @FormUrlEncoded
     @POST("User/update_user")
     Observable<BaseResponseEntity<Object>> updateUser(
-            @Field("userId") String userId, @Field("token") String token,
-            @FieldMap Map<String, String> map);
+            @Header("userId") String userId, @Header("token") String token,
+            @Field ("user_img") String user_img);
+
+    @FormUrlEncoded
+    @POST("User/update_user")
+    Observable<BaseResponseEntity<Object>> updateUserSex(
+            @Header("userId") String userId, @Header("token") String token,
+            @Field ("user_sex") String user_img);
+    @FormUrlEncoded
+    @POST("User/update_user")
+    Observable<BaseResponseEntity<Object>> updateUserName(
+            @Header("userId") String userId, @Header("token") String token,
+            @Field ("nickname") String user_img);
 
 
     /**
@@ -363,5 +374,14 @@ public interface AppService {
         */
      @GET("User/user_grade_member")
     Observable<BaseResponseEntity<MemberpowrBean>> vipPwor(@Header("userId") String userId, @Header("token") String token);
-        }
+
+    /**
+     * 会员充值 -会员特权
+     * @param userId
+     * @param token
+     * @return
+     */
+    @GET("User/del_user")
+    Observable<BaseResponseEntity<Object>> loginOff (@Header("userId") String userId, @Header("token") String token);
+}
 
