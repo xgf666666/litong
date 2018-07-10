@@ -106,5 +106,6 @@
 
     <color name="app_color_bg">#ededed</color>
     <color name="black">#000000</color>
+    <color name="bg_ddd">#dddddd</color>
 
 </resources>

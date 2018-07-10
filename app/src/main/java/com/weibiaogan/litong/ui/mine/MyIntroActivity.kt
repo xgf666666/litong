@@ -83,9 +83,10 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
         ll_sex.setOnClickListener(this)
         ll_name.setOnClickListener(this)
         ll_change_phone_area.setOnClickListener(this)
-        ll_bos_renzheng.setOnPerCheckLoginClickListner{startActivity(BosIdentyActivity::class.java)}
-        ll_workRenzheng.setOnPerCheckLoginClickListner { startActivity(WorkerIDentyOneActivity::class.java) }
+        ll_bos_renzheng.setOnClickListener(this)
+        ll_workRenzheng.setOnClickListener(this)
         tv_back.setOnClickListener(this)
+        Log.i("wrwrwrwr","状态"+Constants.getUserData().user.bossStat+Constants.getUserData().user.bossStat)
     }
 
     override fun setData(o: UserCenterBean?) {
@@ -138,12 +139,30 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                 startActivity(ChangeNicknameActivity::class.java)
 
             }
+            //修改手机号码
             R.id.ll_change_phone_area -> {
                 startActivity(ModifyBindActivity::class.java)
             }
+            //退出登录
             R.id.tv_back->{
                     getPresenter().loginOff()
                 }
+            R.id.ll_bos_renzheng->{
+                if (Constants.getUserData().user.bossStat==1){
+                    toast("你已认证需求方")
+                }else{
+                    startActivity(BosIdentyActivity::class.java)
+                }
+
+
+            }
+            R.id.ll_workRenzheng->{
+                if (Constants.getUserData().user.workerStat==1){
+                    toast("你已认证工人")
+                }else{
+                    startActivity(WorkerIDentyOneActivity::class.java)
+                }
+            }
 
         }
     }

@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.mvp.presenter
 
 import android.text.TextUtils
+import android.util.Log
 import com.blankj.utilcode.util.RegexUtils
 import com.weibiaogan.litong.common.AppApi
 import com.weibiaogan.litong.common.Constants
@@ -45,8 +46,9 @@ class ChangePwPresenter : ChangePwContract.Presenter() {
 
         val encryptMD5ToString = newPassword?.md5Salt()
 
-        AppApi.Api().forgetUserPwd(userId, token, code, encryptMD5ToString ).loadDefulat(getView()!!)
+        getModel().forgetUserPwd(userId, token, code, encryptMD5ToString ).loadDefulat(getView()!!)
                 .ui({
+                    Log.i("tttttttttttt",it.msg)
                     getView()?.changeSuccess()
                 }, {
                     getView()?.showToast(it)
@@ -87,6 +89,8 @@ class ChangePwPresenter : ChangePwContract.Presenter() {
                                 getView()?.setSendBtnEnable(true)
                                 getView()?.setSendBtnText("重试")
                             }
+
+
 
                             override fun onComplete() {
                                 getView()?.setSendBtnEnable(true)

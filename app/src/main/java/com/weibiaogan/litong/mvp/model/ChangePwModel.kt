@@ -12,12 +12,12 @@ import com.xx.baseutilslibrary.network.rx.XxBaseHttpObserver
  * describe:修改密码
  */
 class ChangePwModel : ChangePwContract.Model {
+    override fun forgetUserPwd(userId: String?, token: String?, code: String?, new_user_pwd: String?) =
+            AppApi.Api().forgetUserPwd(userId,token,code,new_user_pwd)
+
     override fun sendVCode(phone: String, xxBaseHttpObserver: XxBaseHttpObserver<Any>) {
         AppApi.Api().sendCode(phone).compose(RxHelper.io_main()).subscribe(xxBaseHttpObserver)
     }
 
-    override fun changePW(origin: String?, newPassword: String?, checkPassword: String?, rxHttpObserver: RxHttpObserver<Any>) {
 
-
-    }
 }
