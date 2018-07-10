@@ -16,12 +16,17 @@ import com.weibiaogan.litong.mvp.model.WorkDetailModel
  * describe:
  */
 class StoreListPresenter : StoreListConstract.Presenter(){
-    override fun storeList(page: String, lat: String, lng: String) {
+    override fun storeList(page: String, lat: String, lng: String,type:String) {
 
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            getModel().storeList(userId, token, page, lat, lng).loadDefulat(getView()!!)
+            getModel().storeList(userId, token, page, lat, lng,type)
+                    .apply {
+                        if (page == "1"){
+                            loadDefulat(getView()!!)
+                        }
+                    }
                     .ui({
                         getView()?.getStoreListData(it.data!!)
                     }, {

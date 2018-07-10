@@ -28,16 +28,23 @@
             android:tint="@color/colorWhite" />
     </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_work_list_rv"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_work_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/search_project_icon_margin"
-        android:layout_marginLeft="@dimen/search_project_title_txt_left"
-        android:layout_marginRight="@dimen/search_project_title_txt_left"
-        android:background="@color/app_color_bg">
+        android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_work_list_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/search_project_icon_margin"
+            android:layout_marginLeft="@dimen/search_project_title_txt_left"
+            android:layout_marginRight="@dimen/search_project_title_txt_left"
+            android:background="@color/app_color_bg">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 
 

@@ -13,7 +13,7 @@ import io.reactivex.Observable
  * describe:
  */
 class StoreListModel : StoreListConstract.Model{
-    override fun storeList(userId: String, token: String, page: String, lat: String, lng: String): Observable<BaseResponseEntity<List<StoreListBean>>> {
-        return AppApi.Api().storeList(userId, token, page, lat, lng)
+    override fun storeList(userId: String, token: String, page: String, lat: String, lng: String,type : String): Observable<BaseResponseEntity<List<StoreListBean>>> {
+        return AppApi.Api().storeList(userId, token, page, lat, lng,type)
     }
 }

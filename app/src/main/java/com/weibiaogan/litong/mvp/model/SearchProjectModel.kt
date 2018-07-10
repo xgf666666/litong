@@ -12,8 +12,8 @@ import io.reactivex.Observable
  * describe:
  */
 class SearchProjectModel : SearchProjectContract.Model {
-    override fun searchProject(pt_name: String, page: String): Observable<BaseResponseEntity<SearchProjectBean>> {
-        return AppApi.Api().searchProject(pt_name,page)
+    override fun searchProject(pt_name: String, page: String, lat : String , lng : String): Observable<BaseResponseEntity<List<SearchProjectBean>>> {
+        return AppApi.Api().searchProject(pt_name,page,lat, lng)
     }
 
 }

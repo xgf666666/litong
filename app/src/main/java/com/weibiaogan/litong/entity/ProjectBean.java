@@ -2,34 +2,26 @@ package com.weibiaogan.litong.entity;
 
 /**
  * author: HuaiXianZhong
- * date: 2018/7/7
+ * date: 2018/7/10
  * describe:
  */
-public class SearchProjectBean {
+public class ProjectBean {
 
     /**
-     * pt_id : 11
-     * pt_imgs : /uploads/20180704/15149dbf7fb5fabd5a6d264331361972.png
-     * pt_name : 第一个项目
+     * pt_imgs : /uploads/20180517/fcea65fad4a4c81ac9f41520c1add22f.png
+     * pt_id : 2
+     * pt_name : 广州二运集团有限公司: 西洲中公交立体充电桩停车场项目
      * end_time : 2018.08.08
      * all_price : 600.00
-     * distance : 12648823
+     * distance : 12318305
      */
 
-    private int pt_id;
     private String pt_imgs;
+    private int pt_id;
     private String pt_name;
     private String end_time;
     private String all_price;
     private int distance;
-
-    public int getPt_id() {
-        return pt_id;
-    }
-
-    public void setPt_id(int pt_id) {
-        this.pt_id = pt_id;
-    }
 
     public String getPt_imgs() {
         return pt_imgs;
@@ -37,6 +29,14 @@ public class SearchProjectBean {
 
     public void setPt_imgs(String pt_imgs) {
         this.pt_imgs = pt_imgs;
+    }
+
+    public int getPt_id() {
+        return pt_id;
+    }
+
+    public void setPt_id(int pt_id) {
+        this.pt_id = pt_id;
     }
 
     public String getPt_name() {

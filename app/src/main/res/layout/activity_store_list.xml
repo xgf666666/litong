@@ -59,12 +59,19 @@
             />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_store_list_rv"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_store_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/search_project_title_txt_left">
+        android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_store_list_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/search_project_title_txt_left">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

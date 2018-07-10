@@ -18,10 +18,10 @@ interface StoreListConstract {
     }
 
     public abstract class Presenter : BaseMvpPresenter<Model, View>() {
-        abstract fun storeList(page : String ,lat : String ,lng : String)
+        abstract fun storeList(page : String ,lat : String ,lng : String , type : String)
     }
 
     public interface Model {
-        fun storeList(userId : String, token : String, page : String ,lat : String ,lng : String) : Observable<BaseResponseEntity<List<StoreListBean>>>
+        fun storeList(userId : String, token : String, page : String ,lat : String ,lng : String,type : String) : Observable<BaseResponseEntity<List<StoreListBean>>>
     }
 }

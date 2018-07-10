@@ -47,7 +47,7 @@
     <dimen name="search_project_icon_margin">8dp</dimen>
     <dimen name="search_project_list_img_width">98dp</dimen>
     <dimen name="search_project_list_txt_left">7dp</dimen>
-    <dimen name="search_project_list_txt_right">21dp</dimen>
+    <dimen name="search_project_list_txt_right">16dp</dimen>
     <dimen name="search_project_list_9">@dimen/margin_9</dimen>
 
     <!--店铺列表-->

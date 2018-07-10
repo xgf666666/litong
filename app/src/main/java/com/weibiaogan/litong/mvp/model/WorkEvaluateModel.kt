@@ -13,7 +13,7 @@ import io.reactivex.Observable
  * describe:
  */
 class WorkEvaluateModel : WorkEvaluateConstract.Model{
-    override fun workEvaluate(userId: String, token: String, work_user_id: String): Observable<BaseResponseEntity<List<WorkEvaluateBean>>> {
-        return AppApi.Api().workEvaluate(userId,token,work_user_id)
+    override fun workEvaluate(userId: String, token: String, work_user_id: String,page : String): Observable<BaseResponseEntity<WorkEvaluateBean>> {
+        return AppApi.Api().workEvaluate(userId,token,work_user_id,page)
     }
 }

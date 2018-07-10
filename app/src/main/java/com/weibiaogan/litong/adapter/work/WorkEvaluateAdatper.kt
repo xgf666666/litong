@@ -15,9 +15,9 @@ import de.hdodenhof.circleimageview.CircleImageView
  * date: 2018/7/6
  * describe:
  */
-class WorkEvaluateAdatper(workList : List<WorkEvaluateBean?>) : BaseQuickAdapter<WorkEvaluateBean,BaseViewHolder>(R.layout.activity_work_evaluate,workList){
+class WorkEvaluateAdatper(workList : List<WorkEvaluateBean.DataBean?>) : BaseQuickAdapter<WorkEvaluateBean.DataBean,BaseViewHolder>(R.layout.activity_work_evaluate,workList){
 
-    override fun convert(helper: BaseViewHolder?, item: WorkEvaluateBean?) {
+    override fun convert(helper: BaseViewHolder?, item: WorkEvaluateBean.DataBean?) {
 
         helper?.setText(R.id.tv_work_evaluate_name,item?.user_data?.nickname)
                 ?.setText(R.id.tv_work_evaluate_contents,item?.com_content?.trim())

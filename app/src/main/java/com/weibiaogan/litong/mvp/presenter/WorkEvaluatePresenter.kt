@@ -16,11 +16,16 @@ import com.weibiaogan.litong.mvp.model.WorkListModel
  * describe:
  */
 class WorkEvaluatePresenter : WorkEvaluateConstract.Presenter(){
-    override fun workEvaluate(work_user_id: String) {
+    override fun workEvaluate(work_user_id: String,page : String) {
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            getModel().workEvaluate(userId, token, work_user_id).loadDefulat(getView()!!)
+            getModel().workEvaluate(userId, token, work_user_id, page)
+                    .apply {
+                        if (page == "1") {
+                            loadDefulat(getView()!!)
+                        }
+                    }
                     .ui({
                         getView()?.getWorkEvaluateData(it.data!!)
                     }, {

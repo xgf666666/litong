@@ -1,9 +1,6 @@
 package com.weibiaogan.litong.mvp.presenter
 
-import android.util.Log
-import com.weibiaogan.litong.common.AppApi
 import com.weibiaogan.litong.common.Constants
-import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.WorkListConstract
 import com.weibiaogan.litong.mvp.model.WorkListModel
@@ -18,7 +15,25 @@ class WorkListPresenter : WorkListConstract.Presenter(){
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            getModel().workerList(userId, token, page, lat, lng).loadDefulat(getView()!!)
+            getModel().workerList(userId, token, page, lat, lng)
+
+                    .doOnSubscribe {
+                        if (page == "1"){
+                        getView()?.showLoadingDialog()}
+                    }
+                    .doOnComplete {
+                        if (page=="1")
+                        getView()?.dismissLoadingDialog() }
+                    .doOnError {
+                        if (page=="1")
+                        getView()?.dismissLoadingDialog() }
+                    /*.applyv2 {
+                        if (page == "1"){
+                             loadDefulat(getView()!!)
+                            it
+                        }
+                        it
+                    }*/
                     .ui({
                         getView()?.getWorkListData(it.data!!)
                     }, {

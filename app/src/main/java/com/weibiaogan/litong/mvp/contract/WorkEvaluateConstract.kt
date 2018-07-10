@@ -17,14 +17,14 @@ import io.reactivex.Observable
 interface WorkEvaluateConstract {
 
     public interface View : BaseMvpView {
-        fun getWorkEvaluateData(data : List<WorkEvaluateBean>)
+        fun getWorkEvaluateData(data : WorkEvaluateBean)
     }
 
     public abstract class Presenter : BaseMvpPresenter<Model, View>() {
-        abstract fun workEvaluate(work_user_id: String)
+        abstract fun workEvaluate(work_user_id: String,page : String)
     }
 
     public interface Model {
-        fun workEvaluate(userId : String , token : String , work_user_id : String) : Observable<BaseResponseEntity<List<WorkEvaluateBean>>>
+        fun workEvaluate(userId : String , token : String , work_user_id : String,page : String) : Observable<BaseResponseEntity<WorkEvaluateBean>>
     }
 }

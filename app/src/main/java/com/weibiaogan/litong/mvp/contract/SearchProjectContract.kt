@@ -2,6 +2,7 @@ package com.weibiaogan.litong.mvp.contract
 
 import com.weibiaogan.litong.entity.SearchProjectBean
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter
+import com.xx.baseuilibrary.mvp.BaseMvpView
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecView
 import com.xx.baseutilslibrary.network.entity.BaseResponseEntity
 import io.reactivex.Observable
@@ -12,16 +13,16 @@ import io.reactivex.Observable
  * describe:我要接单
  */
 interface SearchProjectContract {
-    interface View : BaseMvpLcecView<List<Any>> {
-        fun getSearchResult(bean : SearchProjectBean)
+    interface View : BaseMvpView {
+        fun getSearchResult(data : List<SearchProjectBean>)
 
     }
 
     abstract class Presenter: BaseMvpPresenter<Model, View>() {
-        abstract fun searchProject(pt_name : String , page : String)
+        abstract fun searchProject(pt_name : String , page : String, lat : String , lng : String)
     }
 
     interface Model {
-        fun searchProject(pt_name : String , page : String) : Observable<BaseResponseEntity<SearchProjectBean>>
+        fun searchProject(pt_name : String , page : String , lat : String , lng : String) : Observable<BaseResponseEntity<List<SearchProjectBean>>>
     }
 }

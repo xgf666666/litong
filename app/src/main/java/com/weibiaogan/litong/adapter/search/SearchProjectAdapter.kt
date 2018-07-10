@@ -13,12 +13,13 @@ import com.weibiaogan.litong.extensions.loadImag
  * date: 2018/7/7
  * describe:
  */
-class SearchProjectAdapter(datas : List<SearchProjectBean.DataBean>) : BaseQuickAdapter<SearchProjectBean.DataBean,BaseViewHolder>(R.layout.store_list_view,datas) {
-    override fun convert(helper: BaseViewHolder?, item: SearchProjectBean.DataBean?) {
-        /*helper?.setText(R.id.tv_store_list_name,item?.st_name)
-        helper?.setText(R.id.tv_store_list_address,item?.st_address)
-        helper?.setText(R.id.tv_store_list_type,item?.st_type)
-        helper?.setText(R.id.tv_store_list_distance,item?.distance.toString())
-        helper?.getView<ImageView>(R.id.iv_store_list_img)?.loadImag(item?.st_img!!,plach = R.mipmap.img_face)*/
+class SearchProjectAdapter(datas : List<SearchProjectBean>) : BaseQuickAdapter<SearchProjectBean,BaseViewHolder>(R.layout.search_project_list_view,datas) {
+    override fun convert(helper: BaseViewHolder?, item: SearchProjectBean) {
+        helper?.setText(R.id.tv_search_project_name,item?.pt_name)
+                ?.setText(R.id.tv_search_project_price,item?.all_price)
+                ?.setText(R.id.tv_search_project_time,"截止时间 : "+item?.end_time)
+                ?.setText(R.id.tv_search_project_distance,"")//distance gone
+
+        helper?.getView<ImageView>(R.id.iv_search_project_img)?.loadImag(item?.pt_imgs!!)
     }
 }
