@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.adapter.mine.OrderAdapter
+import com.weibiaogan.litong.entity.Order
 import com.weibiaogan.litong.mvp.contract.OrdersContract
 import com.weibiaogan.litong.mvp.presenter.OrdersPresenter
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
@@ -41,7 +42,8 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<Any>, OrdersCont
 
     override fun initData() {
         recyclerView.layoutManager=LinearLayoutManager(context)
-        orderAdapter= OrderAdapter(context!!)
+        var list=ArrayList<Order>()
+        orderAdapter= OrderAdapter(list)
         recyclerView.adapter=orderAdapter
         swiperefreshlayout.setOnRefreshListener(this)
 

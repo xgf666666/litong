@@ -11,12 +11,12 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
         android:drawablePadding="15dp"
-        android:gravity="left|center_vertical"
+        android:gravity="center"
         android:minHeight="75dp"
         android:paddingLeft="13dp"
         android:paddingRight="13dp"
         android:text="@string/take_photo"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/color222222"
         android:textSize="14sp" />
 
     <View
@@ -30,12 +30,12 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
         android:drawablePadding="15dp"
-        android:gravity="start|center_vertical"
+        android:gravity="center"
         android:minHeight="75dp"
         android:paddingLeft="13dp"
         android:paddingRight="13dp"
         android:text="@string/choose_from_lib"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/color222222"
         android:textSize="14sp" />
 
     <View

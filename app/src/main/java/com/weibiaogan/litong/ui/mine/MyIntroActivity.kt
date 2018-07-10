@@ -3,6 +3,7 @@ package com.weibiaogan.litong.ui.mine
 import android.Manifest
 import android.content.Intent
 import android.os.Environment
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import com.blankj.utilcode.util.PermissionUtils
@@ -10,13 +11,11 @@ import com.flyco.dialog.listener.OnOperItemClickL
 import com.flyco.dialog.widget.ActionSheetDialog
 import com.weibiaogan.litong.BuildConfig
 import com.weibiaogan.litong.R
+import com.weibiaogan.litong.R.id.iv_avatar
 import com.weibiaogan.litong.aspect.CheckLogin
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.dialog.ChooseImageDialogWrapper
 import com.weibiaogan.litong.entity.UserCenterBean
-import com.weibiaogan.litong.extensions.loadImag
-import com.weibiaogan.litong.extensions.setOnPerCheckLoginClickListner
-import com.weibiaogan.litong.extensions.startActivity
 import com.weibiaogan.litong.extensions.toast
 import com.weibiaogan.litong.mvp.contract.MyIntroContract
 import com.weibiaogan.litong.mvp.presenter.MyIntroPresenter
@@ -30,7 +29,7 @@ import kotlinx.android.synthetic.main.activity_myintro.*
 /**
  * author: Gubr
  * date: 2018/5/8
- * describe:
+ * describe:我的信息
  */
 class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.View, View.OnClickListener {
 
@@ -55,6 +54,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                 .setOnFinishChooseAndCropImageListener { bitmap, file ->
                     //显示选好得图片
                     iv_avatar.setImageBitmap(bitmap)
+                    Log.i("bitmap",bitmap.toString())
                     //上传头像
                     getPresenter().fileStore(file)
                 }
@@ -67,8 +67,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
     }
 
     override fun initEvent() {
-        iv_avatar.setOnClickListener(this)
-
+        ll_phone.setOnClickListener(this)
         ll_change_login_pw.setOnClickListener(this)
         ll_change_pay_pw.setOnClickListener(this)
         ll_sex.setOnClickListener(this)
@@ -107,7 +106,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
     override fun onClick(v: View) {
         when (v.id) {
         //头像点击
-            R.id.iv_avatar -> {
+            R.id.ll_phone -> {
                 showEditAvatarDialog()
             }
         //修改登录密码

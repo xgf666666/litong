@@ -29,6 +29,7 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/ll_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
@@ -453,6 +454,16 @@
             android:src="@mipmap/ic_pull_right" />
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/tv_back"
+        android:background="@drawable/selector_lahei"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:textSize="@dimen/text_dimen_third"
+        android:layout_margin="15dp"
+        android:textColor="@color/white"
+        android:text="退出当前账号"
+        android:gravity="center" />
 
     <View
         android:layout_width="match_parent"
