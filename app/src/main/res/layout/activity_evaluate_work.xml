@@ -59,6 +59,7 @@
             android:gravity="center"
             android:layout_gravity="center"/>
         <com.weibiaogan.litong.widget.StarView
+            android:id="@+id/sv_evaluate_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_16"
@@ -74,15 +75,44 @@
         android:textColor="@color/text_color_third"
         android:textSize="@dimen/text_dimen_second"/>
 
-    <ImageView
-        android:id="@+id/iv_evaluate_add_img"
-        android:layout_width="@dimen/evaluate_work_img_width"
-        android:layout_height="@dimen/evaluate_work_img_height"
-        android:layout_marginLeft="@dimen/margin_14"
-        android:layout_marginTop="@dimen/margin_9"
-        android:background="@color/colorGray"
-        android:src="@mipmap/btn_addimg"
-        android:scaleType="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/margin_8">
+        <ImageView
+            android:id="@+id/iv_evaluate_add_img_one"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/evaluate_work_img_height"
+            android:layout_marginLeft="@dimen/margin_14"
+            android:layout_marginTop="@dimen/margin_9"
+            android:background="@color/colorGray"
+            android:src="@mipmap/btn_addimg"
+            android:scaleType="center"/>
+        <ImageView
+            android:id="@+id/iv_evaluate_add_img_two"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/evaluate_work_img_height"
+            android:layout_marginLeft="@dimen/margin_14"
+            android:layout_marginTop="@dimen/margin_9"
+            android:background="@color/colorGray"
+            android:src="@mipmap/btn_addimg"
+            android:scaleType="center"
+            android:visibility="invisible"/>
+        <ImageView
+            android:id="@+id/iv_evaluate_add_img_three"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/evaluate_work_img_height"
+            android:layout_marginLeft="@dimen/margin_14"
+            android:layout_marginTop="@dimen/margin_9"
+            android:background="@color/colorGray"
+            android:src="@mipmap/btn_addimg"
+            android:scaleType="center"
+            android:visibility="invisible"/>
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"

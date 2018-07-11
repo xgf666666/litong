@@ -2,6 +2,7 @@ package com.weibiaogan.litong.ui.work
 
 import android.content.Context
 import android.content.Intent
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
@@ -48,7 +49,6 @@ class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),
 
         rv_work_list_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_work_list_rv.adapter = adapter
-
     }
 
     override fun initEvent() {
@@ -61,26 +61,6 @@ class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),
 
     override fun getWorkEvaluateData(data: WorkEvaluateBean) {
         refresh_work_list.addData(adapter,data.data)
-        /*if (refresh_work_list.isLoading){
-            adapter.addData(data.data)
-            refresh_work_list.finishLoadMore()
-            if (data.data.isEmpty()){
-                refresh_work_list.isEnableLoadMore = false
-            }
-        }else if (refresh_work_list.isRefreshing){
-            adapter.setNewData(data.data)
-            refresh_work_list.finishRefresh()
-            refresh_work_list.isEnableLoadMore = true
-        }else{
-            if (data.data.isEmpty()){
-                refresh_work_list.isEnableLoadMore = false
-                refresh_work_list.isEnableRefresh = false
-                return
-            }
-            adapter.setNewData(data.data)
-            refresh_work_list.isEnableLoadMore = true
-            refresh_work_list.isEnableRefresh = true
-        }*/
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout?) {

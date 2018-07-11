@@ -2,14 +2,14 @@ package com.weibiaogan.litong.ui.project
 
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.ui.orders.OrdersFragment
-import com.xx.baseuilibrary.BaseActivity
+import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 
 /**
  * author: HuaiXianZhong
  * date: 2018/7/7
- * describe:
+ * describe:  找项目，项目列表 ，我要接单
  */
-class ProjectListActivity : BaseActivity() {
+class ProjectListActivity : BaseMvpViewActivity() {
     override fun getActivityLayoutId(): Int = R.layout.activity_project
 
     override fun initData() {

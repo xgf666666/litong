@@ -1,6 +1,8 @@
 package com.weibiaogan.litong.mvp.presenter
 
 import com.weibiaogan.litong.common.Constants
+import com.weibiaogan.litong.extensions.applyv2
+import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.WorkListConstract
 import com.weibiaogan.litong.mvp.model.WorkListModel
@@ -27,12 +29,11 @@ class WorkListPresenter : WorkListConstract.Presenter(){
                     .doOnError {
                         if (page=="1")
                         getView()?.dismissLoadingDialog() }
-                    /*.applyv2 {
+                    /*.applyv2{
                         if (page == "1"){
                              loadDefulat(getView()!!)
-                            it
                         }
-                        it
+                        this
                     }*/
                     .ui({
                         getView()?.getWorkListData(it.data!!)

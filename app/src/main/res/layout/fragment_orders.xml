@@ -6,55 +6,38 @@
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:orientation="horizontal"
-        android:background="@drawable/sp_complete"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp">
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/home_title_right"
+        android:paddingRight="@dimen/home_title_right"
+        android:background="@color/colorWhite"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp">
         <TextView
-            android:id="@+id/tv_ing"
+            android:id="@+id/tv_store_list_all"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="进行中"
+            android:background="@drawable/select_store_list_shape"
+            android:text="全部"
             android:gravity="center"
-            android:textColor="@color/white"
             android:textSize="@dimen/text_dimen_fourth"
-            android:background="@drawable/selector_fabu"/>
+            android:textColor="@color/text_color_white"
+            android:padding="8dp"/>
         <TextView
+            android:id="@+id/tv_store_list_distance"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="已完成"
+            android:background="@drawable/select_store_list_shape"
+            android:text="按时间"
             android:gravity="center"
-            android:textColor="@color/color3078EF"
-            android:textSize="@dimen/text_dimen_fourth" />
-
+            android:textSize="@dimen/text_dimen_fourth"
+            android:textColor="@color/text_normal"
+            android:padding="8dp"
+            />
     </LinearLayout>
 
-
-    <RelativeLayout
-        android:id="@+id/view_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swiperefreshlayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/ll_bottom_area"></android.support.v7.widget.RecyclerView>
-
-        </android.support.v4.widget.SwipeRefreshLayout>
-    </RelativeLayout>
-
-     <include
+    <include
         android:id="@+id/view_loading"
         layout="@layout/view_loading"
         android:visibility="gone" />
@@ -68,4 +51,24 @@
         android:id="@+id/view_check_net"
         layout="@layout/view_check_net"
         android:visibility="gone" />
+
+
+    <RelativeLayout
+        android:id="@+id/view_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/swiperefreshlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/ll_bottom_area"></android.support.v7.widget.RecyclerView>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </RelativeLayout>
 </LinearLayout>

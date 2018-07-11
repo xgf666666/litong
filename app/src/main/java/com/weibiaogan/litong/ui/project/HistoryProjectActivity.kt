@@ -9,13 +9,14 @@ import com.weibiaogan.litong.adapter.project.HistoryProjectAdapter
 import com.weibiaogan.litong.entity.ProjectBean
 import com.weibiaogan.litong.mvp.contract.HistoryprojectContract
 import com.weibiaogan.litong.mvp.presenter.HistoryprojectPresenter
+import com.weibiaogan.litong.utils.addData
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_history_project.*
 
 class HistoryProjectActivity : BaseMvpActivity<HistoryprojectPresenter>(),HistoryprojectContract.View, View.OnClickListener, OnRefreshLoadMoreListener {
-    var mCurrentPage = 1
-    val mStat = "2"
-    var mType = 1
+    var mCurrentPage = 1  //当前页数
+    val mStat = "2"      // 1 可接单 2 已完成
+    var mType = 1          //1 全部 2 按时间
 
     var adapter = HistoryProjectAdapter(arrayListOf())
     /**
@@ -42,6 +43,7 @@ class HistoryProjectActivity : BaseMvpActivity<HistoryprojectPresenter>(),Histor
 
         recyclerView.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         recyclerView.adapter = adapter
+        adapter.isSuccess = true
 
         getPresenter().historyProject(mStat,"11","11",mCurrentPage.toString(),mType.toString())
     }
@@ -82,26 +84,7 @@ class HistoryProjectActivity : BaseMvpActivity<HistoryprojectPresenter>(),Histor
     }
 
     override fun getProjectBean(data: List<ProjectBean>) {
-        if (smartrefreshlayout.isRefreshing){
-            adapter.setNewData(data)
-            smartrefreshlayout.finishRefresh()
-            smartrefreshlayout.isEnableLoadMore = true
-        }else if (smartrefreshlayout.isLoading){
-            adapter.addData(data)
-            smartrefreshlayout.finishLoadMore()
-            if (data.isEmpty()){
-                smartrefreshlayout.isEnableLoadMore = false
-            }
-        }else{
-            if (data.isNotEmpty()){
-                adapter.setNewData(data)
-                smartrefreshlayout.isEnableLoadMore = true
-                smartrefreshlayout.isEnableRefresh = true
-            }else{
-                smartrefreshlayout.isEnableLoadMore = false
-                smartrefreshlayout.isEnableRefresh = false
-            }
-        }
+        smartrefreshlayout.addData(adapter,data)
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout?) {

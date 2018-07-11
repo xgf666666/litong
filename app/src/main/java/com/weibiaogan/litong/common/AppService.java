@@ -7,6 +7,7 @@ import com.weibiaogan.litong.entity.ImageBean;
 import com.weibiaogan.litong.entity.LoginBean;
 import com.weibiaogan.litong.entity.MemberBean;
 import com.weibiaogan.litong.entity.MemberpowrBean;
+import com.weibiaogan.litong.entity.MyReceiptBean;
 import com.weibiaogan.litong.entity.ProjectBean;
 import com.weibiaogan.litong.entity.SearchProjectBean;
 import com.weibiaogan.litong.entity.StoreDetailBean;
@@ -29,6 +30,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 public interface AppService {
     /**
@@ -407,5 +409,34 @@ public interface AppService {
      */
     @GET("User/user_grade")
     Observable<BaseResponseEntity<MemberBean>> vip(@Header("userId") String userId, @Header("token") String token);
+
+    /**
+     * 我的接单
+     * @param userId
+     * @param token
+     * @param stat 1 可接单 2 已完成
+     * @param page
+     * @return
+     */
+    @GET("Publishproject/worker_project_list")
+    Observable<BaseResponseEntity<List<MyReceiptBean>>> workProjectList(@Header("userId") String userId, @Header("token") String token , @Query("stat") String stat , @Query("page") String page);
+
+    /**
+     * 评论需求方
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Worker/worker_comments_boss")
+    Observable<BaseResponseEntity<Object>> evaluateBoss(@Header("userId") String userId, @Header("token") String token ,
+                                                        @Field("pt_id") String pt_id,@Field("com_content") String com_content,@Field("com_imgs") String com_imgs,@Field("score") String score);
+
+    /**
+     * 评论工人
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Boss/boss_comments_worker")
+    Observable<BaseResponseEntity<Object>> evaluateWork(@Header("userId") String userId, @Header("token") String token ,
+                                                        @Field("pt_id") String pt_id,@Field("com_content") String com_content,@Field("com_imgs") String com_imgs,@Field("score") String score);
 
 }

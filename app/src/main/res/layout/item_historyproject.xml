@@ -3,7 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="115dp"
     android:background="@color/white"
-    android:id="@+id/rl_father">
+    android:id="@+id/rl_father"
+    android:layout_marginTop="@dimen/margin_8"
+    android:layout_marginLeft="@dimen/margin_8"
+    android:layout_marginRight="@dimen/margin_8"
+    >
 
     <ImageView
         android:id="@+id/iv_head"
@@ -25,7 +29,8 @@
         android:layout_toRightOf="@id/iv_head"
         android:layout_alignTop="@+id/iv_head"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="7dp"/>
+        android:layout_marginLeft="7dp"
+        android:lines="2"/>
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"

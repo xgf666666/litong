@@ -41,6 +41,8 @@ class StoreListActivity : BaseMvpActivity<StoreListConstract.Presenter>(), View.
     override fun getActivityLayoutId(): Int = R.layout.activity_store_list
 
     override fun initData() {
+        tv_store_list_title.text = resources.getString(R.string.store_list_title)
+
         tv_store_list_all.text = resources.getText(R.string.store_list_all)
         tv_store_list_distance.text = resources.getText(R.string.store_list_distance)
         tv_store_list_all.isSelected = true
@@ -91,25 +93,5 @@ class StoreListActivity : BaseMvpActivity<StoreListConstract.Presenter>(), View.
 
     override fun getStoreListData(data: List<StoreListBean>) {
         refresh_store_list.addData(adapter,data)
-        /*if (refresh_store_list.isRefreshing){
-            adapter.setNewData(data)
-            refresh_store_list.finishRefresh()
-            refresh_store_list.isEnableLoadMore = true
-        }else if (refresh_store_list.isLoading){
-            adapter.addData(data)
-            refresh_store_list.finishLoadMore()
-            if (data.isEmpty()){
-                refresh_store_list.isEnableLoadMore = false
-            }
-        }else{
-            if (data.isNotEmpty()){
-                adapter.setNewData(data)
-                refresh_store_list.isEnableRefresh = true
-                refresh_store_list.isEnableLoadMore = true
-            }else{
-                refresh_store_list.isEnableRefresh = false
-                refresh_store_list.isEnableLoadMore = false
-            }
-        }*/
     }
 }

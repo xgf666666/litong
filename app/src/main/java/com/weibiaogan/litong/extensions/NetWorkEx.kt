@@ -3,6 +3,7 @@ package com.weibiaogan.litong.extensions
 import com.weibiaogan.litong.common.ExceptionEngine
 import com.xx.baseuilibrary.mvp.BaseMvpView
 import io.reactivex.Observable
+import io.reactivex.ObservableTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
@@ -25,7 +26,19 @@ fun <T> Observable<T>.ui(action: (t: T) -> Unit, error: (t: String) -> Unit = de
         })
 
 
-fun <T> Observable<T>.loadDefulat(view: BaseMvpView) =
-        doOnSubscribe { view.showLoadingDialog() }
-                .doOnComplete { view.dismissLoadingDialog() }
-                .doOnError { view.dismissLoadingDialog() }
+inline fun <T> Observable<T>.loadDefulat(view: BaseMvpView) =
+        compose(loadDefulatInternal(view))
+
+
+
+public inline fun <T> T.applyv2(block: T.() -> T): T {
+   return  block()
+
+}
+
+fun <T> Observable<T>.loadDefulatInternal(view: BaseMvpView) =
+        ObservableTransformer<T, T> {
+            doOnSubscribe { view.showLoadingDialog() }
+                    .doOnComplete { view.dismissLoadingDialog() }
+                    .doOnError { view.dismissLoadingDialog() }
+        }

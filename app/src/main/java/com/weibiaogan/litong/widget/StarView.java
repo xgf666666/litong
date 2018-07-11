@@ -76,17 +76,20 @@ public class StarView extends LinearLayout implements View.OnClickListener {
                 star++;
             }
         }
-        return star;
+        return star * 20;
     }
 
     @Override
     public void onClick(View v) {
         int i = (int) v.getTag();
-        if (stars.get(i)) {
-            views.get(i).setImageResource(R.mipmap.btn_star_normal);
-        } else {
-            views.get(i).setImageResource(R.mipmap.btn_star_selected);
+        for (int j = 0; j < layout.getChildCount(); j++) {
+            if (j <= i){
+                views.get(j).setImageResource(R.mipmap.btn_star_selected);
+                stars.set(j, true);
+            }else {
+                views.get(j).setImageResource(R.mipmap.btn_star_normal);
+                stars.set(j, false);
+            }
         }
-        stars.set(i, !stars.get(i));
     }
 }

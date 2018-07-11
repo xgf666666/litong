@@ -55,26 +55,5 @@ class WorkListActivity : BaseMvpActivity<WorkListConstract.Presenter>(),WorkList
 
     override fun getWorkListData(data: List<WorkListBean>) {
         refresh_work_list.addData(adapter,data)
-        /*if (refresh_work_list.isLoading){
-            adapter.addData(data)
-            refresh_work_list.finishLoadMore()
-            if (data.isEmpty()){
-                refresh_work_list.isEnableLoadMore = false
-            }
-        }else if (refresh_work_list.isRefreshing){
-            adapter.setNewData(data)
-            refresh_work_list.finishRefresh()
-            refresh_work_list.isEnableLoadMore = true
-        }else{
-            if (data.isNotEmpty()){
-                adapter.setNewData(data)
-                refresh_work_list.isEnableLoadMore = true
-                refresh_work_list.isEnableRefresh = true
-            }else{
-                refresh_work_list.isEnableLoadMore = false
-                refresh_work_list.isEnableRefresh = false
-            }
-
-        }*/
     }
 }

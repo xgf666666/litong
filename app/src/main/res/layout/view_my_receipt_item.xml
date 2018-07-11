@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/margin_8"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/tv_my_receipt_title"
@@ -19,7 +21,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#22000000"/>
+        android:background="#11000000"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,7 +63,8 @@
                 android:gravity="bottom"
                 android:text="44512"
                 android:textColor="@color/price_color"
-                android:textSize="@dimen/text_dimen_first"/>
+                android:textSize="@dimen/text_dimen_first"
+                android:layout_marginTop="@dimen/margin_12"/>
 
         </LinearLayout>
 
@@ -97,6 +100,7 @@
                 android:layout_marginTop="@dimen/margin_14"
                 android:gravity="center"
                 android:visibility="visible"
+                android:layout_marginBottom="@dimen/margin_8"
                 />
 
         </LinearLayout>
