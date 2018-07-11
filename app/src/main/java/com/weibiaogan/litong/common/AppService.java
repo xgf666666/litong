@@ -154,14 +154,25 @@ public interface AppService {
      * @param userId
      * @param token  nickname	string	是
      *               user_sex	string	是
-     *               user_img	string	是
+     *               user_img	string	是 @FieldMap Map<String, String> map
      * @return
      */
     @FormUrlEncoded
     @POST("User/update_user")
     Observable<BaseResponseEntity<Object>> updateUser(
-            @Field("userId") String userId, @Field("token") String token,
-            @FieldMap String map);
+            @Header("userId") String userId, @Header("token") String token,
+            @Field ("user_img") String user_img);
+
+    @FormUrlEncoded
+    @POST("User/update_user")
+    Observable<BaseResponseEntity<Object>> updateUserSex(
+            @Header("userId") String userId, @Header("token") String token,
+            @Field ("user_sex") String user_img);
+    @FormUrlEncoded
+    @POST("User/update_user")
+    Observable<BaseResponseEntity<Object>> updateUserName(
+            @Header("userId") String userId, @Header("token") String token,
+            @Field ("nickname") String user_img);
 
 
     /**
@@ -331,7 +342,7 @@ public interface AppService {
      */
     @GET("Store/store_list")
     Observable<BaseResponseEntity<List<StoreListBean>>> storeList(@Header("userId") String userId, @Header("token") String token,
-                                                                  @Query("page") String page , @Query("lat") String lat , @Query("lng") String lng , @Query("type") String type);
+                                                                  @Query("page") String page , @Query("lat") String lat , @Query("lng") String lng);
 
     /**
      * 店铺详情
@@ -346,44 +357,21 @@ public interface AppService {
     Observable<BaseResponseEntity<StoreDetailBean>> storeDetail(@Header("userId") String userId, @Header("token") String token,
                                                                 @Query("store_id") String store_id , @Query("lat") String lat , @Query("lng") String lng);
 
-    /**
-     * 搜索项目
-     * @param pt_name
-     * @param page
-     * @param lat
-     * @param lng
-     * @return
-     */
     @GET("Hotkey/pro_search")
-    Observable<BaseResponseEntity<List<SearchProjectBean>>> searchProject(@Query("pt_name") String pt_name , @Query("page") String page , @Query("lat") String lat , @Query("lng") String lng);
+    Observable<BaseResponseEntity<SearchProjectBean>> searchProject(@Query("pt_name") String pt_name , @Query("page") String page);
 
 
     /**
-     * 项目列表   （我要接单，历史项目）
-     * @param userId
-     * @param token
-     * @param stat 1 可接单 2 已完成
-     * @param lat
-     * @param lng
-     * @param page
-     * @param type 1 全部 2 时间
-     * @return
-     */
-    @GET("Publishproject/project_list")
-    Observable<BaseResponseEntity<List<ProjectBean>>> historyProject(@Header("userId") String userId, @Header("token") String token,
-                                                 @Query("stat") String stat,@Query("lat") String lat,@Query("lng") String lng,@Query("page") String page,@Query("type") String type);
-
-    /**
-     * 会员充值 -会员特权
-     * @param userId
-     * @param token
-     * @return
-     */
-    @GET("User/user_grade_member")
+        * 会员充值 -会员特权
+        * @param userId
+        * @param token
+        * @return
+        */
+     @GET("User/user_grade_member")
     Observable<BaseResponseEntity<MemberpowrBean>> vipPwor(@Header("userId") String userId, @Header("token") String token);
 
     /**
-     * 会员充值 -会员特权
+     * 退出登录
      * @param userId
      * @param token
      * @return
@@ -391,15 +379,7 @@ public interface AppService {
     @GET("User/del_user")
     Observable<BaseResponseEntity<Object>> loginOff (@Header("userId") String userId, @Header("token") String token);
 
-    @POST("User/update_user")
-    Observable<BaseResponseEntity<Object>> updateUserSex(
-            @Header("userId") String userId, @Header("token") String token,
-            @Field ("user_sex") String user_img);
-    @FormUrlEncoded
-    @POST("User/update_user")
-    Observable<BaseResponseEntity<Object>> updateUserName(
-            @Header("userId") String userId, @Header("token") String token,
-            @Field ("nickname") String user_img);
+
 
     /**
      * 会员充值

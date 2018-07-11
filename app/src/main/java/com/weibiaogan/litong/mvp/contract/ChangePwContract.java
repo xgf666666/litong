@@ -2,11 +2,14 @@ package com.weibiaogan.litong.mvp.contract;
 
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter;
 import com.xx.baseuilibrary.mvp.BaseMvpView;
+import com.xx.baseutilslibrary.network.entity.BaseResponseEntity;
 import com.xx.baseutilslibrary.network.rx.RxHttpObserver;
 import com.xx.baseutilslibrary.network.rx.XxBaseHttpObserver;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import io.reactivex.Observable;
 
 /**
  * author: Gubr
@@ -39,7 +42,7 @@ public interface ChangePwContract {
 
     interface Model{
 
-        void changePW(@Nullable String origin, @Nullable String newPassword, @Nullable String checkPassword, @NotNull RxHttpObserver<Object> rxHttpObserver);
+        Observable<BaseResponseEntity<Object>> forgetUserPwd(@Nullable String userId, @Nullable String token, @Nullable String code, @Nullable String new_user_pwd);
 
         void sendVCode(@NotNull String phone, @NotNull XxBaseHttpObserver<Object> xxBaseHttpObserver);
     }

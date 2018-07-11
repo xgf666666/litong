@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.os.Environment
 import android.support.v4.widget.NestedScrollView
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.blankj.utilcode.util.PermissionUtils
@@ -110,6 +111,36 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
 
             }
         }
+        Log.i("dffssf",""+data?.user?.bossStat)
+        Log.i("dffssf",""+data?.user?.workerStat)
+        when(data?.user?.bossStat){
+
+            1->{tv_label_need.setText("已认证需求方")
+                tv_label_need.setSolid(R.color.label_color_bg_green)
+            }
+            2->{
+                tv_label_need.setText("待认证需求方")
+                tv_label_need.setSolid(R.color.bg_ddd)
+            }
+            0->{
+                tv_label_need.setText("待认证需求方")
+                tv_label_need.setSolid(R.color.bg_ddd)
+            }
+        }
+        when(data?.user?.workerStat){
+            1->{tv_label_workers.setText("已认证工人")
+                tv_label_workers.setSolid(R.color.label_color_bg_accent)
+            }
+            2->{
+                tv_label_workers.setText("待认证工人")
+                tv_label_workers.setSolid(R.color.bg_ddd)
+            }
+            0->{
+                tv_label_workers.setText("待认证工人")
+                tv_label_workers.setSolid(R.color.bg_ddd)
+            }
+        }
+
         tv_name.text = data?.user?.nickname ?: ""
 
 

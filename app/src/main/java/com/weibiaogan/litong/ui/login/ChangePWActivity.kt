@@ -32,7 +32,8 @@ class ChangePWActivity : BaseMvpActivity<ChangePwPresenter>(), ChangePwContract.
     }
 
     override fun initEvent() {
-        bt_submit.setOnClickListener { getPresenter().changePw() }
+        bt_submit.setOnClickListener {
+            getPresenter().changePw() }
         tv_get_code.setOnClickListener { getPresenter().sendVCode() }
     }
 

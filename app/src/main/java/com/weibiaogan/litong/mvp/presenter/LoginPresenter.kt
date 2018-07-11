@@ -26,7 +26,7 @@ class LoginPresenter :  LoginConstract.Presenter() {
             getView()?.showToast("请输入正确的手机号")
         }
 
-        if (TextUtils.isEmpty(password) || password?.length ?: 0 < 6) {
+        if (TextUtils.isEmpty(password) || password?.length ?: 0 < 5) {
             getView()?.showToast("请输入正确的密码")
             return
         }
