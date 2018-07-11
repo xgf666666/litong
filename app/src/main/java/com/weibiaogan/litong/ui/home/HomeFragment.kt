@@ -36,6 +36,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
 
     var headView : View? = null
     var adapter = HomeAdapter(getListMulti(HomeBean()))
+    var mCurrentPage = 1;
 
     override fun getFragmentLayoutId(): Int {
         return R.layout.fragment_home
@@ -60,44 +61,12 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         //showContent()
         headView = LayoutInflater.from(mContext).inflate(R.layout.home_head_view, null, false)
         rv_home_bottom.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
-        /*var bean = HomeBean()
-        //var adList = arrayListOf<HomeBean.AdveBean>()
-        var workList = arrayListOf<HomeBean.WorkerBean>()
-        var pList = arrayListOf<HomeBean.ProjectBean>()
-        var sList = arrayListOf<HomeBean.StoreBean>()
-        for (i in 0..10){
-            //var adve = HomeBean.AdveBean()
-            var project = HomeBean.ProjectBean()
-            project.distance = 700
-            project.end_time = "2018.02.02"
-            project.all_price = "500"
-            project.pt_name = "名字"
-            pList.add(project)
-        }
-        for (i in 0..2){
-            var work = HomeBean.WorkerBean()
-            work.distance = 700
-            work.user_phone = "13000000000"
-            work.user_img = ""
-            workList.add(work)
-        }
-        for (i in 0..3){
-            var store = HomeBean.StoreBean()
-            store.distance = 700
-            store.st_type = "服务类型"
-            store.st_name = "名字"
-            store.st_img = ""
-            sList.add(store)
-        }
-        bean.worker = workList
-        bean.project = pList
-        bean.store = sList*/
-        //var adapter = HomeAdapter(getListMulti(), bean)
+
         adapter.addHeaderView(headView)
 
         rv_home_bottom.adapter = adapter
 
-        presenter.getHomeData("1","11","11")
+        presenter.getHomeData(mCurrentPage.toString(),"11","11")
     }
 
     fun getListMulti(bean : HomeBean) : List<HomeAdapter.HomeMultiItem>{

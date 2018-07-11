@@ -40,7 +40,7 @@ class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeA
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,3,GridLayoutManager.VERTICAL,false)
         var adapter = ItemOneAdapter(bean?.worker)
-        adapter.setOnItemClickListener { adapter, view, position -> mContext.startActivity(Intent(mContext,WorkDetailActivity::class.java)) }
+        adapter.setOnItemChildClickListener { adapter, view, position -> WorkDetailActivity.startWorkDetail(mContext, (adapter as ItemOneAdapter).data[position].user_id) }
         view?.adapter = adapter
         view?.isNestedScrollingEnabled = false
     }
@@ -50,7 +50,7 @@ class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeA
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,2,GridLayoutManager.VERTICAL,false)
         var adapter = ItemTwoAdapter(bean?.store)
-        adapter.setOnItemClickListener { adapter, view, position -> mContext.startActivity(Intent(mContext,StoreDetailActivity::class.java)) }
+        adapter.setOnItemClickListener { adapter, view, position -> StoreDetailActivity.startStoreDetail(mContext,(adapter as ItemTwoAdapter).data[position].st_id) }
         view?.adapter = adapter
         view?.isNestedScrollingEnabled = false
     }

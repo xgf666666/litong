@@ -3,7 +3,7 @@ package com.weibiaogan.litong.entity;
 /**
  * author: HuaiXianZhong
  * date: 2018/7/10
- * describe:
+ * describe:  项目列表 我要接单实体类
  */
 public class ProjectBean {
 

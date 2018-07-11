@@ -22,15 +22,16 @@ class MyReceiptPresenter : MyReceiptConstract.Presenter(){
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            getModel().workProjectList(userId, token,stat,  page)
-                    .apply { if (page == "1") loadDefulat(getView()!!) }
+            getModel().workProjectList(userId, token, stat, page)
+                    .loadDefulat(getView()!!)
                     .ui({
                         getView()?.getProjectList(it.data!!)
                     }, {
                         getView()?.showToast(it)
                     })
+
+            }
         }
-    }
 
     override fun createModel(): MyReceiptConstract.Model = MyReceiptModel()
 }

@@ -9,6 +9,7 @@ import com.weibiaogan.litong.entity.MemberBean;
 import com.weibiaogan.litong.entity.MemberpowrBean;
 import com.weibiaogan.litong.entity.MyReceiptBean;
 import com.weibiaogan.litong.entity.ProjectBean;
+import com.weibiaogan.litong.entity.PublicProjectBean;
 import com.weibiaogan.litong.entity.SearchProjectBean;
 import com.weibiaogan.litong.entity.StoreDetailBean;
 import com.weibiaogan.litong.entity.StoreListBean;
@@ -342,7 +343,7 @@ public interface AppService {
      */
     @GET("Store/store_list")
     Observable<BaseResponseEntity<List<StoreListBean>>> storeList(@Header("userId") String userId, @Header("token") String token,
-                                                                  @Query("page") String page , @Query("lat") String lat , @Query("lng") String lng);
+                                                                  @Query("page") String page , @Query("lat") String lat , @Query("lng") String lng , @Query("type") String type);
 
     /**
      * 店铺详情
@@ -357,8 +358,31 @@ public interface AppService {
     Observable<BaseResponseEntity<StoreDetailBean>> storeDetail(@Header("userId") String userId, @Header("token") String token,
                                                                 @Query("store_id") String store_id , @Query("lat") String lat , @Query("lng") String lng);
 
+    /**
+     * 项目列表   （我要接单，历史项目）
+     * @param userId
+     * @param token
+     * @param stat 1 可接单 2 已完成
+     * @param lat
+     * @param lng
+     * @param page
+     * @param type 1 全部 2 时间
+     * @return
+     */
+    @GET("Publishproject/project_list")
+    Observable<BaseResponseEntity<List<ProjectBean>>> historyProject(@Header("userId") String userId, @Header("token") String token,
+                                                                     @Query("stat") String stat,@Query("lat") String lat,@Query("lng") String lng,@Query("page") String page,@Query("type") String type);
+
+    /**
+     * 搜索项目
+     * @param pt_name
+     * @param page
+     * @param lat
+     * @param lng
+     * @return
+     */
     @GET("Hotkey/pro_search")
-    Observable<BaseResponseEntity<SearchProjectBean>> searchProject(@Query("pt_name") String pt_name , @Query("page") String page);
+    Observable<BaseResponseEntity<List<SearchProjectBean>>> searchProject(@Query("pt_name") String pt_name , @Query("page") String page , @Query("lat") String lat , @Query("lng") String lng);
 
 
     /**
@@ -399,7 +423,8 @@ public interface AppService {
      * @return
      */
     @GET("Publishproject/worker_project_list")
-    Observable<BaseResponseEntity<List<MyReceiptBean>>> workProjectList(@Header("userId") String userId, @Header("token") String token , @Query("stat") String stat , @Query("page") String page);
+    Observable<BaseResponseEntity<List<MyReceiptBean>>> workProjectList(@Header("userId") String userId, @Header("token") String token ,
+                                                                        @Query("stat") String stat , @Query("page") String page);
 
     /**
      * 评论需求方
@@ -418,5 +443,19 @@ public interface AppService {
     @POST("Boss/boss_comments_worker")
     Observable<BaseResponseEntity<Object>> evaluateWork(@Header("userId") String userId, @Header("token") String token ,
                                                         @Field("pt_id") String pt_id,@Field("com_content") String com_content,@Field("com_imgs") String com_imgs,@Field("score") String score);
+
+
+    /**
+     * 我的发布
+     * @param userId
+     * @param token
+     * @param stat
+     * @param page
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Publishproject/boss_project")
+    Observable<BaseResponseEntity<PublicProjectBean>> bossProjectList(@Header("userId") String userId, @Header("token") String token ,
+                                                                            @Field("stat") String stat , @Field("page") String page);
 
 }

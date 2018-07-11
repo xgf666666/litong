@@ -1,7 +1,5 @@
 package com.weibiaogan.litong.ui.mine
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.mvp.contract.SureWorkContract
 import com.weibiaogan.litong.mvp.presenter.SureWorkerPresenter

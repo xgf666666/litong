@@ -61,6 +61,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
         }
 
         sv_evaluate_score.setEvent(true)
+        sv_evaluate_score.starNum = 100
         mImgs.add(iv_evaluate_add_img_three)
         mImgs.add(iv_evaluate_add_img_two)
         mImgs.add(iv_evaluate_add_img_one)
@@ -133,12 +134,14 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
         mBitmaps.add(bitmap)
         if (mBitmaps.size == 1){
             mImgs[1].visibility = View.VISIBLE
+            mImgs[1].scaleType = ImageView.ScaleType.FIT_XY
             mImgs[1].setImageBitmap(bitmap)
             return
         }
         for (i in 0 until mImgs.size){
             if (i < mBitmaps.size){
                 mImgs[i].visibility = View.VISIBLE
+                mImgs[i].scaleType = ImageView.ScaleType.FIT_XY
                 mImgs[i].setImageBitmap(mBitmaps[i])
             }
         }
