@@ -1,5 +1,6 @@
 package com.weibiaogan.litong
 
+import android.app.Activity
 import android.support.multidex.MultiDexApplication
 import com.blankj.utilcode.util.Utils
 import com.facebook.stetho.Stetho
@@ -15,6 +16,7 @@ import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager
  * describe:
  */
 class App : MultiDexApplication() {
+    public var activitis:Activity?=null
 
 
     override fun onCreate() {
@@ -22,10 +24,7 @@ class App : MultiDexApplication() {
         sInstance = this
         Utils.init(this)
         Stetho.initializeWithDefaults(this)
-
         LocationManger.getInstance().init(this)
-
-
         UMInit()
 
         Retrofit2Manager.instance.apiConfigProvider = object : JApiConfigProvider {
@@ -48,6 +47,12 @@ class App : MultiDexApplication() {
             }
 
         }
+    }
+    public fun setActivity( activty:Activity){
+        activitis=activty
+    }
+    public fun cleanActivity(){
+        activitis?.finish()
     }
 
     private fun UMInit() {

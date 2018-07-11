@@ -2,6 +2,7 @@ package com.weibiaogan.litong.mvp.contract
 
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpView
+import java.io.File
 
 /**
  * author: xiaoguagnfei
@@ -10,12 +11,14 @@ import com.xx.baseuilibrary.mvp.BaseMvpView
  */
 interface WorkerIdentyContract {
     interface View :BaseMvpView{
+        fun setView(file: String)
 
     }
     interface Model{
 
     }
     abstract class Presenter:BaseMvpPresenter<Model,View>(){
+        abstract fun fileStore(file: File?)
 
     }
 }

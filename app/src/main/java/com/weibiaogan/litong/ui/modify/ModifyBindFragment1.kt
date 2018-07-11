@@ -16,6 +16,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DefaultObserver
 import kotlinx.android.synthetic.main.activity_modifybind1.*
+import kotlinx.android.synthetic.main.home_item_two_view.*
 import java.util.concurrent.TimeUnit
 
 /**
@@ -25,7 +26,7 @@ import java.util.concurrent.TimeUnit
  */
 class ModifyBindFragment1 : BaseMvpViewFragment() {
     private var isLoading = false
-
+    private var phone: String? = null
 
     override fun getFragmentLayoutId(): Int {
         return R.layout.activity_modifybind1
@@ -36,27 +37,29 @@ class ModifyBindFragment1 : BaseMvpViewFragment() {
     }
 
     override fun initEvent(view: View?) {
+        phone=Constants.getPhone()
+        et_cellPhone.setText(phone)
         ib_back.setOnClickListener { finishActivity() }
         bt_submit.setOnClickListener { checkCode(et_code.text.toString().trim()) }
         tv_get_code.setOnClickListener { sendVCode(et_cellPhone.text.toString().trim()) }
 
-        et_code.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                bt_submit.isEnabled = s?.length == 6
+//        et_code.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(s: Editable?) {
+//                bt_submit.isEnabled = s?.length == 6
+//
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//
+//
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//
+//
+//            }
 
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-
-            }
-
-        })
+//        })
     }
 
     override fun initData() {
@@ -122,6 +125,7 @@ class ModifyBindFragment1 : BaseMvpViewFragment() {
 
 
     private fun setSendBtnText(s: String) {
+        if (tv_get_code!=null)
         tv_get_code.setText(s)
     }
 
@@ -134,10 +138,10 @@ class ModifyBindFragment1 : BaseMvpViewFragment() {
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            if (code.length != 6) {
-                toast("验证码格式出错")
-                return
-            }
+//            if (code.length != 6) {
+//                toast("验证码格式出错")
+//                return
+//            }
             AppApi.Api().updateBeforeUserPhone(userId, token, code).ui(
                     {
                         et_cellPhone.setText("")

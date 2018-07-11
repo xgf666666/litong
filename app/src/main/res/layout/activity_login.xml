@@ -17,7 +17,7 @@
             android:textSize="@dimen/titlebar_title_size" />
 
         <ImageButton
-            android:id="@+id/ib_back"
+            android:id="@+id/ib_backs"
             android:layout_width="@dimen/titlebar_height"
             android:layout_height="match_parent"
             android:background="?selectableItemBackground"
