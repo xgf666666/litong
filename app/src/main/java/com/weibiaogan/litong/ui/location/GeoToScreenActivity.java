@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,21 +21,12 @@ import com.amap.api.maps2d.model.MarkerOptions;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.geocoder.GeocodeResult;
 import com.amap.api.services.geocoder.GeocodeSearch;
-import com.amap.api.services.geocoder.RegeocodeAddress;
 import com.amap.api.services.geocoder.RegeocodeQuery;
 import com.amap.api.services.geocoder.RegeocodeResult;
-import com.chad.library.adapter.base.util.TouchEventUtil;
 import com.weibiaogan.litong.R;
 import com.weibiaogan.litong.utils.AMapUtil;
-import com.xx.baseutilslibrary.status_bar.StatusBarUtils;
 
 import java.util.ArrayList;
-import java.util.Observable;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 
 
 public class GeoToScreenActivity extends Activity implements OnMapClickListener, OnClickListener {
@@ -59,7 +49,8 @@ public class GeoToScreenActivity extends Activity implements OnMapClickListener,
         setContentView(R.layout.location2screen_activity);
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);// 此方法必须重写
-        init();
+        //init();
+        if (aMap == null) aMap = mapView.getMap();
 
     }
 

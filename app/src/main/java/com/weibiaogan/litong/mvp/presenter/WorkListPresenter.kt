@@ -13,11 +13,11 @@ import com.weibiaogan.litong.mvp.model.WorkListModel
  * describe:
  */
 class WorkListPresenter : WorkListConstract.Presenter(){
-    override fun workerList(page: String, lat: String, lng: String) {
+    override fun workerList(page: String) {
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            getModel().workerList(userId, token, page, lat, lng)
+            getModel().workerList(userId, token, page,Constants.getLocation()[0],Constants.getLocation()[1])
 
                     .doOnSubscribe {
                         if (page == "1"){

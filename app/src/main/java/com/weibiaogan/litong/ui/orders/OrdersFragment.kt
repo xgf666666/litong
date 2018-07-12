@@ -62,7 +62,7 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<ProjectBean>, Or
             tv_store_list_distance.setTextColor(resources.getColor(R.color.text_color_white))
             mType = 2
         }
-        presenter.historyProject(mStat,"11","11",mCurrentPage.toString(),mType.toString())
+        presenter.historyProject(mStat,mCurrentPage.toString(),mType.toString())
     }
 
     override fun initData() {
@@ -74,7 +74,7 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<ProjectBean>, Or
         recyclerView.adapter = adapter
         adapter.isSuccess = false
 
-        presenter.historyProject(mStat,"11","11",mCurrentPage.toString(),mType.toString())
+        presenter.historyProject(mStat,mCurrentPage.toString(),mType.toString())
 
     }
 
@@ -92,10 +92,10 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<ProjectBean>, Or
 
     override fun onRefresh(refreshLayout: RefreshLayout?) {
         mCurrentPage = 1
-        presenter.historyProject(mStat,"11","11",mCurrentPage.toString(),mType.toString())
+        presenter.historyProject(mStat,mCurrentPage.toString(),mType.toString())
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout?) {
-        presenter.historyProject(mStat,"11","11",(++mCurrentPage).toString(),mType.toString())
+        presenter.historyProject(mStat,(++mCurrentPage).toString(),mType.toString())
     }
 }

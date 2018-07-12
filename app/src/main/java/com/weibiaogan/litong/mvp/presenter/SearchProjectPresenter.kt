@@ -1,5 +1,6 @@
 package com.weibiaogan.litong.mvp.presenter
 
+import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.SearchProjectContract
@@ -11,8 +12,8 @@ import com.weibiaogan.litong.mvp.model.SearchProjectModel
  * describe:
  */
 class SearchProjectPresenter : SearchProjectContract.Presenter(){
-    override fun searchProject(pt_name: String, page: String, lat : String , lng : String) {
-        getModel().searchProject(pt_name,page,lat, lng)
+    override fun searchProject(pt_name: String, page: String) {
+        getModel().searchProject(pt_name,page, Constants.getLocation()[0], Constants.getLocation()[1])
                 .apply {
                     if (page == "1"){
                         loadDefulat(getView()!!)

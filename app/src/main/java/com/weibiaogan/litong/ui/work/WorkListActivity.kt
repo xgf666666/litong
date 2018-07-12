@@ -20,14 +20,14 @@ import kotlinx.android.synthetic.main.activity_work_list.*
  */
 class WorkListActivity : BaseMvpActivity<WorkListConstract.Presenter>(),WorkListConstract.View, OnRefreshLoadMoreListener {
     override fun onLoadMore(refreshLayout: RefreshLayout?) {
-        getPresenter().workerList((++mCurrentPage).toString(),"11","11")
+        getPresenter().workerList((++mCurrentPage).toString())
     }
 
 
 
     override fun onRefresh(refreshLayout: RefreshLayout?) {
         mCurrentPage = 1
-        getPresenter().workerList(mCurrentPage.toString(),"11","11")
+        getPresenter().workerList(mCurrentPage.toString())
     }
 
     override fun createPresenter(): WorkListConstract.Presenter = WorkListPresenter()
@@ -43,7 +43,7 @@ class WorkListActivity : BaseMvpActivity<WorkListConstract.Presenter>(),WorkList
         rv_work_list_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_work_list_rv.adapter = adapter
 
-        getPresenter().workerList(mCurrentPage.toString(),"11","11")
+        getPresenter().workerList(mCurrentPage.toString())
     }
 
     override fun initEvent() {

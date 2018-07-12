@@ -18,7 +18,7 @@ interface StoreListConstract {
     }
 
     public abstract class Presenter : BaseMvpPresenter<Model, View>() {
-        abstract fun storeList(page : String ,lat : String ,lng : String , type : String)
+        abstract fun storeList(page : String ,type : String)
     }
 
     public interface Model {

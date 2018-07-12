@@ -13,11 +13,11 @@ import com.weibiaogan.litong.mvp.model.WorkDetailModel
  * describe:
  */
 class WorkDetailPresenter : WorkDetailConstract.Presenter(){
-    override fun workDetail(worker_user_id: String, lat: String, lnt: String) {
+    override fun workDetail(worker_user_id: String) {
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            getModel().workDetail(userId, token, worker_user_id, lat, lnt).loadDefulat(getView()!!)
+            getModel().workDetail(userId, token, worker_user_id,Constants.getLocation()[0],Constants.getLocation()[1]).loadDefulat(getView()!!)
                     .ui({
                         getView()?.getWorkDetailData(it.data!!)
                     }, {

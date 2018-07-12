@@ -19,7 +19,7 @@ interface SearchProjectContract {
     }
 
     abstract class Presenter: BaseMvpPresenter<Model, View>() {
-        abstract fun searchProject(pt_name : String , page : String, lat : String , lng : String)
+        abstract fun searchProject(pt_name : String , page : String)
     }
 
     interface Model {

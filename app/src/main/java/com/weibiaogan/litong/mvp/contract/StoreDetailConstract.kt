@@ -21,7 +21,7 @@ interface StoreDetailConstract {
     }
 
     public abstract class Presenter : BaseMvpPresenter<Model, View>() {
-        abstract fun storeDetail(store_id : String ,lat : String ,lng : String)
+        abstract fun storeDetail(store_id : String)
     }
 
     public interface Model {

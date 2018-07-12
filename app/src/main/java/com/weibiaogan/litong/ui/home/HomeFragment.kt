@@ -13,6 +13,7 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
 import com.bigkoo.convenientbanner.holder.Holder
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.adapter.home.HomeAdapter
+import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.ui.project.ProjectListActivity
 import com.weibiaogan.litong.entity.HomeBean
 import com.weibiaogan.litong.extensions.loadImag
@@ -66,7 +67,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
 
         rv_home_bottom.adapter = adapter
 
-        presenter.getHomeData(mCurrentPage.toString(),"11","11")
+        presenter.getHomeData(mCurrentPage.toString())
     }
 
     fun getListMulti(bean : HomeBean) : List<HomeAdapter.HomeMultiItem>{

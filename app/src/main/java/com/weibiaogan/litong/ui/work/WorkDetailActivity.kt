@@ -35,7 +35,7 @@ class WorkDetailActivity : BaseMvpActivity<WorkDetailConstract.Presenter>(),Work
     override fun initData() {
         var work_user_id = intent.getIntExtra("work_detail_id", -1)
         if (work_user_id != -1){
-            getPresenter().workDetail(work_user_id.toString(),"11","11")
+            getPresenter().workDetail(work_user_id.toString())
         }else{
             finish()
         }

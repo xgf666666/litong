@@ -12,11 +12,11 @@ import com.weibiaogan.litong.mvp.model.HistoryProjectModel
  * describe:
  */
 class HistoryprojectPresenter:HistoryprojectContract.Presenter() {
-    override fun historyProject(stat: String, lat: String, lng: String, page: String, type: String) {
+    override fun historyProject(stat: String, page: String, type: String) {
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            getModel().historyProject(userId, token,stat, lat, lng, page, type)
+            getModel().historyProject(userId, token,stat, Constants.getLocation()[0],Constants.getLocation()[1], page, type)
                     .apply {
                         if (page == "1"){
                             loadDefulat(getView()!!)

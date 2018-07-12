@@ -18,11 +18,11 @@ import com.weibiaogan.litong.mvp.model.WorkListModel
  * describe:
  */
 class StoreDetailPresenter : StoreDetailConstract.Presenter(){
-    override fun storeDetail(store_id: String, lat: String, lng: String) {
+    override fun storeDetail(store_id: String) {
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            getModel().storeDetail(userId, token, store_id, lat, lng).loadDefulat(getView()!!)
+            getModel().storeDetail(userId, token, store_id,Constants.getLocation()[0],Constants.getLocation()[1]).loadDefulat(getView()!!)
                     .ui({
                         getView()?.getStoreDetailData(it.data!!)
                     }, {

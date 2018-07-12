@@ -8,6 +8,7 @@ import com.weibiaogan.litong.extensions.loadImag
 import com.weibiaogan.litong.mvp.contract.StoreDetailConstract
 import com.weibiaogan.litong.mvp.presenter.StoreDetailPresenter
 import com.weibiaogan.litong.ui.location.GeoToScreenActivity
+import com.weibiaogan.litong.ui.location.MapActivity
 import com.weibiaogan.litong.utils.changeKm
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_store_detail.*
@@ -36,12 +37,12 @@ class StoreDetailActivity : BaseMvpActivity<StoreDetailConstract.Presenter>(),St
     override fun initData() {
         var id = intent.getIntExtra("store_detail_id", -1)
         if (id != -1){
-            getPresenter().storeDetail(id.toString(),"11","11")
+            getPresenter().storeDetail(id.toString())
         }
     }
 
     override fun initEvent() {
-        tv_store_detail_goto_distance.setOnClickListener { startActivity(Intent(mContext,GeoToScreenActivity::class.java)) }
+        tv_store_detail_goto_distance.setOnClickListener { startActivity(Intent(mContext,MapActivity::class.java)) }
     }
 
     override fun getStoreDetailData(bean: StoreDetailBean) {

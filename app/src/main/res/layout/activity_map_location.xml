@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.amap.api.maps2d.MapView
+        android:id="@+id/location_map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.amap.api.maps2d.MapView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的位置"
+            android:textColor="@color/text_color_first"
+            android:textSize="17sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="19dp"
+            android:text="富力盈凯广场附近"
+            android:textColor="@color/text_color_third"
+            android:textSize="14sp"
+            />
+    </LinearLayout>
+
+</FrameLayout>

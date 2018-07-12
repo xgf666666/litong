@@ -18,7 +18,7 @@ interface OrdersContract {
     }
 
     abstract class Presenter: BaseMvpPresenter<Model, View>() {
-        abstract fun historyProject(stat : String , lat : String ,lng : String, page : String ,type : String)
+        abstract fun historyProject(stat : String, page : String ,type : String)
     }
 
     interface Model {

@@ -9,10 +9,12 @@ import com.blankj.utilcode.util.ActivityUtils
 import com.weibiaogan.litong.common.Constants.KEY_INTENT_MAIN
 import com.weibiaogan.litong.ui.home.HomeFragment
 import com.weibiaogan.litong.ui.location.GeoToScreenActivity
+import com.weibiaogan.litong.ui.location.MapActivity
 import com.weibiaogan.litong.ui.orders.OrdersFragment
 import com.weibiaogan.litong.ui.mine.MineFragment
 import com.weibiaogan.litong.ui.project.Projectragment
 import com.weibiaogan.litong.ui.search.SearchProjectActivity
+import com.weibiaogan.litong.utils.LocationManger
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -52,7 +54,9 @@ class MainActivity : BaseMvpViewActivity() {
         }
 
         ll_home_search.setOnClickListener {  startActivity(Intent(mContext, SearchProjectActivity::class.java)) }
-        tv_home_location.setOnClickListener { startActivity(Intent(mContext, GeoToScreenActivity::class.java)) }
+        tv_home_location.setOnClickListener { startActivity(Intent(mContext, MapActivity::class.java)) }
+
+        LocationManger.getInstance().startLocation()
 
     }
 

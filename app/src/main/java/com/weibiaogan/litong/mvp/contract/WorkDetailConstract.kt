@@ -21,7 +21,7 @@ interface WorkDetailConstract {
     }
 
     public abstract class Presenter : BaseMvpPresenter<Model, View>() {
-        abstract fun workDetail(worker_user_id : String,lat : String, lnt : String)
+        abstract fun workDetail(worker_user_id : String)
     }
 
     public interface Model {

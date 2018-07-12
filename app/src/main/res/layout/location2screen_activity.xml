@@ -26,110 +26,109 @@
 			android:tint="@color/colorWhite" />
 	</FrameLayout>
 
-    
+
    <LinearLayout
 	 android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="10dp"
-        android:layout_alignTop="@id/map">
-        <TextView 
+        android:layout_margin="10dp">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center|left"
             android:textColor="@color/black"
             android:text="地图经纬度坐标（单击地图获取经纬度坐标）"/>
-        <LinearLayout 
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="5dp">
-            <LinearLayout 
+            <LinearLayout
             	android:layout_width="match_parent"
             	android:layout_height="wrap_content"
             	android:orientation="horizontal"
             	android:layout_weight="1">
-            <TextView 
+            <TextView
             	android:layout_width="23dp"
             	android:layout_height="wrap_content"
             	android:gravity="center|left"
             	android:textColor="@color/black"
             	android:text="lat:"/>
-            <EditText 
+            <EditText
                 android:id="@+id/pointLat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             </LinearLayout>
-            <LinearLayout 
+            <LinearLayout
             	android:layout_width="match_parent"
             	android:layout_height="wrap_content"
             	android:orientation="horizontal"
             	android:layout_weight="1">
-            <TextView 
+            <TextView
             	android:layout_width="23dp"
             	android:layout_height="wrap_content"
             	android:gravity="center|left"
             	android:textColor="@color/black"
             	android:text="lng:"/>
-            <EditText 
+            <EditText
                 android:id="@+id/pointLng"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
-        <TextView 
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center|left"
             android:textColor="@color/black"
             android:text="屏幕像素坐标"/>
-        <LinearLayout 
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="5dp">
-             <LinearLayout 
+             <LinearLayout
             	android:layout_width="match_parent"
             	android:layout_height="wrap_content"
             	android:orientation="horizontal"
             	android:layout_weight="1">
-            <TextView 
+            <TextView
             	android:layout_width="23dp"
             	android:layout_height="wrap_content"
             	android:gravity="center|left"
             	android:textColor="@color/black"
             	android:text="X:"/>
-            <EditText 
+            <EditText
                 android:id="@+id/pointX"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:numeric="integer"/>
             </LinearLayout>
-             <LinearLayout 
+             <LinearLayout
             	android:layout_width="match_parent"
             	android:layout_height="wrap_content"
             	android:orientation="horizontal"
             	android:layout_weight="1">
-            <TextView 
+            <TextView
             	android:layout_width="23dp"
             	android:layout_height="wrap_content"
             	android:gravity="center|left"
             	android:textColor="@color/black"
             	android:text="Y:"/>
-            <EditText 
+            <EditText
                 android:id="@+id/pointY"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:numeric="integer"/>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout 
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="5dp">
-            <Button 
+            <Button
             	android:id="@+id/lnglat2pointbtn"
             	android:layout_width="match_parent"
             	android:layout_height="40dp"
@@ -139,7 +138,7 @@
             	android:textSize="12sp"
             	android:layout_weight="1"
             	android:text="经纬度转屏幕像素坐标"/>
-        	<Button 
+        	<Button
             	android:id="@+id/point2Latlngbtn"
             	android:layout_width="match_parent"
             	android:layout_height="40dp"
@@ -151,41 +150,47 @@
            	 	android:text="屏幕像素坐标转经纬度"/>
         </LinearLayout>
 
-        
+
     </LinearLayout>
-	<com.amap.api.maps2d.MapView
-		android:id="@+id/map"
-		android:layout_weight="1"
-		android:layout_width="0dp"
-		android:layout_height="match_parent" />
-	<LinearLayout
-		android:layout_below="@id/map"
+	<FrameLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:background="@color/colorWhite"
-		xmlns:tools="http://schemas.android.com/tools"
-		android:orientation="vertical">
+		android:layout_height="match_parent">
 
-		<TextView
-			android:layout_marginTop="20dp"
-			android:layout_marginLeft="14dp"
-			android:layout_width="wrap_content"
+		<com.amap.api.maps2d.MapView
+			android:id="@+id/map"
+			android:layout_height="match_parent"
+			android:layout_width="match_parent" />
+		<LinearLayout
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			tools:text="我的位置"
-			android:textColor="@color/text_color_first"
-			android:textSize="17sp"
-			/>
+			android:background="@color/colorWhite"
+			xmlns:tools="http://schemas.android.com/tools"
+			android:orientation="vertical"
+			android:gravity="bottom"
+			android:layout_gravity="bottom">
 
-		<TextView
-			android:id="@+id/tv_location"
-			android:layout_marginTop="11dp"
-			android:layout_marginLeft="14dp"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginBottom="19dp"
-			tools:text="富力盈凯广场附近"
-			android:textColor="@color/text_color_third"
-			android:textSize="14sp"
-			/>
-	</LinearLayout>
+			<TextView
+				android:layout_marginTop="20dp"
+				android:layout_marginLeft="14dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:text="我的位置"
+				android:textColor="@color/text_color_first"
+				android:textSize="17sp"
+				/>
+
+			<TextView
+				android:id="@+id/tv_location"
+				android:layout_marginTop="11dp"
+				android:layout_marginLeft="14dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="19dp"
+				tools:text="富力盈凯广场附近"
+				android:textColor="@color/text_color_third"
+				android:textSize="14sp"
+				/>
+		</LinearLayout>
+
+	</FrameLayout>
 </LinearLayout>

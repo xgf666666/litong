@@ -20,12 +20,12 @@ import kotlinx.android.synthetic.main.activity_store_list.*
  */
 class StoreListActivity : BaseMvpActivity<StoreListConstract.Presenter>(), View.OnClickListener , StoreListConstract.View, OnRefreshLoadMoreListener {
     override fun onLoadMore(refreshLayout: RefreshLayout?) {
-        getPresenter().storeList((++mCurrentPage).toString(),"11","11",mType.toString())
+        getPresenter().storeList((++mCurrentPage).toString(),mType.toString())
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout?) {
         mCurrentPage = 1
-        getPresenter().storeList(mCurrentPage.toString(),"11","11",mType.toString())
+        getPresenter().storeList(mCurrentPage.toString(),mType.toString())
     }
 
     var adapter : StoreListAdapter = StoreListAdapter(arrayListOf())
@@ -52,7 +52,7 @@ class StoreListActivity : BaseMvpActivity<StoreListConstract.Presenter>(), View.
         rv_store_list_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_store_list_rv.adapter = adapter
 
-        getPresenter().storeList(mCurrentPage.toString(),"11","11",mType.toString())
+        getPresenter().storeList(mCurrentPage.toString(),mType.toString())
     }
 
     private fun setTextBtn(isAll: Boolean) {
@@ -71,7 +71,7 @@ class StoreListActivity : BaseMvpActivity<StoreListConstract.Presenter>(), View.
             tv_store_list_distance.setTextColor(resources.getColor(R.color.text_color_white))
             mType = 2
         }
-        getPresenter().storeList(mCurrentPage.toString(),"11","11",mType.toString())
+        getPresenter().storeList(mCurrentPage.toString(),mType.toString())
     }
 
     override fun initEvent() {

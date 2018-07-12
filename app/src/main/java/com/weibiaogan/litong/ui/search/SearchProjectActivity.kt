@@ -23,12 +23,12 @@ import kotlinx.android.synthetic.main.activity_search_project.*
  */
 class SearchProjectActivity : BaseMvpActivity<SearchProjectContract.Presenter>(), View.OnClickListener , SearchProjectContract.View, OnRefreshLoadMoreListener {
     override fun onLoadMore(refreshLayout: RefreshLayout?) {
-        getPresenter().searchProject(mSearchContent,(++mCurrentPage).toString(),"116.557684","23.192033")
+        getPresenter().searchProject(mSearchContent,(++mCurrentPage).toString())
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout?) {
         mCurrentPage = 1
-        getPresenter().searchProject(mSearchContent,mCurrentPage.toString(),"116.557684","23.192033")
+        getPresenter().searchProject(mSearchContent,mCurrentPage.toString())
     }
 
     var adapter : SearchProjectAdapter = SearchProjectAdapter(arrayListOf())
@@ -58,7 +58,7 @@ class SearchProjectActivity : BaseMvpActivity<SearchProjectContract.Presenter>()
     override fun onClick(v: View?) {
         mSearchContent = et_search_project_edit.text.toString().trim()
         if (!TextUtils.isEmpty(mSearchContent)){
-            getPresenter().searchProject(mSearchContent,mCurrentPage.toString(),"116.557684","23.192033")
+            getPresenter().searchProject(mSearchContent,mCurrentPage.toString())
         }else{
             showToast("请输入搜索内容")
         }

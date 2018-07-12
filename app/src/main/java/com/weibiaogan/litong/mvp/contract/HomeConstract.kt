@@ -19,7 +19,7 @@ interface HomeConstract {
     }
 
     public abstract class Presenter : BaseMvpPresenter<Model, View>() {
-        abstract fun getHomeData(page : String , lat : String , lnt : String)
+        abstract fun getHomeData(page : String)
     }
 
     public interface Model {

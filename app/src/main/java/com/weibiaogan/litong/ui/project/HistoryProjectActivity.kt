@@ -45,7 +45,7 @@ class HistoryProjectActivity : BaseMvpActivity<HistoryprojectPresenter>(),Histor
         recyclerView.adapter = adapter
         adapter.isSuccess = true
 
-        getPresenter().historyProject(mStat,"11","11",mCurrentPage.toString(),mType.toString())
+        getPresenter().historyProject(mStat,mCurrentPage.toString(),mType.toString())
     }
 
     /**
@@ -80,7 +80,7 @@ class HistoryProjectActivity : BaseMvpActivity<HistoryprojectPresenter>(),Histor
             tv_store_list_distance.setTextColor(resources.getColor(R.color.text_color_white))
             mType = 2
         }
-        getPresenter().historyProject(mStat,"11","11",mCurrentPage.toString(),mType.toString())
+        getPresenter().historyProject(mStat,mCurrentPage.toString(),mType.toString())
     }
 
     override fun getProjectBean(data: List<ProjectBean>) {
@@ -89,11 +89,11 @@ class HistoryProjectActivity : BaseMvpActivity<HistoryprojectPresenter>(),Histor
 
     override fun onRefresh(refreshLayout: RefreshLayout?) {
         mCurrentPage = 1
-        getPresenter().historyProject(mStat,"11","11",mCurrentPage.toString(),mType.toString())
+        getPresenter().historyProject(mStat,mCurrentPage.toString(),mType.toString())
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout?) {
-        getPresenter().historyProject(mStat,"11","11",(++mCurrentPage).toString(),mType.toString())
+        getPresenter().historyProject(mStat,(++mCurrentPage).toString(),mType.toString())
     }
 
 }

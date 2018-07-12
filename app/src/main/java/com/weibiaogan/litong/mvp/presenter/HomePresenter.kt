@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.mvp.presenter
 
 import com.weibiaogan.litong.common.AppApi
+import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.entity.HomeBean
 import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
@@ -15,8 +16,8 @@ import kotlin.math.ln
  * describe:首页
  */
 class HomePresenter : HomeConstract.Presenter() {
-    override fun getHomeData(page: String, lat: String, lnt: String) {
-        AppApi.Api().homeData(page,lat, lnt)
+    override fun getHomeData(page: String) {
+        AppApi.Api().homeData(page, Constants.getLocation()[0], Constants.getLocation()[1])
                 .loadDefulat(getView()!!)
                 .ui({
                     getView()?.setData(it.data)

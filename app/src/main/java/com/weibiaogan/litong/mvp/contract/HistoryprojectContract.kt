@@ -16,7 +16,7 @@ interface HistoryprojectContract {
         fun getProjectBean(data : List<ProjectBean>)
     }
      abstract class Presenter:BaseMvpPresenter<Model,View>(){
-        abstract fun historyProject(stat : String , lat : String ,lng : String, page : String ,type : String)
+        abstract fun historyProject(stat : String, page : String ,type : String)
     }
     interface Model{
         fun historyProject(userId : String, token : String,stat : String , lat : String ,lng : String, page : String ,type : String) : Observable<BaseResponseEntity<List<ProjectBean>>>

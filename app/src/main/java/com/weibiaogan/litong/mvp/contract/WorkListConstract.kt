@@ -22,7 +22,7 @@ interface WorkListConstract {
     }
 
     public abstract class Presenter : BaseMvpPresenter<Model, View>() {
-        abstract fun workerList(page: String, lat: String, lng: String)
+        abstract fun workerList(page: String)
     }
 
     public interface Model {
