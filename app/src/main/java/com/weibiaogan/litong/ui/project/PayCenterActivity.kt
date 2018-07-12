@@ -24,6 +24,14 @@ import kotlinx.android.synthetic.main.activity_pay_center.*
 
 
 class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstract.View {
+
+    companion object {
+        fun startPayCenter(context: Context,flag : String){
+            val intent=Intent(context,PayCenterActivity::class.java)
+            intent.putExtra("FLAG",flag)
+            context.startActivity(intent)
+        }
+    }
     override fun setView(memberBean: MemberBean) {
 
         tv_price.setText("￥"+memberBean.system_content)

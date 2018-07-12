@@ -15,4 +15,8 @@ class MyPublishProjectModel :MyPublishProjectContract.Model{
     override fun bossProjectList(userId: String, token: String, stat: String, page: String): Observable<BaseResponseEntity<PublicProjectBean>> {
         return AppApi.Api().bossProjectList(userId, token, stat, page)
     }
+
+    override fun cancelProject(userId: String, token: String, pt_id: String): Observable<BaseResponseEntity<Any?>?>? {
+        return AppApi.Api().cancelProject(userId, token, pt_id)
+    }
 }

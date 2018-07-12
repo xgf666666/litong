@@ -478,4 +478,41 @@ public interface AppService {
     Observable<BaseResponseEntity<PublicProjectBean>> bossProjectList(@Header("userId") String userId, @Header("token") String token ,
                                                                             @Field("stat") String stat , @Field("page") String page);
 
+    /**
+     * 取消项目
+     * @param userId
+     * @param token
+     * @param pt_id
+     * @return
+     */
+    @GET("Publishproject/cancel_project")
+    Observable<BaseResponseEntity<Object>> cancelProject(@Header("userId") String userId, @Header("token") String token ,
+                                                         @Field("pt_id") String pt_id);
+
+    /**
+     * 确定工人
+     * @param userId
+     * @param token
+     * @param pt_id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Worker/worker_bind_project")
+    Observable<BaseResponseEntity<Object>> bindWorker(@Header("userId") String userId, @Header("token") String token ,
+                                                      @Field("pt_id") String pt_id);
+
+    /**
+     * 放弃工人
+     * @param userId
+     * @param token
+     * @param pt_id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Worker/worker_die_project")
+    Observable<BaseResponseEntity<Object>> dieWork(@Header("userId") String userId, @Header("token") String token ,
+                                                      @Field("pt_id") String pt_id);
+
+
+
 }

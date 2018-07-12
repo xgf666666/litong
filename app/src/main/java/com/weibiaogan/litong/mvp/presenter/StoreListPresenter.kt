@@ -9,6 +9,7 @@ import com.weibiaogan.litong.mvp.contract.WorkListConstract
 import com.weibiaogan.litong.mvp.contract.StoreListConstract
 import com.weibiaogan.litong.mvp.model.StoreListModel
 import com.weibiaogan.litong.mvp.model.WorkDetailModel
+import com.weibiaogan.litong.utils.loadDefulatRefresh
 
 /**
  * author: HuaiXianZhong
@@ -22,11 +23,7 @@ class StoreListPresenter : StoreListConstract.Presenter(){
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
             getModel().storeList(userId, token, page, Constants.getLocation()[0],Constants.getLocation()[1],type)
-                    .apply {
-                        if (page == "1"){
-                            loadDefulat(getView()!!)
-                        }
-                    }
+                    .loadDefulatRefresh(page == "1",getView()!!)
                     .ui({
                         getView()?.getStoreListData(it.data!!)
                     }, {

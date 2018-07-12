@@ -5,6 +5,7 @@ import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.HistoryprojectContract
 import com.weibiaogan.litong.mvp.model.HistoryProjectModel
+import com.weibiaogan.litong.utils.loadDefulatRefresh
 
 /**
  * author: xiaoguagnfei
@@ -17,11 +18,7 @@ class HistoryprojectPresenter:HistoryprojectContract.Presenter() {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
             getModel().historyProject(userId, token,stat, Constants.getLocation()[0],Constants.getLocation()[1], page, type)
-                    .apply {
-                        if (page == "1"){
-                            loadDefulat(getView()!!)
-                        }
-                    }
+                    .loadDefulatRefresh(page == "1",getView()!!)
                     .ui({
                         getView()?.getProjectBean(it.data!!)
                     }, {

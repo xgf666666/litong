@@ -14,11 +14,14 @@ import io.reactivex.Observable
 interface MyPublishProjectContract {
     interface View : BaseMvpView {
         fun getBossProjectList(data : PublicProjectBean)
+        fun cancelProject(msg : String)
     }
     abstract class Presenter : BaseMvpPresenter<Model, View>(){
         abstract fun bossProjectList(stat: String,page : String)
+        abstract fun cancelProject(pt_id:String)
     }
     interface Model{
         fun bossProjectList(userId : String,token : String,stat: String,page : String) : Observable<BaseResponseEntity<PublicProjectBean>>
+        fun cancelProject(userId : String,token : String,pt_id : String) : Observable<BaseResponseEntity<Any?>?>?
     }
 }

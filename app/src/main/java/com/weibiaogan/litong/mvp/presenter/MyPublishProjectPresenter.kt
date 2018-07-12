@@ -5,6 +5,7 @@ import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.MyPublishProjectContract
 import com.weibiaogan.litong.mvp.model.MyPublishProjectModel
+import com.weibiaogan.litong.utils.loadDefulatRefresh
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter
 
 /**
@@ -18,9 +19,23 @@ class MyPublishProjectPresenter : MyPublishProjectContract.Presenter() {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
             getModel().bossProjectList(userId, token,stat,  page)
-                    .apply { if (page == "1") loadDefulat(getView()!!) }
+                    .loadDefulatRefresh(page == "1",getView()!!)
                     .ui({
                         getView()?.getBossProjectList(it.data!!)
+                    }, {
+                        getView()?.showToast(it)
+                    })
+        }
+    }
+
+    override fun cancelProject(pt_id: String) {
+        if (Constants.isLogin()) {
+            val userId = Constants.getToken().user_id.toString()
+            val token = Constants.getToken().token
+            getModel().cancelProject(userId, token,pt_id)
+                    ?.loadDefulat(getView()!!)
+                    ?.ui({
+                        getView()?.cancelProject(it?.msg!!)
                     }, {
                         getView()?.showToast(it)
                     })

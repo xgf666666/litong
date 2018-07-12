@@ -3,6 +3,9 @@ package com.weibiaogan.litong.utils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.weibiaogan.litong.extensions.loadDefulat
+import com.xx.baseuilibrary.mvp.BaseMvpView
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_work_list.*
 
 /**
@@ -47,4 +50,14 @@ fun Int.changeKm() : String{
     }else{
         return this.toString() + "m"
     }
+}
+
+/**
+ * 加载弹框
+ */
+fun <T> Observable<T>.loadDefulatRefresh(show:Boolean,view: BaseMvpView) : Observable<T>{
+    if (show){
+        return loadDefulat(view)
+    }
+    return this
 }

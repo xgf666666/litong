@@ -5,6 +5,7 @@ import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.SearchProjectContract
 import com.weibiaogan.litong.mvp.model.SearchProjectModel
+import com.weibiaogan.litong.utils.loadDefulatRefresh
 
 /**
  * author: HuaiXianZhong
@@ -14,11 +15,7 @@ import com.weibiaogan.litong.mvp.model.SearchProjectModel
 class SearchProjectPresenter : SearchProjectContract.Presenter(){
     override fun searchProject(pt_name: String, page: String) {
         getModel().searchProject(pt_name,page, Constants.getLocation()[0], Constants.getLocation()[1])
-                .apply {
-                    if (page == "1"){
-                        loadDefulat(getView()!!)
-                    }
-                }
+                .loadDefulatRefresh(page == "1",getView()!!)
                 .ui({
                     getView()?.getSearchResult(it.data!!)
                 }, {

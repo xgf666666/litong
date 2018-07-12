@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="@dimen/search_project_title_txt_left"
+    android:layout_marginTop="@dimen/search_project_icon_margin"
     android:layout_marginRight="@dimen/search_project_title_txt_left"
     android:layout_marginLeft="@dimen/search_project_title_txt_left"
     android:background="@color/white">

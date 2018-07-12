@@ -79,39 +79,74 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginRight="@dimen/margin_8">
-        <ImageView
-            android:id="@+id/iv_evaluate_add_img_one"
+        android:layout_marginRight="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_9">
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/evaluate_work_img_height"
-            android:layout_marginLeft="@dimen/margin_14"
-            android:layout_marginTop="@dimen/margin_9"
-            android:background="@color/colorGray"
-            android:src="@mipmap/btn_addimg"
-            android:scaleType="center"/>
-        <ImageView
-            android:id="@+id/iv_evaluate_add_img_two"
+            android:layout_marginLeft="@dimen/margin_14">
+            <ImageView
+                android:id="@+id/iv_evaluate_add_img_one"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"
+                android:src="@mipmap/btn_addimg"
+                android:scaleType="center"/>
+            <ImageView
+                android:id="@+id/iv_one_delete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@mipmap/ic_delete"
+                android:background="#88000000"
+                android:visibility="gone"/>
+        </FrameLayout>
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/evaluate_work_img_height"
-            android:layout_marginLeft="@dimen/margin_14"
-            android:layout_marginTop="@dimen/margin_9"
-            android:background="@color/colorGray"
-            android:src="@mipmap/btn_addimg"
-            android:scaleType="center"
-            android:visibility="invisible"/>
-        <ImageView
-            android:id="@+id/iv_evaluate_add_img_three"
+            android:layout_marginLeft="@dimen/margin_14">
+            <ImageView
+                android:id="@+id/iv_evaluate_add_img_two"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"
+                android:src="@mipmap/btn_addimg"
+                android:scaleType="center"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_two_delete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@mipmap/ic_delete"
+                android:background="#88000000"
+                android:visibility="gone"
+                />
+        </FrameLayout>
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/evaluate_work_img_height"
-            android:layout_marginLeft="@dimen/margin_14"
-            android:layout_marginTop="@dimen/margin_9"
-            android:background="@color/colorGray"
-            android:src="@mipmap/btn_addimg"
-            android:scaleType="center"
-            android:visibility="invisible"/>
+            android:layout_marginLeft="@dimen/margin_14">
+            <ImageView
+                android:id="@+id/iv_evaluate_add_img_three"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"
+                android:src="@mipmap/btn_addimg"
+                android:scaleType="center"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_three_delete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@mipmap/ic_delete"
+                android:background="#88000000"
+                android:visibility="gone"/>
+        </FrameLayout>
     </LinearLayout>
 
     <FrameLayout

@@ -18,6 +18,7 @@ import com.weibiaogan.litong.mvp.presenter.EvaluatePresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import com.xx.baseutilslibrary.common.ImageChooseHelper
 import kotlinx.android.synthetic.main.activity_evaluate_work.*
+import kotlinx.android.synthetic.main.activity_worker_identy_one.*
 import java.lang.StringBuilder
 
 /**
@@ -31,6 +32,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
 
     var mBitmaps = arrayListOf<Bitmap>()
     var mImgs = arrayListOf<ImageView>()
+    var mDImgs = arrayListOf<ImageView>()
 
     var type = 0   //0评论工人 1评论需求方
     var pt_id = ""
@@ -65,11 +67,18 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
         mImgs.add(iv_evaluate_add_img_three)
         mImgs.add(iv_evaluate_add_img_two)
         mImgs.add(iv_evaluate_add_img_one)
+        mDImgs.add(iv_three_delete)
+        mDImgs.add(iv_two_delete)
+        mDImgs.add(iv_one_delete)
     }
 
     override fun initEvent() {
         iv_evaluate_add_img_one.setOnClickListener(this)
         tv_evaluate_confirm.setOnClickListener(this)
+
+        for (i in mDImgs){
+            i.setOnClickListener(this)
+        }
     }
 
     override fun onResume() {
@@ -92,7 +101,8 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
                     //上传头像
                     //getPresenter().fileStore(file)
                     getPresenter().fileStore(file)
-                    showImage(bitmap)
+                    mBitmaps.add(bitmap)
+                    showImage()
                 }
                 .create()
 
@@ -102,7 +112,27 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
         when(v?.id){
             R.id.iv_evaluate_add_img_one -> showEditAvatarDialog()
             R.id.tv_evaluate_confirm -> pullEvaluate()
+            R.id.iv_one_delete -> {deleteImg(2)}
+            R.id.iv_two_delete -> {deleteImg(1)}
+            R.id.iv_three_delete -> {deleteImg(0)}
         }
+    }
+
+    /**
+     * 删除图片
+     */
+    fun deleteImg(i : Int){
+        mImgs[i].visibility = View.GONE
+        mDImgs[i].visibility = View.GONE
+        if (mBitmaps.size != 1){
+            mBitmaps.remove(mBitmaps[i])
+            mImgUrl.remove(mImgUrl[i])
+        }else {
+            mBitmaps.remove(mBitmaps[0])
+            mImgUrl.remove(mImgUrl[0])
+        }
+
+        showImage()
     }
 
     /**
@@ -113,13 +143,15 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
         var score = sv_evaluate_score.starNum
         var imgs = ""
         for (i in 0 until mImgUrl.size){
-            imgs + mImgUrl[i] + ","
+            imgs += mImgUrl[i] + ","
         }
+        Log.i("evaluate_img_width","imgs::"+imgs)
         if (TextUtils.isEmpty(content)){
             content = ""
         }else if (!TextUtils.isEmpty(imgs)){
-            imgs = imgs.substring(0,imgs.length-1)
+            imgs = imgs.substring(0,imgs.length-2)  //去掉最后一个逗号
         }
+        Log.i("evaluate_img_width","imgs::"+imgs+"_score::"+score+"_content::"+content)
         if (type == 0){
             getPresenter().evaluateWork(pt_id,content,imgs,score.toString())
         }else if (type == 1){
@@ -130,12 +162,14 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
     /**
      * 显示选择的图片
      */
-    fun showImage(bitmap:Bitmap){
-        mBitmaps.add(bitmap)
+    fun showImage(){
         if (mBitmaps.size == 1){
             mImgs[1].visibility = View.VISIBLE
             mImgs[1].scaleType = ImageView.ScaleType.FIT_XY
-            mImgs[1].setImageBitmap(bitmap)
+            mImgs[1].setImageBitmap(mBitmaps[0])
+            mDImgs[1].visibility = View.VISIBLE
+            mImgs[0].visibility = View.GONE
+            mDImgs[0].visibility = View.GONE
             return
         }
         for (i in 0 until mImgs.size){
@@ -143,8 +177,15 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
                 mImgs[i].visibility = View.VISIBLE
                 mImgs[i].scaleType = ImageView.ScaleType.FIT_XY
                 mImgs[i].setImageBitmap(mBitmaps[i])
+                mDImgs[i].visibility = View.VISIBLE
+            }else{
+                mImgs[i].visibility = View.VISIBLE
+                mImgs[i].setImageResource(R.mipmap.btn_addimg)
+                mDImgs[i].visibility = View.GONE
             }
         }
+
+        Log.i("evaluate_img_width","size:::"+mBitmaps.size)
     }
 
     private fun showEditAvatarDialog() {
@@ -177,6 +218,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
 
     override fun getImgUrl(url: String) {
         mImgUrl.add(url)
+        Log.i("evaluate_img_width","img::"+url+"url size"+mImgUrl.size)
     }
 
 

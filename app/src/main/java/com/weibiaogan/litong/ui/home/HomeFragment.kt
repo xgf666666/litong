@@ -37,7 +37,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
 
     var headView : View? = null
     var adapter = HomeAdapter(getListMulti(HomeBean()))
-    var mCurrentPage = 1;
+    var mCurrentPage = 1
 
     override fun getFragmentLayoutId(): Int {
         return R.layout.fragment_home
@@ -60,6 +60,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
 
     override fun initData() {
         //showContent()
+        showLoading()
         headView = LayoutInflater.from(mContext).inflate(R.layout.home_head_view, null, false)
         rv_home_bottom.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
 

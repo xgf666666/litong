@@ -1,7 +1,9 @@
 package com.weibiaogan.litong.ui.mine
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.weibiaogan.litong.R
@@ -9,6 +11,9 @@ import com.weibiaogan.litong.adapter.mine.MyPublishProjectAdapter
 import com.weibiaogan.litong.entity.PublicProjectBean
 import com.weibiaogan.litong.mvp.contract.MyPublishProjectContract
 import com.weibiaogan.litong.mvp.presenter.MyPublishProjectPresenter
+import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
+import com.weibiaogan.litong.ui.project.PayCenterActivity
+import com.weibiaogan.litong.ui.receipt.EvaluateActivity
 import com.weibiaogan.litong.utils.addData
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_store_list.*
@@ -18,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_store_list.*
  * date: 2018/7/6
  * describe:我的发布
  */
-class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),MyPublishProjectContract.View, View.OnClickListener, OnRefreshLoadMoreListener {
+class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),MyPublishProjectContract.View, View.OnClickListener, OnRefreshLoadMoreListener, BaseQuickAdapter.OnItemChildClickListener {
 
     var adapter = MyPublishProjectAdapter(arrayListOf())
     var mCurrentPage = 1
@@ -84,11 +89,7 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
         tv_store_list_distance.setOnClickListener(this)
         refresh_store_list.setOnRefreshLoadMoreListener(this)
 
-        adapter.setOnItemChildClickListener { adapter, view, position -> {
-            when(view.id){
-
-            }
-        } }
+        adapter.setOnItemChildClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -107,8 +108,45 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
         getPresenter().bossProjectList(mStat.toString(),(++mCurrentPage).toString())
     }
 
+    /**
+     * 我的发布 结果
+     */
     override fun getBossProjectList(data: PublicProjectBean) {
         refresh_store_list.addData(adapter,data.data)
+    }
+
+    /**
+     * 取消项目
+     */
+    override fun cancelProject(msg: String) {
+        showToast(msg)
+    }
+
+
+    /**
+     * adapter item click
+     */
+    override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+        if (view?.id == R.id.tv_one){   //取消项目
+            getPresenter().cancelProject((adapter as MyPublishProjectAdapter).data[position].pt_id.toString())
+        }else if (view?.id == R.id.tv_two){
+
+            var bean = (adapter as MyPublishProjectAdapter).data[position]
+            when(bean.pt_stat){
+                1,7 -> {
+                    if (bean.boss_comments == 0){   //评论工人
+                        EvaluateActivity.startEvaluate(mContext,0,bean.pt_id.toString())
+                    }
+                }
+                3 -> { SureWorkerActivity.startSureWork(this@MyPublishProjectActivity,bean.pt_user_id.toString(),bean.pt_id.toString()) }  //确认工人
+                4 -> { PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"1") } //付收款
+                5 -> {PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"1")} //付二期款
+                6 -> {PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"1")} //付尾款
+
+            }
+        }else if (view?.id == R.id.tv_three){   //查看项目
+            startActivity(Intent(mContext,OrdersDetailActivity::class.java))
+        }
     }
 
 

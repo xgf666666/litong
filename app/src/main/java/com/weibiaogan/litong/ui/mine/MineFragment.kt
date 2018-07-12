@@ -74,9 +74,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         ll_vip_area.setOnPerCheckLoginClickListner{
             if (Constants.getUserData()!=null){
                 if (Constants.getUserData().user.grid==1){
-                    var intent=Intent(context,PayCenterActivity::class.java)
-                    intent.putExtra("FLAG","1")
-                    startActivity(intent)
+                    PayCenterActivity.startPayCenter(mContext,"1")
                 }
             }
            }

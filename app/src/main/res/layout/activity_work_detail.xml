@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_45">
+            android:layout_marginTop="@dimen/margin_8">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/cv_work_detail_img"
                 android:layout_width="@dimen/work_list_img_width"
@@ -103,7 +103,7 @@
             android:id="@+id/tv_work_detail_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_45"
+            android:layout_marginTop="@dimen/margin_39"
             android:textSize="@dimen/text_dimen_third"
             android:textColor="@color/text_color_third"
             android:layout_marginBottom="@dimen/margin_14"

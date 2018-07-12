@@ -6,6 +6,7 @@ import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.WorkListConstract
 import com.weibiaogan.litong.mvp.model.WorkListModel
+import com.weibiaogan.litong.utils.loadDefulatRefresh
 
 /**
  * author: HuaiXianZhong
@@ -19,7 +20,7 @@ class WorkListPresenter : WorkListConstract.Presenter(){
             val token = Constants.getToken().token
             getModel().workerList(userId, token, page,Constants.getLocation()[0],Constants.getLocation()[1])
 
-                    .doOnSubscribe {
+                    /*.doOnSubscribe {
                         if (page == "1"){
                         getView()?.showLoadingDialog()}
                     }
@@ -28,7 +29,8 @@ class WorkListPresenter : WorkListConstract.Presenter(){
                         getView()?.dismissLoadingDialog() }
                     .doOnError {
                         if (page=="1")
-                        getView()?.dismissLoadingDialog() }
+                        getView()?.dismissLoadingDialog() }*/
+                    .loadDefulatRefresh(page == "1" , getView()!!)
                     /*.applyv2{
                         if (page == "1"){
                              loadDefulat(getView()!!)

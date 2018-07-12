@@ -9,6 +9,7 @@ import com.weibiaogan.litong.mvp.model.WorkDetailModel
 import com.weibiaogan.litong.mvp.contract.WorkEvaluateConstract
 import com.weibiaogan.litong.mvp.model.WorkEvaluateModel
 import com.weibiaogan.litong.mvp.model.WorkListModel
+import com.weibiaogan.litong.utils.loadDefulatRefresh
 
 /**
  * author: HuaiXianZhong
@@ -21,11 +22,7 @@ class WorkEvaluatePresenter : WorkEvaluateConstract.Presenter(){
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
             getModel().workEvaluate(userId, token, work_user_id, page)
-                    .apply {
-                        if (page == "1") {
-                            loadDefulat(getView()!!)
-                        }
-                    }
+                    .loadDefulatRefresh(page == "1",getView()!!)
                     .ui({
                         getView()?.getWorkEvaluateData(it.data!!)
                     }, {
