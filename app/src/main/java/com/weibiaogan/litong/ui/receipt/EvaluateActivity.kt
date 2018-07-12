@@ -163,6 +163,9 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
      * 显示选择的图片
      */
     fun showImage(){
+        if (mBitmaps.size == 0){
+            return
+        }
         if (mBitmaps.size == 1){
             mImgs[1].visibility = View.VISIBLE
             mImgs[1].scaleType = ImageView.ScaleType.FIT_XY

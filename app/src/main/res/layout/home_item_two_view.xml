@@ -51,7 +51,8 @@
             android:textColor="@color/text_color_third"
             android:lines="1"
             android:text="store name"
-            android:layout_marginTop="@dimen/home_item_two_txt_bottom"
+            android:layout_marginTop="@dimen/margin_3"
+            android:layout_marginBottom="5dp"
             />
     </LinearLayout>
 

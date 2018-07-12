@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    android:layout_marginTop="@dimen/margin_8">
 
     <ImageView
         android:id="@+id/iv_search_project_img"
@@ -34,7 +35,7 @@
             android:id="@+id/tv_search_project_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/search_project_list_txt_right"
+            android:layout_marginTop="@dimen/margin_14"
             android:text="name"
             android:textColor="@color/price_color"
             android:textSize="@dimen/text_dimen_first"
@@ -45,7 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/search_project_list_9"
             android:orientation="horizontal"
-            android:gravity="right">
+            android:gravity="right"
+            android:layout_marginBottom="@dimen/margin_8">
             <TextView
                 android:id="@+id/tv_search_project_time"
                 android:layout_width="0dp"

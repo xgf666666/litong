@@ -147,6 +147,8 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
         }else if (view?.id == R.id.tv_three){   //查看项目
             startActivity(Intent(mContext,OrdersDetailActivity::class.java))
         }
+
+        refresh_store_list.autoRefresh()
     }
 
 

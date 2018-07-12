@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.KeyEvent
 import com.blankj.utilcode.util.PermissionUtils
 import com.weibiaogan.litong.common.Constants
+import com.weibiaogan.litong.ui.login.LoginActivity
 
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import java.util.*
@@ -38,12 +39,17 @@ class SplashActivity : BaseMvpViewActivity() {
                                     override fun run() {
                                         //延迟之后关闭当前页面
                                         if (Constants.isFirst()) {
-//                                            startActivityThenFinishSelf(GuideActivity::class.java)
+                                            //startActivityThenFinishSelf(GuideActivity::class.java) 第一次进入app 向导页
                                             val intent = Intent(mContext, MainActivity::class.java)
                                             startActivity(intent)
+
                                         } else {
-                                            val intent = Intent(mContext, MainActivity::class.java)
-                                            startActivity(intent)
+                                            if (!Constants.isLogin()){
+                                                startActivity(Intent(mContext,LoginActivity::class.java))
+                                            }else{
+                                                val intent = Intent(mContext, MainActivity::class.java)
+                                                startActivity(intent)
+                                            }
                                             finish()
                                             overridePendingTransition(R.anim.scale_in,R.anim.scale_out)
                                         }

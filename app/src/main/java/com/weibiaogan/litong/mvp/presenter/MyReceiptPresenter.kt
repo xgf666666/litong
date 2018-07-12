@@ -11,6 +11,7 @@ import com.weibiaogan.litong.mvp.model.MyReceiptModel
 import com.weibiaogan.litong.mvp.model.StoreListModel
 import com.weibiaogan.litong.mvp.model.WorkDetailModel
 import com.weibiaogan.litong.mvp.model.WorkListModel
+import com.weibiaogan.litong.utils.loadDefulatRefresh
 
 /**
  * author: HuaiXianZhong
@@ -23,7 +24,7 @@ class MyReceiptPresenter : MyReceiptConstract.Presenter(){
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
             getModel().workProjectList(userId, token, stat, page)
-                    .loadDefulat(getView()!!)
+                    .loadDefulatRefresh(page == "1" , getView()!!)
                     .ui({
                         getView()?.getProjectList(it.data!!)
                     }, {

@@ -85,7 +85,7 @@ class MyReceiptActivity : BaseMvpActivity<MyReceiptConstract.Presenter>(), BaseQ
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
         when(view?.id){
-            R.id.tv_my_receipt_look -> startActivity(Intent(mContext,OrdersDetailActivity::class.java))
+            R.id.tv_my_receipt_look -> OrdersDetailActivity.startProjectDetail(mContext,(adapter as MyReceiptAdapter).data[position].pt_id.toString())
             R.id.tv_my_receipt_evaluate -> EvaluateActivity.startEvaluate(mContext,1,(adapter as MyReceiptAdapter).data[position].pt_id.toString())
         }
     }

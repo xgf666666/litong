@@ -44,6 +44,8 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<ProjectBean>, Or
         tv_store_list_all.setOnClickListener(this)
         tv_store_list_distance.setOnClickListener(this)
         swiperefreshlayout.setOnRefreshLoadMoreListener(this)
+
+        adapter.setOnItemClickListener { adapter, view, position -> OrdersDetailActivity.startProjectDetail(mContext,(adapter as HistoryProjectAdapter).data[position].pt_id.toString()) }
     }
 
     private fun setTextBtn(isAll: Boolean) {

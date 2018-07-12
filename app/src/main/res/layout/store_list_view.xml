@@ -69,7 +69,8 @@
             android:textSize="@dimen/text_dimen_third"
             android:text="location"
             android:drawableLeft="@mipmap/ic_list_location"
-            android:layout_marginTop="@dimen/margin_14"/>
+            android:layout_marginTop="@dimen/margin_14"
+            android:layout_marginBottom="@dimen/margin_8"/>
 
     </LinearLayout>
 

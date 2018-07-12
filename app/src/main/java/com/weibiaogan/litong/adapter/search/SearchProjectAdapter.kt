@@ -17,7 +17,7 @@ import com.weibiaogan.litong.utils.changeKm
 class SearchProjectAdapter(datas : List<SearchProjectBean>) : BaseQuickAdapter<SearchProjectBean,BaseViewHolder>(R.layout.search_project_list_view,datas) {
     override fun convert(helper: BaseViewHolder?, item: SearchProjectBean) {
         helper?.setText(R.id.tv_search_project_name,item?.pt_name)
-                ?.setText(R.id.tv_search_project_price,item?.all_price)
+                ?.setText(R.id.tv_search_project_price,"￥ "+item?.all_price)
                 ?.setText(R.id.tv_search_project_time,"截止时间 : "+item?.end_time)
                 ?.setText(R.id.tv_search_project_distance,item?.distance.changeKm())//distance gone
 

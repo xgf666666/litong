@@ -34,6 +34,7 @@ fun <T> SmartRefreshLayout.addData(adapter : BaseQuickAdapter<T,BaseViewHolder>,
             this.isEnableLoadMore = true
             this.isEnableRefresh = true
         }else{
+            adapter.setNewData(arrayListOf())
             this.isEnableLoadMore = false
             this.isEnableRefresh = false
         }

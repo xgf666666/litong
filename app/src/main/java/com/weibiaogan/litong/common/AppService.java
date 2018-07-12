@@ -8,6 +8,7 @@ import com.weibiaogan.litong.entity.LoginBean;
 import com.weibiaogan.litong.entity.MemberBean;
 import com.weibiaogan.litong.entity.MemberpowrBean;
 import com.weibiaogan.litong.entity.MyReceiptBean;
+import com.weibiaogan.litong.entity.OrderDetailBean;
 import com.weibiaogan.litong.entity.ProjectBean;
 import com.weibiaogan.litong.entity.PublicProjectBean;
 import com.weibiaogan.litong.entity.SearchProjectBean;
@@ -487,7 +488,7 @@ public interface AppService {
      */
     @GET("Publishproject/cancel_project")
     Observable<BaseResponseEntity<Object>> cancelProject(@Header("userId") String userId, @Header("token") String token ,
-                                                         @Field("pt_id") String pt_id);
+                                                         @Query("pt_id") String pt_id);
 
     /**
      * 确定工人
@@ -514,5 +515,7 @@ public interface AppService {
                                                       @Field("pt_id") String pt_id);
 
 
-
+    @GET("Publishproject/project_detail")
+    Observable<BaseResponseEntity<OrderDetailBean>> projectDetail(@Header("userId") String userId, @Header("token") String token ,
+                                                                  @Query("pt_id") String pt_id);
 }
