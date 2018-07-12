@@ -20,6 +20,7 @@ import com.weibiaogan.litong.mvp.contract.MineContract
 import com.weibiaogan.litong.mvp.presenter.MinePresenter
 import com.weibiaogan.litong.ui.blacklist.BlacklistActivity
 import com.weibiaogan.litong.ui.login.LoginActivity
+import com.weibiaogan.litong.ui.pay.WalletActivity
 import com.weibiaogan.litong.ui.project.PayCenterActivity
 import com.weibiaogan.litong.ui.receipt.MyReceiptActivity
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
@@ -64,7 +65,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
 
 
         view?.findViewById<View>(R.id.login_view)?.findViewById<TextView>(R.id.tv_login)?.setOnClickListener { startActivity(LoginActivity::class.java) }
-        ll_wallet_area.setOnPerCheckLoginClickListner { toast("未写") }
+        ll_wallet_area.setOnPerCheckLoginClickListner { startActivity(WalletActivity::class.java) }
         ll_orders_area.setOnPerCheckLoginClickListner { startActivity(MyReceiptActivity::class.java) }
         ll_project_area.setOnClickListener{ startActivity(Intent(context,MyPublishProjectActivity::class.java)) }
         ll_shop_area.setOnPerCheckLoginClickListner { toast("店铺入驻") }

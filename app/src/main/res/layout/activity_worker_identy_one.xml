@@ -79,11 +79,12 @@
                     android:text="联系方式"
                     android:textSize="15sp" />
                 <EditText
-                    android:id="@+id/ec_phone"
+                    android:id="@+id/et_phone"
                     android:layout_width="0dp"
                     android:layout_height="44dp"
                     android:layout_marginRight="14dp"
                     android:layout_weight="9"
+                    android:inputType="number"
                     android:background="@drawable/shape_edittext_bg"
                     android:hint="请输入手机号"
                     android:paddingLeft="10dp"
@@ -134,9 +135,16 @@
                     android:layout_marginLeft="93dp"
                     android:background="@color/editText_bg_color">
                     <ImageView
+                        android:id="@+id/iv_oneView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true" />
+                    <ImageView
+                        android:id="@+id/iv_one"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
+                        android:scaleType="center"
                         android:src="@mipmap/btn_addimg"/>
                 </RelativeLayout>
                 <RelativeLayout
@@ -146,6 +154,12 @@
                     android:layout_marginLeft="14dp"
                     android:background="@color/editText_bg_color">
                     <ImageView
+                        android:id="@+id/iv_twoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true" />
+                    <ImageView
+                        android:id="@+id/iv_two"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
@@ -227,10 +241,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginRight="14dp"
+                android:inputType="number"
                 android:background="@drawable/shape_edittext_bg"
                 android:hint="请输入担保人联系方式"
                 android:paddingLeft="10dp"
                 android:layout_marginLeft="92dp"
+
                 android:layout_marginTop="@dimen/margin_14"
                 android:textSize="15sp" />
         </LinearLayout>

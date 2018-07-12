@@ -1,5 +1,6 @@
 package com.weibiaogan.litong.ui.login
 
+import com.weibiaogan.litong.App
 import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.mvp.contract.LoginConstract
@@ -28,7 +29,11 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View{
         bt_login.setOnClickListener { getPresenter().login() }
         iv_qq.setOnClickListener {  }
         iv_wechat.setOnClickListener {  }
+        ib_backs.setOnClickListener{
+            App.getInstance()?.cleanActivity()
+            finish()
 
+        }
         iv_icon.setOnClickListener { startActivity(MainActivity::class.java) }
     }
 

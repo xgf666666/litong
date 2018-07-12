@@ -56,17 +56,18 @@ class ModifyBindFragment2 : BaseMvpViewFragment() {
 
             if (!RegexUtils.isMobileSimple(phone)){
                 toast("手机号码出错")
-                return;
+                return
             }
 
 
-            if (code.length != 6) {
-                toast("验证码格式出错")
-                return;
-            }
+//            if (code.length != 6) {
+//                toast("验证码格式出错")
+//                return
+//            }
             AppApi.Api().updateUserPhone(userId, token,phone, code).ui(
                     {
-                        toast("修改成功")
+                        toast(it.msg+"")
+                        Constants.putPhone(phone)
                      finishActivity()
                     }, {
                 toast("出错")
@@ -135,6 +136,7 @@ class ModifyBindFragment2 : BaseMvpViewFragment() {
 
 
     private fun setSendBtnText(s: String) {
+        if(tv_get_code!=null)
         tv_get_code.setText(s)
     }
 

@@ -1,5 +1,6 @@
 package com.weibiaogan.litong
 
+import android.app.Activity
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.view.KeyEvent
@@ -33,6 +34,7 @@ class MainActivity : BaseMvpViewActivity() {
     override fun getActivityLayoutId(): Int = R.layout.activity_main
 
     override fun initEvent() {
+        App.getInstance()?.setActivity(this as Activity)
         radio.setOnCheckedChangeListener { _, checkedId ->
           /*  ll_search_area.visibility= if (checkedId==0) View.VISIBLE else View.GONE*/
 //            iv_setup.visibility=if (checkedId==3)View.VISIBLE else View.GONE

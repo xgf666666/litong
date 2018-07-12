@@ -17,6 +17,7 @@ import com.weibiaogan.litong.entity.UserCenterBean;
 import com.weibiaogan.litong.entity.WorkDetailBean;
 import com.weibiaogan.litong.entity.WorkEvaluateBean;
 import com.weibiaogan.litong.entity.WorkListBean;
+import com.weibiaogan.litong.entity.Worker;
 import com.xx.baseutilslibrary.network.entity.ApiResponse;
 import com.xx.baseutilslibrary.network.entity.BaseResponseEntity;
 
@@ -244,8 +245,8 @@ public interface AppService {
      */
     @FormUrlEncoded
     @POST("User/update_before_user_phone")
-    Observable<BaseResponseEntity<Object>> updateBeforeUserPhone(@Field("userId") String userId,
-                                                                 @Field("token") String token,
+    Observable<BaseResponseEntity<Object>> updateBeforeUserPhone(@Header("userId") String userId,
+                                                                 @Header("token") String token,
                                                                  @Field("code") String code
     );
 
@@ -261,8 +262,8 @@ public interface AppService {
      */
     @FormUrlEncoded
     @POST("User/update_user_phone")
-    Observable<BaseResponseEntity<Object>> updateUserPhone(@Field("userId") String userId,
-                                                           @Field("token") String token,
+    Observable<BaseResponseEntity<Object>> updateUserPhone(@Header("userId") String userId,
+                                                           @Header("token") String token,
                                                            @Field("new_user_phone") String newUserPhone,
                                                            @Field("code") String code
     );
@@ -331,7 +332,6 @@ public interface AppService {
     @POST("Worker/worker_comments")
     Observable<BaseResponseEntity<WorkEvaluateBean>> workEvaluate(@Header("userId") String userId, @Header("token") String token,
                                                                         @Field("worker_user_id") String user_id , @Field("page") String page);
-
     /**
      * 店铺列表
      * @param userId
@@ -344,6 +344,7 @@ public interface AppService {
     @GET("Store/store_list")
     Observable<BaseResponseEntity<List<StoreListBean>>> storeList(@Header("userId") String userId, @Header("token") String token,
                                                                   @Query("page") String page , @Query("lat") String lat , @Query("lng") String lng , @Query("type") String type);
+
 
     /**
      * 店铺详情
@@ -370,8 +371,8 @@ public interface AppService {
      * @return
      */
     @GET("Publishproject/project_list")
-    Observable<BaseResponseEntity<List<ProjectBean>>> historyProject(@Header("userId") String userId, @Header("token") String token,
-                                                                     @Query("stat") String stat,@Query("lat") String lat,@Query("lng") String lng,@Query("page") String page,@Query("type") String type);
+    Observable<BaseResponseEntity<List<ProjectBean>>> historyProject(@Header("userId") String userId, @Header("token") String token, @Query("stat") String stat,@Query("lat") String lat,@Query("lng") String lng,@Query("page") String page,@Query("type") String type);
+
 
     /**
      * 搜索项目
@@ -413,6 +414,25 @@ public interface AppService {
      */
     @GET("User/user_grade")
     Observable<BaseResponseEntity<MemberBean>> vip(@Header("userId") String userId, @Header("token") String token);
+    /**
+     * 工人认证
+     * @param userId
+     * @param token
+     * @param map
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("User/apply_worker")
+    Observable<BaseResponseEntity<Object>> renzhengWorker(@Header("userId") String userId, @Header("token") String token,@FieldMap Map<String,String> map);
+
+    /**
+     * 认证请求工人列表数据
+     * @param userId
+     * @param token
+     * @return
+     */
+    @GET("Area/get_worker_area")
+    Observable<BaseResponseEntity<List<Worker>>> workerTyle(@Header("userId") String userId, @Header("token") String token);
 
     /**
      * 我的接单

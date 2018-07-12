@@ -77,7 +77,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
     }
 
     override fun initEvent() {
-        ll_phone.setOnClickListener(this)
+        ll_touxiang.setOnClickListener(this)
         ll_change_login_pw.setOnClickListener(this)
         ll_change_pay_pw.setOnClickListener(this)
         ll_sex.setOnClickListener(this)
@@ -86,7 +86,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
         ll_bos_renzheng.setOnClickListener(this)
         ll_workRenzheng.setOnClickListener(this)
         tv_back.setOnClickListener(this)
-        Log.i("wrwrwrwr","状态"+Constants.getUserData().user.bossStat+Constants.getUserData().user.bossStat)
+//        Log.i("wrwrwrwr","状态"+Constants.getUserData().user.bossStat+Constants.getUserData().user.bossStat)
     }
 
     override fun setData(o: UserCenterBean?) {
@@ -111,7 +111,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
             iv_avatar.loadImag(BuildConfig.DEV_DOMAIN+"/"+o.user.userImg, null, R.drawable.personal_center_, R.drawable.personal_center_)
             tv_name.text = o.user.nickname
             tv_sex.text = sexStr
-            tv_phone.text = o.user.userPhone.replaceRange(4, 7, "****")
+            tv_phone.text = Constants.getPhone().replaceRange(4, 7, "***")
         }
     }
 
@@ -119,7 +119,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
     override fun onClick(v: View) {
         when (v.id) {
         //头像点击
-            R.id.ll_phone -> {
+            R.id.ll_touxiang -> {
                 showEditAvatarDialog()
             }
         //修改登录密码

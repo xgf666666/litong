@@ -95,8 +95,7 @@
                         android:textSize="15sp">
 
                         <TextView
-                            android:id="@+id/tv_project_worker_selector_2"
-
+                            android:id="@+id/tv_select_two"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -134,6 +133,8 @@
                     android:layout_height="13dp"
                     android:background="@drawable/select_renzheng"
                     android:layout_marginLeft="33dp"
+                    android:padding="5dp"
+                    android:layout_gravity="center_vertical"
                     android:button="@null" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -149,6 +150,8 @@
                     android:layout_height="13dp"
                     android:background="@drawable/select_renzheng"
                     android:layout_marginLeft="51dp"
+                    android:layout_gravity="center_vertical"
+                    android:padding="5dp"
                     android:button="@null" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -159,6 +162,54 @@
                     android:textColor="@color/color888888"
                     android:textSize="15sp" />
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="44dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="开发票"
+                    android:layout_marginLeft="14dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
+                <CheckBox
+                    android:id="@+id/cb_fapiao"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:background="@drawable/select_renzheng"
+                    android:layout_marginLeft="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:padding="5dp"
+                    android:button="@null" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="可以开"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
+                <CheckBox
+                    android:id="@+id/cb_fapiaofou"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:background="@drawable/select_renzheng"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:padding="5dp"
+                    android:button="@null" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="不能开"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -180,6 +231,7 @@
                     android:background="@drawable/select_renzheng"
                     android:layout_marginLeft="33dp"
                     android:layout_gravity="center_vertical"
+                    android:padding="5dp"
                     android:button="@null" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -196,6 +248,7 @@
                     android:background="@drawable/select_renzheng"
                     android:layout_marginLeft="51dp"
                     android:layout_gravity="center_vertical"
+                    android:padding="5dp"
                     android:button="@null" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -206,63 +259,114 @@
                     android:textColor="@color/color888888"
                     android:textSize="15sp" />
             </LinearLayout>
-
-
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="44dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="个人/公司"
+                    android:layout_marginLeft="14dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
+                <CheckBox
+                    android:id="@+id/cb_person"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:background="@drawable/select_renzheng"
+                    android:layout_marginLeft="33dp"
+                    android:layout_gravity="center_vertical"
+                    android:padding="5dp"
+                    android:button="@null" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="个人"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
+                <CheckBox
+                    android:id="@+id/cb_company"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:background="@drawable/select_renzheng"
+                    android:layout_marginLeft="33dp"
+                    android:layout_gravity="center_vertical"
+                    android:padding="5dp"
+                    android:button="@null" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="公司"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/color888888"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="27dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="个人/公司"
+                    android:text="单价范围"
                     android:textSize="15sp" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:orientation="horizontal">
 
-                    <RelativeLayout
-                        android:id="@+id/rl_personOr"
-                        android:layout_width="match_parent"
+                    <EditText
+                        android:id="@+id/et_fistPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="2"
+                        android:inputType="number|numberDecimal"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:paddingLeft="10dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="至"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/et_lastPrice"
+                        android:layout_width="0dp"
                         android:layout_height="44dp"
                         android:layout_marginRight="14dp"
-                        android:layout_weight="3"
-                        android:background="@drawable/shape_edittext_bg_white_gray"
-                        android:orientation="horizontal"
+                        android:layout_weight="2"
+                        android:inputType="number|numberDecimal"
+                        android:background="@drawable/shape_edittext_bg"
                         android:paddingLeft="10dp"
-                        android:textSize="15sp">
-
-                        <TextView
-                            android:id="@+id/tv_project_worker_selector_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:textSize="@dimen/text_dimen_second"
-                            android:text="个人" />
-
-                        <ImageView
-                            android:id="@+id/iv_select"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:src="@mipmap/btn_triangle_down" />
-                    </RelativeLayout>
-
+                        android:textSize="15sp" />
                 </LinearLayout>
 
-
             </LinearLayout>
+
+
+
+
 
 
 
@@ -319,7 +423,7 @@
                     android:textSize="15sp" />
 
                 <EditText
-                    android:id="@+id/et_conye"
+                    android:id="@+id/et_congye"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="14dp"

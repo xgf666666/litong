@@ -2,9 +2,11 @@ package com.weibiaogan.litong.ui.modify
 
 import android.support.v4.app.Fragment
 import com.weibiaogan.litong.R
+import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.mvp.contract.ModifyBindContract
 import com.weibiaogan.litong.mvp.presenter.ModifyBindPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
+import kotlinx.android.synthetic.main.activity_change_pw2.*
 import java.util.*
 
 /**
@@ -16,7 +18,6 @@ class ModifyBindActivity:BaseMvpActivity<ModifyBindPresenter>(),ModifyBindContra
 
     private var fragments: ArrayList<Fragment?>? = null
 
-
     override fun createPresenter(): ModifyBindPresenter {
         return ModifyBindPresenter()
 
@@ -27,6 +28,7 @@ class ModifyBindActivity:BaseMvpActivity<ModifyBindPresenter>(),ModifyBindContra
     }
 
     override fun initData() {
+
         initFragments()
         showFragment(0)
     }
@@ -50,7 +52,7 @@ class ModifyBindActivity:BaseMvpActivity<ModifyBindPresenter>(),ModifyBindContra
 
                         }
                         1 -> fragments!![i] = ModifyBindFragment2()
-                        2 ->  fragments!![i] = ModifyBindFragment3()
+//                        2 ->  fragments!![i] = ModifyBindFragment3()
                     }
                     //添加到管理类
                     fragmentTransaction.add(R.id.container, fragments!![i])
