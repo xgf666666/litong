@@ -2,12 +2,14 @@ package com.weibiaogan.litong.ui.mine
 
 import android.Manifest
 import android.content.Intent
+import android.net.Uri
 import android.os.Environment
 import android.support.v4.widget.NestedScrollView
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.blankj.utilcode.util.PermissionUtils
+import com.bumptech.glide.Glide
 import com.weibiaogan.litong.BuildConfig
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.common.Constants
@@ -25,6 +27,7 @@ import com.weibiaogan.litong.ui.project.PayCenterActivity
 import com.weibiaogan.litong.ui.receipt.MyReceiptActivity
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import com.xx.baseutilslibrary.common.ImageChooseHelper
+import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager
 import kotlinx.android.synthetic.main.fragment_mywine.*
 
 
@@ -34,9 +37,15 @@ import kotlinx.android.synthetic.main.fragment_mywine.*
  * describe:
  */
 class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineContract.Model, MineContract.View, MinePresenter>(), MineContract.View {
+    var servicePhone:String?=null
+    override fun addShop(phone: String?) {
+        tv_service_phone.text=phone
+        servicePhone=phone
+    }
     override fun loadData(refresh: Boolean) {
         getPresenter().getData()
-    }
+
+}
 
 
     override fun createPresenter(): MinePresenter {
@@ -50,10 +59,8 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
 
     override fun initView(view: View?) {
         super.initView(view)
-
-
         addViewtoViews(login_view)
-
+        getPresenter().addShop()
     }
 
     override fun initEvent(view: View?) {
@@ -68,8 +75,6 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         ll_wallet_area.setOnPerCheckLoginClickListner { startActivity(WalletActivity::class.java) }
         ll_orders_area.setOnPerCheckLoginClickListner { startActivity(MyReceiptActivity::class.java) }
         ll_project_area.setOnClickListener{ startActivity(Intent(context,MyPublishProjectActivity::class.java)) }
-        ll_shop_area.setOnPerCheckLoginClickListner { toast("店铺入驻") }
-        tv_service_phone.setOnClickListener { toast("打电话") }
         ll_backlist_area.setOnPerCheckLoginClickListner { startActivity(BlacklistActivity::class.java) }
         ll_vip_area.setOnPerCheckLoginClickListner{
             if (Constants.getUserData()!=null){
@@ -78,8 +83,16 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
                 }
             }
            }
-        ll_shop_area.setOnPerCheckLoginClickListner { startActivity(ShopAddActivity::class.java) }
-
+        ll_shop_area.setOnPerCheckLoginClickListner {
+           var intent=Intent(mContext,ShopAddActivity::class.java)
+            intent.putExtra("phone",servicePhone)
+            startActivity(intent) }
+        ll_share_area.setOnClickListener{startActivity(ShareActivity::class.java)}
+        tv_service_phone.setOnClickListener{
+            val uri = Uri.parse("tel:"+servicePhone)
+            val it = Intent(Intent.ACTION_DIAL, uri)
+            startActivity(it)
+        }
     }
 
 
@@ -91,9 +104,20 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
 
 
     override fun setData(data: UserCenterBean?) {
-        iv_avatar.loadImag(data?.user?.userImg
-                ?: "", null, R.drawable.personal_center_, R.drawable.personal_center_)
+        Glide.with(this).load(Retrofit2Manager.instance.apiConfigProvider?.debugHost+data?.user?.userImg ?: "")
+//                .fallback(R.drawable.personal_center_)
+//                .placeholder(R.drawable.personal_center_)
+                .error(R.drawable.personal_center_).into(iv_avatar)
         Constants.setUserData(data)
+        tv_wallet.setText(""+data?.user?.balance)
+        if (data?.user?.grid==2){
+            tv_isVIP.setText(data?.user?.membersEnd)
+            iv_avatar_vip.setImageResource(R.mipmap.ic_facetop_vip_y)
+        }else{
+            iv_avatar_vip.setImageResource(R.mipmap.ic_facetop_vip)
+            tv_isVIP.setText("没开通")
+
+        }
         showContent()
         when (data?.user?.userSex) {
             1 -> {
@@ -114,12 +138,13 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         Log.i("dffssf",""+data?.user?.workerStat)
         when(data?.user?.bossStat){
 
-            1->{tv_label_need.setText("已认证需求方")
-                tv_label_need.setSolid(R.color.label_color_bg_green)
+            1->{tv_label_need.setText("待审核需求方")
+                tv_label_need.setSolid(R.color.bg_ddd)
             }
             2->{
-                tv_label_need.setText("待认证需求方")
-                tv_label_need.setSolid(R.color.bg_ddd)
+                tv_label_need.setText("已认证需求方")
+
+//                tv_label_need.setSolid(R.color.label_color_bg_green)
             }
             0->{
                 tv_label_need.setText("待认证需求方")
@@ -127,12 +152,12 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
             }
         }
         when(data?.user?.workerStat){
-            1->{tv_label_workers.setText("已认证工人")
-                tv_label_workers.setSolid(R.color.label_color_bg_accent)
+            1->{tv_label_workers.setText("待审核工人")
+                tv_label_workers.setSolid(R.color.bg_ddd)
             }
             2->{
-                tv_label_workers.setText("待认证工人")
-                tv_label_workers.setSolid(R.color.bg_ddd)
+                tv_label_workers.setText("已认证工人")
+//                tv_label_workers.setSolid(R.color.label_color_bg_accent)
             }
             0->{
                 tv_label_workers.setText("待认证工人")
@@ -196,6 +221,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         if (Constants.isLogin()) {
             if (Constants.getUserData() == null) {
                 showLoading()
+
             }
             getPresenter().getData()
         } else {

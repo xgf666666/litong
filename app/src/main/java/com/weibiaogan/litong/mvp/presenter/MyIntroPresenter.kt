@@ -23,8 +23,6 @@ class MyIntroPresenter :  MyIntroContract.Presenter() {
     override fun getUserData(){
 
         if (Constants.isLogin()) {
-
-
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
             getModel().UserIndex(userId, token)
@@ -121,7 +119,7 @@ class MyIntroPresenter :  MyIntroContract.Presenter() {
         val userId = Constants.getToken().user_id.toString()
         val token = Constants.getToken().token
         getModel().updateUserSex(userId,token,sex).ui({
-            getView()?.showToast(it.status)
+            getView()?.showToast("修改成功")
             getView()?.sexSuccessful()
         },{
             getView()?.showToast(it)

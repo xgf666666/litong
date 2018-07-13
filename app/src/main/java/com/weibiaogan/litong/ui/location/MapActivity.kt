@@ -128,6 +128,9 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
             }else{
                 var intent = Intent()
                 intent.putExtra("location_result",result?.regeocodeAddress?.city)
+                intent.putExtra("location_address",result?.regeocodeAddress?.formatAddress)
+                intent.putExtra("location_lat",""+lats)
+                intent.putExtra("location_log",""+logs)
                 setResult(MainActivity.RESULT_CODE,intent)
                 finish()
             }
@@ -135,9 +138,13 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
     }
 
     override fun onMyLocationChange(p0: Location?) {
+        lats=p0?.latitude
+        logs=p0?.longitude
         getcoderSearch(LatLonPoint(p0?.latitude!!, p0?.longitude!!))
     }
 
+    var lats:Double?=0.0//维度
+    var logs:Double?=0.0//经度
     private fun toGeoLocation(x: Int, y: Int) {
 
         //            x = Integer.parseInt(xView.getText().toString().trim());
@@ -147,6 +154,8 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
         if (mLatlng != null) {
             maker(mLatlng,"你所点击的位置")
             getcoderSearch(LatLonPoint(mLatlng.latitude, mLatlng.longitude))
+            lats=mLatlng.latitude
+            logs=mLatlng.longitude
         }
 
 

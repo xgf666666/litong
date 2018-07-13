@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.mvp.presenter
 
 import com.blankj.utilcode.util.EncodeUtils
+import com.tencent.mm.opensdk.utils.Log
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.MineContract
@@ -15,6 +16,20 @@ import java.io.File
  * describe:我的酒馆
  */
 class MinePresenter : MineContract.Presenter() {
+    override fun addShop() {
+        val userId = Constants.getToken().user_id.toString()
+        val token = Constants.getToken().token
+        getModel().addShop(userId,token).ui({
+            if (it.status.equals("1"))
+            getView()?.addShop(it.data?.system_content)
+        },{
+            Log.i("adfaggga",it)
+            getView()?.showToast(it)
+        })
+
+
+    }
+
     override fun fileStore(file: File?) {
         Observable.just(file).subscribeOn(Schedulers.io()).map {
 
@@ -52,6 +67,7 @@ class MinePresenter : MineContract.Presenter() {
            getModel().UserIndex(userId, token)
                     .ui({
                         getView()?.setData(it.data)
+                        Log.i("fgsgfgsg",it.data!!.user.toString())
                     }, {
                         getView()?.showToast(it)
                     })

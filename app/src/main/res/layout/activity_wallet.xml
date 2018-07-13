@@ -60,6 +60,7 @@
             android:layout_marginTop="10dp"
             android:gravity="top"
             android:text="￥"
+            android:textColor="@color/color222222"
             android:textSize="20sp" />
 
         <TextView
@@ -69,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/tv_money_label"
             android:inputType="numberDecimal"
-            android:text="80000.00"
+            android:text="0.00"
             android:textColor="@color/text_color_first"
             android:textSize="40sp" />
 

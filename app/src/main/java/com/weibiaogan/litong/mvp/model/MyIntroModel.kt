@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.mvp.model
 
 import com.weibiaogan.litong.common.AppApi
+import com.weibiaogan.litong.entity.AddShopBean
 import com.weibiaogan.litong.entity.ImageBean
 import com.weibiaogan.litong.mvp.contract.MyIntroContract
 import com.xx.baseutilslibrary.network.entity.BaseResponseEntity
@@ -15,6 +16,8 @@ import io.reactivex.Observer
  * describe:我的信息
  */
 class MyIntroModel : MyIntroContract.Model {
+
+
     //退出登录
     override fun loginOff(userId: String, token: String?)=
     AppApi.Api().loginOff(userId,token)

@@ -1,14 +1,19 @@
 package com.weibiaogan.litong
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.os.Environment
 import android.support.v4.app.Fragment
 import android.view.KeyEvent
 import android.view.View
 import android.widget.RadioButton
 import com.blankj.utilcode.util.ActivityUtils
+import com.blankj.utilcode.util.PermissionUtils
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.common.Constants.KEY_INTENT_MAIN
+import com.weibiaogan.litong.dialog.ChooseImageDialogWrapper
 import com.weibiaogan.litong.ui.home.HomeFragment
 import com.weibiaogan.litong.ui.location.GeoToScreenActivity
 import com.weibiaogan.litong.ui.location.MapActivity
@@ -18,12 +23,14 @@ import com.weibiaogan.litong.ui.project.Projectragment
 import com.weibiaogan.litong.ui.search.SearchProjectActivity
 import com.weibiaogan.litong.utils.LocationManger
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
+import com.xx.baseutilslibrary.common.ImageChooseHelper
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 import java.util.*
 
 
 class MainActivity : BaseMvpViewActivity() {
-
+    private lateinit var imageChooseHelper: ImageChooseHelper
     companion object {
         const val INDEX_HOME = 0
         const val INDEX_PERSON = 3//个人中心
@@ -173,6 +180,7 @@ class MainActivity : BaseMvpViewActivity() {
         radio.check(INDEX_HOME)
 
         tv_home_location.text = Constants.getLocation()[2]
+        initImageChooseHelper()
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -180,11 +188,65 @@ class MainActivity : BaseMvpViewActivity() {
         val intExtra = intent!!.getIntExtra(KEY_INTENT_MAIN, INDEX_HOME)
         (radio.getChildAt(intExtra) as RadioButton).isChecked = true
     }
+    public fun showEditAvatarDialog() {
+        //选图弹窗
+        //请求相机和内存读取权限
+        PermissionUtils.permission(Manifest.permission.CAMERA, Manifest.permission_group.STORAGE)
+                .callback(object : PermissionUtils.SimpleCallback {
+                    override fun onGranted() {
+                        //被给予权限,调起选图弹窗
+                        ChooseImageDialogWrapper(imageChooseHelper)
+                                .showChooseImage()
+                    }
+
+                    override fun onDenied() {
+                        //被拒绝
+                        showToast("拒绝给予权限会导致该功能不能正常使用")
+                    }
+                })
+                .rationale { shouldRequest -> shouldRequest.again(true) }
+                .request()
+    }
+    //初始化调用相机和照片
+    public fun initImageChooseHelper(){
+        imageChooseHelper = ImageChooseHelper.Builder()
+                .setUpActivity(mContext as Activity)
+                .setAuthority("${BuildConfig.APPLICATION_ID}.fileprovider")//设置文件提供者
+                .setDirPath(Environment.getExternalStorageDirectory().absolutePath + "/" + BuildConfig.APPLICATION_ID)//设置文件存储路径
+                .isCrop(true)//开启裁剪
+                .setCompressQuality(100)//压缩质量[1,100]
+                .setSize(200, 200)//裁剪尺寸
+                .setOnFinishChooseAndCropImageListener { bitmap, file ->
+
+                    photoListener?.setPresenter(bitmap,file)
+                }
+                .create()
+    }
+
+    //创建一个接口回调数据给ProjectFragment
+    var photoListener: PhotoListener?=null
+    public fun setPhoto(photoListeners: PhotoListener){
+        photoListener=photoListeners
+    }
+     interface  PhotoListener{
+        fun setPresenter(bitmap: Bitmap,file:File)
+    }
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE){
             tv_home_location.text = data?.getStringExtra("location_result")
+        }else if (requestCode==2&& resultCode == RESULT_CODE){
+            var projectragment=fragments!![1] as Projectragment
+            var lots:String=data?.getStringExtra("location_log")!!
+            var lats:String=data?.getStringExtra("location_lat")!!
+            var address:String =data?.getStringExtra("location_address")!!
+            projectragment.setMap(lots ,lats,address )
+        } else{
+            imageChooseHelper.onActivityResult(requestCode, resultCode, data)
         }
     }
 

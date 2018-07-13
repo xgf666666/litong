@@ -2,17 +2,22 @@ package com.weibiaogan.litong.common;
 
 import android.arch.lifecycle.LiveData;
 
+import com.weibiaogan.litong.entity.AddShopBean;
 import com.weibiaogan.litong.entity.BlackBean;
 import com.weibiaogan.litong.entity.HomeBean;
 import com.weibiaogan.litong.entity.ImageBean;
+import com.weibiaogan.litong.entity.IsPublic;
 import com.weibiaogan.litong.entity.LoginBean;
 import com.weibiaogan.litong.entity.MemberBean;
 import com.weibiaogan.litong.entity.MemberpowrBean;
 import com.weibiaogan.litong.entity.MyReceiptBean;
 import com.weibiaogan.litong.entity.OrderDetailBean;
 import com.weibiaogan.litong.entity.ProjectBean;
+import com.weibiaogan.litong.entity.ProjectPublicNoteBean;
 import com.weibiaogan.litong.entity.PublicProjectBean;
+import com.weibiaogan.litong.entity.PublicWorker;
 import com.weibiaogan.litong.entity.SearchProjectBean;
+import com.weibiaogan.litong.entity.ShareUserBean;
 import com.weibiaogan.litong.entity.StoreDetailBean;
 import com.weibiaogan.litong.entity.StoreListBean;
 import com.weibiaogan.litong.entity.UserCenterBean;
@@ -479,6 +484,49 @@ public interface AppService {
     @POST("Publishproject/boss_project")
     Observable<BaseResponseEntity<PublicProjectBean>> bossProjectList(@Header("userId") String userId, @Header("token") String token ,
                                                                             @Field("stat") String stat , @Field("page") String page);
+    /**
+     * 工人认证
+     * @param userId
+     * @param token
+     * @param map
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("User/apply_boss")
+    Observable<BaseResponseEntity<Object>> renzhengBoss(@Header("userId") String userId, @Header("token") String token,@FieldMap Map<String,String> map);
+    /**
+     * 发布须知
+     * @param userId
+     * @param token
+     * @return
+     */
+    @POST("Publishproject/project_rules")
+    Observable<BaseResponseEntity<ProjectPublicNoteBean>> note(@Header("userId") String userId, @Header("token") String token);
+    /**
+     * 需求方发布项目工人类型等数据
+     * @param userId
+     * @param token
+     * @return
+     */
+    @GET("Publishproject/before_get_data")
+    Observable<BaseResponseEntity<PublicWorker>> publicWorkerTyle(@Header("userId") String userId, @Header("token") String token);
+    /**
+     * 需求方发布项目前验证资格
+     * @param userId
+     * @param token
+     * @return
+     */
+    @GET("Publishproject/index")
+    Observable<BaseResponseEntity<IsPublic>> isPublic(@Header("userId") String userId, @Header("token") String token);
+
+    /**
+     * 分享
+     * @param userId
+     * @param token
+     * @return
+     */
+    @GET("User/share")
+    Observable<BaseResponseEntity<ShareUserBean>> share(@Header("userId") String userId, @Header("token") String token);
 
     /**
      * 取消项目
@@ -587,4 +635,14 @@ public interface AppService {
     @POST("Publishproject/project_pick")
     Observable<BaseResponseEntity<Object>> clickReceipt(@Header("userId") String userId, @Header("token") String token ,
                                                    @Field("pt_id") String pt_id);
+    /**
+     * 商家入驻
+     * @param userId
+     * @param token
+     * @return
+     */
+    @GET("User/tenants")
+    Observable<BaseResponseEntity<AddShopBean>> addShop(@Header("userId") String userId, @Header("token") String token);
 }
+
+

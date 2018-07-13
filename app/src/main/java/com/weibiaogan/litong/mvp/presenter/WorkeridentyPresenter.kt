@@ -21,13 +21,24 @@ class WorkeridentyPresenter:WorkerIdentyContract.Presenter() {
             EncodeUtils.base64Encode2String(file?.readBytes())
         }.ui({
             Log.i("qqqqq",it)
-            getView()?.setView(it)
+            imgUp(it)
+
         }, {
             getView()?.showToast(it)
         }
         )
-
     }
+    private fun imgUp(imagBase64: String) {
+        getModel().imgup(imagBase64).ui(
+                {
+                    Log.i("qqqqq",it.msg+"地址"+it?.data?.imgUrl)
+                    getView()?.setView(it?.data?.imgUrl!!)
+                }, {
+            getView()?.showToast(it)
+        }
+        )
+    }
+
 
     override fun createModel(): WorkerIdentyContract.Model =WorkerIdentyModel()
 }

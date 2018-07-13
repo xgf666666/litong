@@ -179,6 +179,7 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:id="@+id/tv_isVIP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="已开通"
@@ -225,6 +226,7 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:id="@+id/tv_wallet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥0.00"
@@ -373,19 +375,50 @@
                 android:background="@color/white"
                 android:gravity="center"
                 android:orientation="horizontal">
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="21dp"
                     android:src="@mipmap/ic_user_blacklist" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:text="黑名单管理"
+                    android:textColor="@color/text_color_first"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="0px"
+                    android:layout_height="1px"
+                    android:layout_weight="1" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:src="@mipmap/ic_pull_right" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_share_area"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="21dp"
+                    android:src="@drawable/ic_user_share" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="分享"
                     android:textColor="@color/text_color_first"
                     android:textSize="15sp" />
 

@@ -16,11 +16,13 @@ import com.blankj.utilcode.util.PermissionUtils
 import com.flyco.dialog.listener.OnOperItemClickL
 import com.flyco.dialog.widget.ActionSheetDialog
 import com.weibiaogan.litong.BuildConfig
+import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.dialog.ChooseImageDialogWrapper
 import com.weibiaogan.litong.extensions.toast
 import com.weibiaogan.litong.mvp.contract.WorkerIdentyContract
 import com.weibiaogan.litong.mvp.presenter.WorkeridentyPresenter
+import com.weibiaogan.litong.ui.location.MapActivity
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import com.xx.baseutilslibrary.common.ImageChooseHelper
 import kotlinx.android.synthetic.main.activity_worker_identy_one.*
@@ -73,6 +75,9 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
      * 初始化事件
      */
     override fun initEvent() {
+        iv_project_location.setOnClickListener{
+            startActivityForResult(Intent(this, MapActivity::class.java),2)
+        }
         bt_submit.setOnClickListener{
             getViewData() }
         rl_addOne.setOnClickListener {
@@ -89,6 +94,8 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
                 TextUtils.isEmpty(img_one)||TextUtils.isEmpty(img_two)||TextUtils.isEmpty(et_project_location.text)||
                 TextUtils.isEmpty(et_danbaoren.text)||TextUtils.isEmpty(et_danbaoren.text)||TextUtils.isEmpty(et_danbaorenPhone.text)) {
             toast("完善资料")
+        }else if(et_phone.text.toString().length!=11||et_shenfenzheng.text.toString().length!=18||et_danbaorenPhone.text.toString().length!=11){
+            toast("手机号码或身份证")
         }else{
             map.put("a_name",et_name.text.toString())
             map.put("a_phone",et_phone.text.toString())
@@ -96,7 +103,7 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
             map.put("idcard_number",et_shenfenzheng.text.toString())
             map.put("idcard_img",img_one+","+img_two)
             map.put("a_address",et_project_location.text.toString())
-            map.put("lat_long","36,43")
+            map.put("lat_long",lots+","+lats)
             map.put("a_guarantor",et_danbaoren.text.toString())
             map.put("guarantor_phone",et_danbaorenPhone.text.toString())
             var intent=Intent(mContext,WorkerIDentyTwoActivity::class.java)
@@ -111,7 +118,7 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
 
 
     /**
-     * 显示修改头像弹窗
+     * 显示图片弹窗
      */
     private fun showEditAvatarDialog() {
         //选图弹窗
@@ -153,8 +160,20 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
                 }
                 .create()
     }
+    var lots:String?=null
+    var lats:String?=null
+    var address:String?=null
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        imageChooseHelper.onActivityResult(requestCode, resultCode, data)
+        if (requestCode==2&&resultCode== MainActivity.RESULT_CODE){
+            lots=data?.getStringExtra("location_log")!!
+            lats=data?.getStringExtra("location_lat")!!
+            address=data?.getStringExtra("location_address")!!
+            et_project_location.setText(address)
+
+        }else{
+            imageChooseHelper.onActivityResult(requestCode, resultCode, data)
+
+        }
     }
 
 

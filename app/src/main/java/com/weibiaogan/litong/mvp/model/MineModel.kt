@@ -14,6 +14,8 @@ import io.reactivex.Observer
  * describe:我的酒馆
  */
 class MineModel : MineContract.Model {
+    //商家入驻
+    override fun addShop(userId: String, token: String?)=AppApi.Api().addShop(userId,token)
     override fun UserIndex(userId: String, token: String?) =
             AppApi.Api().UserIndex(userId, token)
 

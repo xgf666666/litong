@@ -119,9 +119,9 @@
         <activity android:name=".ui.mine.KnowMemberActivity" />
         <activity android:name=".ui.project.ProjectPublicNoteActivity"></activity>
         <activity android:name=".ui.location.MapActivity"/>
-
         <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
         <service android:name="com.amap.api.location.APSService"></service>
+        <activity android:name=".ui.mine.ShareActivity"></activity>
     </application>
 
 </manifest>

@@ -15,8 +15,12 @@ public class UserCenterBean implements Serializable {
     /**
      * user : {"user_phone":"15812691920","nickname":"15812691920","user_img":"","balance":0,"returns_balance":0,"buy_balance":0,"lack":0}
      * order : {"wait_payment":0,"wait_delivery":0,"wait_goods":0}
+     * balance_payment_has : 是否设置支付密码
      */
-
+    @SerializedName("balance_payment_has")
+    private int balanceHas;
+    @SerializedName("service")
+    private String service;
     @SerializedName("user")
     private UserBean user;
     @SerializedName("order")
@@ -36,6 +40,30 @@ public class UserCenterBean implements Serializable {
 
     public void setOrder(OrderBean order) {
         this.order = order;
+    }
+
+    public int getBalanceHas() {
+        return balanceHas;
+    }
+
+    public void setBalanceHas(int balanceHas) {
+        this.balanceHas = balanceHas;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    @Override
+    public String toString() {
+        return "UserCenterBean{" +
+                "user=" + user +
+                ", order=" + order +
+                '}';
     }
 
     public static class UserBean implements Serializable {
@@ -59,10 +87,10 @@ public class UserCenterBean implements Serializable {
         private double balance;
         @SerializedName("returns_balance")
         private int returnsBalance;
-
+        @SerializedName("members_end_time")
+        private String membersEnd;
 
         @SerializedName("buy_balance")
-
         private int buyBalance;
         @SerializedName("user_sex")
         private int userSex;
@@ -126,6 +154,14 @@ public class UserCenterBean implements Serializable {
             return balance;
         }
 
+        public String getMembersEnd() {
+            return membersEnd;
+        }
+
+        public void setMembersEnd(String membersEnd) {
+            this.membersEnd = membersEnd;
+        }
+
         public void setBalance(double balance) {
             this.balance = balance;
         }
@@ -169,6 +205,23 @@ public class UserCenterBean implements Serializable {
         public void setWorkerStat(int workerStat) {
             this.workerStat = workerStat;
         }
+
+        @Override
+        public String toString() {
+            return "UserBean{" +
+                    "userPhone='" + userPhone + '\'' +
+                    ", nickname='" + nickname + '\'' +
+                    ", userImg='" + userImg + '\'' +
+                    ", balance=" + balance +
+                    ", returnsBalance=" + returnsBalance +
+                    ", buyBalance=" + buyBalance +
+                    ", userSex=" + userSex +
+                    ", lack=" + lack +
+                    ", grid=" + grid +
+                    ", bossStat=" + bossStat +
+                    ", workerStat=" + workerStat +
+                    '}';
+        }
     }
 
     public static class OrderBean implements Serializable {
@@ -208,5 +261,6 @@ public class UserCenterBean implements Serializable {
         public void setWaitGoods(int waitGoods) {
             this.waitGoods = waitGoods;
         }
+
     }
 }

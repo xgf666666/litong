@@ -22,7 +22,12 @@ class CommissionPresenter : CommissionContract.Presenter() {
             val token = Constants.getToken().token
             getModel().withdrawAdd(userId, token,cash,account,type,balancePaymentMD5).loadDefulat(getView()!!)
                     .ui({
-                        getView()?.successful()
+                        if (it.status.equals("1")){
+                            getView()?.successful()
+                        }else{
+                            getView()?.showToast(it.msg)
+                        }
+
                     }, {
                         getView()?.showToast(it)
                     })

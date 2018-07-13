@@ -2,6 +2,7 @@ package com.weibiaogan.litong.mvp.contract;
 
 import android.arch.lifecycle.LiveData;
 
+import com.weibiaogan.litong.entity.AddShopBean;
 import com.weibiaogan.litong.entity.ImageBean;
 import com.weibiaogan.litong.entity.UserCenterBean;
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter;
@@ -31,6 +32,7 @@ public interface MyIntroContract {
         void successful(String fanhui);
         void  sexSuccessful();
         void loginOff();
+
     }
 
     abstract class Presenter extends BaseMvpPresenter<Model, View> {
@@ -39,6 +41,7 @@ public interface MyIntroContract {
         public abstract void fileStore(@Nullable File file);
 
         public abstract void updateUser(@NotNull String sex);
+
     }
 
     interface Model {
@@ -59,5 +62,6 @@ public interface MyIntroContract {
         //退出登录
         @NotNull
         Observable<BaseResponseEntity<Object>> loginOff(@NotNull String userId, @Nullable String token);
+
     }
 }

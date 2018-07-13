@@ -29,100 +29,95 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:background="@color/colorAccent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="收益余额（元）"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
+            android:text="可提现金额:"
+            android:textColor="@color/color888888"
+            android:layout_marginTop="27dp"
+            android:layout_gravity="center"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:text="80000.00"
-            android:textColor="@color/colorWhite"
-            android:textSize="30sp" />
+            android:layout_marginTop="15dp"
+            android:text="0.00"
+            android:textColor="@color/color222222"
+            android:textSize="30sp"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/select_white_orange_rectangle"
-        android:gravity="center_vertical"
-        android:paddingBottom="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="4dp">
-
+        android:layout_marginTop="43dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="#dddddd">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:textSize="@dimen/text_dimen_first"
+                android:textColor="@color/color222222"
+                android:layout_marginLeft="13dp"
+                android:layout_gravity="center"/>
 
         <EditText
             android:id="@+id/et_cash"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="10dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:background="@null"
             android:hint="输入提现金额"
             android:inputType="number"
-            android:maxLength="11"
+            android:maxLength="12"
             android:textSize="14sp" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_all_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部提现"
+            android:textSize="@dimen/text_dimen_first"
+            android:textColor="@color/color3078EF"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="14dp"
+            android:layout_gravity="center"/>
 
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_all_balance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:text="全部提现"
-        android:textColor="@color/text_normal"
-        android:textSize="16sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/select_white_orange_rectangle"
-        android:gravity="center_vertical"
-        android:paddingBottom="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="4dp">
 
 
         <EditText
             android:id="@+id/et_account"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@null"
+            android:layout_height="44dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="14dp"
+            android:gravity="center_vertical"
+            android:background="#dddddd"
             android:hint="请输入提现支付宝账号"
+            android:paddingLeft="10dp"
             android:maxLength="11"
             android:textSize="14sp" />
 
-
-    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -131,8 +126,8 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="10dp"
         android:text="最低提现为10.00，请检查收款账号是否正确，一旦转出，不予退回"
-        android:textColor="#32afea"
-        android:textSize="11sp" />
+        android:textColor="@color/color888888"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/bt_submit"

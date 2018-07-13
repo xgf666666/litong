@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import com.blankj.utilcode.util.PermissionUtils
+import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.BitmapDrawableResource
 import com.flyco.dialog.listener.OnOperItemClickL
 import com.flyco.dialog.widget.ActionSheetDialog
@@ -29,6 +30,7 @@ import com.weibiaogan.litong.ui.modify.ModifyBindActivity
 import com.weibiaogan.litong.ui.pay.ChangePayPwActivity
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import com.xx.baseutilslibrary.common.ImageChooseHelper
+import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager
 import kotlinx.android.synthetic.main.activity_myintro.*
 
 /**
@@ -49,6 +51,9 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
     }
 
     override fun initData() {
+        if (Constants.getUserData().balanceHas==1){
+            tv_pay.setText("修改")
+        }
         imageChooseHelper = ImageChooseHelper.Builder()
                 .setUpActivity(this)
                 .setAuthority("${BuildConfig.APPLICATION_ID}.fileprovider")//设置文件提供者
@@ -64,15 +69,11 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                     getPresenter().fileStore(file)
                 }
                 .create()
-
-
-
-
-
     }
 
     override fun onResume() {
         super.onResume()
+
         setDataUser(Constants.getUserData())
     }
 
@@ -86,7 +87,6 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
         ll_bos_renzheng.setOnClickListener(this)
         ll_workRenzheng.setOnClickListener(this)
         tv_back.setOnClickListener(this)
-//        Log.i("wrwrwrwr","状态"+Constants.getUserData().user.bossStat+Constants.getUserData().user.bossStat)
     }
 
     override fun setData(o: UserCenterBean?) {
@@ -95,7 +95,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
     }
 
     fun setDataUser(o: UserCenterBean?) {
-        if (o != null) {
+        if (o != null&&o.user!=null) {
             var sexStr = when (o.user.userSex) {
                 1 -> {
                     "女"
@@ -107,8 +107,13 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                     "未知"
                 }
             }
-            Log.i("iamgeview",BuildConfig.DEV_DOMAIN+"/"+o.user.userImg)
-            iv_avatar.loadImag(BuildConfig.DEV_DOMAIN+"/"+o.user.userImg, null, R.drawable.personal_center_, R.drawable.personal_center_)
+//            Log.i("iamgeview",BuildConfig.DEV_DOMAIN+"/"+o.user.userImg)
+//            iv_avatar.loadImag(BuildConfig.DEV_DOMAIN+"/"+o.user.userImg, null, R.drawable.personal_center_, R.drawable.personal_center_)
+            Glide.with(this).load(Retrofit2Manager.instance.apiConfigProvider?.debugHost+o?.user?.userImg ?: "")
+                    .fallback(R.drawable.personal_center_)
+                    .placeholder(R.drawable.personal_center_)
+                    .error(R.drawable.personal_center_)
+                    .into(iv_avatar)
             tv_name.text = o.user.nickname
             tv_sex.text = sexStr
             tv_phone.text = Constants.getPhone().replaceRange(4, 7, "***")
@@ -149,6 +154,8 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                 }
             R.id.ll_bos_renzheng->{
                 if (Constants.getUserData().user.bossStat==1){
+                    toast("你已提交需求方审核")
+                }else if(Constants.getUserData().user.bossStat==2){
                     toast("你已认证需求方")
                 }else{
                     startActivity(BosIdentyActivity::class.java)
@@ -158,6 +165,8 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
             }
             R.id.ll_workRenzheng->{
                 if (Constants.getUserData().user.workerStat==1){
+                    toast("你已提交工人审核")
+                }else if(Constants.getUserData().user.workerStat==2){
                     toast("你已认证工人")
                 }else{
                     startActivity(WorkerIDentyOneActivity::class.java)
@@ -207,8 +216,8 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
 
    lateinit var sex:String
     private fun showChangeSexDialog() {
-        val items = arrayOf<String>("男", "女", "保密")
-        val itemsInt = arrayOf("2", "1", "3")
+        val items = arrayOf<String>("男", "女")
+        val itemsInt = arrayOf("2", "1")
         val dialog = ActionSheetDialog(this, items, null).isTitleShow(false)
         dialog.setOnOperItemClickL(object : OnOperItemClickL {
                     override fun onOperItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

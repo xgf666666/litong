@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.ui.modify
 
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import com.blankj.utilcode.util.RegexUtils
@@ -42,24 +43,6 @@ class ModifyBindFragment1 : BaseMvpViewFragment() {
         ib_back.setOnClickListener { finishActivity() }
         bt_submit.setOnClickListener { checkCode(et_code.text.toString().trim()) }
         tv_get_code.setOnClickListener { sendVCode(et_cellPhone.text.toString().trim()) }
-
-//        et_code.addTextChangedListener(object : TextWatcher {
-//            override fun afterTextChanged(s: Editable?) {
-//                bt_submit.isEnabled = s?.length == 6
-//
-//            }
-//
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//
-//
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//
-//
-//            }
-
-//        })
     }
 
     override fun initData() {
@@ -134,22 +117,26 @@ class ModifyBindFragment1 : BaseMvpViewFragment() {
     }
 
     private fun checkCode(code: String) {
+        if (TextUtils.isEmpty(et_code.text.toString())){
+            toast("请填写认证码")
 
-        if (Constants.isLogin()) {
-            val userId = Constants.getToken().user_id.toString()
-            val token = Constants.getToken().token
+        }else {
+            if (Constants.isLogin()) {
+                val userId = Constants.getToken().user_id.toString()
+                val token = Constants.getToken().token
 //            if (code.length != 6) {
 //                toast("验证码格式出错")
 //                return
 //            }
-            AppApi.Api().updateBeforeUserPhone(userId, token, code).ui(
-                    {
-                        et_cellPhone.setText("")
-                        et_code.setText("")
-                        (activity as ModifyBindActivity).showFragment(1)
-                    }, {
-                toast("验证码出错")
-            })
+                AppApi.Api().updateBeforeUserPhone(userId, token, code).ui(
+                        {
+                            et_cellPhone.setText("")
+                            et_code.setText("")
+                            (activity as ModifyBindActivity).showFragment(1)
+                        }, {
+                    toast("验证码出错")
+                })
+            }
         }
     }
 

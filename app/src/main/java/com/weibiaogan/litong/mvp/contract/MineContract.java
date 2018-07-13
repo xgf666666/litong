@@ -1,5 +1,6 @@
 package com.weibiaogan.litong.mvp.contract;
 
+import com.weibiaogan.litong.entity.AddShopBean;
 import com.weibiaogan.litong.entity.ImageBean;
 import com.weibiaogan.litong.entity.UserCenterBean;
 
@@ -25,12 +26,12 @@ public interface MineContract {
     interface View extends BaseMvpLcecView<UserCenterBean> {
 
         void setData(@Nullable UserCenterBean data);
-
+        void addShop(String phone);
     }
 
     abstract class Presenter extends BaseMvpPresenter<Model,View>{
         public abstract   void getData();
-
+        public abstract void addShop();
         public  abstract   void fileStore(@Nullable File file);
     }
 
@@ -42,5 +43,8 @@ public interface MineContract {
 
         @NotNull
         Observable<BaseResponseEntity<UserCenterBean>> UserIndex(@NotNull String userId, @Nullable String token);
+        //商家入驻
+        @NotNull
+        Observable<BaseResponseEntity<AddShopBean>> addShop(@NotNull String userId, @Nullable String token);
     }
 }

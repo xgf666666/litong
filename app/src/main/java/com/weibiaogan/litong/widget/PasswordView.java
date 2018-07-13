@@ -24,7 +24,7 @@ public class PasswordView extends EditText {
     //格子的底色
     private int gridColor = Color.LTGRAY;
     //点的颜色
-    private int pointColor = Color.WHITE;
+    private int pointColor = Color.BLACK;
     //密码长度
     private int pswLen = 6;
     //小格子之间的距离

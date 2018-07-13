@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.mvp.presenter
 
 import android.text.TextUtils
+import android.util.Log
 import com.blankj.utilcode.util.RegexUtils
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.common.md5Salt
@@ -29,8 +30,8 @@ class ChangePayPwPresenter :  ChangePayPwContract.Presenter() {
             getView()?.showToast("请输入验证码")
             return
         }
-        if (code!!.length!=6){
-            getView()?.showToast("请输入6位验证码")
+        if (code!!.length!=4){
+            getView()?.showToast("请输入4位验证码")
             return
         }
 
@@ -105,6 +106,7 @@ class ChangePayPwPresenter :  ChangePayPwContract.Presenter() {
                         .map { aLong -> timeCount - aLong!! }
                         .doOnSubscribe {
                             //发送数据中,将发送按钮状态设置为不可用
+                            Log.i("fagagag",it.toString())
                             getView()?.setSendBtnEnable(false)
 
                         }

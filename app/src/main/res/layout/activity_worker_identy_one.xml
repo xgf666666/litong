@@ -196,6 +196,7 @@
                         android:layout_marginRight="14dp"
                         android:layout_weight="9"
                         android:background="@drawable/shape_edittext_bg"
+                        android:enabled="false"
                         android:hint="请输入项目具体地址"
                         android:textSize="15sp" />
                     <ImageView

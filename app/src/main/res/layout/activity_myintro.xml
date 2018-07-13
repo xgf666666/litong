@@ -328,14 +328,13 @@
             android:layout_weight="1" />
 
         <TextView
-
+            android:id="@+id/tv_pay"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@null"
             android:textColor="@color/text_color_third"
-
             android:gravity="center"
             android:maxLength="11"
             android:text="设置"

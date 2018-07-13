@@ -1,10 +1,15 @@
 package com.weibiaogan.litong.mvp.presenter
 
+import com.blankj.utilcode.util.EncodeUtils
+import com.tencent.mm.opensdk.utils.Log
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.ProjectContract
 import com.weibiaogan.litong.mvp.model.ProjectModel
+import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
+import java.io.File
 
 /**
  * author: Gubr
@@ -12,6 +17,29 @@ import com.weibiaogan.litong.mvp.model.ProjectModel
  * describe:发现
  */
 class ProjectPresenter : ProjectContract.Presenter() {
+    override fun isPublic() {
+        val userId = Constants.getToken().user_id.toString()
+        val token = Constants.getToken().token
+        getModel().isPublic(userId,token).ui({
+            getView()?.isPublic(it)
+        },{
+            getView()?.showToast(it)
+        })
+    }
+
+    override fun getWorkerTyle() {
+            val userId = Constants.getToken().user_id.toString()
+            val token = Constants.getToken().token
+            getModel().getWorkerTyle(userId,token)?.ui({
+                getView()?.setWorker(it.data!!)
+                Log.i("fafafaf",it.data.toString())
+            },{
+                getView()?.showToast(it)
+            })
+
+
+    }
+
     override fun pullProject(ptname: String, ptdescribe: String,
                              endtime: String, ptaddress: String, areaid: String, firstprice: String,
                              secondprice: String, threeprice: String, ptimgs: String, latlong: String,
@@ -56,20 +84,38 @@ class ProjectPresenter : ProjectContract.Presenter() {
                 return
             }
 
-
-
-
-
             getModel().pullProject(userId, token, ptname, ptdescribe, endtime, ptaddress, areaid, firstprice, secondprice, threeprice, ptimgs, latlong, allprice)
                     .loadDefulat(getView()!!)
                     .ui({
                         getView()?.successful()
+                        Log.i("dagag",it.msg)
                     }, {
                         getView()?.showToast(it)
                     })
         } else {
 
         }
+    }
+    override fun fileStore(file: File?) {
+        Observable.just(file).subscribeOn(Schedulers.io()).map {
+            EncodeUtils.base64Encode2String(file?.readBytes())
+        }.ui({
+            imgUp(it)
+        }, {
+            getView()?.showToast(it)
+        }
+        )
+
+    }
+    private fun imgUp(imagBase64: String) {
+        getModel().imgup(imagBase64).ui(
+                {
+                    Log.i("qqqqq",it.msg+"地址"+it?.data?.imgUrl)
+                    getView()?.setView(it?.data?.imgUrl!!)
+                }, {
+            getView()?.showToast(it)
+        }
+        )
     }
 
     override fun createModel(): ProjectContract.Model {

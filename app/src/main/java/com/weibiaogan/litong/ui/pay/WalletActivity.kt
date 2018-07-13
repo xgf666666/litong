@@ -33,6 +33,12 @@ class WalletActivity:BaseMvpActivity<WalletPresenter>(),WalletContract.View{
     }
 
     override fun initData() {
+//        mUserData = Constants.getUserData()
+//        initView()
+    }
+
+    override fun onResume() {
+        super.onResume()
         mUserData = Constants.getUserData()
         initView()
     }
@@ -42,15 +48,9 @@ class WalletActivity:BaseMvpActivity<WalletPresenter>(),WalletContract.View{
     override fun initEvent() {
         bt_submit.setOnClickListener {
             val intent = Intent(mContext, CommissionActivity::class.java)
-            startActivityForResult(intent,0)
+            startActivity(intent)
+//            startActivityForResult(intent,0)
         }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-//        if (0==requestCode&&resultCode==CommissionActivity.RECHARGE_RESULT){
-//            getPresenter().refreshBalance(Constants.getToken().user_id.toString(),Constants.getToken().token)
-//        }
     }
 
     /**

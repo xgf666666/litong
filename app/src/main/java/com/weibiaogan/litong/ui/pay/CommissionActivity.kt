@@ -1,6 +1,9 @@
 package com.weibiaogan.litong.ui.pay
 
+import android.app.AlertDialog
 import android.text.TextUtils
+import android.view.View
+import android.widget.TextView
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.entity.UserCenterBean
@@ -8,7 +11,7 @@ import com.weibiaogan.litong.extensions.format
 import com.weibiaogan.litong.extensions.toast
 import com.weibiaogan.litong.mvp.contract.CommissionContract
 import com.weibiaogan.litong.mvp.presenter.CommissionPresenter
-import com.weibiaogan.litong.widget.InputPwdDialog
+import com.weibiaogan.litong.widget.PwdEditText
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_commission.*
 
@@ -17,10 +20,13 @@ import kotlinx.android.synthetic.main.activity_commission.*
  * date: 2018/5/9
  * describe:佣金余额
  */
-class CommissionActivity : BaseMvpActivity<CommissionPresenter>(), CommissionContract.View {
+class CommissionActivity : BaseMvpActivity<CommissionPresenter>(), CommissionContract.View{
+
 
 
     override fun successful() {
+        var cash=et_cash.text.toString()
+        Constants.getUserData().user.balance= Constants.getUserData().user.balance-cash.toDouble()
         startActivity(CommissionSuccessfulActivity::class.java)
         finish()
     }
@@ -49,7 +55,7 @@ class CommissionActivity : BaseMvpActivity<CommissionPresenter>(), CommissionCon
         }
 
         bt_submit.setOnClickListener {
-            onShowPayPwdDialog()
+           showDialog()
         }
     }
 
@@ -72,7 +78,7 @@ class CommissionActivity : BaseMvpActivity<CommissionPresenter>(), CommissionCon
 
         val account = et_account.text.toString()
         if (TextUtils.isEmpty(account) || account.length < 5) {
-            toast("请输入帐号")
+            toast("请输入正确帐号")
             return
         }
 
@@ -87,23 +93,34 @@ class CommissionActivity : BaseMvpActivity<CommissionPresenter>(), CommissionCon
 
         getPresenter().commission(cash, account, "1", balancePayment)
     }
-
-
-    fun onShowPayPwdDialog() {
-        val inputPwdDialog = InputPwdDialog(mContext)
-        inputPwdDialog.setCancelable(false)
-        inputPwdDialog.setOnForgetClickListener { startActivity(ChangePayPwActivity::class.java) }
-        inputPwdDialog.setOnPswDialogClickListener(object : InputPwdDialog.OnPswDialogClickListener {
-            override fun onConfirm(password: String?) {
-                commission(password ?: "")
-                inputPwdDialog.dismiss()
+    var password:String?=null
+    var dialog:AlertDialog?=null
+    //支付框
+    fun showDialog() {
+        var view = View.inflate(mContext, R.layout.view_input_pay_psw_dialog, null)
+        var psw_view=view.findViewById<PwdEditText>(R.id.psw_view)
+        var tv_forget_pwd=view.findViewById<TextView>(R.id.tv_forget_pwd)
+        var bt_quxiao=view.findViewById<TextView>(R.id.bt_quxiao)
+        var bt_sure=view.findViewById<TextView>(R.id.bt_sure)
+        bt_quxiao.setOnClickListener{
+            dialog!!.dismiss()
+        }
+        bt_sure.setOnClickListener{
+            if (password!=null&&password?.length==6){
+                commission(password!!)
             }
 
-            override fun onLinkClick() {
-            }
-
-        })
-        inputPwdDialog.show()
+        }
+        tv_forget_pwd.setOnClickListener{
+                startActivity(ChangePayPwActivity::class.java)
+        }
+        psw_view.setOnInputFinishListener{
+            password=it
+        }
+        dialog = AlertDialog.Builder(mContext).create()
+        dialog!!.setView(view)
+//        dialog!!.setCanceledOnTouchOutside(false)
+        dialog!!.show()
     }
 
 }

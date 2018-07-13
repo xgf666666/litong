@@ -29,7 +29,7 @@ class WorkerIDentyTwoActivity : BaseMvpActivity<WorkerIdentyTwoPresenter>(),Work
         toast("成功")
         finish()
     }
-
+     var has_invoice:Int=-1
     var is_company:Int=-1
     var is_card:Int=-1
     var is_insurance:Int=-1
@@ -58,9 +58,11 @@ class WorkerIDentyTwoActivity : BaseMvpActivity<WorkerIdentyTwoPresenter>(),Work
             //是否有发票
             R.id.cb_fapiao->{
                 cb_fapiaofou.isChecked=false
+                has_invoice=1
             }
             R.id.cb_fapiaofou->{
                 cb_fapiao.isChecked=false
+                has_invoice=0
             }
             //保险情况
             R.id.cb_baoShi->{
@@ -149,7 +151,7 @@ class WorkerIDentyTwoActivity : BaseMvpActivity<WorkerIdentyTwoPresenter>(),Work
     private fun addMap(){
         if (map!=null){
             if (tv_select_one.equals("请选择")||tv_select_two.equals("请选择")||is_company==-1
-                    ||is_card==-1||is_insurance==-1||TextUtils.isEmpty(et_project_introduction.text.toString())||
+                    ||is_card==-1||has_invoice==-1||is_insurance==-1||TextUtils.isEmpty(et_project_introduction.text.toString())||
                     TextUtils.isEmpty(et_congye.text.toString())||TextUtils.isEmpty(et_zhiye.text.toString())||
                     TextUtils.isEmpty(et_zhiye.text.toString())||TextUtils.isEmpty(et_service.text.toString())){
                 toast("请完善资料")
@@ -157,6 +159,7 @@ class WorkerIDentyTwoActivity : BaseMvpActivity<WorkerIdentyTwoPresenter>(),Work
                 map!!.put("area_id",""+area_id)
                 map!!.put("is_company",""+is_company)
                 map!!.put("has_card",""+is_card)
+                map!!.put("has_invoice",""+has_invoice)
                 map!!.put("price_start",""+et_fistPrice.text.toString())
                 map!!.put("price_end",""+et_lastPrice.text.toString())
                 map!!.put("experience",""+et_congye.text.toString())

@@ -77,4 +77,17 @@ public class Worker {
     public void setPid(int pid) {
         this.pid = pid;
     }
+
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "area_id=" + area_id +
+                ", area_name='" + area_name + '\'' +
+                ", area_img='" + area_img + '\'' +
+                ", area_show=" + area_show +
+                ", area_sort=" + area_sort +
+                ", pid=" + pid +
+                ", son=" + son +
+                '}';
+    }
 }
