@@ -2,6 +2,7 @@ package com.weibiaogan.litong.common;
 
 import android.arch.lifecycle.LiveData;
 
+import com.weibiaogan.litong.entity.BlackBean;
 import com.weibiaogan.litong.entity.HomeBean;
 import com.weibiaogan.litong.entity.ImageBean;
 import com.weibiaogan.litong.entity.LoginBean;
@@ -515,7 +516,75 @@ public interface AppService {
                                                       @Field("pt_id") String pt_id);
 
 
+    /**
+     * 订单详情
+     * @param userId
+     * @param token
+     * @param pt_id
+     * @return
+     */
     @GET("Publishproject/project_detail")
     Observable<BaseResponseEntity<OrderDetailBean>> projectDetail(@Header("userId") String userId, @Header("token") String token ,
                                                                   @Query("pt_id") String pt_id);
+
+    /**
+     * 黑名单
+     * @param userId
+     * @param token
+     * @param page
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Backlist/backlist_list")
+    Observable<BaseResponseEntity<List<BlackBean>>> backlist(@Header("userId") String userId, @Header("token") String token ,
+                                                       @Field("page") String page,@Field("lat") String lat , @Field("lng") String lng);
+
+    /**
+     * 添加黑名单
+     * @param userId
+     * @param token
+     * @param worker_user_id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Backlist/backlist_add")
+    Observable<BaseResponseEntity<Object>> addBack(@Header("userId") String userId, @Header("token") String token ,
+                                                       @Field("worker_user_id") String worker_user_id);
+
+    /**
+     * 取消黑名单
+     * @param userId
+     * @param token
+     * @param id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Backlist/backlist_del")
+    Observable<BaseResponseEntity<Object>> delBack(@Header("userId") String userId, @Header("token") String token ,
+                                                       @Field("id") String id);
+
+    /**
+     * 需求方评论
+     * @param userId
+     * @param token
+     * @param pt_user_id
+     * @param page
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Publishproject/project_comments")
+    Observable<BaseResponseEntity<WorkEvaluateBean>> projectEvaluate(@Header("userId") String userId, @Header("token") String token,
+                                                                  @Field("pt_user_id") String pt_user_id , @Field("page") String page);
+
+    /**
+     * 点击接单
+     * @param userId
+     * @param token
+     * @param pt_id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Publishproject/project_pick")
+    Observable<BaseResponseEntity<Object>> clickReceipt(@Header("userId") String userId, @Header("token") String token ,
+                                                   @Field("pt_id") String pt_id);
 }

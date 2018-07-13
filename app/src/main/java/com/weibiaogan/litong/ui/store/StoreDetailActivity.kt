@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_store_detail.*
  */
 class StoreDetailActivity : BaseMvpActivity<StoreDetailConstract.Presenter>(),StoreDetailConstract.View{
 
+    var mDetailBean : StoreDetailBean? = null
     companion object {
         fun startStoreDetail(context: Context, user_id : Int){
             var intent = Intent(context, StoreDetailActivity::class.java)
@@ -42,10 +43,18 @@ class StoreDetailActivity : BaseMvpActivity<StoreDetailConstract.Presenter>(),St
     }
 
     override fun initEvent() {
-        tv_store_detail_goto_distance.setOnClickListener { startActivity(Intent(mContext,MapActivity::class.java)) }
+        tv_store_detail_goto_distance.setOnClickListener {
+            var intent = Intent(mContext,MapActivity::class.java)
+            intent.putExtra("type_location",1)
+            intent.putExtra("lat_location", mDetailBean?.lat_long?.split(",")!![1])
+            intent.putExtra("lng_location", mDetailBean?.lat_long?.split(",")!![0])
+            intent.putExtra("address_location",mDetailBean?.st_address)
+            startActivity(intent)
+        }
     }
 
     override fun getStoreDetailData(bean: StoreDetailBean) {
+        mDetailBean = bean
         tv_store_detail_name.text = (bean.st_name)
         tv_store_detail_phone.text = ("电话 : "+bean.st_phone)//phone
         tv_store_detail_address.text = ("地址 : " + bean.st_address.trim())

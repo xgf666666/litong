@@ -31,5 +31,19 @@ class WorkEvaluatePresenter : WorkEvaluateConstract.Presenter(){
         }
     }
 
+    override fun projectEvaluate(work_user_id: String, page: String) {
+        if (Constants.isLogin()) {
+            val userId = Constants.getToken().user_id.toString()
+            val token = Constants.getToken().token
+            getModel().projectEvaluate(userId, token, work_user_id, page)
+                    .loadDefulatRefresh(page == "1",getView()!!)
+                    .ui({
+                        getView()?.getWorkEvaluateData(it.data!!)
+                    }, {
+                        getView()?.showToast(it)
+                    })
+        }
+    }
+
     override fun createModel(): WorkEvaluateConstract.Model = WorkEvaluateModel()
 }

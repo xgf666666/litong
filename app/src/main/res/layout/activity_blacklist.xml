@@ -25,12 +25,9 @@
             android:src="@drawable/right_arrows"
             android:tint="@color/colorWhite" />
 
-
-
-
     </FrameLayout>
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/view_content"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_black_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -39,15 +36,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
-    <include android:id="@+id/view_loading"
-        layout="@layout/view_loading"
-        android:visibility="gone"/>
-    <include android:id="@+id/view_error"
-        android:visibility="gone"
-        layout="@layout/view_error"/>
-    <include android:id="@+id/view_check_net"
-        android:visibility="gone"
-        layout="@layout/view_check_net"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

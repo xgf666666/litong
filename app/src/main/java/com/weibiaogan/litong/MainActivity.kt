@@ -7,6 +7,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.widget.RadioButton
 import com.blankj.utilcode.util.ActivityUtils
+import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.common.Constants.KEY_INTENT_MAIN
 import com.weibiaogan.litong.ui.home.HomeFragment
 import com.weibiaogan.litong.ui.location.GeoToScreenActivity
@@ -26,6 +27,9 @@ class MainActivity : BaseMvpViewActivity() {
     companion object {
         const val INDEX_HOME = 0
         const val INDEX_PERSON = 3//个人中心
+
+        const val REQUEST_CODE = 0x11
+        const val RESULT_CODE = 0x12
     }
 
 
@@ -56,9 +60,7 @@ class MainActivity : BaseMvpViewActivity() {
         }
 
         ll_home_search.setOnClickListener {  startActivity(Intent(mContext, SearchProjectActivity::class.java)) }
-        tv_home_location.setOnClickListener { startActivity(Intent(mContext, MapActivity::class.java)) }
-
-        LocationManger.getInstance().startLocation()
+        tv_home_location.setOnClickListener { startActivityForResult(Intent(mContext, MapActivity::class.java),REQUEST_CODE) }
 
     }
 
@@ -169,12 +171,21 @@ class MainActivity : BaseMvpViewActivity() {
         initFragments()
         changeTitle(0)
         radio.check(INDEX_HOME)
+
+        tv_home_location.text = Constants.getLocation()[2]
     }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         val intExtra = intent!!.getIntExtra(KEY_INTENT_MAIN, INDEX_HOME)
         (radio.getChildAt(intExtra) as RadioButton).isChecked = true
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE){
+            tv_home_location.text = data?.getStringExtra("location_result")
+        }
     }
 
 }

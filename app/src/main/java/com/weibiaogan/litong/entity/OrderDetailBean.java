@@ -5,10 +5,9 @@ import java.util.List;
 /**
  * author: HuaiXianZhong
  * date: 2018/7/12
- * describe:
+ * describe:  订单详情
  */
 public class OrderDetailBean {
-
 
     /**
      * pt_id : 2
@@ -20,28 +19,29 @@ public class OrderDetailBean {
      * first_price : 20.00
      * second_price : 20.00
      * three_price : 60.00
-     * pt_stat : 2
-     * first_pay_time : 0
-     * second_pay_time : 0
-     * three_pay_time : 0
+     * pt_stat : 4
+     * first_pay_time : 345
+     * second_pay_time : 4353
+     * three_pay_time : 3453
      * worker_comments : 0
      * boss_comments : 0
      * prepaid_price : 0.00
      * prepaid_stat : 0
      * prepaid_time : 0
      * add_time : 2018.06.25
-     * pt_imgs : ["/uploads/20180517/fcea65fad4a4c81ac9f41520c1add22f.png","/uploads/20180517/fcea65fad4a4c81ac9f41520c1add22f.png","/uploads/20180517/fcea65fad4a4c81ac9f41520c1add22f.png"]
-     * user_id : 1
+     * pt_imgs : ["/uploads/20180704/ffb5f89bb13a1c946e9d04551005cc79.png","/uploads/20180704/ffb5f89bb13a1c946e9d04551005cc79.png"]
+     * user_id : 3945
      * lat_long : 113.222801,23.169136
      * all_price : 600.00
-     * pt_user_id : 0
+     * pt_user_id : 1
      * hidden_phone : 0
      * worker_frist_time : 0
      * worker_second_time : 0
      * worker_three_time : 0
      * boss_prepaid_time : 0
-     * boss_user : {"user_id":1,"user_phone":"13682873453","user_pwd":"fa509a31fab15f6613c0b8742e51fba9","user_img":"/uploads/20180517/fcea65fad4a4c81ac9f41520c1add22f.png","user_qrcode":"/uploads/user_qrcode/18926146071.png","user_sex":2,"user_qq":"","user_addtime":1525762728,"user_int":0,"gr_id":2,"token":"Z0quVkgQ5TGh4jtktx","balance":"1.00","returns_balance":"0.40","buy_balance":"0.00","balance_payment":"fa509a31fab15f6613c0b8742e51fba9","pid":"0","invite":"13682873453","nickname":"我就是我不一样的烟火","openid":"","province":"","city":"","area":"","address":"","is_del":0,"boss_stat":1,"worker_stat":1,"qqid":"","lat_long":"116.557684,23.192033","boss_lat_long":"113.321803,23.117347","members_end_time":1533225600,"worker_free":1}
+     * boss_user : {"user_phone":"18888888888"}
      * add_blacklist : 0
+     * show_pt_user : {"worker_user":"666","first_pay_time":"1970.01.01","second_pay_time":"1970.01.01","three_pay_time":"1970.01.01"}
      */
 
     private int pt_id;
@@ -74,6 +74,7 @@ public class OrderDetailBean {
     private int boss_prepaid_time;
     private BossUserBean boss_user;
     private int add_blacklist;
+    private ShowPtUserBean show_pt_user;
     private List<String> pt_imgs;
 
     public int getPt_id() {
@@ -316,6 +317,14 @@ public class OrderDetailBean {
         this.add_blacklist = add_blacklist;
     }
 
+    public ShowPtUserBean getShow_pt_user() {
+        return show_pt_user;
+    }
+
+    public void setShow_pt_user(ShowPtUserBean show_pt_user) {
+        this.show_pt_user = show_pt_user;
+    }
+
     public List<String> getPt_imgs() {
         return pt_imgs;
     }
@@ -326,77 +335,27 @@ public class OrderDetailBean {
 
     public static class BossUserBean {
         /**
-         * user_id : 1
-         * user_phone : 13682873453
-         * user_pwd : fa509a31fab15f6613c0b8742e51fba9
-         * user_img : /uploads/20180517/fcea65fad4a4c81ac9f41520c1add22f.png
-         * user_qrcode : /uploads/user_qrcode/18926146071.png
-         * user_sex : 2
-         * user_qq :
-         * user_addtime : 1525762728
-         * user_int : 0
-         * gr_id : 2
-         * token : Z0quVkgQ5TGh4jtktx
-         * balance : 1.00
-         * returns_balance : 0.40
-         * buy_balance : 0.00
-         * balance_payment : fa509a31fab15f6613c0b8742e51fba9
-         * pid : 0
-         * invite : 13682873453
-         * nickname : 我就是我不一样的烟火
-         * openid :
-         * province :
-         * city :
-         * area :
-         * address :
-         * is_del : 0
-         * boss_stat : 1
-         * worker_stat : 1
-         * qqid :
-         * lat_long : 116.557684,23.192033
-         * boss_lat_long : 113.321803,23.117347
-         * members_end_time : 1533225600
-         * worker_free : 1
+         * user_phone : 18888888888
          */
 
-        private int user_id;
         private String user_phone;
-        private String user_pwd;
-        private String user_img;
-        private String user_qrcode;
-        private int user_sex;
-        private String user_qq;
-        private int user_addtime;
-        private int user_int;
-        private int gr_id;
-        private String token;
-        private String balance;
-        private String returns_balance;
-        private String buy_balance;
-        private String balance_payment;
-        private String pid;
-        private String invite;
         private String nickname;
-        private String openid;
-        private String province;
-        private String city;
-        private String area;
-        private String address;
-        private int is_del;
-        private int boss_stat;
-        private int worker_stat;
-        private String qqid;
-        private String lat_long;
-        private String boss_lat_long;
-        private int members_end_time;
-        private int worker_free;
+        private String user_img;
 
-        public int getUser_id() {
-            return user_id;
+        public void setNickname(String mNickname) {
+            nickname = mNickname;
         }
 
-        public void setUser_id(int user_id) {
-            this.user_id = user_id;
+        public String getNickname() {
+            return nickname;
+        }
+
+        public void setUser_img(String mUser_img) {
+            user_img = mUser_img;
+        }
+
+        public String getUser_img() {
+            return user_img;
         }
 
         public String getUser_phone() {
@@ -406,237 +365,60 @@ public class OrderDetailBean {
         public void setUser_phone(String user_phone) {
             this.user_phone = user_phone;
         }
+    }
 
-        public String getUser_pwd() {
-            return user_pwd;
+    public static class ShowPtUserBean {
+        /**
+         * worker_user : 666
+         * first_pay_time : 1970.01.01
+         * second_pay_time : 1970.01.01
+         * three_pay_time : 1970.01.01
+         */
+
+        private String worker_user;
+        private String first_pay_time;
+        private String second_pay_time;
+        private String three_pay_time;
+        private String pt_user_id_time;
+
+        public void setPt_user_id_time(String mPt_user_id_time) {
+            pt_user_id_time = mPt_user_id_time;
         }
 
-        public void setUser_pwd(String user_pwd) {
-            this.user_pwd = user_pwd;
+        public String getPt_user_id_time() {
+            return pt_user_id_time;
         }
 
-        public String getUser_img() {
-            return user_img;
+        public String getWorker_user() {
+            return worker_user;
         }
 
-        public void setUser_img(String user_img) {
-            this.user_img = user_img;
+        public void setWorker_user(String worker_user) {
+            this.worker_user = worker_user;
         }
 
-        public String getUser_qrcode() {
-            return user_qrcode;
+        public String getFirst_pay_time() {
+            return first_pay_time;
         }
 
-        public void setUser_qrcode(String user_qrcode) {
-            this.user_qrcode = user_qrcode;
+        public void setFirst_pay_time(String first_pay_time) {
+            this.first_pay_time = first_pay_time;
         }
 
-        public int getUser_sex() {
-            return user_sex;
+        public String getSecond_pay_time() {
+            return second_pay_time;
         }
 
-        public void setUser_sex(int user_sex) {
-            this.user_sex = user_sex;
+        public void setSecond_pay_time(String second_pay_time) {
+            this.second_pay_time = second_pay_time;
         }
 
-        public String getUser_qq() {
-            return user_qq;
+        public String getThree_pay_time() {
+            return three_pay_time;
         }
 
-        public void setUser_qq(String user_qq) {
-            this.user_qq = user_qq;
-        }
-
-        public int getUser_addtime() {
-            return user_addtime;
-        }
-
-        public void setUser_addtime(int user_addtime) {
-            this.user_addtime = user_addtime;
-        }
-
-        public int getUser_int() {
-            return user_int;
-        }
-
-        public void setUser_int(int user_int) {
-            this.user_int = user_int;
-        }
-
-        public int getGr_id() {
-            return gr_id;
-        }
-
-        public void setGr_id(int gr_id) {
-            this.gr_id = gr_id;
-        }
-
-        public String getToken() {
-            return token;
-        }
-
-        public void setToken(String token) {
-            this.token = token;
-        }
-
-        public String getBalance() {
-            return balance;
-        }
-
-        public void setBalance(String balance) {
-            this.balance = balance;
-        }
-
-        public String getReturns_balance() {
-            return returns_balance;
-        }
-
-        public void setReturns_balance(String returns_balance) {
-            this.returns_balance = returns_balance;
-        }
-
-        public String getBuy_balance() {
-            return buy_balance;
-        }
-
-        public void setBuy_balance(String buy_balance) {
-            this.buy_balance = buy_balance;
-        }
-
-        public String getBalance_payment() {
-            return balance_payment;
-        }
-
-        public void setBalance_payment(String balance_payment) {
-            this.balance_payment = balance_payment;
-        }
-
-        public String getPid() {
-            return pid;
-        }
-
-        public void setPid(String pid) {
-            this.pid = pid;
-        }
-
-        public String getInvite() {
-            return invite;
-        }
-
-        public void setInvite(String invite) {
-            this.invite = invite;
-        }
-
-        public String getNickname() {
-            return nickname;
-        }
-
-        public void setNickname(String nickname) {
-            this.nickname = nickname;
-        }
-
-        public String getOpenid() {
-            return openid;
-        }
-
-        public void setOpenid(String openid) {
-            this.openid = openid;
-        }
-
-        public String getProvince() {
-            return province;
-        }
-
-        public void setProvince(String province) {
-            this.province = province;
-        }
-
-        public String getCity() {
-            return city;
-        }
-
-        public void setCity(String city) {
-            this.city = city;
-        }
-
-        public String getArea() {
-            return area;
-        }
-
-        public void setArea(String area) {
-            this.area = area;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
-        }
-
-        public int getIs_del() {
-            return is_del;
-        }
-
-        public void setIs_del(int is_del) {
-            this.is_del = is_del;
-        }
-
-        public int getBoss_stat() {
-            return boss_stat;
-        }
-
-        public void setBoss_stat(int boss_stat) {
-            this.boss_stat = boss_stat;
-        }
-
-        public int getWorker_stat() {
-            return worker_stat;
-        }
-
-        public void setWorker_stat(int worker_stat) {
-            this.worker_stat = worker_stat;
-        }
-
-        public String getQqid() {
-            return qqid;
-        }
-
-        public void setQqid(String qqid) {
-            this.qqid = qqid;
-        }
-
-        public String getLat_long() {
-            return lat_long;
-        }
-
-        public void setLat_long(String lat_long) {
-            this.lat_long = lat_long;
-        }
-
-        public String getBoss_lat_long() {
-            return boss_lat_long;
-        }
-
-        public void setBoss_lat_long(String boss_lat_long) {
-            this.boss_lat_long = boss_lat_long;
-        }
-
-        public int getMembers_end_time() {
-            return members_end_time;
-        }
-
-        public void setMembers_end_time(int members_end_time) {
-            this.members_end_time = members_end_time;
-        }
-
-        public int getWorker_free() {
-            return worker_free;
-        }
-
-        public void setWorker_free(int worker_free) {
-            this.worker_free = worker_free;
+        public void setThree_pay_time(String three_pay_time) {
+            this.three_pay_time = three_pay_time;
         }
     }
 }

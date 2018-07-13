@@ -27,6 +27,34 @@ class OrderDetailPresenter:OrdersDetailCOntract.Presenter() {
         }
     }
 
+    override fun addBlack(worker_user_id: String) {
+        if (Constants.isLogin()) {
+            val userId = Constants.getToken().user_id.toString()
+            val token = Constants.getToken().token
+            getModel().addBlack(userId, token, worker_user_id)
+                    ?.loadDefulat(getView()!!)
+                    ?.ui({
+                        getView()?.showToast(it?.msg!!)
+                    }, {
+                        getView()?.showToast(it)
+                    })
+        }
+    }
+
+    override fun clickReceipt(pt_id: String) {
+        if (Constants.isLogin()) {
+            val userId = Constants.getToken().user_id.toString()
+            val token = Constants.getToken().token
+            getModel().clickReceipt(userId, token, pt_id)
+                    ?.loadDefulat(getView()!!)
+                    ?.ui({
+                        getView()?.showToast(it?.msg!!)
+                    }, {
+                        getView()?.showToast(it)
+                    })
+        }
+    }
+
     override fun createModel(): OrdersDetailCOntract.Model {
         return OrderdDetailModel()
     }

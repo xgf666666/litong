@@ -7,6 +7,7 @@ import android.view.KeyEvent
 import com.blankj.utilcode.util.PermissionUtils
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.ui.login.LoginActivity
+import com.weibiaogan.litong.utils.LocationManger
 
 import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import java.util.*
@@ -34,6 +35,7 @@ class SplashActivity : BaseMvpViewActivity() {
                 .callback(object : PermissionUtils.SimpleCallback{
                     override fun onGranted() {
                         Log.e("Tag","有权限")
+                        LocationManger.getInstance().startLocation()
                         Timer().schedule(
                                 object : TimerTask() {
                                     override fun run() {

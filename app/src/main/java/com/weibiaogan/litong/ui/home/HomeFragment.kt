@@ -11,6 +11,8 @@ import android.widget.TextView
 import com.bigkoo.convenientbanner.ConvenientBanner
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
 import com.bigkoo.convenientbanner.holder.Holder
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.adapter.home.HomeAdapter
 import com.weibiaogan.litong.common.Constants
@@ -22,6 +24,7 @@ import com.weibiaogan.litong.mvp.presenter.HomePresenter
 import com.weibiaogan.litong.ui.project.HistoryProjectActivity
 import com.weibiaogan.litong.ui.store.StoreListActivity
 import com.weibiaogan.litong.ui.work.WorkListActivity
+import com.weibiaogan.litong.utils.addData
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -31,7 +34,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * date: 2018/5/6
  * describe:
  */
-class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, HomeConstract.View, HomePresenter>(), HomeConstract.View, View.OnClickListener {
+class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, HomeConstract.View, HomePresenter>(), HomeConstract.View, View.OnClickListener, OnRefreshLoadMoreListener {
     //val banner_imgs : List<Int> = arrayListOf(R.mipmap.img_banner,R.mipmap.img_banner,R.mipmap.img_banner)
     val banner_imgs = arrayListOf<String>()
 
@@ -56,6 +59,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         headView?.findViewById<TextView>(R.id.tv_home_material)?.setOnClickListener(this)
         headView?.findViewById<TextView>(R.id.tv_home_project)?.setOnClickListener(this)
         headView?.findViewById<TextView>(R.id.tv_home_history)?.setOnClickListener(this)
+        refresh_home.setOnRefreshLoadMoreListener(this)
     }
 
     override fun initData() {
@@ -73,6 +77,10 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
 
     fun getListMulti(bean : HomeBean) : List<HomeAdapter.HomeMultiItem>{
         var multiList = arrayListOf<HomeAdapter.HomeMultiItem>()
+        if (mCurrentPage != 1){
+            multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_THREE,bean))
+            return multiList
+        }
         multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_ONE,bean))
         multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_TWO,bean))
         multiList.add(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_THREE,bean))
@@ -82,14 +90,15 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
     override fun setData(data: Any?) {
         showContent()
         //adapter.setNewData(getListMulti())
-        for (bean in (data as HomeBean).adve){
-            banner_imgs.add(bean.ad_img)
+        if ((data as HomeBean).adve != null){
+            for (bean in (data).adve){
+                banner_imgs.add(bean.ad_img)
+            }
+            headView?.findViewById<ConvenientBanner<String>>(R.id.cb_home_top)?.
+                    setPages( { ImageHolderView() } , banner_imgs)?.
+                    setPointViewVisible(true)?.startTurning(2000)
         }
-        headView?.findViewById<ConvenientBanner<String>>(R.id.cb_home_top)?.
-                setPages( { ImageHolderView() } , banner_imgs)?.
-                setPointViewVisible(true)?.startTurning(2000)
-
-        adapter.setNewData(getListMulti(data))
+        refresh_home.addData(adapter,getListMulti(data))
     }
 
     override fun onClick(v: View?) {
@@ -99,6 +108,15 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
             R.id.tv_home_material -> startActivity(Intent(mContext,StoreListActivity::class.java))
             R.id.tv_home_history -> startActivity(Intent(mContext,HistoryProjectActivity::class.java))
         }
+    }
+
+    override fun onRefresh(refreshLayout: RefreshLayout?) {
+        mCurrentPage = 1
+        presenter.getHomeData(mCurrentPage.toString())
+    }
+
+    override fun onLoadMore(refreshLayout: RefreshLayout?) {
+        presenter.getHomeData((++mCurrentPage).toString())
     }
 
     inner class ImageHolderView : Holder<String>{

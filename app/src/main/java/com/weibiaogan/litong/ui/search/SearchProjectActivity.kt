@@ -47,7 +47,7 @@ class SearchProjectActivity : BaseMvpActivity<SearchProjectContract.Presenter>()
     }
 
     override fun initEvent() {
-        adapter?.setOnItemClickListener { adapter, view, position -> startActivity(Intent(mContext,OrdersDetailActivity::class.java)) }
+        adapter?.setOnItemClickListener { adapter, view, position -> OrdersDetailActivity.startProjectDetail(mContext,(adapter as SearchProjectAdapter).data[position].pt_id.toString()) }
 
         refresh_search_project.setOnRefreshLoadMoreListener(this)
 

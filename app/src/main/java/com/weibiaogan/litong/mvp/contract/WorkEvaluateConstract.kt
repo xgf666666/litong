@@ -22,9 +22,11 @@ interface WorkEvaluateConstract {
 
     public abstract class Presenter : BaseMvpPresenter<Model, View>() {
         abstract fun workEvaluate(work_user_id: String,page : String)
+        abstract fun projectEvaluate(work_user_id: String,page : String)
     }
 
     public interface Model {
         fun workEvaluate(userId : String , token : String , work_user_id : String,page : String) : Observable<BaseResponseEntity<WorkEvaluateBean>>
+        fun projectEvaluate(userId : String , token : String , pt_user_id : String,page : String) : Observable<BaseResponseEntity<WorkEvaluateBean>>
     }
 }

@@ -42,7 +42,7 @@ class WorkDetailActivity : BaseMvpActivity<WorkDetailConstract.Presenter>(),Work
     }
 
     override fun initEvent() {
-        fl_work_detail_goto.setOnClickListener { WorkEvaluateActivity.startWorkEvaluate(this@WorkDetailActivity,evaluateBean?.user_id!!)}
+        fl_work_detail_goto.setOnClickListener { WorkEvaluateActivity.startWorkEvaluate(this@WorkDetailActivity,0,evaluateBean?.user_id!!)}
     }
 
     override fun getWorkDetailData(bean: WorkDetailBean) {

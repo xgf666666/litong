@@ -127,11 +127,10 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
      * adapter item click
      */
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+        var bean = (adapter as MyPublishProjectAdapter).data[position]
         if (view?.id == R.id.tv_one){   //取消项目
-            getPresenter().cancelProject((adapter as MyPublishProjectAdapter).data[position].pt_id.toString())
+            getPresenter().cancelProject(bean.pt_id.toString())
         }else if (view?.id == R.id.tv_two){
-
-            var bean = (adapter as MyPublishProjectAdapter).data[position]
             when(bean.pt_stat){
                 1,7 -> {
                     if (bean.boss_comments == 0){   //评论工人
@@ -145,10 +144,10 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
 
             }
         }else if (view?.id == R.id.tv_three){   //查看项目
-            startActivity(Intent(mContext,OrdersDetailActivity::class.java))
+            OrdersDetailActivity.startProjectDetail(mContext,bean.pt_id.toString())
         }
-
-        refresh_store_list.autoRefresh()
+        mCurrentPage = 1
+        getPresenter().bossProjectList(mStat.toString(),mCurrentPage.toString())
     }
 
 

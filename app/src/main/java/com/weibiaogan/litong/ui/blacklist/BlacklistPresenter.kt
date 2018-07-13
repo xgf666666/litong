@@ -5,6 +5,7 @@ import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.ui.blacklist.BlacklistContract
 import com.weibiaogan.litong.ui.blacklist.BlacklistModel
+import com.weibiaogan.litong.utils.loadDefulatRefresh
 
 /**
  * author: Gubr
@@ -13,29 +14,16 @@ import com.weibiaogan.litong.ui.blacklist.BlacklistModel
  */
 class BlacklistPresenter :  BlacklistContract.Presenter() {
 
-
-
-
-    private var page = 0
-
-    override fun getData(isRefresh: Boolean, page: Int) {
+    override fun getData(page: Int) {
         if (Constants.isLogin()) {
 
 
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            this.page = page
-            getModel().getData(userId, token, "$page")
-                    .apply {
-                        if (isRefresh) loadDefulat(getView()!!)
-                    }
+            getModel().getData(userId, token, "$page",Constants.getLocation()[0],Constants.getLocation()[1])
+                    .loadDefulatRefresh(page == 1,getView()!!)
                     .ui({
-                        var data = it.data
-                        if (isRefresh) {
-                            getView()?.setData(data)
-                        } else {
-                            getView()?.addData(data)
-                        }
+                        getView()?.addData(it.data!!)
                     }, {
                         getView()?.showToast(it)
                     })
@@ -44,12 +32,22 @@ class BlacklistPresenter :  BlacklistContract.Presenter() {
         }
     }
 
+    override fun delBack(id: String) {
+        if (Constants.isLogin()) {
 
-    override fun loadData() {
-        getData(false, ++page)
+
+            val userId = Constants.getToken().user_id.toString()
+            val token = Constants.getToken().token
+            getModel().delBack(userId, token, "$id")
+                    ?.ui({
+                        getView()?.showToast(it?.msg!!)
+                    }, {
+                        getView()?.showToast(it)
+                    })
+        }else{
+            getView()?.showToast("请先登录")
+        }
     }
-
-
 
     override fun createModel(): BlacklistContract.Model {
         return BlacklistModel()

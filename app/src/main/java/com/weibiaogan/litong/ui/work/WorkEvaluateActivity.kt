@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_work_list.*
 /**
  * author: HuaiXianZhong
  * date: 2018/7/5
- * describe:  工人评价 页面
+ * describe:  工人评价  需求方评价 页面
  */
 class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),WorkEvaluateConstract.View, OnRefreshLoadMoreListener {
 
@@ -26,11 +26,13 @@ class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),
 
     var mUserId = -1
     var mCurrentPage = 1
+    var mType = 1
 
     companion object {
-        fun startWorkEvaluate(context: Context, user_id : Int){
+        fun startWorkEvaluate(context: Context,type : Int ,  user_id : Int){
             var intent = Intent(context,WorkEvaluateActivity::class.java)
             intent.putExtra("work_evaluate_id",user_id)
+            intent.putExtra("evaluate_type",type)
             context.startActivity(intent)
         }
     }
@@ -41,10 +43,11 @@ class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),
         tv_work_title.text = resources.getString(R.string.work_evaluate_title)
 
         mUserId = intent.getIntExtra("work_evaluate_id", -1)
-        if (mUserId != -1){
+        mType = intent.getIntExtra("evaluate_type",-1)
+        if (mType == 1){
+            getPresenter().projectEvaluate(mUserId.toString(),mCurrentPage.toString())
+        }else if (mType == 0){
             getPresenter().workEvaluate(mUserId.toString(),mCurrentPage.toString())
-        }else{
-            finish()
         }
 
         rv_work_list_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)

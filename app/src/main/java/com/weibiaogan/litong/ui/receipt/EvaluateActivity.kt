@@ -19,6 +19,7 @@ import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import com.xx.baseutilslibrary.common.ImageChooseHelper
 import kotlinx.android.synthetic.main.activity_evaluate_work.*
 import kotlinx.android.synthetic.main.activity_worker_identy_one.*
+import java.io.File
 import java.lang.StringBuilder
 
 /**
@@ -33,11 +34,15 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
     var mBitmaps = arrayListOf<Bitmap>()
     var mImgs = arrayListOf<ImageView>()
     var mDImgs = arrayListOf<ImageView>()
+    var mFileImgs = arrayListOf<File>()
 
     var type = 0   //0评论工人 1评论需求方
     var pt_id = ""
 
-    var mImgUrl = arrayListOf<String>()
+    var mPullImgs = ""
+
+    var content = ""
+    var  score = 100
 
     companion object {
         fun startEvaluate(context: Context,type : Int,pt_id : String){
@@ -100,7 +105,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
 
                     //上传头像
                     //getPresenter().fileStore(file)
-                    getPresenter().fileStore(file)
+                    mFileImgs.add(file)
                     mBitmaps.add(bitmap)
                     showImage()
                 }
@@ -126,10 +131,10 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
         mDImgs[i].visibility = View.GONE
         if (mBitmaps.size != 1){
             mBitmaps.remove(mBitmaps[i])
-            mImgUrl.remove(mImgUrl[i])
+            mFileImgs.remove(mFileImgs[i])
         }else {
             mBitmaps.remove(mBitmaps[0])
-            mImgUrl.remove(mImgUrl[0])
+            mFileImgs.remove(mFileImgs[0])
         }
 
         showImage()
@@ -139,23 +144,18 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
      * 上传评论数据
      */
     fun pullEvaluate(){
-        var content = et_evaluate_edit.text.toString().trim()
-        var score = sv_evaluate_score.starNum
-        var imgs = ""
-        for (i in 0 until mImgUrl.size){
-            imgs += mImgUrl[i] + ","
-        }
-        Log.i("evaluate_img_width","imgs::"+imgs)
+        content = et_evaluate_edit.text.toString().trim()
+        score = sv_evaluate_score.starNum
+
         if (TextUtils.isEmpty(content)){
             content = ""
-        }else if (!TextUtils.isEmpty(imgs)){
-            imgs = imgs.substring(0,imgs.length-2)  //去掉最后一个逗号
         }
-        Log.i("evaluate_img_width","imgs::"+imgs+"_score::"+score+"_content::"+content)
-        if (type == 0){
-            getPresenter().evaluateWork(pt_id,content,imgs,score.toString())
-        }else if (type == 1){
-            getPresenter().evaluateBoss(pt_id,content,imgs,score.toString())
+        if (mFileImgs.isEmpty()){
+            evaluate()
+            return
+        }
+        for (i in 0 until mFileImgs.size){
+            getPresenter().fileStore(mFileImgs[i])
         }
     }
 
@@ -220,9 +220,23 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
     }
 
     override fun getImgUrl(url: String) {
-        mImgUrl.add(url)
-        Log.i("evaluate_img_width","img::"+url+"url size"+mImgUrl.size)
+        mPullImgs += url + ","
+        Log.i("evaluate_img_width","img::"+mPullImgs.split(",").size+"___url size"+mPullImgs)
+        if (mPullImgs.split(",").size == mFileImgs.size+1){   //上传完最后一张图片 上传评论数据
+            evaluate()
+        }
     }
 
-
+    fun evaluate(){
+        if (!TextUtils.isEmpty(mPullImgs)){
+            mPullImgs = mPullImgs.substring(0,mPullImgs.length-1)  //去掉最后一个逗号
+        }
+        Log.i("evaluate_img_width","pull imgs::"+mPullImgs+"_score::"+score+"_content::"+content)
+        if (type == 0){
+            getPresenter().evaluateWork(pt_id,content,mPullImgs,score.toString())
+        }else if (type == 1){
+            getPresenter().evaluateBoss(pt_id,content,mPullImgs,score.toString())
+        }
+        finish()
+    }
 }

@@ -3,6 +3,8 @@ package com.weibiaogan.litong.adapter.home
 import android.content.Intent
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
+import android.widget.TextView
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
@@ -20,6 +22,7 @@ import com.weibiaogan.litong.ui.work.WorkDetailActivity
  */
 class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeAdapter.HomeMultiItem,BaseViewHolder>(datas){
 
+    var isShowTitle = true
     init {
         addItemType(HomeMultiItem.ITEM_TYPE_ONE, R.layout.home_rv_item_one)
         addItemType(HomeMultiItem.ITEM_TYPE_TWO, R.layout.home_rv_item_one)
@@ -33,9 +36,10 @@ class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeA
         }
     }
 
-
-
     fun setItemOneView(helper: BaseViewHolder?,bean : HomeBean?){
+        if (bean?.worker == null){
+            return
+        }
         helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_work)
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,3,GridLayoutManager.VERTICAL,false)
@@ -46,6 +50,9 @@ class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeA
     }
 
     fun setItemTwoView(helper: BaseViewHolder?,bean : HomeBean?){
+        if (bean?.store == null){
+            return
+        }
         helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_material)
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,2,GridLayoutManager.VERTICAL,false)
@@ -56,11 +63,17 @@ class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeA
     }
 
     fun setItemThreeView(helper: BaseViewHolder?,bean : HomeBean?){
+        if (bean?.project == null){
+            return
+        }
+        if (!isShowTitle){
+            helper?.getView<TextView>(R.id.home_rv_item_txt)?.visibility = View.GONE
+        }
         helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_project)
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,2,GridLayoutManager.VERTICAL,false)
         var adapter = ItemThreeAdapter(bean?.project)
-        adapter.setOnItemClickListener { adapter, view, position -> mContext.startActivity(Intent(mContext,OrdersDetailActivity::class.java)) }
+        adapter.setOnItemClickListener { adapter, view, position -> OrdersDetailActivity.startProjectDetail(mContext,(adapter as ItemThreeAdapter).data[position].pt_id.toString()) }
         view?.adapter = adapter
         view?.isNestedScrollingEnabled = false
     }

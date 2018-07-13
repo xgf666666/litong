@@ -66,7 +66,7 @@ class SureWorkerActivity : BaseMvpActivity<SureWorkerPresenter>(),SureWorkContra
         tv_sure.setOnClickListener { getPresenter().bindWork(pt_id) }   //确定工人
         tv_cancel.setOnClickListener { getPresenter().dieWork(pt_id) }  //拒绝工人
 
-        fl_work_detail_goto.setOnClickListener { WorkEvaluateActivity.startWorkEvaluate(this@SureWorkerActivity,evaluateBean?.user_id!!)}
+        fl_work_detail_goto.setOnClickListener { WorkEvaluateActivity.startWorkEvaluate(this@SureWorkerActivity,0,evaluateBean?.user_id!!)}
     }
 
     /**

@@ -16,4 +16,8 @@ class WorkEvaluateModel : WorkEvaluateConstract.Model{
     override fun workEvaluate(userId: String, token: String, work_user_id: String,page : String): Observable<BaseResponseEntity<WorkEvaluateBean>> {
         return AppApi.Api().workEvaluate(userId,token,work_user_id,page)
     }
+
+    override fun projectEvaluate(userId: String, token: String, pt_user_id: String, page: String): Observable<BaseResponseEntity<WorkEvaluateBean>> {
+        return AppApi.Api().projectEvaluate(userId, token, pt_user_id, page)
+    }
 }

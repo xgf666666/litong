@@ -3,10 +3,12 @@ package com.weibiaogan.litong.utils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.weibiaogan.litong.adapter.home.HomeAdapter
 import com.weibiaogan.litong.extensions.loadDefulat
 import com.xx.baseuilibrary.mvp.BaseMvpView
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.activity_work_list.*
 
 /**
  * author: HuaiXianZhong
@@ -18,11 +20,18 @@ import kotlinx.android.synthetic.main.activity_work_list.*
  *  刷新加载时添加数据
  */
 fun <T> SmartRefreshLayout.addData(adapter : BaseQuickAdapter<T,BaseViewHolder>,datas : List<T>){
+    if (this.refreshHeader !is ClassicsHeader){
+        this.setRefreshHeader(com.scwang.smartrefresh.layout.header.ClassicsHeader(context))
+    }
+    if (this.refreshFooter !is ClassicsFooter){
+        this.setRefreshFooter(com.scwang.smartrefresh.layout.footer.ClassicsFooter(context))
+    }
     if (this.isLoading){
-        adapter.addData(datas)
         this.finishLoadMore()
         if (datas.isEmpty()){
             this.isEnableLoadMore = false
+        }else{
+            if (adapter is HomeAdapter) adapter.noTitle(this@addData,datas) else adapter.addData(datas)
         }
     }else if (this.isRefreshing){
         adapter.setNewData(datas)
@@ -39,6 +48,17 @@ fun <T> SmartRefreshLayout.addData(adapter : BaseQuickAdapter<T,BaseViewHolder>,
             this.isEnableRefresh = false
         }
 
+    }
+}
+
+fun <T> HomeAdapter.noTitle(refreshLayout: SmartRefreshLayout, datas: List<T>){
+    isShowTitle = false
+    var project = (datas as List<HomeAdapter.HomeMultiItem>)[0].bean.project
+    if (project != null && project.size != 0){
+        addData(datas)
+    }else{
+        addData(arrayListOf())
+        refreshLayout.isEnableLoadMore = false
     }
 }
 
