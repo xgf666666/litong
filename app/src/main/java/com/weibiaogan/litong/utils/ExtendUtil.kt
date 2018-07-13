@@ -55,7 +55,7 @@ fun <T> HomeAdapter.noTitle(refreshLayout: SmartRefreshLayout, datas: List<T>){
     isShowTitle = false
     var project = (datas as List<HomeAdapter.HomeMultiItem>)[0].bean.project
     if (project != null && project.size != 0){
-        addData(datas)
+        addData(arrayListOf(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_FOUR,datas[0].bean)))
     }else{
         addData(arrayListOf())
         refreshLayout.isEnableLoadMore = false

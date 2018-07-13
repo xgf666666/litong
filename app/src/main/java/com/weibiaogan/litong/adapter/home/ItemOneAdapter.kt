@@ -18,7 +18,7 @@ class ItemOneAdapter(datas : List<HomeBean.WorkerBean>?) : BaseQuickAdapter<Home
     override fun convert(helper: BaseViewHolder?, item: HomeBean.WorkerBean?) {
         helper?.setText(R.id.home_item_one_view_name_txt,item?.user_id.toString())
                 ?.setText(R.id.home_item_one_view_phone_txt,item?.user_phone.toString())
-                ?.setText(R.id.home_item_one_view_type_txt,"服务类型："+item?.worker_service)
+                ?.setText(R.id.home_item_one_view_type_txt,item?.worker_service)
                 ?.setText(R.id.home_item_one_view_distance_txt,"距离您"+item?.distance?.changeKm() + "立刻咨询")
                 ?.addOnClickListener(R.id.home_item_one_view_distance_txt)
         helper?.getView<CircleImageView>(R.id.home_item_one_view_face_cimg)?.loadImag(item?.user_img!!,plach = R.mipmap.img_face)

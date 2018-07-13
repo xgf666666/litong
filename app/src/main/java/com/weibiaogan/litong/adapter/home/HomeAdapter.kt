@@ -27,12 +27,14 @@ class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeA
         addItemType(HomeMultiItem.ITEM_TYPE_ONE, R.layout.home_rv_item_one)
         addItemType(HomeMultiItem.ITEM_TYPE_TWO, R.layout.home_rv_item_one)
         addItemType(HomeMultiItem.ITEM_TYPE_THREE, R.layout.home_rv_item_one)
+        addItemType(HomeMultiItem.ITEM_TYPE_FOUR,R.layout.home_rv_item_four)
     }
     override fun convert(helper: BaseViewHolder?, item: HomeMultiItem?) {
         when(helper?.itemViewType){
             HomeMultiItem.ITEM_TYPE_ONE -> setItemOneView(helper,item?.bean)
             HomeMultiItem.ITEM_TYPE_TWO -> setItemTwoView(helper,item?.bean)
-            HomeMultiItem.ITEM_TYPE_THREE -> setItemThreeView(helper,item?.bean)
+            HomeMultiItem.ITEM_TYPE_THREE -> setItemThreeView(R.layout.home_item_three_view,helper,item?.bean)
+            HomeMultiItem.ITEM_TYPE_FOUR -> setItemThreeView(R.layout.home_item_four_view,helper,item?.bean)
         }
     }
 
@@ -62,17 +64,16 @@ class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeA
         view?.isNestedScrollingEnabled = false
     }
 
-    fun setItemThreeView(helper: BaseViewHolder?,bean : HomeBean?){
+    fun setItemThreeView(layout:Int,helper: BaseViewHolder?,bean : HomeBean?){
         if (bean?.project == null){
             return
         }
-        if (!isShowTitle){
-            helper?.getView<TextView>(R.id.home_rv_item_txt)?.visibility = View.GONE
+        if (isShowTitle){
+            helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_project)
         }
-        helper?.setText(R.id.home_rv_item_txt,R.string.home_rv_project)
         var view = helper?.getView<RecyclerView>(R.id.home_rv_item_rv)
         view?.layoutManager = GridLayoutManager(mContext,2,GridLayoutManager.VERTICAL,false)
-        var adapter = ItemThreeAdapter(bean?.project)
+        var adapter = ItemThreeAdapter(layout,bean?.project)
         adapter.setOnItemClickListener { adapter, view, position -> OrdersDetailActivity.startProjectDetail(mContext,(adapter as ItemThreeAdapter).data[position].pt_id.toString()) }
         view?.adapter = adapter
         view?.isNestedScrollingEnabled = false
@@ -84,6 +85,7 @@ class HomeAdapter(datas : List<HomeMultiItem>) : BaseMultiItemQuickAdapter<HomeA
             val ITEM_TYPE_ONE = 0x01
             val ITEM_TYPE_TWO = 0x02
             val ITEM_TYPE_THREE = 0x03
+            val ITEM_TYPE_FOUR = 0x04
         }
 
         override fun getItemType(): Int = type

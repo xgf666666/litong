@@ -4,9 +4,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/shape_normal_bg_white_gray"
-    android:layout_marginTop="@dimen/margin_8"
     android:layout_marginLeft="@dimen/margin_8"
-    android:layout_marginRight="@dimen/margin_8">
+    android:layout_marginRight="@dimen/margin_8"
+    android:layout_marginBottom="@dimen/margin_14">
 
     <RelativeLayout
         android:layout_width="wrap_content"

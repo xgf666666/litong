@@ -85,7 +85,7 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
 
     fun showDialog(){
 
-        var view= View.inflate(mContext,R.layout.dialog_orderdetail,null)
+        /*var view= View.inflate(mContext,R.layout.dialog_orderdetail,null)
 
         var dialog=AlertDialog.Builder(mContext).setView(view).create()
 
@@ -94,7 +94,7 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
             getPresenter().clickReceipt(mDetailBean?.pt_id.toString())
         }
 
-        dialog.show()
+        dialog.show()*/  //view : NullPointException
     }
 
     override fun getOrderDetail(bean: OrderDetailBean) {
