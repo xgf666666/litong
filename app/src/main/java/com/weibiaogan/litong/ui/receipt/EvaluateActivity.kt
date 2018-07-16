@@ -183,6 +183,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
                 mDImgs[i].visibility = View.VISIBLE
             }else{
                 mImgs[i].visibility = View.VISIBLE
+                mImgs[i].scaleType = ImageView.ScaleType.CENTER_INSIDE
                 mImgs[i].setImageResource(R.mipmap.btn_addimg)
                 mDImgs[i].visibility = View.GONE
             }

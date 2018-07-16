@@ -10,6 +10,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bigkoo.convenientbanner.ConvenientBanner
 import com.bigkoo.convenientbanner.holder.Holder
+import com.blankj.utilcode.util.ToastUtils
+import com.flyco.dialog.listener.OnBtnClickL
+import com.flyco.dialog.widget.NormalDialog
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.entity.ImageBean
 import com.weibiaogan.litong.entity.OrderDetailBean
@@ -40,6 +43,8 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
 
     var mDetailBean : OrderDetailBean? = null
 
+    var mPtId = ""
+
     /**
      * 创建P层
      *
@@ -57,9 +62,9 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
      * 初始化数据状态
      */
     override fun initData() {
-        var id = intent.getStringExtra("pt_id")
-        if (!TextUtils.isEmpty(id)){
-            getPresenter().orderDetail(id)
+        mPtId = intent.getStringExtra("pt_id")
+        if (!TextUtils.isEmpty(mPtId)){
+            getPresenter().orderDetail(mPtId)
         }else{
             showToast("error id")
         }
@@ -85,16 +90,25 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
 
     fun showDialog(){
 
-        /*var view= View.inflate(mContext,R.layout.dialog_orderdetail,null)
-
-        var dialog=AlertDialog.Builder(mContext).setView(view).create()
-
-        view.findViewById<Button>(R.id.tv_sure).setOnClickListener {    // 确定 我要接单
+        var dialog = NormalDialog(this)
+        dialog.content("确认后请等待需求方确认")
+                .title("确认订单")
+                .style(NormalDialog.STYLE_TWO)
+                .contentTextSize(17f)
+                .titleTextSize(17f)
+                .contentTextColor(resources.getColor(R.color.color888888))
+                .titleTextColor(resources.getColor(R.color.color222222))
+                .btnTextColor(resources.getColor(R.color.color3078EF),resources.getColor(R.color.color3078EF))
+                .show()
+        dialog.setOnBtnClickL(OnBtnClickL { dialog.dismiss() }, OnBtnClickL {
             dialog.dismiss()
             getPresenter().clickReceipt(mDetailBean?.pt_id.toString())
-        }
+        })
+    }
 
-        dialog.show()*/  //view : NullPointException
+    override fun requestSuccess(msg: String) {
+        showToast(msg)
+        getPresenter().orderDetail(mPtId)   //刷新界面
     }
 
     override fun getOrderDetail(bean: OrderDetailBean) {

@@ -20,6 +20,7 @@ import com.amap.api.services.geocoder.RegeocodeQuery
 import com.amap.api.services.geocoder.RegeocodeResult
 import com.blankj.utilcode.util.ToastUtils
 import com.weibiaogan.litong.MainActivity
+import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.utils.OpenNavigationUtils
 import com.weibiaogan.litong.widget.ActionSheetDialog
 import java.util.ArrayList
@@ -126,6 +127,7 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
             if (type != 0){
                 showDialog()
             }else{
+                Constants.putLocation(lats!!,logs!!,result?.regeocodeAddress?.city)   //存储经纬度，城市名
                 var intent = Intent()
                 intent.putExtra("location_result",result?.regeocodeAddress?.city)
                 intent.putExtra("location_address",result?.regeocodeAddress?.formatAddress)

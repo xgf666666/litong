@@ -13,7 +13,7 @@ import com.weibiaogan.litong.utils.changeKm
  * date: 2018/7/6
  * describe:
  */
-class ItemThreeAdapter(res:Int,datas : List<HomeBean.ProjectBean>?) : BaseQuickAdapter<HomeBean.ProjectBean, BaseViewHolder>(res,datas){
+class ItemThreeAdapter(datas : List<HomeBean.ProjectBean>?) : BaseQuickAdapter<HomeBean.ProjectBean, BaseViewHolder>(R.layout.home_item_three_view,datas){
 
     override fun convert(helper: BaseViewHolder?, item: HomeBean.ProjectBean?) {
         helper?.setText(R.id.tv_home_item_three_name,item?.pt_name)

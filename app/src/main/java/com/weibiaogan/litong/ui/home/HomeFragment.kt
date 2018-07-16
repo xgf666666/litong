@@ -71,7 +71,11 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         adapter.addHeaderView(headView)
 
         rv_home_bottom.adapter = adapter
+    }
 
+    override fun onResume() {
+        super.onResume()
+        mCurrentPage = 1
         presenter.getHomeData(mCurrentPage.toString())
     }
 
@@ -123,7 +127,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         var imageview : ImageView? = null
 
         override fun UpdateUI(context: Context?, position: Int, data: String?) {
-            imageview?.loadImag(data!!)
+            imageview?.loadImag(data!!,plach = R.mipmap.img_banner)
         }
 
         override fun createView(context: Context?): View {

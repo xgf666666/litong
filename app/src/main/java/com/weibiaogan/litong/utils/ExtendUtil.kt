@@ -31,7 +31,7 @@ fun <T> SmartRefreshLayout.addData(adapter : BaseQuickAdapter<T,BaseViewHolder>,
         if (datas.isEmpty()){
             this.isEnableLoadMore = false
         }else{
-            if (adapter is HomeAdapter) adapter.noTitle(this@addData,datas) else adapter.addData(datas)
+            if (adapter is HomeAdapter) adapter.addHomeData(this@addData,datas) else adapter.addData(datas)
         }
     }else if (this.isRefreshing){
         adapter.setNewData(datas)
@@ -51,11 +51,10 @@ fun <T> SmartRefreshLayout.addData(adapter : BaseQuickAdapter<T,BaseViewHolder>,
     }
 }
 
-fun <T> HomeAdapter.noTitle(refreshLayout: SmartRefreshLayout, datas: List<T>){
-    isShowTitle = false
+fun <T> HomeAdapter.addHomeData(refreshLayout: SmartRefreshLayout, datas: List<T>){
     var project = (datas as List<HomeAdapter.HomeMultiItem>)[0].bean.project
-    if (project != null && project.size != 0){
-        addData(arrayListOf(HomeAdapter.HomeMultiItem(HomeAdapter.HomeMultiItem.ITEM_TYPE_FOUR,datas[0].bean)))
+    if (project != null && project.size > 0){
+        refreshLayout.postDelayed({ addHomeData(project) },1000)
     }else{
         addData(arrayListOf())
         refreshLayout.isEnableLoadMore = false

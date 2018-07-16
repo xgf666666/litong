@@ -99,7 +99,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerInside"
                 android:src="@mipmap/ic_delete"
-                android:background="#88000000"
+                android:background="#33000000"
                 android:visibility="gone"/>
         </FrameLayout>
         <FrameLayout
@@ -121,7 +121,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerInside"
                 android:src="@mipmap/ic_delete"
-                android:background="#88000000"
+                android:background="#33000000"
                 android:visibility="gone"
                 />
         </FrameLayout>
@@ -144,7 +144,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerInside"
                 android:src="@mipmap/ic_delete"
-                android:background="#88000000"
+                android:background="#33000000"
                 android:visibility="gone"/>
         </FrameLayout>
     </LinearLayout>

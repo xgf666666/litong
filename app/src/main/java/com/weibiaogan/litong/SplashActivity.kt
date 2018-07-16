@@ -42,9 +42,14 @@ class SplashActivity : BaseMvpViewActivity() {
                                         //延迟之后关闭当前页面
                                         if (Constants.isFirst()) {
                                             //startActivityThenFinishSelf(GuideActivity::class.java) 第一次进入app 向导页
-                                            val intent = Intent(mContext, MainActivity::class.java)
-                                            startActivity(intent)
-
+                                            if (!Constants.isLogin()){
+                                                startActivity(Intent(mContext,LoginActivity::class.java))
+                                            }else{
+                                                val intent = Intent(mContext, MainActivity::class.java)
+                                                startActivity(intent)
+                                            }
+                                            finish()
+                                            overridePendingTransition(R.anim.scale_in,R.anim.scale_out)
                                         } else {
                                             if (!Constants.isLogin()){
                                                 startActivity(Intent(mContext,LoginActivity::class.java))

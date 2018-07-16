@@ -34,7 +34,7 @@ class OrderDetailPresenter:OrdersDetailCOntract.Presenter() {
             getModel().addBlack(userId, token, worker_user_id)
                     ?.loadDefulat(getView()!!)
                     ?.ui({
-                        getView()?.showToast(it?.msg!!)
+                        getView()?.requestSuccess(it?.msg!!)
                     }, {
                         getView()?.showToast(it)
                     })
@@ -48,7 +48,7 @@ class OrderDetailPresenter:OrdersDetailCOntract.Presenter() {
             getModel().clickReceipt(userId, token, pt_id)
                     ?.loadDefulat(getView()!!)
                     ?.ui({
-                        getView()?.showToast(it?.msg!!)
+                        getView()?.requestSuccess(it?.msg!!)
                     }, {
                         getView()?.showToast(it)
                     })

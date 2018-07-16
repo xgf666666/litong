@@ -68,19 +68,15 @@ android {
 
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     def lifecycle_version = "1.1.0"
-
-
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
-
     implementation project(':baseUiLibrary')
     implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
     implementation "com.android.support:design:$support_version"
@@ -96,16 +92,13 @@ dependencies {
     implementation 'com.umeng.sdk:share-qq:6.9.1.1'
     implementation 'com.umeng.sdk:share-wechat:latest.integration'
     implementation 'com.umeng.sdk:share-sina:latest.integration'
-//    implementation 'org.aspectj:aspectjrt:1.8.1'
+    //    implementation 'org.aspectj:aspectjrt:1.8.1'
     implementation 'com.android.support:multidex:1.0.3'
     implementation files('libs/antiphonPaySdk-20171012.jar')
     implementation files('libs/alipaySdk-20161222.jar')
     implementation 'org.greenrobot:eventbus:3.1.1'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
-
     //compile 'com.amap.api:map2d:latest.integration'
     //compile 'com.amap.api:navi-3dmap:latest.integration'
-
     //compile 'com.amap.api:location:latest.integration'
-
 }

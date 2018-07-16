@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_login.*
  * date: 2018/5/6
  * describe:
  */
-class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View{
+class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
 
     override fun createPresenter(): LoginPresenter = LoginPresenter()
 
@@ -27,9 +27,9 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View{
         tv_register.setOnClickListener { startActivity(RegisterActivity::class.java) }
         tv_forgetPassword.setOnClickListener { startActivity(ForgetPWActivity::class.java) }
         bt_login.setOnClickListener { getPresenter().login() }
-        iv_qq.setOnClickListener {  }
-        iv_wechat.setOnClickListener {  }
-        ib_backs.setOnClickListener{
+        iv_qq.setOnClickListener { }
+        iv_wechat.setOnClickListener { }
+        ib_backs.setOnClickListener {
             App.getInstance()?.cleanActivity()
             finish()
 
@@ -49,4 +49,5 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View{
         startActivity(MainActivity::class.java)
         finish()
     }
+
 }

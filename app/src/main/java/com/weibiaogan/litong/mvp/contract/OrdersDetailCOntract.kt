@@ -14,7 +14,7 @@ import io.reactivex.Observable
  */
 interface OrdersDetailCOntract {
     interface View : BaseMvpView{
-
+        fun requestSuccess(msg:String)
         fun getOrderDetail(bean : OrderDetailBean)
     }
 
