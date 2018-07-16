@@ -1,5 +1,10 @@
 package com.weibiaogan.litong.ui.login
 
+import android.content.Intent
+import android.util.Log
+import com.tencent.tauth.Tencent
+import com.umeng.socialize.UMShareAPI
+import com.umeng.socialize.bean.SHARE_MEDIA
 import com.weibiaogan.litong.App
 import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.R
@@ -7,6 +12,10 @@ import com.weibiaogan.litong.mvp.contract.LoginConstract
 import com.weibiaogan.litong.mvp.presenter.LoginPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import android.widget.Toast
+import com.umeng.socialize.UMAuthListener
+
+
 
 /**
  * author: Gubr
@@ -27,8 +36,8 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
         tv_register.setOnClickListener { startActivity(RegisterActivity::class.java) }
         tv_forgetPassword.setOnClickListener { startActivity(ForgetPWActivity::class.java) }
         bt_login.setOnClickListener { getPresenter().login() }
-        iv_qq.setOnClickListener { }
-        iv_wechat.setOnClickListener { }
+        iv_qq.setOnClickListener { login(0) }
+        iv_wechat.setOnClickListener { login(1) }
         ib_backs.setOnClickListener {
             App.getInstance()?.cleanActivity()
             finish()
@@ -48,6 +57,101 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
     override fun loginSuccess() {
         startActivity(MainActivity::class.java)
         finish()
+
     }
+
+    fun login(type : Int){
+        if (type == 0){
+            UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.QQ, authListener)
+        }else{
+            UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.WEIXIN, authListener)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data)
+    }
+
+    var authListener: UMAuthListener = object : UMAuthListener {
+        /**
+         * @desc 授权开始的回调
+         * @param platform 平台名称
+         */
+        override fun onStart(platform: SHARE_MEDIA) {}
+
+        /**
+         * @desc 授权成功的回调
+         * @param platform 平台名称
+         * @param action 行为序号，开发者用不上
+         * @param data 用户资料返回
+         */
+        override fun onComplete(platform: SHARE_MEDIA, action: Int, data: Map<String, String>) {
+            Toast.makeText(mContext, "成功了", Toast.LENGTH_LONG).show()
+            for (i in data){
+                Log.i("login_three","map:"+i.key+"::"+i.value)
+            }
+
+            //loginSuccess()
+        }
+
+        /**
+         * @desc 授权失败的回调
+         * @param platform 平台名称
+         * @param action 行为序号，开发者用不上
+         * @param t 错误原因
+         */
+        override fun onError(platform: SHARE_MEDIA, action: Int, t: Throwable) {
+            Toast.makeText(mContext, "失败：" + t.message, Toast.LENGTH_LONG).show()
+        }
+
+        /**
+         * @desc 授权取消的回调
+         * @param platform 平台名称
+         * @param action 行为序号，开发者用不上
+         */
+        override fun onCancel(platform: SHARE_MEDIA, action: Int) {
+            Toast.makeText(mContext, "取消了", Toast.LENGTH_LONG).show()
+        }
+    }
+
+   /* fun qqLogin(){
+        if (!mTencent.isSessionValid){
+            mTencent.login(this,"all", loginListener)
+        }
+    }
+
+    var loginListener = object : IUiListener {
+        override fun onComplete(result: Any?) {
+            if (result == null){
+                showToast("result null")
+                return
+            }
+            showToast("success")
+            var jsonObject = result as JSONObject
+            val token = jsonObject.getString(Constants.PARAM_ACCESS_TOKEN)
+            val expires = jsonObject.getString(Constants.PARAM_EXPIRES_IN)
+            val openId = jsonObject.getString(Constants.PARAM_OPEN_ID)
+            if (!TextUtils.isEmpty(token) && !TextUtils.isEmpty(expires)
+                    && !TextUtils.isEmpty(openId)) {
+                mTencent.setAccessToken(token, expires)
+                mTencent.openId = openId
+            }
+        }
+
+        override fun onCancel() {
+        }
+
+        override fun onError(p0: UiError?) {
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == Constants.REQUEST_LOGIN || requestCode == Constants.REQUEST_APPBAR) {
+            Tencent.onActivityResultData(requestCode, resultCode, data, loginListener)
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+
+    }*/
 
 }

@@ -643,6 +643,10 @@ public interface AppService {
      */
     @GET("User/tenants")
     Observable<BaseResponseEntity<AddShopBean>> addShop(@Header("userId") String userId, @Header("token") String token);
+
+    @FormUrlEncoded
+    @POST("login/login_three")
+    Observable<BaseResponseEntity<Object>> loginThree(@Field("type") String type,@Field("openid") String openid);
 }
 
 

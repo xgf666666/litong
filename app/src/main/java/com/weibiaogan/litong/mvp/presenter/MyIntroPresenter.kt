@@ -1,8 +1,8 @@
 package com.weibiaogan.litong.mvp.presenter
 
 import android.text.TextUtils
+import android.util.Log
 import com.blankj.utilcode.util.EncodeUtils
-import com.tencent.mm.opensdk.utils.Log
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui

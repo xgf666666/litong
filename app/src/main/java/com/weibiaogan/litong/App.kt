@@ -57,11 +57,12 @@ class App : MultiDexApplication() {
 
     private fun UMInit() {
         //初始化友盟
-        UMConfigure.init(this, "5af105248f4a9d6df300028a"
-                , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "")
-        PlatformConfig.setWeixin("wxd08a9b205494c248", "35c0bcca128270bd9b7ec01812fc97fa")
-        PlatformConfig.setSinaWeibo("4285643628", "0dcfdb9213e48fb0bfd8f7479f208bf8", "http:www.baidu.com")
-        PlatformConfig.setQQZone("1106602798", "gDWIr2lY4PT4OIVa")
+        UMConfigure.init(this, "5b4c573e8f4a9d233f000140"
+                , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "")//  5af105248f4a9d6df300028a
+        //PlatformConfig.setWeixin("wxd08a9b205494c248", "35c0bcca128270bd9b7ec01812fc97fa")
+        PlatformConfig.setWeixin("wx4fc9ff6e5c76f8bc", "1be78d3237f24ce3612733bcabae0a5c")
+        //PlatformConfig.setSinaWeibo("4285643628", "0dcfdb9213e48fb0bfd8f7479f208bf8", "http:www.baidu.com")
+        PlatformConfig.setQQZone("1106949895", "WRTIh0l1AFGXb2uI")
     }
 
     companion object {

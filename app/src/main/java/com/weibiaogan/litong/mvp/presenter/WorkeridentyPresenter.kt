@@ -1,7 +1,7 @@
 package com.weibiaogan.litong.mvp.presenter
 
+import android.util.Log
 import com.blankj.utilcode.util.EncodeUtils
-import com.tencent.mm.opensdk.utils.Log
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.WorkerIdentyContract
 import com.weibiaogan.litong.mvp.model.WorkerIdentyModel

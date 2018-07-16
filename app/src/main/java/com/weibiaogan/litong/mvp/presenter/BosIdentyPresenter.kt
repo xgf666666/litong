@@ -1,7 +1,7 @@
 package com.weibiaogan.litong.mvp.presenter
 
+import android.util.Log
 import com.blankj.utilcode.util.EncodeUtils
-import com.tencent.mm.opensdk.utils.Log
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.BosIdentyContract
@@ -9,7 +9,6 @@ import com.weibiaogan.litong.mvp.model.BosIdentyModel
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import java.io.File
-import kotlin.math.log
 
 /**
  * author: xiaoguagnfei

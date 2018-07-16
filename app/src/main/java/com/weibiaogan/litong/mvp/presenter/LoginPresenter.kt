@@ -4,6 +4,8 @@ import android.text.TextUtils
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.common.md5Salt
 import com.weibiaogan.litong.entity.LoginBean
+import com.weibiaogan.litong.extensions.loadDefulat
+import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.LoginConstract
 import com.weibiaogan.litong.mvp.model.LoginModel
 import com.xx.baseutilslibrary.network.rx.XxBaseHttpObserver
@@ -54,6 +56,21 @@ class LoginPresenter :  LoginConstract.Presenter() {
             }
 
         })
+    }
+
+    override fun loginThree(type: String?, openid: String?) {
+        getModel().loginThree(type,openid).loadDefulat(getView()!!)
+                .ui({
+                    if (it.status == "1"){
+
+                    }else if (it.status == "2" && it.code == "222"){
+
+                    }else{
+                        getView()?.showToast(it.msg)
+                    }
+                }, {
+                    getView()?.showToast(it)
+                })
     }
 
 

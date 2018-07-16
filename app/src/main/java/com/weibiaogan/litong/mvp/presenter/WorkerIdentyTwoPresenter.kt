@@ -1,12 +1,9 @@
 package com.weibiaogan.litong.mvp.presenter
 
-import android.widget.Toast
-import com.tencent.mm.opensdk.utils.Log
+import android.util.Log
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.ui
-import com.weibiaogan.litong.mvp.contract.WorkerIdentyContract
 import com.weibiaogan.litong.mvp.contract.WorkerIdentyTwoContrat
-import com.weibiaogan.litong.mvp.model.WorkerIdentyModel
 import com.weibiaogan.litong.mvp.model.WorkerIdentyTwoModel
 
 /**
