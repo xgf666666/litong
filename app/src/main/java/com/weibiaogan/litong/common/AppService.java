@@ -12,9 +12,11 @@ import com.weibiaogan.litong.entity.MemberBean;
 import com.weibiaogan.litong.entity.MemberpowrBean;
 import com.weibiaogan.litong.entity.MyReceiptBean;
 import com.weibiaogan.litong.entity.OrderDetailBean;
+import com.weibiaogan.litong.entity.PayBean;
 import com.weibiaogan.litong.entity.ProjectBean;
 import com.weibiaogan.litong.entity.ProjectPublicNoteBean;
 import com.weibiaogan.litong.entity.PublicProjectBean;
+import com.weibiaogan.litong.entity.PublicProjectsBean;
 import com.weibiaogan.litong.entity.PublicWorker;
 import com.weibiaogan.litong.entity.SearchProjectBean;
 import com.weibiaogan.litong.entity.ShareUserBean;
@@ -116,19 +118,19 @@ public interface AppService {
      */
     @FormUrlEncoded
     @POST("Publishproject/add_project")
-    Observable<BaseResponseEntity<List<Object>>> addProject(@Field("userId") String userId,
-                                                            @Field("token") String token,
-                                                            @Field("pt_name") String pt_name,
-                                                            @Field("pt_describe") String pt_describe,
-                                                            @Field("end_time") String end_time,
-                                                            @Field("pt_address") String pt_address,
-                                                            @Field("area_id") String area_id,
-                                                            @Field("first_price") String first_price,
-                                                            @Field("second_price") String second_price,
-                                                            @Field("three_price") String three_price,
-                                                            @Field("pt_imgs") String pt_imgs,
-                                                            @Field("lat_long") String lat_long,
-                                                            @Field("all_price") String all_price
+    Observable<BaseResponseEntity<PublicProjectsBean>> addProject(@Field("userId") String userId,
+                                                                  @Field("token") String token,
+                                                                  @Field("pt_name") String pt_name,
+                                                                  @Field("pt_describe") String pt_describe,
+                                                                  @Field("end_time") String end_time,
+                                                                  @Field("pt_address") String pt_address,
+                                                                  @Field("area_id") String area_id,
+                                                                  @Field("first_price") String first_price,
+                                                                  @Field("second_price") String second_price,
+                                                                  @Field("three_price") String three_price,
+                                                                  @Field("pt_imgs") String pt_imgs,
+                                                                  @Field("lat_long") String lat_long,
+                                                                  @Field("all_price") String all_price
                                                             );
 
 
@@ -643,6 +645,16 @@ public interface AppService {
      */
     @GET("User/tenants")
     Observable<BaseResponseEntity<AddShopBean>> addShop(@Header("userId") String userId, @Header("token") String token);
+    /**
+     * 支付
+     * @param userId
+     * @param token
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Paylog/pay_price")
+    Observable<BaseResponseEntity<PayBean>> pay(@Header("userId") String userId, @Header("token") String token, @Field("pt_id") String pt_id
+    , @Field("pay_type") String pay_type , @Field("pt_type") String pt_type );
 
     @FormUrlEncoded
     @POST("login/login_three")

@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Environment
 import android.support.annotation.RequiresApi
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
@@ -21,6 +22,7 @@ import com.weibiaogan.litong.BuildConfig
 import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.entity.IsPublic
+import com.weibiaogan.litong.entity.PublicProjectsBean
 import com.weibiaogan.litong.entity.PublicWorker
 import com.weibiaogan.litong.entity.Worker
 import com.weibiaogan.litong.extensions.getTString
@@ -207,8 +209,11 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         })
     }
 
-    override fun successful() {
+    override fun successful(publicProjectsBean: PublicProjectsBean) {
         toast("发布成功")
+        if (!baozhengjing.isNullOrEmpty()){
+            PayCenterActivity.startPayCenter(mContext,"1",publicProjectsBean.pt_id)
+        }
     }
 
 

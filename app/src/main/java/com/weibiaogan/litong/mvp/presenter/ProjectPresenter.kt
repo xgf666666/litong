@@ -87,7 +87,7 @@ class ProjectPresenter : ProjectContract.Presenter() {
             getModel().pullProject(userId, token, ptname, ptdescribe, endtime, ptaddress, areaid, firstprice, secondprice, threeprice, ptimgs, latlong, allprice)
                     .loadDefulat(getView()!!)
                     .ui({
-                        getView()?.successful()
+                        getView()?.successful(it.data!!)
                         Log.i("dagag",it.msg)
                     }, {
                         getView()?.showToast(it)
