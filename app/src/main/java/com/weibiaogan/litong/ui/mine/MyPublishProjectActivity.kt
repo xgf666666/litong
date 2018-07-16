@@ -138,9 +138,9 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
                     }
                 }
                 3 -> { SureWorkerActivity.startSureWork(this@MyPublishProjectActivity,bean.pt_user_id.toString(),bean.pt_id.toString()) }  //确认工人
-                4 -> { PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"1") } //付收款
-                5 -> {PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"1")} //付二期款
-                6 -> {PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"1")} //付尾款
+                4 -> { PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"2",bean.pt_id.toString()) } //付收款
+                5 -> {PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"3",bean.pt_id.toString())} //付二期款
+                6 -> {PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"4",bean.pt_id.toString())} //付尾款
 
             }
         }else if (view?.id == R.id.tv_three){   //查看项目

@@ -17,6 +17,7 @@ import com.weibiaogan.litong.dialog.ChooseImageDialogWrapper
 import com.weibiaogan.litong.ui.home.HomeFragment
 import com.weibiaogan.litong.ui.location.GeoToScreenActivity
 import com.weibiaogan.litong.ui.location.MapActivity
+import com.weibiaogan.litong.ui.login.LoginActivity
 import com.weibiaogan.litong.ui.orders.OrdersFragment
 import com.weibiaogan.litong.ui.mine.MineFragment
 import com.weibiaogan.litong.ui.project.Projectragment
@@ -112,6 +113,12 @@ class MainActivity : BaseMvpViewActivity() {
                     //添加到管理类
                     fragmentTransaction.add(R.id.container, fragments!![i])
                 }
+//                if (i==1||i==2||i==3){
+//                    if (!Constants.isLogin()){
+//                        startActivity(LoginActivity::class.java)
+//                        return
+//                    }
+//                }
                 fragmentTransaction.show(fragments!![i])
             } else {
                 if (fragment != null) {

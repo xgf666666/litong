@@ -44,7 +44,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
     }
     override fun loadData(refresh: Boolean) {
         getPresenter().getData()
-
+        getPresenter().addShop()
 }
 
 
@@ -60,7 +60,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
     override fun initView(view: View?) {
         super.initView(view)
         addViewtoViews(login_view)
-        getPresenter().addShop()
+
     }
 
     override fun initEvent(view: View?) {
@@ -69,8 +69,6 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
                 startActivity(MyIntroActivity::class.java)
             }
         }
-
-
         view?.findViewById<View>(R.id.login_view)?.findViewById<TextView>(R.id.tv_login)?.setOnClickListener { startActivity(LoginActivity::class.java) }
         ll_wallet_area.setOnPerCheckLoginClickListner { startActivity(WalletActivity::class.java) }
         ll_orders_area.setOnPerCheckLoginClickListner { startActivity(MyReceiptActivity::class.java) }
@@ -79,7 +77,9 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         ll_vip_area.setOnPerCheckLoginClickListner{
             if (Constants.getUserData()!=null){
                 if (Constants.getUserData().user.grid==1){
-                    PayCenterActivity.startPayCenter(mContext,"1")
+                    PayCenterActivity.startPayCenter(mContext,"5","")
+                }else{
+                    showToast("你已是会员")
                 }
             }
            }
@@ -217,7 +217,6 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
 
     override fun onStart() {
         super.onStart()
-
         if (Constants.isLogin()) {
             if (Constants.getUserData() == null) {
                 showLoading()
@@ -225,9 +224,11 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
             }
             getPresenter().getData()
         } else {
+            startActivity(LoginActivity::class.java)
+            finishActivity()
+            return
             showView(login_view)
             showContent()
-            startActivity(LoginActivity::class.java)
         }
     }
 

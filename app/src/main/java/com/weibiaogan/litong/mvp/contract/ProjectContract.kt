@@ -1,9 +1,6 @@
 package com.weibiaogan.litong.mvp.contract
 
-import com.weibiaogan.litong.entity.ImageBean
-import com.weibiaogan.litong.entity.IsPublic
-import com.weibiaogan.litong.entity.PublicWorker
-import com.weibiaogan.litong.entity.Worker
+import com.weibiaogan.litong.entity.*
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpView
 import com.xx.baseutilslibrary.network.entity.BaseResponseEntity
@@ -17,7 +14,7 @@ import java.io.File
  */
 interface ProjectContract {
     interface View : BaseMvpView {
-        fun successful()
+        fun successful(publicProjectsBean: PublicProjectsBean)
         fun setView(file:String)
         fun setWorker(publicWorker: PublicWorker)
         fun isPublic(isPublic: BaseResponseEntity<IsPublic>)
@@ -37,7 +34,7 @@ interface ProjectContract {
         fun pullProject(userid: String, token: String, ptname: String, ptdescribe: String,
                         endtime: String, ptaddress: String, areaid: String, firstprice: String,
                         secondprice: String, threeprice: String, ptimgs: String, latlong: String,
-                        allprice: String): Observable<BaseResponseEntity<List<Any>>>
+                        allprice: String): Observable<BaseResponseEntity<PublicProjectsBean>>
         fun imgup(imagBase64:String):Observable<BaseResponseEntity<ImageBean>>
         fun  getWorkerTyle(userId:String,token:String): Observable<BaseResponseEntity<PublicWorker>>
         fun isPublic(userId:String,token:String):Observable<BaseResponseEntity<IsPublic>>

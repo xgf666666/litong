@@ -90,11 +90,16 @@
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".wxapi.WXEntryActivity"
-            android:exported="true"
-            android:launchMode="singleTop"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind">
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"/>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.weibiaogan.litong.fileprovider"
@@ -118,11 +123,12 @@
         <activity android:name=".ui.blacklist.BlacklistActivity" />
         <activity android:name=".ui.project.HistoryProjectActivity" />
         <activity android:name=".ui.mine.KnowMemberActivity" />
-        <activity android:name=".ui.project.ProjectPublicNoteActivity"></activity>
-        <activity android:name=".ui.location.MapActivity"/>
+        <activity android:name=".ui.project.ProjectPublicNoteActivity" />
+        <activity android:name=".ui.location.MapActivity" />
         <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
-        <service android:name="com.amap.api.location.APSService"></service>
-        <activity android:name=".ui.mine.ShareActivity"></activity>
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".ui.mine.ShareActivity" />
     </application>
 
 </manifest>
