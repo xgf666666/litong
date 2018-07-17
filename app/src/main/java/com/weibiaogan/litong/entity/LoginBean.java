@@ -16,6 +16,15 @@ public class LoginBean {
 
     private int user_id;
     private String token;
+    private String user_phone;
+
+    public void setUser_phone(String mUser_phone) {
+        user_phone = mUser_phone;
+    }
+
+    public String getUser_phone() {
+        return user_phone;
+    }
 
     public int getUser_id() {
         return user_id;

@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.mvp.presenter
 
 import android.text.TextUtils
+import android.util.Log
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.common.md5Salt
 import com.weibiaogan.litong.entity.LoginBean
@@ -61,10 +62,15 @@ class LoginPresenter :  LoginConstract.Presenter() {
     override fun loginThree(type: String?, openid: String?) {
         getModel().loginThree(type,openid).loadDefulat(getView()!!)
                 .ui({
+                    Log.i("login_three",it.status+":::"+it.code)
                     if (it.status == "1"){
-
+                        getView()?.showToast(it.msg)
+                        Constants.putToken(it.data)
+                        Constants.putPhone(it.data?.user_phone)
+                        Constants.login()
+                        getView()?.loginSuccess()
                     }else if (it.status == "2" && it.code == "222"){
-
+                        getView()?.loginThreeInfo()
                     }else{
                         getView()?.showToast(it.msg)
                     }

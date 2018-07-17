@@ -63,6 +63,7 @@ class App : MultiDexApplication() {
         PlatformConfig.setWeixin("wx4fc9ff6e5c76f8bc", "1be78d3237f24ce3612733bcabae0a5c")
         //PlatformConfig.setSinaWeibo("4285643628", "0dcfdb9213e48fb0bfd8f7479f208bf8", "http:www.baidu.com")
         PlatformConfig.setQQZone("1106949895", "WRTIh0l1AFGXb2uI")
+        //PlatformConfig.setQQZone("1106602798", "gDWIr2lY4PT4OIVa")
     }
 
     companion object {

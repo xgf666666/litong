@@ -24,6 +24,9 @@ import com.umeng.socialize.UMAuthListener
  */
 class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
 
+    var mType = 1   // qq : 1 wx : 2
+    var mOpenId = ""
+
     override fun createPresenter(): LoginPresenter = LoginPresenter()
 
     override fun getActivityLayoutId(): Int = R.layout.activity_login
@@ -60,10 +63,21 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
 
     }
 
+    override fun loginThreeInfo() {
+        var intent = Intent(this,RegisterActivity::class.java)
+        intent.putExtra("register_type",mType)
+        intent.putExtra("register_openid",mOpenId)
+        startActivity(intent)
+        finish()
+    }
+
     fun login(type : Int){
+        showLoadingDialog("")
         if (type == 0){
+            mType = 1
             UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.QQ, authListener)
         }else{
+            mType = 2
             UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.WEIXIN, authListener)
         }
     }
@@ -88,11 +102,9 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
          */
         override fun onComplete(platform: SHARE_MEDIA, action: Int, data: Map<String, String>) {
             Toast.makeText(mContext, "成功了", Toast.LENGTH_LONG).show()
-            for (i in data){
-                Log.i("login_three","map:"+i.key+"::"+i.value)
-            }
-
-            //loginSuccess()
+            dismissLoadingDialog()
+            mOpenId = data["openid"]!!
+            getPresenter().loginThree(mType.toString(), mOpenId)
         }
 
         /**
@@ -102,6 +114,7 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
          * @param t 错误原因
          */
         override fun onError(platform: SHARE_MEDIA, action: Int, t: Throwable) {
+            dismissLoadingDialog()
             Toast.makeText(mContext, "失败：" + t.message, Toast.LENGTH_LONG).show()
         }
 
@@ -111,47 +124,9 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
          * @param action 行为序号，开发者用不上
          */
         override fun onCancel(platform: SHARE_MEDIA, action: Int) {
+            dismissLoadingDialog()
             Toast.makeText(mContext, "取消了", Toast.LENGTH_LONG).show()
         }
     }
-
-   /* fun qqLogin(){
-        if (!mTencent.isSessionValid){
-            mTencent.login(this,"all", loginListener)
-        }
-    }
-
-    var loginListener = object : IUiListener {
-        override fun onComplete(result: Any?) {
-            if (result == null){
-                showToast("result null")
-                return
-            }
-            showToast("success")
-            var jsonObject = result as JSONObject
-            val token = jsonObject.getString(Constants.PARAM_ACCESS_TOKEN)
-            val expires = jsonObject.getString(Constants.PARAM_EXPIRES_IN)
-            val openId = jsonObject.getString(Constants.PARAM_OPEN_ID)
-            if (!TextUtils.isEmpty(token) && !TextUtils.isEmpty(expires)
-                    && !TextUtils.isEmpty(openId)) {
-                mTencent.setAccessToken(token, expires)
-                mTencent.openId = openId
-            }
-        }
-
-        override fun onCancel() {
-        }
-
-        override fun onError(p0: UiError?) {
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == Constants.REQUEST_LOGIN || requestCode == Constants.REQUEST_APPBAR) {
-            Tencent.onActivityResultData(requestCode, resultCode, data, loginListener)
-        }
-        super.onActivityResult(requestCode, resultCode, data)
-
-    }*/
 
 }

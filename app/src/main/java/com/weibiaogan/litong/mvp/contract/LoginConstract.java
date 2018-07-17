@@ -24,6 +24,8 @@ public interface LoginConstract {
         public String getPassword();
 
         void loginSuccess();
+
+        void loginThreeInfo();
     }
 
     abstract class Presenter extends BaseMvpPresenter<Model,View> {
@@ -39,6 +41,6 @@ public interface LoginConstract {
 
         void login(@NotNull String mobile, @Nullable String password, @NotNull XxBaseHttpObserver<LoginBean> xxBaseHttpObserver);
 
-        Observable<BaseResponseEntity<Object>> loginThree(String type,String openid);
+        Observable<BaseResponseEntity<LoginBean>> loginThree(String type,String openid);
     }
 }

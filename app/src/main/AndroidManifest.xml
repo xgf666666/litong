@@ -85,11 +85,6 @@
         <!-- 找项目 -->
         <activity android:name=".ui.project.ProjectListActivity" />
         <activity
-            android:name=".wxapi.WXPayEntryActivity"
-            android:exported="true"
-            android:launchMode="singleTop"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
@@ -131,6 +126,12 @@
         <activity android:name=".ui.mine.ShareActivity" />
         <service android:name="com.amap.api.location.APSService"></service>
         <activity android:name=".ui.mine.ShareActivity"></activity>
+
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <activity
             android:name="com.tencent.tauth.AuthActivity"

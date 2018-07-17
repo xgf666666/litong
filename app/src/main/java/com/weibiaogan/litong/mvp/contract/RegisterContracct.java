@@ -1,9 +1,12 @@
 package com.weibiaogan.litong.mvp.contract;
 
+import com.weibiaogan.litong.entity.LoginBean;
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter;
 import com.xx.baseuilibrary.mvp.BaseMvpView;
 import com.xx.baseutilslibrary.network.entity.BaseResponseEntity;
 import com.xx.baseutilslibrary.network.rx.XxBaseHttpObserver;
+
+import io.reactivex.Observable;
 
 /**
  * author: Gubr
@@ -26,6 +29,8 @@ public interface RegisterContracct {
 
         void onRegisterSuccess(String msg);
 
+        void onBindSuccess();
+
 
     }
 
@@ -35,6 +40,8 @@ public interface RegisterContracct {
 
         public abstract   void register();
 
+        public abstract void regThree(String type,String openid);
+
     }
 
     interface Model {
@@ -42,5 +49,7 @@ public interface RegisterContracct {
         void register(String phone, String pwd, String code, String yzm, XxBaseHttpObserver<Object> httpObserver);
 
         void sendCode(String phone, XxBaseHttpObserver<Object> httpObserver);
+
+        Observable<BaseResponseEntity<LoginBean>> regThree(String phone,String pwd,String code,String type, String openid);
     }
 }

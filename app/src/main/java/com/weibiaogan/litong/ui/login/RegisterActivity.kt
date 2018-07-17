@@ -2,6 +2,7 @@ package com.weibiaogan.litong.ui.login
 
 import android.os.Handler
 import android.os.Message
+import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.R.id.*
 import com.weibiaogan.litong.mvp.contract.RegisterContracct
@@ -15,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_register.*
  * describe:注册  绑定手机
  */
 class RegisterActivity:BaseMvpActivity<RegisterPresenter>(),RegisterContracct.View{
+    var mType = 0
+    var openid = ""
 
     override fun createPresenter(): RegisterPresenter {
         return RegisterPresenter()
@@ -25,7 +28,12 @@ class RegisterActivity:BaseMvpActivity<RegisterPresenter>(),RegisterContracct.Vi
     }
 
     override fun initData() {
-
+        mType = intent.getIntExtra("register_type", 0)
+        if (mType != 0){
+            openid = intent.getStringExtra("register_openid")
+            tv_register_title.text = "绑定手机"
+            bt_submit.text = "确定绑定"
+        }
     }
 
     override fun initEvent() {
@@ -33,7 +41,11 @@ class RegisterActivity:BaseMvpActivity<RegisterPresenter>(),RegisterContracct.Vi
             getPresenter().sendCode()
         }
         bt_submit.setOnClickListener {
-            getPresenter().register()
+            if (mType != 0){
+                getPresenter().regThree(mType.toString(),openid)
+            }else{
+                getPresenter().register()
+            }
         }
     }
 
@@ -66,6 +78,10 @@ class RegisterActivity:BaseMvpActivity<RegisterPresenter>(),RegisterContracct.Vi
         finish()
     }
 
+    override fun onBindSuccess() {
+        startActivity(MainActivity::class.java)
+        finish()
+    }
 
     private var time = 60//验证码时间
     private var mHandler : Handler = object : Handler() {

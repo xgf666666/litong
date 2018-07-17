@@ -26,7 +26,7 @@ class LoginModel : LoginConstract.Model {
 
     }
 
-    override fun loginThree(type: String?, openid: String?) : Observable<BaseResponseEntity<Any?>?>? {
+    override fun loginThree(type: String?, openid: String?) : Observable<BaseResponseEntity<LoginBean>> {
         return  AppApi.Api().loginThree(type,openid)
     }
 }

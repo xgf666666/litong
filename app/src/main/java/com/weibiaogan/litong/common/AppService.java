@@ -656,9 +656,29 @@ public interface AppService {
     Observable<BaseResponseEntity<PayBean>> pay(@Header("userId") String userId, @Header("token") String token, @Field("pt_id") String pt_id
     , @Field("pay_type") String pay_type , @Field("pt_type") String pt_type );
 
+    /**
+     * 三方登录
+     * @param type
+     * @param openid
+     * @return
+     */
     @FormUrlEncoded
     @POST("login/login_three")
-    Observable<BaseResponseEntity<Object>> loginThree(@Field("type") String type,@Field("openid") String openid);
+    Observable<BaseResponseEntity<LoginBean>> loginThree(@Field("type") String type,@Field("openid") String openid);
+
+    /**
+     * 绑定手机
+     * @param phone
+     * @param pwd
+     * @param code
+     * @param openid
+     * @param type
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("login/reg_three")
+    Observable<BaseResponseEntity<LoginBean>> regThree(@Field("phone") String phone,@Field("pwd") String pwd,@Field("code") String code,@Field("openid") String openid
+            ,@Field("type") String type);
 }
 
 
