@@ -84,6 +84,8 @@
         <activity android:name=".ui.receipt.EvaluateActivity" />
         <!-- 找项目 -->
         <activity android:name=".ui.project.ProjectListActivity" />
+
+        <activity android:name=".GuideActivity"/>
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"

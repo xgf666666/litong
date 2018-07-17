@@ -62,7 +62,7 @@ class App : MultiDexApplication() {
         //PlatformConfig.setWeixin("wxd08a9b205494c248", "35c0bcca128270bd9b7ec01812fc97fa")
         PlatformConfig.setWeixin("wx4fc9ff6e5c76f8bc", "1be78d3237f24ce3612733bcabae0a5c")
         //PlatformConfig.setSinaWeibo("4285643628", "0dcfdb9213e48fb0bfd8f7479f208bf8", "http:www.baidu.com")
-        PlatformConfig.setQQZone("1106949895", "WRTIh0l1AFGXb2uI")
+        PlatformConfig.setQQZone("1106949823", "z4Vw6cLwfxsLIcPw")
         //PlatformConfig.setQQZone("1106602798", "gDWIr2lY4PT4OIVa")
     }
 

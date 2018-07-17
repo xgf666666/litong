@@ -41,15 +41,7 @@ class SplashActivity : BaseMvpViewActivity() {
                                     override fun run() {
                                         //延迟之后关闭当前页面
                                         if (Constants.isFirst()) {
-                                            //startActivityThenFinishSelf(GuideActivity::class.java) 第一次进入app 向导页
-                                            if (!Constants.isLogin()){
-                                                startActivity(Intent(mContext,LoginActivity::class.java))
-                                            }else{
-                                                val intent = Intent(mContext, MainActivity::class.java)
-                                                startActivity(intent)
-                                            }
-                                            finish()
-                                            overridePendingTransition(R.anim.scale_in,R.anim.scale_out)
+                                            startActivityThenFinishSelf(GuideActivity::class.java) //第一次进入app 向导页
                                         } else {
                                             if (!Constants.isLogin()){
                                                 startActivity(Intent(mContext,LoginActivity::class.java))
@@ -70,14 +62,19 @@ class SplashActivity : BaseMvpViewActivity() {
                         Log.e("Tag","没权限")
                         //被拒绝
                        /* showToast("拒绝给予权限会导致该定位不能正常使用")*/
+                        LocationManger.getInstance().startLocation()
                         Timer().schedule(
                                 object : TimerTask() {
                                     override fun run() =//延迟之后关闭当前页面
                                             if (Constants.isFirst()) {
-//                                                startActivityThenFinishSelf(GuideActivity::class.java)
+                                                startActivityThenFinishSelf(GuideActivity::class.java)
                                             } else {
-                                                val intent = Intent(mContext, MainActivity::class.java)
-                                                startActivity(intent)
+                                                if (!Constants.isLogin()){
+                                                    startActivity(Intent(mContext,LoginActivity::class.java))
+                                                }else{
+                                                    val intent = Intent(mContext, MainActivity::class.java)
+                                                    startActivity(intent)
+                                                }
                                                 finish()
                                                 overridePendingTransition(R.anim.scale_in,R.anim.scale_out)
                                             }

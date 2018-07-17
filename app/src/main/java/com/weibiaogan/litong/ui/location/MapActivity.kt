@@ -1,5 +1,6 @@
 package com.weibiaogan.litong.ui.location
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Point
@@ -18,6 +19,7 @@ import com.amap.api.services.geocoder.GeocodeResult
 import com.amap.api.services.geocoder.GeocodeSearch
 import com.amap.api.services.geocoder.RegeocodeQuery
 import com.amap.api.services.geocoder.RegeocodeResult
+import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.common.Constants
@@ -63,6 +65,11 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
             tv__my_location.text = "目的地"
             tv_location.text = address
             btn_location_sure.text = "导航"
+        }
+        if (!PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.READ_PHONE_STATE,
+                        Manifest.permission.CHANGE_WIFI_STATE)){
+                //ToastUtils.showShort("没有相关权限，无法正常定位")
         }
         location_map_view.onCreate(savedInstanceState)
 
