@@ -29,7 +29,7 @@ class WorkEvaluateAdatper(workList : List<WorkEvaluateBean.DataBean?>) : BaseQui
 
         for (i in 0 until item?.com_imgs!!.size){
             if (i < layout?.childCount!!){
-                (layout?.getChildAt(i) as ImageView).loadImag(item?.com_imgs[i])
+                (layout?.getChildAt(i) as ImageView).loadImag(item?.com_imgs[i],plach = R.mipmap.img_face)
             }
         }
 

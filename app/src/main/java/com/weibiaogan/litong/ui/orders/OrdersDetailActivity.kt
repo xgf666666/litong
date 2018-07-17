@@ -138,7 +138,7 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
         tv_money_two.text = "￥ "+bean.second_price           //项目二期款
         tv_money_three.text = "￥ "+bean.three_price            //项目尾款
 
-        iv_person.loadImag(bean.boss_user.user_img)              //需求方img
+        iv_person.loadImag(bean.boss_user.user_img,plach = R.mipmap.img_face)              //需求方img
         tv_name.text = bean.boss_user.nickname                   //需求方name
         tv_phone.text = "联系方式："+bean.boss_user.user_phone    //需求方phone
 
@@ -186,7 +186,7 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
         var imageview : ImageView? = null
 
         override fun UpdateUI(context: Context?, position: Int, data: String?) {
-            imageview?.loadImag(data!!)
+            imageview?.loadImag(data!!,plach = R.mipmap.img_face)
         }
 
         override fun createView(context: Context?): View {

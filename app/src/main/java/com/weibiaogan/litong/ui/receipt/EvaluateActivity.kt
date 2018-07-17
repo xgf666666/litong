@@ -88,9 +88,9 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
 
     override fun onResume() {
         super.onResume()
-        var width = iv_evaluate_add_img_one.width
+        //var width = iv_evaluate_add_img_one.width
 
-        Log.d("evaluate_img_width",width.toString() + ":::width")
+        //Log.d("evaluate_img_width",width.toString() + ":::width")
 
         imageChooseHelper = ImageChooseHelper.Builder()
                 .setUpActivity(this)
@@ -98,7 +98,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
                 .setDirPath(Environment.getExternalStorageDirectory().absolutePath + "/" + BuildConfig.APPLICATION_ID)//设置文件存储路径
                 .isCrop(true)//开启裁剪
                 .setCompressQuality(100)//压缩质量[1,100]
-                .setSize(width, 106)//裁剪尺寸
+                .setSize(200, 200)//裁剪尺寸
                 .setOnFinishChooseAndCropImageListener { bitmap, file ->
                     //                    显示选好得图片
                     //iv_avatar.setImageBitmap(bitmap)
@@ -221,7 +221,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
     }
 
     override fun getImgUrl(url: String) {
-        mPullImgs += url + ","
+        mPullImgs += "$url,"
         Log.i("evaluate_img_width","img::"+mPullImgs.split(",").size+"___url size"+mPullImgs)
         if (mPullImgs.split(",").size == mFileImgs.size+1){   //上传完最后一张图片 上传评论数据
             evaluate()

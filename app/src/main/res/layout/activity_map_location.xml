@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="19dp"
-                android:text="富力盈凯广场附近"
+                android:text=""
                 android:textColor="@color/text_color_third"
                 android:textSize="14sp"
                 />

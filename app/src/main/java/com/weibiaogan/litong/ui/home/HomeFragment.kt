@@ -127,7 +127,7 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         var imageview : ImageView? = null
 
         override fun UpdateUI(context: Context?, position: Int, data: String?) {
-            imageview?.loadImag(data!!,plach = R.mipmap.img_banner)
+            imageview?.loadImag(data!!,plach = R.mipmap.img_banner,error = R.mipmap.img_banner)
         }
 
         override fun createView(context: Context?): View {

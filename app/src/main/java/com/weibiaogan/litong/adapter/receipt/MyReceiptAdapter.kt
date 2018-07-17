@@ -26,7 +26,7 @@ class MyReceiptAdapter(datas : List<MyReceiptBean>) : BaseQuickAdapter<MyReceipt
                 ?.setText(R.id.tv_my_receipt_price,item?.all_price)
                 ?.addOnClickListener(R.id.tv_my_receipt_evaluate)
                 ?.addOnClickListener(R.id.tv_my_receipt_look)
-        helper?.getView<ImageView>(R.id.iv_my_receipt_img)?.loadImag(item?.pt_imgs!!)
+        helper?.getView<ImageView>(R.id.iv_my_receipt_img)?.loadImag(item?.pt_imgs!!,plach = R.mipmap.img_face)
 
         setViewTxt(helper,item)
     }

@@ -61,7 +61,7 @@ class GuideActivity : BaseActivity() {
 
         btn_steup.setOnClickListener {
             if (mPosition == 2){
-                //Constants.setNotFirst()
+                Constants.setNotFirst()
                 if (Constants.isLogin()){
                     startActivity(MainActivity::class.java)
                 }else{

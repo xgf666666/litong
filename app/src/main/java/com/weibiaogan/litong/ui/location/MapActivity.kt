@@ -36,6 +36,13 @@ import kotlin.math.ln
  */
 class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
 
+    private var needPermissions = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,/*
+                                          Manifest.permission.WRITE_EXTERNAL_STORAGE,*/
+            /*Manifest.permission.READ_EXTERNAL_STORAGE,*/
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.CHANGE_WIFI_STATE)
+
     var mAmap : AMap? = null
 
     var isClick = false
@@ -66,14 +73,22 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
             tv_location.text = address
             btn_location_sure.text = "导航"
         }
-        if (!PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.READ_PHONE_STATE,
-                        Manifest.permission.CHANGE_WIFI_STATE)){
-                //ToastUtils.showShort("没有相关权限，无法正常定位")
-        }
         location_map_view.onCreate(savedInstanceState)
-
         if (mAmap == null) mAmap = location_map_view.map
+        if (!PermissionUtils.isGranted(needPermissions[0],needPermissions[1],needPermissions[2],needPermissions[3])){
+
+            PermissionUtils.permission(needPermissions[0],needPermissions[1],needPermissions[2],needPermissions[3]).callback(object : PermissionUtils.SimpleCallback {
+                override fun onGranted() {
+
+                }
+
+                override fun onDenied() {
+                    //ToastUtils.showShort("没有相关权限，无法正常定位,请去设置界面允许定位")
+                }
+
+            }).rationale { it.again(true) }.request()
+        }
+
         init()
         initEvent()
     }
@@ -134,14 +149,18 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
             if (type != 0){
                 showDialog()
             }else{
-                Constants.putLocation(lats!!,logs!!,result?.regeocodeAddress?.city)   //存储经纬度，城市名
-                var intent = Intent()
-                intent.putExtra("location_result",result?.regeocodeAddress?.city)
-                intent.putExtra("location_address",result?.regeocodeAddress?.formatAddress)
-                intent.putExtra("location_lat",""+lats)
-                intent.putExtra("location_log",""+logs)
-                setResult(MainActivity.RESULT_CODE,intent)
-                finish()
+                if (result != null && result?.regeocodeAddress != null){
+                    Constants.putLocation(lats!!,logs!!,result?.regeocodeAddress?.city)   //存储经纬度，城市名
+                    var intent = Intent()
+                    intent.putExtra("location_result",result?.regeocodeAddress?.city)
+                    intent.putExtra("location_address",result?.regeocodeAddress?.formatAddress)
+                    intent.putExtra("location_lat",""+lats)
+                    intent.putExtra("location_log",""+logs)
+                    setResult(MainActivity.RESULT_CODE,intent)
+                    finish()
+                }else{
+                    ToastUtils.showShort("无法定位")
+                }
             }
         }
     }
@@ -252,6 +271,8 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
                 ToastUtils.showShort("请先安装"+items[position])
             }
         }
+
+
     }
 
 }

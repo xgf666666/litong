@@ -1,11 +1,13 @@
 package com.weibiaogan.litong.adapter.mine
 
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.entity.PublicProjectBean
+import com.weibiaogan.litong.extensions.loadImag
 
 /**
  * author: HuaiXianZhong
@@ -33,6 +35,7 @@ class MyPublishProjectAdapter(data : List<PublicProjectBean.DataBean>) : BaseQui
                 ?.addOnClickListener(R.id.tv_one)
                 ?.addOnClickListener(R.id.tv_two)
                 ?.addOnClickListener(R.id.tv_three)
+        helper?.getView<ImageView>(R.id.iv_head)?.loadImag(item?.pt_imgs!!,plach = R.mipmap.img_face)
 
         var two = helper?.getView<TextView>(R.id.tv_two)
         var three = helper?.getView<TextView>(R.id.tv_one)
