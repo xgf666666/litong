@@ -77,7 +77,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         ll_vip_area.setOnPerCheckLoginClickListner{
             if (Constants.getUserData()!=null){
                 if (Constants.getUserData().user.grid==1){
-                    PayCenterActivity.startPayCenter(mContext,"5","")
+                    PayCenterActivity.startPayCenter(mContext,"5","","")
                 }else{
                     showToast("你已是会员")
                 }

@@ -12,6 +12,15 @@ public class PublicProjectsBean {
      */
 
     private String pt_id;
+    private String prepaid_price;
+
+    public void setPrepaid_price(String mPrepaid_price) {
+        prepaid_price = mPrepaid_price;
+    }
+
+    public String getPrepaid_price() {
+        return prepaid_price;
+    }
 
     public String getPt_id() {
         return pt_id;
