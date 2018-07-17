@@ -129,7 +129,7 @@ class RegisterPresenter :  RegisterContracct.Presenter() {
 
         val encryptMD5ToString = newPassword?.md5Salt()
 
-        getModel().register(phone,encryptMD5ToString,invite,code,object : XxBaseHttpObserver<Any>(){
+        getModel().register(phone,encryptMD5ToString,code,object : XxBaseHttpObserver<Any>(){
             override fun onCompleted(msg: String?, entity: Any?) {
                 getView()?.onRegisterSuccess(msg)
                 getView()?.showToast(msg)

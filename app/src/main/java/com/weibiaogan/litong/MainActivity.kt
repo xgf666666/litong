@@ -94,7 +94,7 @@ class MainActivity : BaseMvpViewActivity() {
     /**
      * 显示Fragment
      */
-    private fun showFragment(checkedId: Int) {
+    public fun showFragment(checkedId: Int) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         for (i in fragments!!.indices) {
             val fragment = fragments!![i]
@@ -248,9 +248,9 @@ class MainActivity : BaseMvpViewActivity() {
             tv_home_location.text = data?.getStringExtra("location_result")
         }else if (requestCode==2&& resultCode == RESULT_CODE){
             var projectragment=fragments!![1] as Projectragment
-            var lots:String=data?.getStringExtra("location_log")!!
-            var lats:String=data?.getStringExtra("location_lat")!!
-            var address:String =data?.getStringExtra("location_address")!!
+            var lots:String=data?.getStringExtra("location_log")?:""
+            var lats:String=data?.getStringExtra("location_lat")?:""
+            var address:String =data?.getStringExtra("location_address")?:""
             projectragment.setMap(lots ,lats,address )
         } else{
             imageChooseHelper.onActivityResult(requestCode, resultCode, data)

@@ -31,6 +31,10 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="${GAODE_AMAPKEY}" />
+       <!--  <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5b4c573e8f4a9d233f000140" >
+        </meta-data>-->
 
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -106,7 +110,20 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+        <!--  QQ分享-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1105511711" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.project.PayCenterActivity"
             android:launchMode="singleTop" />
@@ -122,12 +139,15 @@
         <activity android:name=".ui.mine.KnowMemberActivity" />
         <activity android:name=".ui.project.ProjectPublicNoteActivity" />
         <activity android:name=".ui.location.MapActivity" />
+        <activity android:name=".ui.mine.ShareActivity"></activity>
         <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
         <service android:name="com.amap.api.location.APSService" />
-
-        <activity android:name=".ui.mine.ShareActivity" />
         <service android:name="com.amap.api.location.APSService"></service>
-        <activity android:name=".ui.mine.ShareActivity"></activity>
+
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
 
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -135,17 +155,6 @@
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <activity
-            android:name="com.tencent.tauth.AuthActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="tencent1106949895" />
-            </intent-filter>
-        </activity>
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"

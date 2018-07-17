@@ -6,6 +6,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
+import com.weibiaogan.litong.App
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.adapter.mine.MyPublishProjectAdapter
 import com.weibiaogan.litong.entity.PublicProjectBean
@@ -137,10 +138,17 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
                         EvaluateActivity.startEvaluate(mContext,0,bean.pt_id.toString())
                     }
                 }
-                3 -> { SureWorkerActivity.startSureWork(this@MyPublishProjectActivity,bean.pt_user_id.toString(),bean.pt_id.toString()) }  //确认工人
-                4 -> { PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"2",bean.pt_id.toString()) } //付收款
-                5 -> {PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"3",bean.pt_id.toString())} //付二期款
-                6 -> {PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"4",bean.pt_id.toString())} //付尾款
+                3 -> {
+                    SureWorkerActivity.startSureWork(this@MyPublishProjectActivity,bean.pt_user_id.toString(),bean.pt_id.toString()) }  //确认工人
+                4 -> {
+                    App.getInstance()?.addListActivity(this)
+                    PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"2",bean.pt_id.toString(),bean.first_price) } //付收款
+                5 -> {
+                    App.getInstance()?.addListActivity(this)
+                    PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"3",bean.pt_id.toString(),bean.second_price)} //付二期款
+                6 -> {
+                    App.getInstance()?.addListActivity(this)
+                    PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"4",bean.pt_id.toString(),bean.three_price)} //付尾款
 
             }
         }else if (view?.id == R.id.tv_three){   //查看项目

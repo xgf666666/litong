@@ -46,7 +46,7 @@ public interface RegisterContracct {
 
     interface Model {
 
-        void register(String phone, String pwd, String code, String yzm, XxBaseHttpObserver<Object> httpObserver);
+        void register(String phone, String pwd,  String yzm, XxBaseHttpObserver<Object> httpObserver);
 
         void sendCode(String phone, XxBaseHttpObserver<Object> httpObserver);
 

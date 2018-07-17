@@ -49,9 +49,8 @@ public interface AppService {
      */
     @FormUrlEncoded
     @POST("login/reg")
-    Observable<BaseResponseEntity<Object>> register(@Field("phone") String mobile,
+        Observable<BaseResponseEntity<Object>> register(@Field("phone") String mobile,
                                                     @Field("pwd") String pwd,
-                                                    @Field("code") String code,
                                                     @Field("yzm") String yzm);
 
     /**
@@ -118,8 +117,8 @@ public interface AppService {
      */
     @FormUrlEncoded
     @POST("Publishproject/add_project")
-    Observable<BaseResponseEntity<PublicProjectsBean>> addProject(@Field("userId") String userId,
-                                                                  @Field("token") String token,
+    Observable<BaseResponseEntity<PublicProjectsBean>> addProject(@Header("userId") String userId,
+                                                                  @Header("token") String token,
                                                                   @Field("pt_name") String pt_name,
                                                                   @Field("pt_describe") String pt_describe,
                                                                   @Field("end_time") String end_time,

@@ -17,8 +17,7 @@ import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager
  */
 class App : MultiDexApplication() {
     public var activitis:Activity?=null
-
-
+    var listActivity:ArrayList<Activity>?=null
     override fun onCreate() {
         super.onCreate()
         sInstance = this
@@ -26,7 +25,7 @@ class App : MultiDexApplication() {
         Stetho.initializeWithDefaults(this)
         LocationManger.getInstance().init(this)
         UMInit()
-
+        listActivity= ArrayList()
         Retrofit2Manager.instance.apiConfigProvider = object : JApiConfigProvider {
             override fun getApiRelativePath(): String {
                 return "/Api/"
@@ -53,6 +52,14 @@ class App : MultiDexApplication() {
     }
     public fun cleanActivity(){
         activitis?.finish()
+    }
+    public fun addListActivity( activty:Activity){
+        listActivity?.add(activty)
+    }
+    public fun cleanListActivity(){
+        for (i:Int in 0 until  listActivity?.size as Int){
+            listActivity!![i].finish()
+        }
     }
 
     private fun UMInit() {

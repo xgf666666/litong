@@ -17,8 +17,8 @@ import io.reactivex.Observer
 class RegisterModel : RegisterContracct.Model {
 
 
-    override fun register(phone: String?, pwd: String?, code: String?, yzm: String?, httpObserver: XxBaseHttpObserver<Any>?) {
-        AppApi.Api().register(phone,pwd,code,yzm)
+    override fun register(phone: String?, pwd: String?,  yzm: String?, httpObserver: XxBaseHttpObserver<Any>?) {
+        AppApi.Api().register(phone,pwd,yzm)
                 .compose(RxHelper.io_main())
                 .compose(RxHelper.start_finish(httpObserver))
                 .subscribe(httpObserver as Observer<in BaseResponseEntity<Any>>)

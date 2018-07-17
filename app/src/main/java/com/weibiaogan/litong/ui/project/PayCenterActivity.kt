@@ -6,11 +6,13 @@ import android.graphics.Color
 import android.os.Handler
 import android.os.Message
 import android.util.Log
+import android.view.View
 import android.widget.CompoundButton
 import com.alipay.sdk.app.AuthTask
 import com.alipay.sdk.app.PayTask
 import com.tencent.mm.opensdk.modelpay.PayReq
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
+import com.weibiaogan.litong.App
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.entity.MemberBean
@@ -46,6 +48,7 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
                Log.i("resultStatus",resultStatus+payResult.memo+"ddd"+result)
                if (resultStatus.equals("9000")){
                    showToast("支付成功")
+                   App.getInstance()?.cleanListActivity()
                    finish()
                }
            }
@@ -78,10 +81,11 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
     }
 
     companion object {
-        fun startPayCenter(context: Context,flag : String,ptId:String){
+        fun startPayCenter(context: Context,flag : String,ptId:String,money:String){
             val intent=Intent(context,PayCenterActivity::class.java)
             intent.putExtra("FLAG",flag)
-            intent.putExtra("ptId",flag)
+            intent.putExtra("ptId",ptId)
+            intent.putExtra("money",money)
             context.startActivity(intent)
         }
     }
@@ -95,23 +99,52 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
         iv_going.setOnClickListener{startActivity(KnowMemberActivity::class.java)}
         cb_weixin.setOnCheckedChangeListener(this)
         bt_zhifu.setOnClickListener{
-            getPresenter().pay("",isPayTpye,"5")
+            if (isPayTpye.isNullOrEmpty()){
+                showToast("请选择支付方式")
+            }else{
+                getPresenter().pay(ptId,isPayTpye,flag)
+            }
         }
         cb_zhifubao.setOnCheckedChangeListener(this)
     }
     //1是保证金金额 2是支付一期款 3是支付二期款 4是支付三期款 5是会员充值
     var flag:String=""
     var ptId:String=""
+    var money:String=""
     private var ISVIP:String="5"//会员支付页面
     override fun initData() {
           flag=intent.getStringExtra("FLAG")?:""
         ptId=intent.getStringExtra("ptId")?:""
-        if (flag.equals(ISVIP)){
-            rl_title.setBackgroundColor(Color.parseColor("#ffad1d"))
-            tv_content.setTextColor(Color.parseColor("#ffffff"))
-            tv_content.setText("了解会员特权")
-            iv_going.setOnClickListener{startActivity(KnowMemberActivity::class.java)}
-            getPresenter().vip(Constants.getToken().user_id.toString(),Constants.getToken().token)
+        money=intent.getStringExtra("money")?:""
+        when (flag){
+            "1"->{
+                iv_going.visibility= View.GONE
+                tv_price.setText(money)
+            }
+            "2"->{
+                iv_going.visibility= View.GONE
+                tv_content.setText("已经确认工人，请尽快支付首款")
+                tv_price.setText(money)
+            }
+            "3"->{
+                iv_going.visibility= View.GONE
+                tv_content.setText("请尽快支付二期款")
+                tv_price.setText(money)
+            }
+            "4"->{
+                iv_going.visibility= View.GONE
+                tv_content.setText("请尽快支付尾款")
+                tv_price.setText(money)
+            }
+            "5"->{
+                rl_title.setBackgroundColor(Color.parseColor("#ffad1d"))
+                tv_content.setTextColor(Color.parseColor("#ffffff"))
+                tv_content.setText("了解会员特权")
+                iv_going.setOnClickListener{startActivity(KnowMemberActivity::class.java)}
+                getPresenter().vip(Constants.getToken().user_id.toString(),Constants.getToken().token)
+            }
+
+
         }
     }
     //判断是选择微信还是支付宝

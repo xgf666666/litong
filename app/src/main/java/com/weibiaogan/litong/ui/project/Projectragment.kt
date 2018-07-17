@@ -16,8 +16,10 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.TextView
 import com.blankj.utilcode.util.PermissionUtils
+import com.flyco.dialog.listener.OnBtnClickL
 import com.flyco.dialog.listener.OnOperItemClickL
 import com.flyco.dialog.widget.ActionSheetDialog
+import com.flyco.dialog.widget.NormalDialog
 import com.weibiaogan.litong.BuildConfig
 import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.R
@@ -34,6 +36,7 @@ import com.weibiaogan.litong.mvp.presenter.ProjectPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpFragment
 import com.weibiaogan.litong.ui.location.GeoToScreenActivity
 import com.weibiaogan.litong.ui.location.MapActivity
+import com.weibiaogan.litong.ui.mine.BosIdentyActivity
 import com.xx.baseutilslibrary.common.ImageChooseHelper
 import com.xx.baseutilslibrary.network.entity.BaseResponseEntity
 import kotlinx.android.synthetic.main.fragment_project.*
@@ -55,9 +58,12 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
     var baozhengjing:String?=null
     override fun isPublic(isPublic: BaseResponseEntity<IsPublic>) {//是否可以发布
         Log.i("statssss",""+isPublic.data?.stat)
+        isPublicState=isPublic.data?.stat!!
         if (isPublic.data?.stat!=3){
             showDialog(isPublic.msg!!)
         }
+        dismissLoadingDialog()
+
     }
 
     override fun setWorker(publicWorker: PublicWorker) {
@@ -77,6 +83,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
     var img_two:String?=null//存放第二张推片地址
     var img_three:String?=null//存放第三张推片地址
     var area_id:Int=0//工人ID
+    var isPublicState:Int=0
     override fun setView(file: String) {
         if (img_one.isNullOrEmpty()){
             img_one=file
@@ -105,10 +112,15 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
     }
 
     override fun initView(view: View?) {
-        getPresenter().isPublic()
         getPresenter().getWorkerTyle()
         var acs=activity as MainActivity
         acs.setPhoto(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showLoadingDialog()
+        getPresenter().isPublic()
     }
     //回调接口
     override fun setPresenter(bitmap: Bitmap, file: File) {
@@ -130,7 +142,11 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             }
         }
         bt_submit.setOnPerCheckLoginClickListner {
-        pullProject()
+            if (isPublicState==3){
+                pullProject()
+            }else{
+                showToast("你还没资格，请求认证需求方")
+            }
         }
         iv_project_location.setOnClickListener {
             activity?.startActivityForResult(Intent(mContext,MapActivity::class.java),2)
@@ -212,7 +228,9 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
     override fun successful(publicProjectsBean: PublicProjectsBean) {
         toast("发布成功")
         if (!baozhengjing.isNullOrEmpty()){
-            PayCenterActivity.startPayCenter(mContext,"1",publicProjectsBean.pt_id)
+            PayCenterActivity.startPayCenter(mContext,"1",publicProjectsBean.pt_id,publicProjectsBean.prepaid_price)
+            var activity=activity as MainActivity
+            activity.showFragment(3)
         }
     }
 
@@ -299,13 +317,26 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
 
     }
     fun showDialog(text:String) {
-        var view = View.inflate(mContext, R.layout.dialog_public, null)
-        var tv_contents=view.findViewById<TextView>(R.id.tv_contents)
-        tv_contents.setText(text)
-        var dialog = AlertDialog.Builder(mContext).create()
-        dialog.setView(view)
-        dialog.setCanceledOnTouchOutside(false)
-        dialog.show()
+        var dialog=NormalDialog(mContext)
+        dialog.isTitleShow(false).content(text)
+                .style(NormalDialog.STYLE_TWO)
+                .contentTextColor(resources.getColor(R.color.color222222))
+                .contentTextSize(17f)
+                .btnText("取消","确定")
+                .btnTextSize(14f)
+                .btnTextColor(resources.getColor(R.color.color3078EF),resources.getColor(R.color.color3078EF)).show()
+                dialog.setOnBtnClickL(OnBtnClickL { dialog.dismiss() }, OnBtnClickL {
+                    dialog.dismiss()
+                startActivity(BosIdentyActivity::class.java)})
+
+
+//        var view = View.inflate(mContext, R.layout.dialog_public, null)
+//        var tv_contents=view.findViewById<TextView>(R.id.tv_contents)
+//        tv_contents.setText(text)
+//        var dialog = AlertDialog.Builder(mContext).create()
+//        dialog.setView(view)
+//        dialog.setCanceledOnTouchOutside(false)
+//        dialog.show()
     }
     var log:String?=null
     var lag:String?=null
