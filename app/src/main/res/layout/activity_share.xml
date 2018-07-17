@@ -25,7 +25,8 @@
             android:layout_height="match_parent"
             android:background="?selectableItemBackground"
             android:src="@drawable/right_arrows"
-            android:tint="@color/colorWhite" />
+            android:tint="@color/colorWhite"
+            android:onClick="onClick"/>
     </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,8 +83,11 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:clickable="true"
+            android:orientation="vertical"
+            android:onClick="onClick">
             <ImageView
+                android:id="@+id/iv_VX"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_login_weixin"
@@ -103,7 +107,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:onClick="onClick">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -125,7 +130,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:onClick="onClick">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

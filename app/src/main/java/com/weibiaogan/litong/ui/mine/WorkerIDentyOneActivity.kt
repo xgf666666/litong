@@ -43,12 +43,14 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
     var FLAG:Int=0
     var img_one:String?=null//存放第一张推片地址
     var img_two:String?=null//存放第二张推片地址
+    var imgList:ArrayList<String>?=null
     override fun setView(file: String) {
-        if (FLAG==ONE){
-            img_one=file
-        }else{
-            img_two=file
-        }
+        imgList?.add(file)
+//        if (FLAG==ONE){
+//            img_one=file
+//        }else{
+//            img_two=file
+//        }
     }
     /**
      * 创建P层
@@ -68,6 +70,7 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
      * 初始化数据状态
      */
     override fun initData() {
+        imgList=ArrayList()
         initImageChooseHelper()
     }
 
@@ -91,17 +94,16 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
     private fun getViewData(){
         var map= HashMap<String,String>()
         if (TextUtils.isEmpty(et_name.text)||TextUtils.isEmpty(et_phone.text)||TextUtils.isEmpty(et_shenfenzheng.text)||
-                TextUtils.isEmpty(img_one)||TextUtils.isEmpty(img_two)||TextUtils.isEmpty(et_project_location.text)||
-                TextUtils.isEmpty(et_danbaoren.text)||TextUtils.isEmpty(et_danbaoren.text)||TextUtils.isEmpty(et_danbaorenPhone.text)) {
+                imgList?.size!=2||TextUtils.isEmpty(et_project_location.text)||
+                TextUtils.isEmpty(et_danbaoren.text)||TextUtils.isEmpty(et_danbaorenPhone.text)) {
             toast("完善资料")
         }else if(et_phone.text.toString().length!=11||et_shenfenzheng.text.toString().length!=18||et_danbaorenPhone.text.toString().length!=11){
             toast("手机号码或身份证")
         }else{
             map.put("a_name",et_name.text.toString())
             map.put("a_phone",et_phone.text.toString())
-//            Log.i("a_phone",img_one+","+img_two)
             map.put("idcard_number",et_shenfenzheng.text.toString())
-            map.put("idcard_img",img_one+","+img_two)
+            map.put("idcard_img",imgList?.get(0)+","+imgList?.get(1))
             map.put("a_address",et_project_location.text.toString())
             map.put("lat_long",lots+","+lats)
             map.put("a_guarantor",et_danbaoren.text.toString())
@@ -150,9 +152,11 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
                 .setOnFinishChooseAndCropImageListener { bitmap, file ->
                     if (FLAG==ONE){
                         iv_one.visibility=View.GONE
+                        iv_one.isEnabled=false
                         iv_oneView.setImageBitmap(bitmap)
                     }else if (FLAG==TWO){
                         iv_two.visibility= View.GONE
+                        iv_two.isEnabled=false
                         iv_twoView.setImageBitmap(bitmap)
                     }
 
@@ -165,9 +169,9 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
     var address:String?=null
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode==2&&resultCode== MainActivity.RESULT_CODE){
-            lots=data?.getStringExtra("location_log")!!
-            lats=data?.getStringExtra("location_lat")!!
-            address=data?.getStringExtra("location_address")!!
+            lots=data?.getStringExtra("location_log")?:""
+            lats=data?.getStringExtra("location_lat")?:""
+            address=data?.getStringExtra("location_address")?:""
             et_project_location.setText(address)
 
         }else{

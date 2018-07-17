@@ -7,6 +7,8 @@ import com.facebook.stetho.Stetho
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.socialize.PlatformConfig
 import com.weibiaogan.litong.utils.LocationManger
+import com.xx.anypay.WxAppIDProvider
+import com.xx.anypay.XxAnyPay
 import com.xx.baseutilslibrary.network.provider.JApiConfigProvider
 import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager
 
@@ -26,6 +28,11 @@ class App : MultiDexApplication() {
         LocationManger.getInstance().init(this)
         UMInit()
         listActivity= ArrayList()
+        XxAnyPay.intance.init(this)
+        XxAnyPay.intance.wxAppIDProvider = object : WxAppIDProvider {
+            override val weChatAppID: String
+                get() = "wx4fc9ff6e5c76f8bc"
+        }
         Retrofit2Manager.instance.apiConfigProvider = object : JApiConfigProvider {
             override fun getApiRelativePath(): String {
                 return "/Api/"
@@ -57,9 +64,12 @@ class App : MultiDexApplication() {
         listActivity?.add(activty)
     }
     public fun cleanListActivity(){
-        for (i:Int in 0 until  listActivity?.size as Int){
-            listActivity!![i].finish()
+        if (listActivity?.size!=0){
+            for (i:Int in 0 until  listActivity?.size as Int){
+                listActivity!![i].finish()
+            }
         }
+
     }
 
     private fun UMInit() {

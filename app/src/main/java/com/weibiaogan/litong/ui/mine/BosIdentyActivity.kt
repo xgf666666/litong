@@ -34,13 +34,15 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
     var FLAG:Int=0
     var img_one:String?=null//存放第一张推片地址
     var img_two:String?=null//存放第二张推片地址
+    var imgList:ArrayList<String>?=null
 
     override fun setView(data: String) {
-        if (FLAG==ONE){
-            img_one=data
-        }else{
-            img_two=data
-        }
+//        if (FLAG==ONE){
+//            img_one=data
+//        }else{
+//            img_two=data
+//        }
+        imgList?.add(data)
     }
     override fun identySucceful() {
         toast("审核提交成功")
@@ -102,6 +104,7 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
      * 初始化数据状态
      */
     override fun initData() {
+        imgList=ArrayList()
         initImageChooseHelper()
     }
 
@@ -133,14 +136,14 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
     private fun startactivity(){
        var map=HashMap<String,String>()
         if (TextUtils.isEmpty(et_name.text)|| TextUtils.isEmpty(et_phone.text)|| TextUtils.isEmpty(et_shenfenzheng.text)||
-                TextUtils.isEmpty(img_one)|| TextUtils.isEmpty(img_two)|| TextUtils.isEmpty(et_project_location.text)||
+                imgList?.size!=2|| TextUtils.isEmpty(et_project_location.text)||
                 TextUtils.isEmpty(et_danbaoren.text)|| TextUtils.isEmpty(et_danbaoren.text)|| TextUtils.isEmpty(et_danbaorenPhone.text)||
                 is_company==-1 ||is_card==-1||is_insurance==-1) {
             toast("完善资料")
         }else if(et_phone.text.toString().length!=11||et_shenfenzheng.text.toString().length!=18||et_danbaorenPhone.text.toString().length!=11){
             toast("手机号码或身份证")
         } else{
-            map.put("idcard_img",img_one+","+img_two)
+            map.put("idcard_img",imgList?.get(0)+","+imgList?.get(1))
             map.put("idcard_number",et_shenfenzheng.text.toString())
             map.put("a_name",et_name.text.toString())
             map.put("a_phone",et_phone.text.toString())
@@ -204,9 +207,9 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
     var address:String?=null
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode==2&&resultCode== MainActivity.RESULT_CODE){
-            lots=data?.getStringExtra("location_log")!!
-            lats=data?.getStringExtra("location_lat")!!
-            address=data?.getStringExtra("location_address")!!
+            lots=data?.getStringExtra("location_log")?:""
+            lats=data?.getStringExtra("location_lat")?:""
+            address=data?.getStringExtra("location_address")?:""
             et_project_location.setText(address)
         }else{
             imageChooseHelper.onActivityResult(requestCode, resultCode, data)

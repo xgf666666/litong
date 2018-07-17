@@ -5,6 +5,10 @@ import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.PayCenterConstract
 import com.weibiaogan.litong.mvp.model.PayCenterModel
+import com.xx.anypay.XxAnyPay
+import com.xx.anypay.XxAnyPay.Companion.XXPAY_ALI
+import com.xx.anypay.XxAnyPay.Companion.XXPAY_WX
+import com.xx.anypay.XxAnyPayResultCallBack
 
 /**
  * author: xiaoguagnfei
@@ -20,6 +24,7 @@ class PayCenterPresenter : PayCenterConstract.Presenter() {
         },{
             getView()?.showToast(it)
         })
+
 
     }
 

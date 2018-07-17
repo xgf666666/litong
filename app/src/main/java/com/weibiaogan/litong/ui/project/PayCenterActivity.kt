@@ -8,8 +8,10 @@ import android.os.Message
 import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.Toast
 import com.alipay.sdk.app.AuthTask
 import com.alipay.sdk.app.PayTask
+import com.google.gson.Gson
 import com.tencent.mm.opensdk.modelpay.PayReq
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.weibiaogan.litong.App
@@ -21,6 +23,8 @@ import com.weibiaogan.litong.entity.PayResult
 import com.weibiaogan.litong.mvp.contract.PayCenterConstract
 import com.weibiaogan.litong.mvp.presenter.PayCenterPresenter
 import com.weibiaogan.litong.ui.mine.KnowMemberActivity
+import com.xx.anypay.XxAnyPay
+import com.xx.anypay.XxAnyPayResultCallBack
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_pay_center.*
 import java.net.URLEncoder
@@ -60,24 +64,36 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
 
     override fun payResult(payBean: PayBean) {
         //微信支付
-        if (isPayTpye.equals("wechat")){
-            var api= WXAPIFactory.createWXAPI(mContext, null)
-            api.registerApp(payBean.data.appid)
-            var request=PayReq()
-            request.appId=payBean.data.appid
-            request.partnerId=payBean.data.mch_id
-            request.prepayId=payBean.data.prepay_id
-            request.packageValue="Sign=WXPay"
-             request.nonceStr=payBean.data.nonce_str
-            request.timeStamp=""+payBean.data.time
-            request.sign=payBean.data.sign
-            api.sendReq(request)
-//            finish()
-        }else if(isPayTpye.equals("alipay")){
-            Log.i("alipaysssss","支付宝调用")
-            setAliPay(payBean)//支付宝支付
-        }
+//        if (isPayTpye.equals("wechat")){
+//            var api= WXAPIFactory.createWXAPI(mContext, null)
+//            api.registerApp(payBean.data.appid)
+//            var request=PayReq()
+//            request.appId=payBean.data.appid
+//            request.partnerId=payBean.data.mch_id
+//            request.prepayId=payBean.data.prepay_id
+//            request.packageValue="Sign=WXPay"
+//             request.nonceStr=payBean.data.nonce_str
+//            request.timeStamp=""+payBean.data.time
+//            request.sign=payBean.data.sign
+//            api.sendReq(request)
+////            finish()
+//        }else if(isPayTpye.equals("alipay")){
+//            Log.i("alipaysssss","支付宝调用")
+//            setAliPay(payBean)//支付宝支付
+//        }
 
+        XxAnyPay.intance
+                .openAnyPay(if (isPayTpye == "wechat") XxAnyPay.XXPAY_WX else XxAnyPay.XXPAY_ALI,if (isPayTpye == "wechat") Gson().toJson(payBean.data) else payBean.data.sign, object : XxAnyPayResultCallBack {
+                    override fun onPayFiale(error: String) {
+                        showToast(error)
+                    }
+
+                    override fun onPaySuccess() {
+                        showToast("支付成功")
+                        App.getInstance()?.cleanListActivity()
+                        finish()
+                    }
+    })
     }
 
     companion object {
@@ -113,6 +129,7 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
     var money:String=""
     private var ISVIP:String="5"//会员支付页面
     override fun initData() {
+        XxAnyPay.intance.init(this)
           flag=intent.getStringExtra("FLAG")?:""
         ptId=intent.getStringExtra("ptId")?:""
         money=intent.getStringExtra("money")?:""
