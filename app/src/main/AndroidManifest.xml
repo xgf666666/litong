@@ -36,7 +36,8 @@
             android:value="5b4c573e8f4a9d233f000140" >
         </meta-data>-->
 
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:theme="@style/MainTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
