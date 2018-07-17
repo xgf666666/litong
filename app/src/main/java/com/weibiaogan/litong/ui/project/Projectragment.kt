@@ -231,6 +231,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             PayCenterActivity.startPayCenter(mContext,"1",publicProjectsBean.pt_id,publicProjectsBean.prepaid_price)
             var activity=activity as MainActivity
             activity.showFragment(3)
+            activity.setRadio()
         }
     }
 

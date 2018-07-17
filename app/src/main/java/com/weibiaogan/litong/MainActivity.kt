@@ -45,6 +45,10 @@ class MainActivity : BaseMvpViewActivity() {
 
     override fun getActivityLayoutId(): Int = R.layout.activity_main
 
+    public fun setRadio(){
+        radio.check(3)
+    }
+
     override fun initEvent() {
         App.getInstance()?.setActivity(this as Activity)
         radio.setOnCheckedChangeListener { _, checkedId ->
@@ -56,6 +60,7 @@ class MainActivity : BaseMvpViewActivity() {
             changeTitle(checkedId)
             supportFragmentManager.popBackStack()
         }
+
 
 
        /* ll_search_area.setOnClickListener {
