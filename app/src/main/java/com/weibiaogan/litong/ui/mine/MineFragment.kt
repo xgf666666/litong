@@ -76,11 +76,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         ll_backlist_area.setOnPerCheckLoginClickListner { startActivity(BlacklistActivity::class.java) }
         ll_vip_area.setOnPerCheckLoginClickListner{
             if (Constants.getUserData()!=null){
-                if (Constants.getUserData().user.grid==1){
                     PayCenterActivity.startPayCenter(mContext,"5","","")
-                }else{
-                    showToast("你已是会员")
-                }
             }
            }
         ll_shop_area.setOnPerCheckLoginClickListner {
@@ -139,29 +135,29 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         when(data?.user?.bossStat){
 
             1->{tv_label_need.setText("待审核需求方")
-                tv_label_need.setSolid(R.color.bg_ddd)
+                tv_label_need.setSolid(resources.getColor(R.color.bg_ddd))
             }
             2->{
                 tv_label_need.setText("已认证需求方")
 
-//                tv_label_need.setSolid(R.color.label_color_bg_green)
+                tv_label_need.setSolid(resources.getColor(R.color.label_color_bg_green))
             }
             0->{
                 tv_label_need.setText("待认证需求方")
-                tv_label_need.setSolid(R.color.bg_ddd)
+                tv_label_need.setSolid(resources.getColor(R.color.bg_ddd))
             }
         }
         when(data?.user?.workerStat){
             1->{tv_label_workers.setText("待审核工人")
-                tv_label_workers.setSolid(R.color.bg_ddd)
+                tv_label_workers.setSolid(resources.getColor(R.color.bg_ddd))
             }
             2->{
                 tv_label_workers.setText("已认证工人")
-//                tv_label_workers.setSolid(R.color.label_color_bg_accent)
+                tv_label_workers.setSolid(resources.getColor(R.color.label_color_bg_accent))
             }
             0->{
                 tv_label_workers.setText("待认证工人")
-                tv_label_workers.setSolid(R.color.bg_ddd)
+                tv_label_workers.setSolid(resources.getColor(R.color.bg_ddd))
             }
         }
 

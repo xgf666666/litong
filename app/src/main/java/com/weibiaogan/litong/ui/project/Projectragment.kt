@@ -3,6 +3,7 @@ package com.weibiaogan.litong.ui.project
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Build
@@ -15,6 +16,10 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.TextView
+import android.widget.Toast
+import com.bigkoo.pickerview.builder.TimePickerBuilder
+import com.bigkoo.pickerview.listener.OnTimeSelectListener
+import com.bigkoo.pickerview.view.TimePickerView
 import com.blankj.utilcode.util.PermissionUtils
 import com.flyco.dialog.listener.OnBtnClickL
 import com.flyco.dialog.listener.OnOperItemClickL
@@ -41,6 +46,8 @@ import com.xx.baseutilslibrary.common.ImageChooseHelper
 import com.xx.baseutilslibrary.network.entity.BaseResponseEntity
 import kotlinx.android.synthetic.main.fragment_project.*
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 /**
@@ -223,6 +230,9 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
         })
+        et_project_endTime.setOnClickListener{//选择时间器
+            getDate()
+        }
     }
 
     override fun successful(publicProjectsBean: PublicProjectsBean) {
@@ -252,7 +262,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         val projectLanlog=log+","+lag
         var ptImgs:String=""
         if (!img_one.isNullOrEmpty())
-            ptImgs=ptImgs+","+img_one
+            ptImgs=ptImgs+img_one
         if (!img_two.isNullOrEmpty())
             ptImgs=ptImgs+","+img_two
         if (!img_three.isNullOrEmpty())
@@ -329,15 +339,6 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
                 dialog.setOnBtnClickL(OnBtnClickL { dialog.dismiss() }, OnBtnClickL {
                     dialog.dismiss()
                 startActivity(BosIdentyActivity::class.java)})
-
-
-//        var view = View.inflate(mContext, R.layout.dialog_public, null)
-//        var tv_contents=view.findViewById<TextView>(R.id.tv_contents)
-//        tv_contents.setText(text)
-//        var dialog = AlertDialog.Builder(mContext).create()
-//        dialog.setView(view)
-//        dialog.setCanceledOnTouchOutside(false)
-//        dialog.show()
     }
     var log:String?=null
     var lag:String?=null
@@ -346,6 +347,18 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         log=logs
         lag=lags
         Log.i("aggsrfgfgf",address+log+lag)
+
+    }
+    //时间选择器
+    private fun getDate(){
+          var pvTime =  TimePickerBuilder(mContext, object : OnTimeSelectListener {
+              override fun onTimeSelect(date: Date?, v: View?) {
+                  var format="yyyy-MM-dd"
+                  var dateFormat=SimpleDateFormat(format)
+                  et_project_endTime.setText(dateFormat.format(date))
+              }
+
+          }).setLineSpacingMultiplier(2.2f).build().show()
 
     }
 

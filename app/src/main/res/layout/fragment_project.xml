@@ -83,16 +83,16 @@
                     android:text="完结时间"
                     android:textSize="15sp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/et_project_endTime"
                     android:layout_width="0dp"
                     android:layout_height="44dp"
                     android:layout_marginRight="14dp"
                     android:layout_weight="9"
                     android:background="@drawable/shape_edittext_bg"
-                    android:hint="请输入项目完结时间"
+                    android:hint="请选择项目完结时间"
                     android:paddingLeft="10dp"
-
+                    android:gravity="center_vertical"
                     android:textSize="15sp" />
             </LinearLayout>
 

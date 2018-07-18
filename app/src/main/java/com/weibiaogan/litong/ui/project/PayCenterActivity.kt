@@ -38,29 +38,29 @@ import java.net.URLEncoder
 
 class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstract.View, CompoundButton.OnCheckedChangeListener {
 
-    private var mhandler:Handler= object : Handler() {
-       override fun handleMessage(msg: Message?) {
-           super.handleMessage(msg)
-           if (msg?.what==1){
-               Log.i("alipaysssss","支付宝调用3")
-               var map=msg.obj as Map<String,String>
-               var payResult=PayResult(map)
-               var info=payResult.result
-               var result= URLEncoder.encode(info,"utf-8")
-               var resultStatus=payResult.resultStatus
-
-               Log.i("resultStatus",resultStatus+payResult.memo+"ddd"+result)
-               if (resultStatus.equals("9000")){
-                   showToast("支付成功")
-                   App.getInstance()?.cleanListActivity()
-                   finish()
-               }
-           }
-       }
-
-
-
-   }
+//    private var mhandler:Handler= object : Handler() {
+//       override fun handleMessage(msg: Message?) {
+//           super.handleMessage(msg)
+//           if (msg?.what==1){
+//               Log.i("alipaysssss","支付宝调用3")
+//               var map=msg.obj as Map<String,String>
+//               var payResult=PayResult(map)
+//               var info=payResult.result
+//               var result= URLEncoder.encode(info,"utf-8")
+//               var resultStatus=payResult.resultStatus
+//
+//               Log.i("resultStatus",resultStatus+payResult.memo+"ddd"+result)
+//               if (resultStatus.equals("9000")){
+//                   showToast("支付成功")
+//                   App.getInstance()?.cleanListActivity()
+//                   finish()
+//               }
+//           }
+//       }
+//
+//
+//
+//   }
 
     override fun payResult(payBean: PayBean) {
         //微信支付
@@ -127,7 +127,6 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
     var flag:String=""
     var ptId:String=""
     var money:String=""
-    private var ISVIP:String="5"//会员支付页面
     override fun initData() {
         XxAnyPay.intance.init(this)
           flag=intent.getStringExtra("FLAG")?:""
@@ -165,7 +164,7 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
         }
     }
     //判断是选择微信还是支付宝
-    var isPayTpye:String=""
+    var isPayTpye:String="wechat"
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
         if (isChecked){
@@ -188,22 +187,22 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
     override fun getActivityLayoutId(): Int =R.layout.activity_pay_center
 
     override fun createPresenter(): PayCenterPresenter =PayCenterPresenter()
-    private fun setAliPay(payBean: PayBean){
-        var runnable:Runnable= object : Runnable {
-            override fun run() {
-                var alipay= PayTask(this@PayCenterActivity)
-                var result=alipay.payV2(payBean.data.sign,true)
-                var message=Message()
-                message.what=1
-                message.obj=result
-                mhandler.sendMessage(message)
-                Log.i("alipaysssss","支付宝"+payBean.data.sign)
-            }
-        }
-        var thread=Thread(runnable)
-        thread.start()
-
-    }
+//    private fun setAliPay(payBean: PayBean){
+//        var runnable:Runnable= object : Runnable {
+//            override fun run() {
+//                var alipay= PayTask(this@PayCenterActivity)
+//                var result=alipay.payV2(payBean.data.sign,true)
+//                var message=Message()
+//                message.what=1
+//                message.obj=result
+//                mhandler.sendMessage(message)
+//                Log.i("alipaysssss","支付宝"+payBean.data.sign)
+//            }
+//        }
+//        var thread=Thread(runnable)
+//        thread.start()
+//
+//    }
 
 
 }

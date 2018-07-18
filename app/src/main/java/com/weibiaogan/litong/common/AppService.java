@@ -88,7 +88,7 @@ public interface AppService {
     @FormUrlEncoded
     @POST("User/update_balance_payment")
     Observable<BaseResponseEntity<Object>> updateBalancePayment(
-            @Field("userId") String userId, @Field("token") String token,
+            @Header("userId") String userId, @Header("token") String token,
             @Field("code") String code,
             @Field("balance_payment") String balancePayment);
 
@@ -153,7 +153,7 @@ public interface AppService {
      */
     @FormUrlEncoded
     @POST("User/index")
-    LiveData<ApiResponse<BaseResponseEntity<UserCenterBean>>> UserIndex2(@Field("userId") String userId, @Field("token") String token);
+    LiveData<ApiResponse<BaseResponseEntity<UserCenterBean>>> UserIndex2(@Header("userId") String userId, @Header("token") String token);
 
 
 
@@ -195,8 +195,8 @@ public interface AppService {
     @FormUrlEncoded
     @POST("User/forget_user_pwd")
     Observable<BaseResponseEntity<Object>> forgetUserPwd(
-            @Field("userId") String userId,
-            @Field("token") String token,
+            @Header("userId") String userId,
+            @Header("token") String token,
             @Field("code") String code,
             @Field("new_user_pwd") String newUserPwd);
 
@@ -213,8 +213,8 @@ public interface AppService {
      */
     @FormUrlEncoded
     @POST("Withdraw/withdraw_add")
-    Observable<BaseResponseEntity<List<Object>>> withdrawAdd(@Field("userId") String userId
-            , @Field("token") String token
+    Observable<BaseResponseEntity<List<Object>>> withdrawAdd(@Header("userId") String userId
+            , @Header("token") String token
             , @Field("price") String price
             , @Field("account") String account
             , @Field("type") String type

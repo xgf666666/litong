@@ -55,7 +55,7 @@ class ProjectPresenter : ProjectContract.Presenter() {
                 getView()?.showToast("项目描述不能为空")
                 return
             }
-            if (endtime.isNullOrEmpty()) {
+            if (endtime.equals("请选择项目完结时间")) {
                 getView()?.showToast("项目结束时间不能为空")
                 return
             }
