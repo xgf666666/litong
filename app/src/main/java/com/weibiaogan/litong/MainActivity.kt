@@ -50,7 +50,6 @@ class MainActivity : BaseMvpViewActivity() {
     }
 
     override fun initEvent() {
-        App.getInstance()?.setActivity(this as Activity)
         radio.setOnCheckedChangeListener { _, checkedId ->
           /*  ll_search_area.visibility= if (checkedId==0) View.VISIBLE else View.GONE*/
 //            iv_setup.visibility=if (checkedId==3)View.VISIBLE else View.GONE

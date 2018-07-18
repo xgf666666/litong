@@ -30,8 +30,8 @@ class ChangePayPwPresenter :  ChangePayPwContract.Presenter() {
             getView()?.showToast("请输入验证码")
             return
         }
-        if (code!!.length!=4){
-            getView()?.showToast("请输入4位验证码")
+        if (code!!.length!=6){
+            getView()?.showToast("请输入6位验证码")
             return
         }
 

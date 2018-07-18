@@ -1,5 +1,6 @@
 package com.weibiaogan.litong.mvp.presenter
 
+import android.util.Log
 import com.weibiaogan.litong.common.AppApi
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.common.md5Salt
@@ -17,6 +18,7 @@ class CommissionPresenter : CommissionContract.Presenter() {
     override fun commission(cash: String, account: String,type:String,balancePayment:String) {
 
         val balancePaymentMD5 = balancePayment.md5Salt()
+        Log.i("balancePaymentMD5",balancePaymentMD5)
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
