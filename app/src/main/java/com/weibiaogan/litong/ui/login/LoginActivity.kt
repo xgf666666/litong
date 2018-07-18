@@ -72,7 +72,7 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
     }
 
     fun login(type : Int){
-        showLoadingDialog("")
+        //showLoadingDialog("")
         if (type == 0){
             mType = 1
             UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.QQ, authListener)
@@ -92,7 +92,9 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
          * @desc 授权开始的回调
          * @param platform 平台名称
          */
-        override fun onStart(platform: SHARE_MEDIA) {}
+        override fun onStart(platform: SHARE_MEDIA) {
+            Toast.makeText(mContext, "开始", Toast.LENGTH_LONG).show()
+        }
 
         /**
          * @desc 授权成功的回调
@@ -102,7 +104,7 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
          */
         override fun onComplete(platform: SHARE_MEDIA, action: Int, data: Map<String, String>) {
             Toast.makeText(mContext, "成功了", Toast.LENGTH_LONG).show()
-            dismissLoadingDialog()
+            //dismissLoadingDialog()
             mOpenId = data["openid"]!!
             getPresenter().loginThree(mType.toString(), mOpenId)
         }
@@ -114,7 +116,7 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
          * @param t 错误原因
          */
         override fun onError(platform: SHARE_MEDIA, action: Int, t: Throwable) {
-            dismissLoadingDialog()
+            //dismissLoadingDialog()
             Toast.makeText(mContext, "失败：" + t.message, Toast.LENGTH_LONG).show()
         }
 
@@ -124,7 +126,7 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
          * @param action 行为序号，开发者用不上
          */
         override fun onCancel(platform: SHARE_MEDIA, action: Int) {
-            dismissLoadingDialog()
+            //dismissLoadingDialog()
             Toast.makeText(mContext, "取消了", Toast.LENGTH_LONG).show()
         }
     }

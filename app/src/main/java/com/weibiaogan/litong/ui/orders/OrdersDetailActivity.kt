@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.ui.orders
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.content.Context
 import android.view.View
 import android.content.Intent
@@ -148,7 +149,7 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
         tv_style.text = "类型暂定"                                //类型
         for (i in 0 until mDetailImgs.size){
             if (i < bean.pt_imgs.size && !TextUtils.isEmpty(bean.pt_imgs[i])){
-                mDetailImgs[i].loadImag(bean.pt_imgs[i],plach = R.mipmap.img_face)
+                mDetailImgs[i].loadImag(bean.pt_imgs[i],plach = R.mipmap.img_default)
             }else{
                 mDetailImgs[i].visibility = View.GONE
             }
@@ -186,7 +187,7 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
         var imageview : ImageView? = null
 
         override fun UpdateUI(context: Context?, position: Int, data: String?) {
-            imageview?.loadImag(data!!,plach = R.mipmap.img_face)
+            imageview?.loadImag(data!!,plach = R.mipmap.img_default)
         }
 
         override fun createView(context: Context?): View {

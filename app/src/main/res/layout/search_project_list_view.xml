@@ -11,8 +11,9 @@
         android:layout_width="@dimen/search_project_list_img_width"
         android:layout_height="@dimen/search_project_list_img_width"
         android:layout_margin="@dimen/search_project_icon_margin"
-        android:src="@mipmap/ic_launcher"
-        android:layout_gravity="center"/>
+        android:src="@mipmap/img_default"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"/>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,9 +1,12 @@
 package com.weibiaogan.litong
 
+import android.os.Bundle
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import android.widget.ImageView
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.startActivity
@@ -21,6 +24,11 @@ class GuideActivity : BaseActivity() {
     var imgList = arrayListOf<ImageView>()
     var mPointView = arrayListOf<ImageView>()
     var mPosition = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun getActivityLayoutId(): Int = R.layout.activity_guide
 

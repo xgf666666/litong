@@ -9,7 +9,8 @@
         <item name="android:listDivider">@drawable/divider_bg</item>
     </style>
     <style name="MainTheme" parent="AppTheme">
-        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@color/colorTransparent</item>
         <item name="android:background">@drawable/launcherpage</item>
     </style>

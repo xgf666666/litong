@@ -35,7 +35,7 @@ class MyPublishProjectAdapter(data : List<PublicProjectBean.DataBean>) : BaseQui
                 ?.addOnClickListener(R.id.tv_one)
                 ?.addOnClickListener(R.id.tv_two)
                 ?.addOnClickListener(R.id.tv_three)
-        helper?.getView<ImageView>(R.id.iv_head)?.loadImag(item?.pt_imgs!!,plach = R.mipmap.img_face)
+        helper?.getView<ImageView>(R.id.iv_head)?.loadImag(item?.pt_imgs!!,plach = R.mipmap.img_default)
 
         var two = helper?.getView<TextView>(R.id.tv_two)
         var three = helper?.getView<TextView>(R.id.tv_one)

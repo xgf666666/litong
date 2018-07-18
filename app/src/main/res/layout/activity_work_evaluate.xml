@@ -61,21 +61,21 @@
                 android:layout_height="@dimen/work_evaluate_item_img_height"
                 android:layout_weight="1"
                 android:layout_marginRight="@dimen/margin_9"
-                android:src="@mipmap/ic_launcher"
+                android:src="@mipmap/img_default"
                 android:scaleType="fitXY"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="@dimen/work_evaluate_item_img_height"
                 android:layout_weight="1"
                 android:layout_marginRight="@dimen/margin_9"
-                android:src="@mipmap/ic_launcher"
+                android:src="@mipmap/img_default"
                 android:scaleType="fitXY"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="@dimen/work_evaluate_item_img_height"
                 android:layout_weight="1"
                 android:layout_marginRight="@dimen/margin_9"
-                android:src="@mipmap/ic_launcher"
+                android:src="@mipmap/img_default"
                 android:scaleType="fitXY"/>
 
         </LinearLayout>

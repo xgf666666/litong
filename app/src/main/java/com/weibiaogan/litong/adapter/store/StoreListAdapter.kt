@@ -19,6 +19,6 @@ class StoreListAdapter(datas : List<StoreListBean>) : BaseQuickAdapter<StoreList
         helper?.setText(R.id.tv_store_list_address,item?.st_address)
         helper?.setText(R.id.tv_store_list_type,"主营类别："+item?.st_type)
         helper?.setText(R.id.tv_store_list_distance,item?.distance?.changeKm())
-        helper?.getView<ImageView>(R.id.iv_store_list_img)?.loadImag(item?.st_img!!,plach = R.mipmap.img_face)
+        helper?.getView<ImageView>(R.id.iv_store_list_img)?.loadImag(item?.st_img!!,plach = R.mipmap.img_default)
     }
 }

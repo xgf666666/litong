@@ -21,6 +21,6 @@ class SearchProjectAdapter(datas : List<SearchProjectBean>) : BaseQuickAdapter<S
                 ?.setText(R.id.tv_search_project_time,"截止时间 : "+item?.end_time)
                 ?.setText(R.id.tv_search_project_distance,item?.distance.changeKm())//distance gone
 
-        helper?.getView<ImageView>(R.id.iv_search_project_img)?.loadImag(item?.pt_imgs!!,plach = R.mipmap.img_face)
+        helper?.getView<ImageView>(R.id.iv_search_project_img)?.loadImag(item?.pt_imgs!!,plach = R.mipmap.img_default)
     }
 }

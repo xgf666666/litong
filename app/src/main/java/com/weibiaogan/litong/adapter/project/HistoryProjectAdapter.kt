@@ -26,6 +26,6 @@ class HistoryProjectAdapter(data:List<ProjectBean>) :BaseQuickAdapter<ProjectBea
                 ?.setText(R.id.tv_time,"截止时间: "+item?.end_time)
                 ?.setText(R.id.tv_price,"￥ "+item?.all_price)
         helper?.getView<ImageView>(R.id.iv_success)?.visibility = if (isSuccess) View.VISIBLE else View.GONE
-        helper?.getView<ImageView>(R.id.iv_head)?.loadImag(item?.pt_imgs!!,plach = R.mipmap.img_face)
+        helper?.getView<ImageView>(R.id.iv_head)?.loadImag(item?.pt_imgs!!,plach = R.mipmap.img_default)
     }
 }

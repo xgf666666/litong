@@ -34,7 +34,8 @@
             android:layout_marginLeft="@dimen/margin_14"
             android:layout_marginTop="@dimen/margin_8"
             android:layout_marginBottom="@dimen/margin_8"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/img_default"
+            android:scaleType="fitXY"
             />
 
         <LinearLayout

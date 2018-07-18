@@ -30,7 +30,9 @@
         android:id="@+id/iv_head"
         android:layout_width="98dp"
         android:layout_height="98dp"
-        android:layout_margin="8dp"/>
+        android:layout_margin="8dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/img_default"/>
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"

@@ -16,7 +16,7 @@
             android:id="@+id/iv_home_item_three_img"
             android:layout_width="@dimen/home_item_three_img_width"
             android:layout_height="@dimen/home_item_three_img_height"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/img_default"
             android:scaleType="fitXY"
             />
 

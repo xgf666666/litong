@@ -62,7 +62,7 @@ class StoreDetailActivity : BaseMvpActivity<StoreDetailConstract.Presenter>(),St
         tv_store_detail_time.text = ("营业时间 : "+bean.business_hours.trim())
         tv_store_detail_type.text = ("主营类别 : "+bean.st_type.trim())
 
-        iv_store_detail_img.loadImag(bean.st_img,plach = R.mipmap.ic_launcher)
+        iv_store_detail_img.loadImag(bean.st_img,plach = R.mipmap.img_default)
     }
 
 
