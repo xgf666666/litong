@@ -64,7 +64,6 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                 .setOnFinishChooseAndCropImageListener { bitmap, file ->
 //                    显示选好得图片
                     iv_avatar.setImageBitmap(bitmap)
-
                     //上传头像
                     getPresenter().fileStore(file)
                 }
@@ -107,16 +106,24 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                     "未知"
                 }
             }
-//            Log.i("iamgeview",BuildConfig.DEV_DOMAIN+"/"+o.user.userImg)
-//            iv_avatar.loadImag(BuildConfig.DEV_DOMAIN+"/"+o.user.userImg, null, R.drawable.personal_center_, R.drawable.personal_center_)
             Glide.with(this).load(Retrofit2Manager.instance.apiConfigProvider?.debugHost+o?.user?.userImg ?: "")
-                    .fallback(R.drawable.personal_center_)
+//                    .fallback(R.drawable.personal_center_)
                     .placeholder(R.drawable.personal_center_)
                     .error(R.drawable.personal_center_)
                     .into(iv_avatar)
             tv_name.text = o.user.nickname
             tv_sex.text = sexStr
             tv_phone.text = Constants.getPhone().replaceRange(4, 7, "***")
+        }
+        if (o?.user?.workerStat==1){
+            tv_worker.setText("审核中")
+        }else if(o?.user?.workerStat==2){
+            tv_worker.setText("已认证")
+        }
+        if (o?.user?.bossStat==1){
+            tv_boss.setText("审核中")
+        }else if(o?.user?.bossStat==2){
+            tv_boss.setText("已认证")
         }
     }
 
@@ -177,7 +184,7 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
     }
 
     override fun successful(fanhui: String?) {
-        iv_avatar.loadImag(BuildConfig.DEV_DOMAIN+"/"+fanhui, null, R.drawable.personal_center_, R.drawable.personal_center_)
+//        iv_avatar.loadImag(BuildConfig.DEV_DOMAIN+"/"+fanhui, null, R.drawable.personal_center_, R.drawable.personal_center_)
 
     }
     override fun sexSuccessful() {

@@ -20,10 +20,10 @@ class MinePresenter : MineContract.Presenter() {
         val userId = Constants.getToken().user_id.toString()
         val token = Constants.getToken().token
         getModel().addShop(userId,token).ui({
-            if (it.status.equals("1"))
-            getView()?.addShop(it.data?.system_content)
+            if (it.status.equals("1")){
+                getView()?.addShop(it.data?.system_content)
+            }
         },{
-            Log.i("adfaggga",it)
             getView()?.showToast(it)
         })
 

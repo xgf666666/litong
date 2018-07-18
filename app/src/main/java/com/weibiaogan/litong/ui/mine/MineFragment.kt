@@ -44,7 +44,6 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
     }
     override fun loadData(refresh: Boolean) {
         getPresenter().getData()
-        getPresenter().addShop()
 }
 
 
@@ -60,6 +59,8 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
     override fun initView(view: View?) {
         super.initView(view)
         addViewtoViews(login_view)
+        getPresenter().addShop()
+
 
     }
 
