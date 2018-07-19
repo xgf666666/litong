@@ -44,7 +44,7 @@
             android:layout_marginRight="@dimen/margin_19"
             android:textSize="@dimen/text_dimen_fourth"
             android:textColor="@color/text_color_third"
-            android:text="distance"
+            android:text=""
             android:drawableLeft="@mipmap/ic_list_location"
             android:drawablePadding="@dimen/margin_3"
             android:layout_gravity="right|center"
@@ -78,7 +78,7 @@
             android:layout_marginTop="@dimen/margin_14"
             android:textSize="@dimen/text_dimen_first"
             android:textColor="@color/text_color_first"
-            android:text="name"
+            android:text=""
             android:layout_gravity="center"/>
         <TextView
             android:id="@+id/tv_work_detail_phone"
@@ -87,7 +87,7 @@
             android:layout_marginTop="@dimen/margin_9"
             android:textSize="@dimen/text_dimen_first"
             android:textColor="@color/text_color_first"
-            android:text="phone"
+            android:text=""
             android:layout_gravity="center"/>
 
         <TextView
@@ -97,7 +97,7 @@
             android:layout_marginTop="@dimen/margin_12"
             android:textSize="@dimen/text_dimen_third"
             android:textColor="@color/text_color_third"
-            android:text="type"
+            android:text=""
             android:layout_gravity="center"/>
         <TextView
             android:id="@+id/tv_work_detail_location"
@@ -107,7 +107,7 @@
             android:textSize="@dimen/text_dimen_third"
             android:textColor="@color/text_color_third"
             android:layout_marginBottom="@dimen/margin_14"
-            android:text="location"
+            android:text=""
             android:layout_gravity="center"/>
 
     </LinearLayout>

@@ -51,7 +51,7 @@
             android:layout_marginLeft="@dimen/margin_16"
             android:textSize="@dimen/text_dimen_first"
             android:textColor="@color/text_color_first"
-            android:text="name"/>
+            android:text=""/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,7 +111,7 @@
             android:id="@+id/tv_store_detail_goto_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="distance"
+            android:text=""
             android:drawableRight="@mipmap/ic_pull_right"
             android:layout_gravity="right|center"
             android:gravity="center"
