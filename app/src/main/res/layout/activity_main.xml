@@ -31,11 +31,12 @@
                 android:layout_width="@dimen/home_title_text_width"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/margin_14"
+                android:layout_marginLeft="@dimen/margin_8"
                 android:drawableLeft="@mipmap/ic_navibar_location"
                 android:lines="1"
                 android:text="富力"
                 android:textColor="@color/text_color_white"
+                android:ellipsize="end"
                 android:textSize="@dimen/text_dimen_third" />
 
             <LinearLayout

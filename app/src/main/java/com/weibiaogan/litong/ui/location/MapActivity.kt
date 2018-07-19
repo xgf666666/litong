@@ -131,6 +131,7 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
                 if (i == 1000){
                     result = regeocodeResult
                     var regeocodeAddress = regeocodeResult.regeocodeAddress
+                    Log.i("Tag",regeocodeAddress.district+":::::"+regeocodeAddress.adCode+":::"+regeocodeAddress.pois)
                     tv_location.text = regeocodeAddress.formatAddress
                 }else{
                     ToastUtils.showShort("error::$i")
@@ -152,7 +153,7 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
                 if (result != null && result?.regeocodeAddress != null){
                     Constants.putLocation(lats!!,logs!!,result?.regeocodeAddress?.city)   //存储经纬度，城市名
                     var intent = Intent()
-                    intent.putExtra("location_result",result?.regeocodeAddress?.city)
+                    intent.putExtra("location_result", result?.regeocodeAddress?.pois!!.get(0).title)
                     intent.putExtra("location_address",result?.regeocodeAddress?.formatAddress)
                     intent.putExtra("location_lat",""+lats)
                     intent.putExtra("location_log",""+logs)

@@ -12,6 +12,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.adapter.home.HomeAdapter
 import com.weibiaogan.litong.common.Constants
+import com.weibiaogan.litong.extensions.format
 import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.ui.login.LoginActivity
 import com.xx.baseuilibrary.BaseActivity
@@ -21,6 +22,7 @@ import com.xx.baseutilslibrary.network.exception.ApiFaileException
 import com.xx.baseutilslibrary.network.exception.TokenInvalidException
 import io.reactivex.Observable
 import retrofit2.HttpException
+import java.math.BigDecimal
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
@@ -107,6 +109,7 @@ fun BaseMvpView.showToast(throwable:Throwable){
 
 
 fun tokenError(context : Context,msg:String){
+    Constants.loginOut()
     var dialog = NormalDialog(context)
     dialog.style(NormalDialog.STYLE_TWO)
             .content(msg)
@@ -123,7 +126,6 @@ fun tokenError(context : Context,msg:String){
     dialog.show()
     dialog.setOnBtnClickL(OnBtnClickL {
         dialog.dismiss()
-        Constants.loginOut()
         context.startActivity(Intent(context, LoginActivity::class.java))
     })
 }
@@ -133,7 +135,9 @@ fun tokenError(context : Context,msg:String){
  */
 fun Int.changeKm() : String{
     if (this >= 1000){
-        return (this / 1000).toString() + "km"
+        var d = this / 1000.00
+        var toDouble = BigDecimal(d).setScale(2, BigDecimal.ROUND_HALF_UP).toDouble()
+        return toDouble.toString()+"km"
     }else{
         return this.toString() + "m"
     }

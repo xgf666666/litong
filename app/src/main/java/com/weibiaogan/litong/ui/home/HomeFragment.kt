@@ -75,8 +75,10 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
 
     override fun onResume() {
         super.onResume()
-        mCurrentPage = 1
-        presenter.getHomeData(mCurrentPage.toString())
+        if (!this.isHidden){
+            mCurrentPage = 1
+            presenter.getHomeData(mCurrentPage.toString())
+        }
     }
 
     fun getListMulti(bean : HomeBean) : List<HomeAdapter.HomeMultiItem>{

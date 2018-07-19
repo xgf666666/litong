@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -58,7 +59,7 @@ public class LocationManger {
                                 location.getLatitude()+"",location.getCity());
                     }*/
 
-                    Constants.putLocation(location.getLatitude(),location.getLongitude(),location.getCity());
+                    Constants.putLocation(location.getLatitude(),location.getLongitude(),location.getPoiName());
                     //惠州定位
 //                    Constants.putLocation(114.454801,22.790551
 //                            ,location.getCity());

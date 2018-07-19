@@ -124,10 +124,20 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         acs.setPhoto(this)
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden){
+            showLoadingDialog()
+            getPresenter().isPublic()
+        }
+    }
+
     override fun onResume() {
         super.onResume()
-        showLoadingDialog()
-        getPresenter().isPublic()
+        if (!isHidden){
+            showLoadingDialog()
+            getPresenter().isPublic()
+        }
     }
     //回调接口
     override fun setPresenter(bitmap: Bitmap, file: File) {
