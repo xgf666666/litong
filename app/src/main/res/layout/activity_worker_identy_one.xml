@@ -233,7 +233,7 @@
                     android:layout_marginRight="14dp"
                     android:layout_weight="9"
                     android:background="@drawable/shape_edittext_bg"
-                    android:hint="请输入担保人"
+                    android:hint="非必填"
                     android:paddingLeft="10dp"
                     android:textSize="15sp"
                     android:layout_marginLeft="17dp"/>
@@ -245,7 +245,7 @@
                 android:layout_marginRight="14dp"
                 android:inputType="number"
                 android:background="@drawable/shape_edittext_bg"
-                android:hint="请输入担保人联系方式"
+                android:hint="非必填"
                 android:paddingLeft="10dp"
                 android:layout_marginLeft="92dp"
 

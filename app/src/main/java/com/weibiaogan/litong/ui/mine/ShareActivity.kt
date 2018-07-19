@@ -16,6 +16,8 @@ import kotlinx.android.synthetic.main.activity_share.*
 import android.support.v4.app.ActivityCompat
 import android.os.Build
 import android.view.View
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.cache.DiskCache
 import com.umeng.socialize.ShareAction
 import com.umeng.socialize.UMShareListener
 import com.umeng.socialize.bean.SHARE_MEDIA
@@ -34,8 +36,11 @@ class ShareActivity : BaseMvpActivity<SharePresenter>(),ShareContract.View {
                 .placeholder(R.drawable.personal_center_)
                 .error(R.drawable.personal_center_)
                 .into(iv_head)
-        Glide.with(this).load(shareUserBean?.share?.share_img?: "")
+        Glide.with(this).load(shareUserBean?.share_qrcode?: "")
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(iv_weweima)
+
         tv_name.setText(shareUserBean.user.nickname)
         dismissLoadingDialog()
 

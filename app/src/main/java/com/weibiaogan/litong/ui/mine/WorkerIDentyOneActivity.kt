@@ -94,10 +94,9 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
     private fun getViewData(){
         var map= HashMap<String,String>()
         if (TextUtils.isEmpty(et_name.text)||TextUtils.isEmpty(et_phone.text)||TextUtils.isEmpty(et_shenfenzheng.text)||
-                imgList?.size!=2||TextUtils.isEmpty(et_project_location.text)||
-                TextUtils.isEmpty(et_danbaoren.text)||TextUtils.isEmpty(et_danbaorenPhone.text)) {
+                imgList?.size!=2||TextUtils.isEmpty(et_project_location.text)) {
             toast("完善资料")
-        }else if(et_phone.text.toString().length!=11||et_shenfenzheng.text.toString().length!=18||et_danbaorenPhone.text.toString().length!=11){
+        }else if(et_phone.text.toString().length!=11||et_shenfenzheng.text.toString().length!=18){
             toast("请输入正确的手机号码或身份证")
         }else{
             map.put("a_name",et_name.text.toString())
@@ -106,8 +105,12 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
             map.put("idcard_img",imgList?.get(0)+","+imgList?.get(1))
             map.put("a_address",et_project_location.text.toString())
             map.put("lat_long",lots+","+lats)
-            map.put("a_guarantor",et_danbaoren.text.toString())
-            map.put("guarantor_phone",et_danbaorenPhone.text.toString())
+            if (!TextUtils.isEmpty(et_danbaoren.text)){
+                map.put("a_guarantor",et_danbaoren.text.toString())
+            }
+            if (!TextUtils.isEmpty(et_danbaorenPhone.text)){
+                map.put("guarantor_phone",et_danbaorenPhone.text.toString())
+            }
             var intent=Intent(mContext,WorkerIDentyTwoActivity::class.java)
             intent.putExtra("map",  map as Serializable)
             startActivity(intent)

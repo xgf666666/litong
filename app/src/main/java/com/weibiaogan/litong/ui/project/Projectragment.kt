@@ -305,7 +305,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             override fun onOperItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 item=position
                 tv_select_one.setText(items[position])
-                tv_select_two.setText("请选择")
+                tv_select_two.setText(datas.get(position).son.get(0).area_name)
                 dialog.dismiss()
             }
         })
@@ -337,18 +337,23 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
 
 
     }
+    var normalDialog:NormalDialog?=null
     fun showDialog(text:String) {
-        var dialog=NormalDialog(mContext)
-        dialog.isTitleShow(false).content(text)
-                .style(NormalDialog.STYLE_TWO)
-                .contentTextColor(resources.getColor(R.color.color222222))
-                .contentTextSize(17f)
-                .btnText("取消","确定")
-                .btnTextSize(14f)
-                .btnTextColor(resources.getColor(R.color.color3078EF),resources.getColor(R.color.color3078EF)).show()
-                dialog.setOnBtnClickL(OnBtnClickL { dialog.dismiss() }, OnBtnClickL {
-                    dialog.dismiss()
+        if (normalDialog==null){
+            normalDialog=NormalDialog(mContext)
+        }
+        if (normalDialog?.isShowing==false){
+            normalDialog?.isTitleShow(false)?.content(text)
+                ?.style(NormalDialog.STYLE_TWO)
+                ?.contentTextColor(resources.getColor(R.color.color222222))
+                ?.contentTextSize(17f)
+                ?.btnText("取消","确定")
+                ?.btnTextSize(14f)
+                ?.btnTextColor(resources.getColor(R.color.color3078EF),resources.getColor(R.color.color3078EF))?.show()
+            normalDialog?.setOnBtnClickL(OnBtnClickL { normalDialog?.dismiss() }, OnBtnClickL {
+                normalDialog?.dismiss()
                 startActivity(BosIdentyActivity::class.java)})
+        }
     }
     var log:String?=null
     var lag:String?=null

@@ -233,7 +233,7 @@
                     android:layout_marginRight="14dp"
                     android:layout_weight="9"
                     android:background="@drawable/shape_edittext_bg"
-                    android:hint="请输入担保人"
+                    android:hint="非必填"
                     android:paddingLeft="10dp"
                     android:textSize="15sp"
                     android:layout_marginLeft="17dp"/>
@@ -244,7 +244,7 @@
                 android:layout_height="44dp"
                 android:layout_marginRight="14dp"
                 android:background="@drawable/shape_edittext_bg"
-                android:hint="请输入担保人联系方式"
+                android:hint="非必填"
                 android:paddingLeft="10dp"
                 android:layout_marginLeft="92dp"
                 android:inputType="number"
@@ -265,12 +265,12 @@
                     android:textSize="15sp" />
                 <CheckBox
                     android:id="@+id/cb_carShi"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="33dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_gravity="center_vertical"
-                    android:padding="5dp"
+                    android:padding="8dp"
                     android:button="@null" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -282,12 +282,12 @@
                     android:textSize="15sp" />
                 <CheckBox
                     android:id="@+id/cb_carFou"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="51dp"
+                    android:layout_marginLeft="48dp"
                     android:layout_gravity="center_vertical"
-                    android:padding="5dp"
+                    android:padding="8dp"
                     android:button="@null" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -314,11 +314,11 @@
                     android:textSize="15sp" />
                 <CheckBox
                     android:id="@+id/cb_baoShi"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="33dp"
-                    android:padding="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:padding="8dp"
                     android:layout_gravity="center_vertical"
                     android:button="@null" />
                 <TextView
@@ -331,8 +331,8 @@
                     android:textSize="15sp" />
                 <CheckBox
                     android:id="@+id/cb_baoFou"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
                     android:layout_marginLeft="51dp"
                     android:padding="5dp"
@@ -366,8 +366,8 @@
                     android:textSize="15sp" />
                 <CheckBox
                     android:id="@+id/cb_person"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
                     android:layout_marginLeft="33dp"
                     android:layout_gravity="center_vertical"
@@ -383,8 +383,8 @@
                     android:textSize="15sp" />
                 <CheckBox
                     android:id="@+id/cb_company"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
                     android:layout_marginLeft="33dp"
                     android:layout_gravity="center_vertical"

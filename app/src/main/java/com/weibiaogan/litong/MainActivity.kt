@@ -124,6 +124,7 @@ class MainActivity : BaseMvpViewActivity() {
 //                    }
 //                }
                 fragmentTransaction.show(fragments!![i])
+//                fragmentTransaction.replace(R.id.container,fragments!![i])
             } else {
                 if (fragment != null) {
                     fragmentTransaction.hide(fragment)

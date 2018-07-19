@@ -32,10 +32,10 @@ abstract class ExceptionEngine : Consumer<Throwable> {
            msg="未知错误" + throwable.message
         }
 
-        handle(msg)
+        handle(throwable)
     }
 
-    abstract fun handle(msg: String)
+    abstract fun handle(msg: Throwable)
 
     companion object {
         private val TAG = "ExceptionEngine"

@@ -130,11 +130,11 @@
                     android:textSize="15sp" />
                 <CheckBox
                     android:id="@+id/cb_carShi"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="33dp"
-                    android:padding="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:padding="8dp"
                     android:layout_gravity="center_vertical"
                     android:button="@null" />
                 <TextView
@@ -147,12 +147,12 @@
                     android:textSize="15sp" />
                 <CheckBox
                     android:id="@+id/cb_carFou"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="51dp"
+                    android:layout_marginLeft="48dp"
                     android:layout_gravity="center_vertical"
-                    android:padding="5dp"
+                    android:padding="8dp"
                     android:button="@null" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -177,15 +177,16 @@
                     android:layout_marginLeft="14dp"
                     android:textColor="@color/color888888"
                     android:textSize="15sp" />
+
                 <CheckBox
                     android:id="@+id/cb_fapiao"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
-                    android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="50dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
-                    android:padding="5dp"
-                    android:button="@null" />
+                    android:layout_marginLeft="47dp"
+                    android:background="@drawable/select_renzheng"
+                    android:button="@null"
+                    android:padding="8dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -194,15 +195,16 @@
                     android:layout_marginLeft="8dp"
                     android:textColor="@color/color888888"
                     android:textSize="15sp" />
+
                 <CheckBox
                     android:id="@+id/cb_fapiaofou"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
-                    android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
-                    android:padding="5dp"
-                    android:button="@null" />
+                    android:layout_marginLeft="17dp"
+                    android:background="@drawable/select_renzheng"
+                    android:button="@null"
+                    android:padding="8dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -230,9 +232,9 @@
                     android:layout_width="13dp"
                     android:layout_height="13dp"
                     android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="33dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_gravity="center_vertical"
-                    android:padding="5dp"
+                    android:padding="8dp"
                     android:button="@null" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -244,12 +246,12 @@
                     android:textSize="15sp" />
                 <CheckBox
                     android:id="@+id/cb_baoFou"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="51dp"
+                    android:layout_marginLeft="48dp"
                     android:layout_gravity="center_vertical"
-                    android:padding="5dp"
+                    android:padding="8dp"
                     android:button="@null" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -274,15 +276,16 @@
                     android:layout_marginLeft="14dp"
                     android:textColor="@color/color888888"
                     android:textSize="15sp" />
+
                 <CheckBox
                     android:id="@+id/cb_person"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
-                    android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="33dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
-                    android:padding="5dp"
-                    android:button="@null" />
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/select_renzheng"
+                    android:button="@null"
+                    android:padding="8dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -293,12 +296,12 @@
                     android:textSize="15sp" />
                 <CheckBox
                     android:id="@+id/cb_company"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="33dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_gravity="center_vertical"
-                    android:padding="5dp"
+                    android:padding="8dp"
                     android:button="@null" />
                 <TextView
                     android:layout_width="wrap_content"

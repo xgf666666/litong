@@ -186,7 +186,7 @@ class WorkerIDentyTwoActivity : BaseMvpActivity<WorkerIdentyTwoPresenter>(),Work
 //                getPresenter().updateUserSex(s)
                 item=position
                 tv_select_one.setText(items[position])
-                tv_select_two.setText("请选择")
+                tv_select_two.setText(datas.get(position).son.get(0).area_name)
                 dialog.dismiss()
             }
         })

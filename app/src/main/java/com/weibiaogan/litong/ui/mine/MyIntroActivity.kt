@@ -54,6 +54,11 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
         if (Constants.getUserData().balanceHas==1){
             tv_pay.setText("修改")
         }
+        Glide.with(this).load(Retrofit2Manager.instance.apiConfigProvider?.debugHost+Constants.getUserData()?.user?.userImg ?: "")
+//                    .fallback(R.drawable.personal_center_)
+                .placeholder(R.drawable.personal_center_)
+                .error(R.drawable.personal_center_)
+                .into(iv_avatar)
         imageChooseHelper = ImageChooseHelper.Builder()
                 .setUpActivity(this)
                 .setAuthority("${BuildConfig.APPLICATION_ID}.fileprovider")//设置文件提供者
@@ -72,7 +77,6 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
 
     override fun onResume() {
         super.onResume()
-
         setDataUser(Constants.getUserData())
     }
 
@@ -106,21 +110,22 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
                     "未知"
                 }
             }
-            Glide.with(this).load(Retrofit2Manager.instance.apiConfigProvider?.debugHost+o?.user?.userImg ?: "")
-//                    .fallback(R.drawable.personal_center_)
-                    .placeholder(R.drawable.personal_center_)
-                    .error(R.drawable.personal_center_)
-                    .into(iv_avatar)
+
             tv_name.text = o.user.nickname
             tv_sex.text = sexStr
             tv_phone.text = Constants.getPhone().replaceRange(4, 7, "***")
         }
-        if (o?.user?.workerStat==1){
-            tv_worker.setText("审核中")
-        }else if(o?.user?.workerStat==2){
-            tv_worker.setText("已认证")
-        }
-        if (o?.user?.bossStat==1){
+        if (o?.user?.workerStat==0){
+            tv_worker.setText("去认证")
+        } else if (o?.user?.workerStat==1){
+                tv_worker.setText("审核中")
+            }else if(o?.user?.workerStat==2){
+                tv_worker.setText("已认证")
+            }
+
+        if (o?.user?.bossStat==0){
+            tv_boss.setText("去认证")
+        } else if (o?.user?.bossStat==1){
             tv_boss.setText("审核中")
         }else if(o?.user?.bossStat==2){
             tv_boss.setText("已认证")

@@ -12,10 +12,18 @@ public class ShareUserBean {
      * url : http://litong.goodbooy.cn/Home/Login/reg/pid/13682873453.html
      * share : {"share_title":"名创酒品分享标题","share_content":"分享内容描述","share_img":"http://jiuping.goodbooy.cn/static/api/images/share_img.png"}
      */
-
+    private String share_qrcode;
     private UserBean user;
     private String url;
     private ShareBean share;
+
+    public String getShare_qrcode() {
+        return share_qrcode;
+    }
+
+    public void setShare_qrcode(String share_qrcode) {
+        this.share_qrcode = share_qrcode;
+    }
 
     public UserBean getUser() {
         return user;

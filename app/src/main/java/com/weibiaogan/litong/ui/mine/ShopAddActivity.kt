@@ -51,8 +51,8 @@ class ShopAddActivity : BaseMvpActivity<ShopAddPresenter>(),ShopAddContract.View
         val packageInfo = mContext.getApplicationContext()
                 .getPackageManager()
                 .getPackageInfo(mContext.getPackageName(), 0)
-        var localVersion = packageInfo.versionCode
-        tv_banben.text="v "+localVersion
+        var localVersion = packageInfo.versionName
+        tv_banben.text="V"+localVersion
     }
 
     /**
