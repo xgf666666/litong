@@ -1,14 +1,28 @@
 package com.weibiaogan.litong.utils
 
+import android.content.Context
+import android.content.Intent
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.flyco.dialog.listener.OnBtnClickL
+import com.flyco.dialog.widget.NormalDialog
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.weibiaogan.litong.R
 import com.weibiaogan.litong.adapter.home.HomeAdapter
+import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.loadDefulat
+import com.weibiaogan.litong.ui.login.LoginActivity
+import com.xx.baseuilibrary.BaseActivity
+import com.xx.baseuilibrary.BaseFragment
 import com.xx.baseuilibrary.mvp.BaseMvpView
+import com.xx.baseutilslibrary.network.exception.ApiFaileException
+import com.xx.baseutilslibrary.network.exception.TokenInvalidException
 import io.reactivex.Observable
+import retrofit2.HttpException
+import java.net.ConnectException
+import java.net.SocketTimeoutException
 
 /**
  * author: HuaiXianZhong
@@ -59,6 +73,59 @@ fun <T> HomeAdapter.addHomeData(refreshLayout: SmartRefreshLayout, datas: List<T
         addData(arrayListOf())
         refreshLayout.isEnableLoadMore = false
     }
+}
+
+fun BaseMvpView.showToast(throwable:Throwable){
+    var msg = ""
+
+    if (throwable is HttpException) {
+        val code = throwable.code()
+        if (code == 500 || code == 404) {
+            msg="服务器错误,请稍后重试"
+        }
+    } else if (throwable is ConnectException) {
+        //断开网络
+    } else if (throwable is SocketTimeoutException) {
+        msg="连接服务器超时,请稍后重试"
+    } else if (throwable is ApiFaileException) {
+        msg=throwable.message!!//接口请求状态为0的情况
+    } else if (throwable is TokenInvalidException) {
+        msg="状态异常，请重新登录！"//需要重新登录获取
+        if (this is BaseActivity){
+            tokenError((this as Context),msg)
+        }else if (this is BaseFragment){
+            tokenError((this as BaseFragment).context!!,msg)
+        }else{
+            showToast(msg)
+        }
+        return
+    } else {
+        msg="未知错误" + throwable.message
+    }
+    showToast(msg)
+}
+
+
+fun tokenError(context : Context,msg:String){
+    var dialog = NormalDialog(context)
+    dialog.style(NormalDialog.STYLE_TWO)
+            .content(msg)
+            .title("提示")
+            .style(NormalDialog.STYLE_TWO)
+            .contentTextSize(17f)
+            .titleTextSize(17f)
+            .contentTextColor(context.resources.getColor(R.color.color888888))
+            .titleTextColor(context.resources.getColor(R.color.color222222))
+            .btnNum(1)
+            .btnText("确定")
+            .btnTextColor(context.resources.getColor(R.color.color3078EF))
+            .setCanceledOnTouchOutside(false)
+    dialog.show()
+    dialog.setOnBtnClickL(OnBtnClickL {
+        dialog.dismiss()
+        Constants.loginOut()
+        context.startActivity(Intent(context, LoginActivity::class.java))
+    })
 }
 
 /**
