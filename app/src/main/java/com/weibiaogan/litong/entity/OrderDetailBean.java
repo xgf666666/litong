@@ -76,6 +76,15 @@ public class OrderDetailBean {
     private int add_blacklist;
     private ShowPtUserBean show_pt_user;
     private List<String> pt_imgs;
+    private String area_id_data;
+
+    public void setArea_id_data(String mArea_id_data) {
+        area_id_data = mArea_id_data;
+    }
+
+    public String getArea_id_data() {
+        return area_id_data;
+    }
 
     public int getPt_id() {
         return pt_id;
