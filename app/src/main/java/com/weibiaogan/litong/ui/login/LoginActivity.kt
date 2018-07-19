@@ -42,9 +42,7 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
         iv_qq.setOnClickListener { login(0) }
         iv_wechat.setOnClickListener { login(1) }
         ib_backs.setOnClickListener {
-            App.getInstance()?.cleanActivity()
             finish()
-
         }
         iv_icon.setOnClickListener { startActivity(MainActivity::class.java) }
     }

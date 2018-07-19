@@ -44,7 +44,6 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
     }
     override fun loadData(refresh: Boolean) {
         getPresenter().getData()
-        getPresenter().addShop()
 }
 
 
@@ -60,6 +59,8 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
     override fun initView(view: View?) {
         super.initView(view)
         addViewtoViews(login_view)
+        getPresenter().addShop()
+
 
     }
 
@@ -71,8 +72,30 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         }
         view?.findViewById<View>(R.id.login_view)?.findViewById<TextView>(R.id.tv_login)?.setOnClickListener { startActivity(LoginActivity::class.java) }
         ll_wallet_area.setOnPerCheckLoginClickListner { startActivity(WalletActivity::class.java) }
-        ll_orders_area.setOnPerCheckLoginClickListner { startActivity(MyReceiptActivity::class.java) }
-        ll_project_area.setOnClickListener{ startActivity(Intent(context,MyPublishProjectActivity::class.java)) }
+        ll_orders_area.setOnPerCheckLoginClickListner {
+            when(Constants.getUserData()?.user?.workerStat){
+                0->{
+                    showToast("你未认证工人")
+                }
+                1->{
+                    showToast("审核中")
+                }
+                2->{
+                    startActivity(MyReceiptActivity::class.java) }
+            }
+            }
+        ll_project_area.setOnClickListener{
+            when(Constants.getUserData()?.user?.bossStat){
+                0->{
+                    showToast("你未认证需求方")
+                }
+                1->{
+                    showToast("审核中")
+                }
+                2->{
+                    startActivity(Intent(context,MyPublishProjectActivity::class.java)) }
+            }
+             }
         ll_backlist_area.setOnPerCheckLoginClickListner { startActivity(BlacklistActivity::class.java) }
         ll_vip_area.setOnPerCheckLoginClickListner{
             if (Constants.getUserData()!=null){

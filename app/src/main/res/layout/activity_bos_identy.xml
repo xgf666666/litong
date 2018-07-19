@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -87,6 +88,7 @@
                     android:layout_weight="9"
                     android:background="@drawable/shape_edittext_bg"
                     android:hint="请输入手机号"
+                    android:inputType="number"
                     android:paddingLeft="10dp"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -245,6 +247,7 @@
                 android:hint="请输入担保人联系方式"
                 android:paddingLeft="10dp"
                 android:layout_marginLeft="92dp"
+                android:inputType="number"
                 android:layout_marginTop="@dimen/margin_14"
                 android:textSize="15sp" />
             <LinearLayout

@@ -26,7 +26,7 @@ interface CommissionContract {
     interface Model {
         fun getData(page: Int, httpObserver: XxBaseHttpObserver<List<Any>>)
         fun withdrawAdd(userId: String, token: String?, cash: String, account: String, type: String,
-                        balance_payment: String): Observable<BaseResponseEntity<List<Any>>>
+                        balance_payment: String): Observable<BaseResponseEntity<Any>>
 
     }
 }

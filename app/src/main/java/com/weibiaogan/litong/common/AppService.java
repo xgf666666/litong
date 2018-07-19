@@ -201,7 +201,7 @@ public interface AppService {
             @Field("new_user_pwd") String newUserPwd);
 
     /**
-     * 支付宝充值
+     * 提现
      *
      * @param userId
      * @param token
@@ -213,7 +213,7 @@ public interface AppService {
      */
     @FormUrlEncoded
     @POST("Withdraw/withdraw_add")
-    Observable<BaseResponseEntity<List<Object>>> withdrawAdd(@Header("userId") String userId
+    Observable<BaseResponseEntity<Object>> withdrawAdd(@Header("userId") String userId
             , @Header("token") String token
             , @Field("price") String price
             , @Field("account") String account

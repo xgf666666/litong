@@ -41,4 +41,13 @@ public class AddShopBean {
     public void setSystem_content(String system_content) {
         this.system_content = system_content;
     }
+
+    @Override
+    public String toString() {
+        return "AddShopBean{" +
+                "system_id=" + system_id +
+                ", system_title='" + system_title + '\'' +
+                ", system_content='" + system_content + '\'' +
+                '}';
+    }
 }

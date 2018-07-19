@@ -98,7 +98,7 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
                 TextUtils.isEmpty(et_danbaoren.text)||TextUtils.isEmpty(et_danbaorenPhone.text)) {
             toast("完善资料")
         }else if(et_phone.text.toString().length!=11||et_shenfenzheng.text.toString().length!=18||et_danbaorenPhone.text.toString().length!=11){
-            toast("手机号码或身份证")
+            toast("请输入正确的手机号码或身份证")
         }else{
             map.put("a_name",et_name.text.toString())
             map.put("a_phone",et_phone.text.toString())

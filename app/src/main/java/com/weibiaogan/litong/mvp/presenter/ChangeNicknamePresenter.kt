@@ -25,6 +25,7 @@ class ChangeNicknamePresenter :  ChangeNicknameContract.Presenter() {
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
+            Log.i("fadfagafaf",userId+"跟"+token)
             val map = mapOf("nickname" to name!!)
             getModel().updateUser(userId, token, name)
                     .loadDefulat(getView()!!)

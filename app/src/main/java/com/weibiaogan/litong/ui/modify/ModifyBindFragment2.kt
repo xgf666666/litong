@@ -37,9 +37,10 @@ class ModifyBindFragment2 : BaseMvpViewFragment() {
 
     override fun initEvent(view: View?) {
         ib_back.setOnClickListener {
-            et_cellPhone.setText("")
-            et_code.setText("")
-            (activity as ModifyBindActivity).showFragment(0)
+//            et_cellPhone.setText("")
+//            et_code.setText("")
+//            (activity as ModifyBindActivity).showFragment(0)
+            finishActivity()
         }
         bt_submit.setOnClickListener { checkCode(et_code.text.toString().trim(),et_cellPhone.text.toString().trim()) }
         tv_get_code.setOnClickListener { sendVCode(et_cellPhone.text.toString().trim()) }
