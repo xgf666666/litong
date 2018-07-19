@@ -5,6 +5,7 @@ import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.OrdersContract
 import com.weibiaogan.litong.mvp.model.OrdersModel
+import com.weibiaogan.litong.utils.loadDefulatRefresh
 import com.weibiaogan.litong.utils.showToast
 
 /**
@@ -18,6 +19,7 @@ class OrdersPresenter :  OrdersContract.Presenter() {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
             getModel().historyProject(userId, token,stat,Constants.getLocation()[0],Constants.getLocation()[1], page, type)
+                    .loadDefulatRefresh(page == "1",getView()!!)
                     .ui({
                         getView()?.setData(it.data!!)
                     }, {
