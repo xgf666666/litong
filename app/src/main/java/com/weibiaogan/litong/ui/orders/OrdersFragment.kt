@@ -76,8 +76,11 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<ProjectBean>, Or
         recyclerView.adapter = adapter
         adapter.isSuccess = false
 
-        presenter.historyProject(mStat,mCurrentPage.toString(),mType.toString())
+    }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.historyProject(mStat,mCurrentPage.toString(),mType.toString())
     }
 
     override fun setData(data: List<ProjectBean>) {
