@@ -59,7 +59,7 @@ class MyPublishProjectAdapter(data : List<PublicProjectBean.DataBean>) : BaseQui
         when(pt_stat){
             2 -> two.visibility = View.GONE
             3 -> two.text = "确认工人"
-            4 -> two.text = "付收款"
+            4 -> two.text = "付首款"
             5 -> two.text = "付二期款"
             6 -> two.text = "付尾款"
         }

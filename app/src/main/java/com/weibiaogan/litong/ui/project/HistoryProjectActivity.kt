@@ -9,6 +9,7 @@ import com.weibiaogan.litong.adapter.project.HistoryProjectAdapter
 import com.weibiaogan.litong.entity.ProjectBean
 import com.weibiaogan.litong.mvp.contract.HistoryprojectContract
 import com.weibiaogan.litong.mvp.presenter.HistoryprojectPresenter
+import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
 import com.weibiaogan.litong.utils.addData
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_history_project.*
@@ -55,6 +56,8 @@ class HistoryProjectActivity : BaseMvpActivity<HistoryprojectPresenter>(),Histor
         tv_store_list_all.setOnClickListener(this)
         tv_store_list_distance.setOnClickListener(this)
         smartrefreshlayout.setOnRefreshLoadMoreListener(this)
+
+        adapter.setOnItemClickListener { adapter, view, position -> OrdersDetailActivity.startProjectDetail(this,(adapter as HistoryProjectAdapter).data[position].pt_id.toString()) }
     }
 
     override fun onClick(v: View?) {

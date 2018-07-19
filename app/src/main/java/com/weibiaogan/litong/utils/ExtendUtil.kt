@@ -122,7 +122,8 @@ fun tokenError(context : Context,msg:String){
             .btnNum(1)
             .btnText("确定")
             .btnTextColor(context.resources.getColor(R.color.color3078EF))
-            .setCanceledOnTouchOutside(false)
+            .setCancelable(false)
+    dialog.setCanceledOnTouchOutside(false)
     dialog.show()
     dialog.setOnBtnClickL(OnBtnClickL {
         dialog.dismiss()

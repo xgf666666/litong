@@ -140,7 +140,7 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
                     }
                 }
                 3 -> {
-                    SureWorkerActivity.startSureWork(this@MyPublishProjectActivity,bean.pt_user_id.toString(),bean.pt_id.toString()) }  //确认工人
+                    SureWorkerActivity.startSureWork(this@MyPublishProjectActivity,bean.pt_user_id.toString(),bean.pt_id.toString(),bean.first_price.toString()) }  //确认工人
                 4 -> {
                     PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"2",bean.pt_id.toString(),bean.first_price) } //付收款
                 5 -> {

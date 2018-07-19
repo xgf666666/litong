@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.view.View
 import android.widget.CompoundButton
+import com.blankj.utilcode.util.ActivityUtils
 import com.google.gson.Gson
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.common.Constants
@@ -81,9 +82,7 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
 
                     override fun onPaySuccess() {
                         showToast("支付成功")
-                        if (PayCenterActivity.mActivity!= null && mActivity is MyPublishProjectActivity){
-                            (mActivity as MyPublishProjectActivity).finish()
-                        }
+                        ActivityUtils.finishActivity(MyPublishProjectActivity::class.java)
                         finish()
                     }
     })

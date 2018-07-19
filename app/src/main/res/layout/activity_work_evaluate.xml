@@ -57,6 +57,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/iv_work_evaluate_one"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/work_evaluate_item_img_height"
                 android:layout_weight="1"
@@ -64,6 +65,7 @@
                 android:src="@mipmap/img_default"
                 android:scaleType="fitXY"/>
             <ImageView
+                android:id="@+id/iv_work_evaluate_two"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/work_evaluate_item_img_height"
                 android:layout_weight="1"
@@ -71,6 +73,7 @@
                 android:src="@mipmap/img_default"
                 android:scaleType="fitXY"/>
             <ImageView
+                android:id="@+id/iv_work_evaluate_three"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/work_evaluate_item_img_height"
                 android:layout_weight="1"

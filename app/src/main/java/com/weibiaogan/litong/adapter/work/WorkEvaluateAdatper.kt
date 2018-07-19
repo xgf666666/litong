@@ -1,5 +1,7 @@
 package com.weibiaogan.litong.adapter.work
 
+import android.text.TextUtils
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -26,10 +28,17 @@ class WorkEvaluateAdatper(workList : List<WorkEvaluateBean.DataBean?>) : BaseQui
         helper?.getView<CircleImageView>(R.id.cv_work_evaluate_img)?.loadImag(item?.user_data?.user_img!!,plach = R.mipmap.img_face)
 
         var layout = helper?.getView<LinearLayout>(R.id.ll_work_evaluate_imgs)
-
+        var mImgList = arrayListOf<ImageView>()
+        for (i in 0 until layout?.childCount!!){
+            var imageView = layout.getChildAt(i) as ImageView
+            mImgList.add(imageView)
+        }
         for (i in 0 until item?.com_imgs!!.size){
-            if (i < layout?.childCount!!){
-                (layout?.getChildAt(i) as ImageView).loadImag(item?.com_imgs[i],plach = R.mipmap.img_default)
+            if (!TextUtils.isEmpty(item?.com_imgs[i])){
+                mImgList[i].visibility = View.VISIBLE
+                mImgList[i].loadImag(item?.com_imgs[i],plach = R.mipmap.img_default)
+            }else{
+                //mImgList[i].visibility = View.GONE
             }
         }
 

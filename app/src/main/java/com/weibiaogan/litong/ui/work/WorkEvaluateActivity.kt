@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.weibiaogan.litong.R
@@ -40,13 +41,14 @@ class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),
     override fun getActivityLayoutId(): Int = R.layout.activity_work_list
 
     override fun initData() {
-        tv_work_title.text = resources.getString(R.string.work_evaluate_title)
 
         mUserId = intent.getIntExtra("work_evaluate_id", -1)
         mType = intent.getIntExtra("evaluate_type",-1)
         if (mType == 1){
+            tv_work_title.text = "需求方评论"
             getPresenter().projectEvaluate(mUserId.toString(),mCurrentPage.toString())
         }else if (mType == 0){
+            tv_work_title.text = resources.getString(R.string.work_evaluate_title)
             getPresenter().workEvaluate(mUserId.toString(),mCurrentPage.toString())
         }
 
@@ -67,11 +69,19 @@ class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout?) {
-        getPresenter().workEvaluate(mUserId.toString(),(++mCurrentPage).toString())
+        if (mType == 1){
+            getPresenter().projectEvaluate(mUserId.toString(),(++mCurrentPage).toString())
+        }else if (mType == 0){
+            getPresenter().workEvaluate(mUserId.toString(),(++mCurrentPage).toString())
+        }
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout?) {
         mCurrentPage = 1
-        getPresenter().workEvaluate(mUserId.toString(),mCurrentPage.toString())
+        if (mType == 1){
+            getPresenter().projectEvaluate(mUserId.toString(),mCurrentPage.toString())
+        }else if (mType == 0){
+            getPresenter().workEvaluate(mUserId.toString(),mCurrentPage.toString())
+        }
     }
 }

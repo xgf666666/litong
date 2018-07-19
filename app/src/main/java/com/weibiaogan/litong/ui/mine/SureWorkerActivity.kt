@@ -8,6 +8,7 @@ import com.weibiaogan.litong.entity.WorkDetailBean
 import com.weibiaogan.litong.extensions.loadImag
 import com.weibiaogan.litong.mvp.contract.SureWorkContract
 import com.weibiaogan.litong.mvp.presenter.SureWorkerPresenter
+import com.weibiaogan.litong.ui.project.PayCenterActivity
 import com.weibiaogan.litong.ui.work.WorkEvaluateActivity
 import com.weibiaogan.litong.utils.changeKm
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
@@ -25,12 +26,14 @@ class SureWorkerActivity : BaseMvpActivity<SureWorkerPresenter>(),SureWorkContra
     var evaluateBean : WorkDetailBean? = null
 
     var pt_id = ""
+    var pt_payMoney = ""
 
     companion object {
-        fun startSureWork(context: Context,work_user_id : String,pt_id : String){
+        fun startSureWork(context: Context,work_user_id : String,pt_id : String,payMoney:String){
             var intent = Intent(context,SureWorkerActivity::class.java)
             intent.putExtra("user_id",work_user_id)  //工人id
             intent.putExtra("pt_id",pt_id)    //项目id
+            intent.putExtra("pt_money",payMoney)
             context.startActivity(intent)
         }
     }
@@ -54,6 +57,7 @@ class SureWorkerActivity : BaseMvpActivity<SureWorkerPresenter>(),SureWorkContra
     override fun initData() {
         var id = intent.getStringExtra("user_id")
         pt_id = intent.getStringExtra("pt_id")
+        pt_payMoney = intent.getStringExtra("pt_money")
         if (!TextUtils.isEmpty(id) && !TextUtils.isEmpty(pt_id)){
             getPresenter().workDetail(id)
         }
@@ -74,6 +78,10 @@ class SureWorkerActivity : BaseMvpActivity<SureWorkerPresenter>(),SureWorkContra
      */
     override fun sureWork(msg: String) {
         showToast(msg)
+        if (msg == "确定工人成功"){
+            PayCenterActivity.startPayCenter(this@SureWorkerActivity,"2",pt_id,pt_payMoney)
+        }
+        finish()
     }
 
     /**

@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import com.bigkoo.convenientbanner.ConvenientBanner
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
 import com.bigkoo.convenientbanner.holder.Holder
@@ -21,6 +22,7 @@ import com.weibiaogan.litong.entity.HomeBean
 import com.weibiaogan.litong.extensions.loadImag
 import com.weibiaogan.litong.mvp.contract.HomeConstract
 import com.weibiaogan.litong.mvp.presenter.HomePresenter
+import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
 import com.weibiaogan.litong.ui.project.HistoryProjectActivity
 import com.weibiaogan.litong.ui.store.StoreListActivity
 import com.weibiaogan.litong.ui.work.WorkListActivity
@@ -73,6 +75,14 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         rv_home_bottom.adapter = adapter
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!isHidden){
+            mCurrentPage = 1
+            presenter.getHomeData(mCurrentPage.toString())
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         if (!this.isHidden){
@@ -103,6 +113,10 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
             headView?.findViewById<ConvenientBanner<String>>(R.id.cb_home_top)?.
                     setPages( { ImageHolderView() } , banner_imgs)?.
                     setPointViewVisible(true)?.startTurning(2000)
+                    ?.setOnItemClickListener { position ->
+                        val pt_id = data.adve[position].pro_id
+                        OrdersDetailActivity.startProjectDetail(mContext,pt_id.toString())
+                         }
         }
         refresh_home.addData(adapter,getListMulti(data))
     }
