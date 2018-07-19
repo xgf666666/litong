@@ -81,8 +81,8 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
 
                     override fun onPaySuccess() {
                         showToast("支付成功")
-                        if (PayCenterActivity.mActivity!= null && mContext is MyPublishProjectActivity){
-                            (mContext as MyPublishProjectActivity).finish()
+                        if (PayCenterActivity.mActivity!= null && mActivity is MyPublishProjectActivity){
+                            (mActivity as MyPublishProjectActivity).finish()
                         }
                         finish()
                     }

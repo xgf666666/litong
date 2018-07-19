@@ -2,6 +2,7 @@ package com.weibiaogan.litong.ui.login
 
 import android.content.Intent
 import android.util.Log
+import android.view.KeyEvent
 import com.tencent.tauth.Tencent
 import com.umeng.socialize.UMShareAPI
 import com.umeng.socialize.bean.SHARE_MEDIA
@@ -13,6 +14,7 @@ import com.weibiaogan.litong.mvp.presenter.LoginPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import android.widget.Toast
+import com.blankj.utilcode.util.ActivityUtils
 import com.umeng.socialize.UMAuthListener
 
 
@@ -42,9 +44,17 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
         iv_qq.setOnClickListener { login(0) }
         iv_wechat.setOnClickListener { login(1) }
         ib_backs.setOnClickListener {
-            finish()
+            ActivityUtils.finishAllActivities(true)
         }
         iv_icon.setOnClickListener { startActivity(MainActivity::class.java) }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            ActivityUtils.finishAllActivities(true)
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
     }
 
     override fun getMobile(): String {
