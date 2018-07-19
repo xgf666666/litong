@@ -80,6 +80,7 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<ProjectBean>, Or
 
     override fun onResume() {
         super.onResume()
+        if (!isHidden)
         presenter.historyProject(mStat,mCurrentPage.toString(),mType.toString())
     }
 
