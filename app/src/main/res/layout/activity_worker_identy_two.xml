@@ -227,15 +227,16 @@
                     android:layout_marginLeft="14dp"
                     android:textColor="@color/color888888"
                     android:textSize="15sp" />
+
                 <CheckBox
                     android:id="@+id/cb_baoShi"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
-                    android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="30dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
-                    android:padding="8dp"
-                    android:button="@null" />
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/select_renzheng"
+                    android:button="@null"
+                    android:padding="8dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
