@@ -3,31 +3,21 @@ package com.weibiaogan.litong.ui.project
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.os.Handler
-import android.os.Message
-import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
-import android.widget.Toast
-import com.alipay.sdk.app.AuthTask
-import com.alipay.sdk.app.PayTask
 import com.google.gson.Gson
-import com.tencent.mm.opensdk.modelpay.PayReq
-import com.tencent.mm.opensdk.openapi.WXAPIFactory
-import com.weibiaogan.litong.App
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.entity.MemberBean
 import com.weibiaogan.litong.entity.PayBean
-import com.weibiaogan.litong.entity.PayResult
 import com.weibiaogan.litong.mvp.contract.PayCenterConstract
 import com.weibiaogan.litong.mvp.presenter.PayCenterPresenter
 import com.weibiaogan.litong.ui.mine.KnowMemberActivity
+import com.weibiaogan.litong.ui.mine.MyPublishProjectActivity
 import com.xx.anypay.XxAnyPay
 import com.xx.anypay.XxAnyPayResultCallBack
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_pay_center.*
-import java.net.URLEncoder
 
 /**
  * author: xiaoguagnfei
@@ -54,6 +44,7 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
 //                   showToast("支付成功")
 //                   App.getInstance()?.cleanListActivity()
 //                   finish()
+
 //               }
 //           }
 //       }
@@ -65,7 +56,7 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
     override fun payResult(payBean: PayBean) {
         //微信支付
 //        if (isPayTpye.equals("wechat")){
-//            var api= WXAPIFactory.createWXAPI(mContext, null)
+//            var api= WXAPIFactory.createWXAPI(mActivity, null)
 //            api.registerApp(payBean.data.appid)
 //            var request=PayReq()
 //            request.appId=payBean.data.appid
@@ -90,14 +81,18 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
 
                     override fun onPaySuccess() {
                         showToast("支付成功")
-                        App.getInstance()?.cleanListActivity()
+                        if (PayCenterActivity.mActivity!= null && mContext is MyPublishProjectActivity){
+                            (mContext as MyPublishProjectActivity).finish()
+                        }
                         finish()
                     }
     })
     }
 
     companion object {
+        var mActivity : Context? = null
         fun startPayCenter(context: Context,flag : String,ptId:String,money:String){
+            mActivity = context
             val intent=Intent(context,PayCenterActivity::class.java)
             intent.putExtra("FLAG",flag)
             intent.putExtra("ptId",ptId)

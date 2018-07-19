@@ -1,6 +1,5 @@
 package com.weibiaogan.litong
 
-import android.app.Activity
 import android.support.multidex.MultiDexApplication
 import com.blankj.utilcode.util.Utils
 import com.facebook.stetho.Stetho
@@ -18,8 +17,6 @@ import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager
  * describe:
  */
 class App : MultiDexApplication() {
-    public var activitis:Activity?=null
-    var listActivity:ArrayList<Activity>?=null
     override fun onCreate() {
         super.onCreate()
         sInstance = this
@@ -27,7 +24,6 @@ class App : MultiDexApplication() {
         Stetho.initializeWithDefaults(this)
         LocationManger.getInstance().init(this)
         UMInit()
-        listActivity= ArrayList()
         XxAnyPay.intance.init(this)
         XxAnyPay.intance.wxAppIDProvider = object : WxAppIDProvider {
             override val weChatAppID: String
@@ -50,26 +46,10 @@ class App : MultiDexApplication() {
 
             override fun isDebug(): Boolean {
                 return BuildConfig.IS_DEV
+
             }
 
         }
-    }
-    public fun setActivity( activty:Activity){
-        activitis=activty
-    }
-    public fun cleanActivity(){
-        activitis?.finish()
-    }
-    public fun addListActivity( activty:Activity){
-        listActivity?.add(activty)
-    }
-    public fun cleanListActivity(){
-        if (listActivity?.size!=0){
-            for (i:Int in 0 until  listActivity?.size as Int){
-                listActivity!![i].finish()
-            }
-        }
-
     }
 
     private fun UMInit() {

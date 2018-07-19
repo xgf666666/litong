@@ -3,6 +3,7 @@ package com.weibiaogan.litong.common;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.xx.baseutilslibrary.network.gson.XxGsonConverterFactory;
 import com.xx.baseutilslibrary.network.retrofit.Retrofit2Manager;
 
 import okhttp3.HttpUrl;
@@ -47,6 +48,7 @@ public class AppApi {
                     .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))//添加网络日志
                     .build();
 
+
             Retrofit2Manager.Companion
                     .getInstance()
                     .setOkHttpClient(okHttpClient);
@@ -55,7 +57,7 @@ public class AppApi {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Retrofit2Manager.Companion.getInstance().getApiConfigProvider().getApiBaseUrl())
                     .client(okHttpClient)
-                    .addConverterFactory(HGsonConverterFactory.create())
+                    .addConverterFactory(XxGsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
 
