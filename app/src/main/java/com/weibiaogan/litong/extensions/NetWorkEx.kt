@@ -12,15 +12,15 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by Gubr on 2018/2/11.
  */
-val defintStr: (s: String?) -> Unit = {}
+val defintStr: (s: Throwable?) -> Unit = {}
 
 
-fun <T> Observable<T>.ui(action: (t: T) -> Unit, error: (t: String) -> Unit = defintStr): Disposable = subscribeOn(Schedulers.io())
+fun <T> Observable<T>.ui(action: (t: T) -> Unit, error: (t: Throwable) -> Unit = defintStr): Disposable = subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(Consumer {
             action.invoke(it)
         }, object : ExceptionEngine() {
-            override fun handle(msg: String) {
+            override fun handle(msg: Throwable) {
                 error.invoke(msg)
             }
         })
