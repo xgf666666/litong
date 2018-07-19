@@ -146,7 +146,8 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
         tv_projectName.text ="项目描述："+ bean.pt_describe            //项目描述
         tv_gongqi.text = "工期："+bean.end_time+"完成"              //工期
         tv_projectAdress.text = "项目地址："+bean.pt_address             //项目地址
-        tv_style.text = "类型暂定"                                //类型
+        tv_style.text = bean.area_id_data                                //类型
+
         for (i in 0 until mDetailImgs.size){
             if (i < bean.pt_imgs.size && !TextUtils.isEmpty(bean.pt_imgs[i])){
                 mDetailImgs[i].loadImag(bean.pt_imgs[i],plach = R.mipmap.img_default)
