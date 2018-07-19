@@ -67,7 +67,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         Log.i("statssss",""+isPublic.data?.stat)
         isPublicState=isPublic.data?.stat!!
         if (isPublic.data?.stat!=3){
-            showDialog(isPublic.msg!!)
+            showDialog(isPublic.msg!!,isPublic.data?.stat!!)
         }
         dismissLoadingDialog()
 
@@ -159,10 +159,18 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             }
         }
         bt_submit.setOnPerCheckLoginClickListner {
+            when(isPublicState){
+                0->{ showToast("未提交认证信息")
+                }
+                1->{
+                    showToast("交了认证信息，等待管理员审核")
+                }
+                3->{ pullProject()
+                }
+            }
+
             if (isPublicState==3){
-                pullProject()
             }else{
-                showToast("你还没资格，请求认证需求方")
             }
         }
         iv_project_location.setOnClickListener {
@@ -338,7 +346,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
 
     }
     var normalDialog:NormalDialog?=null
-    fun showDialog(text:String) {
+    fun showDialog(text:String,state:Int) {
         if (normalDialog==null){
             normalDialog=NormalDialog(mContext)
         }
@@ -352,6 +360,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
                 ?.btnTextColor(resources.getColor(R.color.color3078EF),resources.getColor(R.color.color3078EF))?.show()
             normalDialog?.setOnBtnClickL(OnBtnClickL { normalDialog?.dismiss() }, OnBtnClickL {
                 normalDialog?.dismiss()
+                if (state==0)
                 startActivity(BosIdentyActivity::class.java)})
         }
     }
