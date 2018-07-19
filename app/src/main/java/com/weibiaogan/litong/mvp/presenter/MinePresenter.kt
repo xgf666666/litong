@@ -6,6 +6,7 @@ import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.MineContract
 import com.weibiaogan.litong.mvp.model.MineModel
+import com.weibiaogan.litong.utils.showToast
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import java.io.File
@@ -23,7 +24,6 @@ class MinePresenter : MineContract.Presenter() {
             if (it.status.equals("1"))
             getView()?.addShop(it.data?.system_content)
         },{
-            Log.i("adfaggga",it)
             getView()?.showToast(it)
         })
 

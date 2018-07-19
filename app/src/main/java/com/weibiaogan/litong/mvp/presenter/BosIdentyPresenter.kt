@@ -6,6 +6,7 @@ import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.BosIdentyContract
 import com.weibiaogan.litong.mvp.model.BosIdentyModel
+import com.weibiaogan.litong.utils.showToast
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import java.io.File

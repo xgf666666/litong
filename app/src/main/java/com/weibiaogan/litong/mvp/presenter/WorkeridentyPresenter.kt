@@ -5,6 +5,7 @@ import com.blankj.utilcode.util.EncodeUtils
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.WorkerIdentyContract
 import com.weibiaogan.litong.mvp.model.WorkerIdentyModel
+import com.weibiaogan.litong.utils.showToast
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import java.io.File

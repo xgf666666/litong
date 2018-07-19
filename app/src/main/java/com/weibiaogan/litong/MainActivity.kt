@@ -50,12 +50,11 @@ class MainActivity : BaseMvpViewActivity() {
     }
 
     override fun initEvent() {
-        App.getInstance()?.setActivity(this as Activity)
         radio.setOnCheckedChangeListener { _, checkedId ->
           /*  ll_search_area.visibility= if (checkedId==0) View.VISIBLE else View.GONE*/
 //            iv_setup.visibility=if (checkedId==3)View.VISIBLE else View.GONE
 
-            tb_cart_setup.visibility=if (checkedId==2) View.VISIBLE else View.GONE
+            //tb_cart_setup.visibility=if (checkedId==2) View.VISIBLE else View.GONE
             showFragment(checkedId)
             changeTitle(checkedId)
             supportFragmentManager.popBackStack()
@@ -180,7 +179,7 @@ class MainActivity : BaseMvpViewActivity() {
     override fun initData() {
 
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            window.statusBarColor = ContextCompat.getColor(mContext, R.color.colorWhite)
+//            window.statusBarColor = ContextCompat.getColor(mActivity, R.color.colorWhite)
 //        }
 
         //重置RadioGroup子项id
