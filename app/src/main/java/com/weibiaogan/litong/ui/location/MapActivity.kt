@@ -3,6 +3,7 @@ package com.weibiaogan.litong.ui.location
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.Point
 import android.location.Location
 import android.os.Bundle
@@ -19,12 +20,14 @@ import com.amap.api.services.geocoder.GeocodeResult
 import com.amap.api.services.geocoder.GeocodeSearch
 import com.amap.api.services.geocoder.RegeocodeQuery
 import com.amap.api.services.geocoder.RegeocodeResult
+import com.autonavi.amap.mapcore2d.Inner_3dMap_location
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.utils.OpenNavigationUtils
 import com.weibiaogan.litong.widget.ActionSheetDialog
+import com.xx.baseuilibrary.mvp.BaseMvpViewActivity
 import java.util.ArrayList
 import kotlin.math.ln
 
@@ -34,7 +37,10 @@ import kotlin.math.ln
  * date: 2018/7/12
  * describe:
  */
-class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
+class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
+    override fun getActivityLayoutId(): Int = R.layout.activity_map_location
+    override fun initData() {
+    }
 
     private var needPermissions = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION,/*
@@ -61,7 +67,7 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_map_location)
+        //setContentView(R.layout.activity_map_location)
         type = intent.getIntExtra("type_location", 0)
         if(type != 0){
             lat = intent.getStringExtra("lat_location")
@@ -75,23 +81,18 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
         }
         location_map_view.onCreate(savedInstanceState)
         if (mAmap == null) mAmap = location_map_view.map
-        if (!PermissionUtils.isGranted(needPermissions[0],needPermissions[1],needPermissions[2],needPermissions[3])){
+        PermissionUtils.permission(needPermissions[0],needPermissions[1],needPermissions[2],needPermissions[3]).callback(object : PermissionUtils.SimpleCallback {
+            override fun onGranted() {
+                init()
+            }
 
-            PermissionUtils.permission(needPermissions[0],needPermissions[1],needPermissions[2],needPermissions[3]).callback(object : PermissionUtils.SimpleCallback {
-                override fun onGranted() {
-                    init()
-                }
+            override fun onDenied() {
+                ToastUtils.showShort("没有相关权限，无法正常定位,请去设置界面允许定位")
+            }
 
-                override fun onDenied() {
-                    //ToastUtils.showShort("没有相关权限，无法正常定位,请去设置界面允许定位")
-                }
+        }).rationale { it.again(true) }.request()
 
-            }).rationale { it.again(true) }.request()
-        }else{
-            init()
-        }
-
-        initEvent()
+        //initEvent()
     }
 
     fun init(){
@@ -109,7 +110,7 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
         // 连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
         myLocationStyle.interval(2000) //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
         mAmap?.setMyLocationStyle(myLocationStyle)//设置定位蓝点的Style
-        mAmap?.getUiSettings()?.setMyLocationButtonEnabled(false);//设置默认定位按钮是否显示，非必需设置。
+        mAmap?.getUiSettings()?.setMyLocationButtonEnabled(true);//设置默认定位按钮是否显示，非必需设置。
         mAmap?.setMyLocationEnabled(true)// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         mAmap?.setOnMyLocationChangeListener(this)
 
@@ -140,12 +141,16 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
             }
 
             override fun onGeocodeSearched(geocodeResult: GeocodeResult, i: Int) {
-
+                //showToast("1111")
             }
         })
     }
 
-    fun initEvent(){
+    override fun getResources(): Resources {
+        return baseContext.resources
+    }
+
+    override fun initEvent(){
         ib_back.setOnClickListener { finish() }
         btn_location_sure.setOnClickListener {
             if (type != 0){
@@ -168,9 +173,15 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
     }
 
     override fun onMyLocationChange(p0: Location?) {
-        lats=p0?.latitude
-        logs=p0?.longitude
-        getcoderSearch(LatLonPoint(p0?.latitude!!, p0?.longitude!!))
+        if ((p0 as Inner_3dMap_location).errorCode == 0){
+            lats=p0?.latitude
+            logs=p0?.longitude
+            getcoderSearch(LatLonPoint(p0?.latitude!!, p0?.longitude!!))
+        }else if (p0.errorCode == 12){
+            showToast("缺少定位权限")
+        }else{
+            showToast("无法定位")
+        }
     }
 
     var lats:Double?=0.0//维度
