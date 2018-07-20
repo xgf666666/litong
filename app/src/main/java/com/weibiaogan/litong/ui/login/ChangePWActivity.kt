@@ -27,7 +27,7 @@ class ChangePWActivity : BaseMvpActivity<ChangePwPresenter>(), ChangePwContract.
     override fun initData() {
 
         phone=Constants.getPhone()
-        tv_phone.setText(phone?.replaceRange(4,7,"****"))
+        tv_phone.setText(phone?.replaceRange(4,7,"***"))
 
     }
 

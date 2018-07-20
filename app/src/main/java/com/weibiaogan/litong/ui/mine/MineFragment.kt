@@ -140,10 +140,10 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
         showContent()
         when (data?.user?.userSex) {
             1 -> {
-                iv_sex.setImageResource(R.drawable.male_)
+                iv_sex.setImageResource(R.mipmap.ic_female)
             }
             2 -> {
-                iv_sex.setImageResource(R.drawable.female_)
+                iv_sex.setImageResource(R.mipmap.ic_male)
             }
             3 -> {
                 iv_sex.setImageResource(R.drawable.weizhi_)

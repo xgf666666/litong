@@ -78,15 +78,14 @@
                     android:textSize="16sp"
                     tools:text="林林林" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/iv_sex"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_alignTop="@id/tv_name"
                     android:layout_marginLeft="6dp"
                     android:layout_marginTop="2dp"
-                    android:layout_toRightOf="@id/tv_name"
-                    tools:src="@color/colorBlack" />
+                    android:layout_toRightOf="@id/tv_name"/>
 
 
                 <TextView

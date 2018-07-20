@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.CompoundButton
 import com.blankj.utilcode.util.ActivityUtils
 import com.google.gson.Gson
+import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.entity.MemberBean

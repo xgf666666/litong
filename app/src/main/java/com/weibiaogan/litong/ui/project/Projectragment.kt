@@ -314,6 +314,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
                 item=position
                 tv_select_one.setText(items[position])
                 tv_select_two.setText(datas.get(position).son.get(0).area_name)
+                area_id=datas.get(position).son.get(position).area_id
                 dialog.dismiss()
             }
         })
