@@ -106,13 +106,13 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
     }
 
     override fun initEvent() {
-        ib_back.setOnClickListener{finish()}
         iv_going.setOnClickListener{startActivity(KnowMemberActivity::class.java)}
         cb_weixin.setOnCheckedChangeListener(this)
         bt_zhifu.setOnClickListener{
             if (isPayTpye.isNullOrEmpty()){
                 showToast("请选择支付方式")
-            }else{
+            }else{        ib_back.setOnClickListener{finish()}
+
                 getPresenter().pay(ptId,isPayTpye,flag)
             }
         }

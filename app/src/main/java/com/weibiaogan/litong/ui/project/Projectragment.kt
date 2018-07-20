@@ -101,7 +101,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             img_two=file
             iv_twoView.loadImag(BuildConfig.DEV_DOMAIN+"/"+file, null, 0, 0)
             rl_two.visibility=View.VISIBLE
-        }else{
+        }else if(img_two.isNullOrEmpty()){
             img_three =file
             iv_threeView.visibility=View.VISIBLE
             iv_threeView.loadImag(BuildConfig.DEV_DOMAIN+"/"+file, null, 0, 0)
