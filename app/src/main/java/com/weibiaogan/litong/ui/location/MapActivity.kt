@@ -150,6 +150,7 @@ class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
         return baseContext.resources
     }
 
+
     override fun initEvent(){
         ib_back.setOnClickListener { finish() }
         btn_location_sure.setOnClickListener {
@@ -157,7 +158,7 @@ class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
                 showDialog()
             }else{
                 if (result != null && result?.regeocodeAddress != null){
-                    Constants.putLocation(lats!!,logs!!,result?.regeocodeAddress?.city)   //存储经纬度，城市名
+                    Constants.putLocation(lats!!,logs!!,result?.regeocodeAddress?.pois!![0].title)   //存储经纬度，城市名
                     var intent = Intent()
                     intent.putExtra("location_result", result?.regeocodeAddress?.pois!!.get(0).title)
                     intent.putExtra("location_address",result?.regeocodeAddress?.formatAddress)

@@ -20,6 +20,8 @@ import java.util.List;
  */
 public class StarView extends LinearLayout implements View.OnClickListener {
     LinearLayout layout;
+
+
     public StarView(Context context) {
         this(context, null);
     }
