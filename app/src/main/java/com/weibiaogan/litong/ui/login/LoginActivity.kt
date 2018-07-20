@@ -102,7 +102,7 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
          * @param platform 平台名称
          */
         override fun onStart(platform: SHARE_MEDIA) {
-            Toast.makeText(mContext, "开始", Toast.LENGTH_LONG).show()
+            //Toast.makeText(mContext, "开始", Toast.LENGTH_LONG).show()
         }
 
         /**

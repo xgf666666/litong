@@ -29,6 +29,40 @@
             android:tint="@color/colorWhite" />
     </FrameLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/margin_14">
+        <AutoCompleteTextView
+            android:id="@+id/search_text_key"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/titlebar_height"
+            android:layout_weight="1"
+            android:completionThreshold="1"
+            android:dropDownVerticalOffset="1.0dip"
+            android:hint="请输入关键字"
+            android:background="@drawable/shape_gray"
+            android:textColorHint="@color/text_color_third"
+            android:imeOptions="actionDone"
+            android:inputType="text|textAutoComplete"
+            android:maxLength="20"
+            android:paddingRight="37.0dip"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="16.0sp"
+            />
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:background="@drawable/shape_gray"
+            android:text="开始搜索" />
+    </LinearLayout>
+
 
     <com.amap.api.maps2d.MapView
         android:id="@+id/location_map_view"
