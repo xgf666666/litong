@@ -29,7 +29,7 @@ class ChangePayPwActivity:BaseMvpActivity<ChangePayPwPresenter>(),ChangePayPwCon
             et_check_password.setHint("确认支付密码")
         }
         phone=Constants.getPhone()
-        tv_phone.setText(phone?.replaceRange(4,7,"****"))
+        tv_phone.setText(phone?.replaceRange(4,7,"***"))
 
     }
     override fun initEvent() {
