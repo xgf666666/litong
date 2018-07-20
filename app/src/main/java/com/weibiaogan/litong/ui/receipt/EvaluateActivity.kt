@@ -148,14 +148,13 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
         score = sv_evaluate_score.starNum
 
         if (TextUtils.isEmpty(content)){
-            content = ""
-        }
-        if (mFileImgs.isEmpty()){
+            showToast("请填写评价内容！")
+        }else if (mFileImgs.isEmpty()){
             evaluate()
-            return
-        }
-        for (i in 0 until mFileImgs.size){
-            getPresenter().fileStore(mFileImgs[i])
+        }else{
+            for (i in 0 until mFileImgs.size){
+                getPresenter().fileStore(mFileImgs[i])
+            }
         }
     }
 
@@ -218,6 +217,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
 
     override fun evaluateSuccess(msg: String) {
         showToast(msg)
+        finish()
     }
 
     override fun getImgUrl(url: String) {
@@ -238,6 +238,5 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
         }else if (type == 1){
             getPresenter().evaluateBoss(pt_id,content,mPullImgs,score.toString())
         }
-        finish()
     }
 }

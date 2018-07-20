@@ -45,7 +45,7 @@ class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),
         mUserId = intent.getIntExtra("work_evaluate_id", -1)
         mType = intent.getIntExtra("evaluate_type",-1)
         if (mType == 1){
-            tv_work_title.text = "需求方评论"
+            tv_work_title.text = "需求方评价"
             getPresenter().projectEvaluate(mUserId.toString(),mCurrentPage.toString())
         }else if (mType == 0){
             tv_work_title.text = resources.getString(R.string.work_evaluate_title)

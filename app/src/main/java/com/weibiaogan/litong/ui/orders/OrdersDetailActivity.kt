@@ -128,6 +128,11 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
             showWork(bean.show_pt_user)                           //出现工人接单信息
             tv_heimingdan.visibility = View.GONE                  //不会出现加入黑名单按钮
             tv_lazy_project.visibility = View.VISIBLE   //你来迟了 ，项目被接走了
+        }else{
+            tv_lazy_project.visibility = View.VISIBLE   //你来迟了 ，项目被接走了
+            tv_lazy_project.text = "该项目等待管理员审核中"
+            tv_receipt_project.visibility = View.GONE   //不出现接单按钮
+            ll_old_work.visibility = View.GONE                //不会出现接单工人信息
         }
 
         (iv_detail_head as ConvenientBanner<String>).setPages({ImageHolderView()},bean.pt_imgs).setPointViewVisible(true).startTurning(2000)         //轮播图

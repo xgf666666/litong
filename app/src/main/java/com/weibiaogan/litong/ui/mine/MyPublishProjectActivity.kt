@@ -147,6 +147,7 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
                     PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"3",bean.pt_id.toString(),bean.second_price) } //付二期款
                 6 -> {
                     PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"4",bean.pt_id.toString(),bean.three_price)} //付尾款
+                0 -> PayCenterActivity.startPayCenter(this@MyPublishProjectActivity,"1",bean.pt_id.toString(),bean.prepaid_price) //预支付金额
 
             }
         }else if (view?.id == R.id.tv_three){   //查看项目

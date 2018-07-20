@@ -127,6 +127,15 @@ public class PublicProjectBean {
         private int worker_three_time;
         private int boss_prepaid_time;
         private String pt_stat_detail;
+        private int pay_prepaid_price;
+
+        public void setPay_prepaid_price(int mPay_prepaid_price) {
+            pay_prepaid_price = mPay_prepaid_price;
+        }
+
+        public int getPay_prepaid_price() {
+            return pay_prepaid_price;
+        }
 
         public int getPt_id() {
             return pt_id;

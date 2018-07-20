@@ -26,6 +26,8 @@ class MyPublishProjectAdapter(data : List<PublicProjectBean.DataBean>) : BaseQui
     当pt_stat=5,出现‘取消项目’按钮。查看项目按钮。‘二期款’按钮
     当pt_stat=6,出现‘取消项目’按钮。查看项目按钮。‘尾款’按钮
     当pt_stat=7,则项目出现在完成列表，需求方列表里，如果boss_comments=0，则出现评论按钮，boss_comments=1，则没有。‘查看项目按钮’一直有。
+
+    当pt_stat=0,出现‘取消项目’按钮。查看项目按钮。当pay_prepaid_price=1,出现支付预支付金额按钮
      */
 
     override fun convert(helper: BaseViewHolder?, item: PublicProjectBean.DataBean?) {
@@ -48,7 +50,14 @@ class MyPublishProjectAdapter(data : List<PublicProjectBean.DataBean>) : BaseQui
             }else{
                 two?.visibility = View.INVISIBLE
             }
-        }else{
+        }else if (item?.pt_stat == 0){
+            three?.visibility = View.VISIBLE
+            two?.visibility = View.GONE
+            if (item?.pay_prepaid_price == 1){
+                two?.visibility = View.VISIBLE
+                two?.text = "预支付金额"
+            }
+        } else{
             setTxtBtn(item?.pt_stat!!,two!!,three!!)
         }
     }
