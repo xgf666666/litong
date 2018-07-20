@@ -66,6 +66,7 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
     }
 
     override fun loginSuccess() {
+        ActivityUtils.finishAllActivities()
         startActivity(MainActivity::class.java)
         finish()
 

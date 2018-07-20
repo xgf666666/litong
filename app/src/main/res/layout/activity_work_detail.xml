@@ -107,6 +107,8 @@
             android:textSize="@dimen/text_dimen_third"
             android:textColor="@color/text_color_third"
             android:layout_marginBottom="@dimen/margin_14"
+            android:layout_marginLeft="@dimen/margin_19"
+            android:layout_marginRight="@dimen/margin_19"
             android:text=""
             android:layout_gravity="center"/>
 

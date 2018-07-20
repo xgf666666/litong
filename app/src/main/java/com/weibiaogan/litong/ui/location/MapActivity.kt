@@ -79,7 +79,7 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
 
             PermissionUtils.permission(needPermissions[0],needPermissions[1],needPermissions[2],needPermissions[3]).callback(object : PermissionUtils.SimpleCallback {
                 override fun onGranted() {
-
+                    init()
                 }
 
                 override fun onDenied() {
@@ -87,9 +87,10 @@ class MapActivity : Activity(), AMap.OnMyLocationChangeListener {
                 }
 
             }).rationale { it.again(true) }.request()
+        }else{
+            init()
         }
 
-        init()
         initEvent()
     }
 
