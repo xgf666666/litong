@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.bigkoo.convenientbanner.ConvenientBanner
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator
 import com.bigkoo.convenientbanner.holder.Holder
+import com.bigkoo.convenientbanner.listener.OnItemClickListener
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.weibiaogan.litong.R
@@ -20,6 +21,7 @@ import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.ui.project.ProjectListActivity
 import com.weibiaogan.litong.entity.HomeBean
 import com.weibiaogan.litong.extensions.loadImag
+import com.weibiaogan.litong.extensions.toast
 import com.weibiaogan.litong.mvp.contract.HomeConstract
 import com.weibiaogan.litong.mvp.presenter.HomePresenter
 import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
@@ -36,7 +38,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * date: 2018/5/6
  * describe:
  */
-class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, HomeConstract.View, HomePresenter>(), HomeConstract.View, View.OnClickListener, OnRefreshLoadMoreListener {
+class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, HomeConstract.View, HomePresenter>(), HomeConstract.View, View.OnClickListener, OnRefreshLoadMoreListener{
     //val banner_imgs : List<Int> = arrayListOf(R.mipmap.img_banner,R.mipmap.img_banner,R.mipmap.img_banner)
     val banner_imgs = arrayListOf<String>()
 
@@ -107,16 +109,21 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
         showContent()
         //adapter.setNewData(getListMulti())
         if ((data as HomeBean).adve != null){
+            banner_imgs.clear()
             for (bean in (data).adve){
                 banner_imgs.add(bean.ad_img)
             }
             headView?.findViewById<ConvenientBanner<String>>(R.id.cb_home_top)?.
                     setPages( { ImageHolderView() } , banner_imgs)?.
                     setPointViewVisible(true)?.startTurning(2000)
-                    ?.setOnItemClickListener { position ->
-                        val pt_id = data.adve[position].pro_id
-                        OrdersDetailActivity.startProjectDetail(mContext,pt_id.toString())
-                         }
+                    ?.setOnItemClickListener{
+                        position ->
+                        //showToast("$position")
+                        if (position < data.adve.size){
+                            val pt_id = data.adve[position].pro_id
+                            OrdersDetailActivity.startProjectDetail(mContext,pt_id.toString())
+                        }
+                    }
         }
         refresh_home.addData(adapter,getListMulti(data))
     }
