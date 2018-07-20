@@ -33,12 +33,25 @@ class WorkEvaluateAdatper(workList : List<WorkEvaluateBean.DataBean?>) : BaseQui
             var imageView = layout.getChildAt(i) as ImageView
             mImgList.add(imageView)
         }
-        for (i in 0 until item?.com_imgs!!.size){
-            if (!TextUtils.isEmpty(item?.com_imgs[i])){
+//        for (i in 0 until item?.com_imgs!!.size){
+//            if (!TextUtils.isEmpty(item?.com_imgs[i])){
+//                mImgList[i].visibility = View.VISIBLE
+//                mImgList[i].loadImag(item?.com_imgs[i],plach = R.mipmap.img_default)
+//            }else{
+//                //mImgList[i].visibility = View.GONE
+//            }
+//        }
+
+        if (item?.com_imgs == null || item?.com_imgs.size == 0){
+            layout.visibility = View.GONE
+            return
+        }
+        for (i in 0 until mImgList.size){
+            if (i < item?.com_imgs!!.size && !TextUtils.isEmpty(item?.com_imgs[i])){
                 mImgList[i].visibility = View.VISIBLE
                 mImgList[i].loadImag(item?.com_imgs[i],plach = R.mipmap.img_default)
             }else{
-                //mImgList[i].visibility = View.GONE
+                mImgList[i].visibility = View.INVISIBLE
             }
         }
 
