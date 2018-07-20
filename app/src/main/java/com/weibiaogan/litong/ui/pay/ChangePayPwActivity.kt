@@ -27,7 +27,6 @@ class ChangePayPwActivity:BaseMvpActivity<ChangePayPwPresenter>(),ChangePayPwCon
         if (Constants.getUserData().balanceHas!=1){
             et_new_password.setHint("支付密码")
             et_check_password.setHint("确认支付密码")
-
         }
         phone=Constants.getPhone()
         tv_phone.setText(phone?.replaceRange(4,7,"***"))
