@@ -45,8 +45,8 @@ class MainActivity : BaseMvpViewActivity() {
 
     override fun getActivityLayoutId(): Int = R.layout.activity_main
 
-    public fun setRadio(){
-        radio.check(3)
+    public fun setRadio(dex:Int){
+        radio.check(dex)
     }
 
     override fun initEvent() {
