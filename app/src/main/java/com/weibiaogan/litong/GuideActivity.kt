@@ -5,7 +5,6 @@ import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageView
 import com.weibiaogan.litong.common.Constants
@@ -81,6 +80,17 @@ class GuideActivity : BaseActivity() {
                 vp_guide.currentItem = ++mPosition
                 showPoint(mPosition)
             }
+        }
+
+        btn_jump.setOnClickListener {
+            Constants.setNotFirst()
+            if (Constants.isLogin()){
+                startActivity(MainActivity::class.java)
+            }else{
+                startActivity(LoginActivity::class.java)
+            }
+            finish()
+            overridePendingTransition(R.anim.scale_in,R.anim.scale_out)
         }
     }
 
