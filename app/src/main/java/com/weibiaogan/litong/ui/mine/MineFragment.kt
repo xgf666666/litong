@@ -107,7 +107,7 @@ class MineFragment : BaseMvpLcecFragment<NestedScrollView, UserCenterBean, MineC
             intent.putExtra("phone",servicePhone)
             startActivity(intent) }
         ll_share_area.setOnClickListener{startActivity(ShareActivity::class.java)}
-        tv_service_phone.setOnClickListener{
+        ll_service_area.setOnClickListener{
             val uri = Uri.parse("tel:"+servicePhone)
             val it = Intent(Intent.ACTION_DIAL, uri)
             startActivity(it)

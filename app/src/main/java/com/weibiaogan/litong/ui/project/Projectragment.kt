@@ -63,6 +63,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
     }
 
     var baozhengjing:String?=null
+    var charge:String?=null
     override fun isPublic(isPublic: BaseResponseEntity<IsPublic>) {//是否可以发布
         Log.i("statssss",""+isPublic.data?.stat)
         isPublicState=isPublic.data?.stat!!
@@ -76,39 +77,59 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
     override fun setWorker(publicWorker: PublicWorker) {
         datas=publicWorker.area
         baozhengjing=""+publicWorker.prepaid.proportion
+        charge=""+publicWorker.prepaid.charge
         et_project_first_ratio.setText(""+publicWorker.proportion.frist)
         et_project_second_ratio.setText(""+publicWorker.proportion.second)
         tv_wei.setText("尾款比例为:"+publicWorker.proportion.three+"%，保证金:"+baozhengjing+"%")
     }
     var datas:List<Worker>?=null
     private lateinit var imageChooseHelper: ImageChooseHelper
-    var ONE:Int=1//设置第一张图片
-    var TWO:Int=2//设置第二张图片
-    var THREE:Int=3//设置第三张图片
+    var ONE:Int=0//设置第一张图片
+    var TWO:Int=0//设置第二张图片
+    var THREE:Int=0//设置第三张图片
     var FLAG:Int=0
     var img_one:String?=null//存放第一张推片地址
     var img_two:String?=null//存放第二张推片地址
     var img_three:String?=null//存放第三张推片地址
+    var oneBitmap:Bitmap?=null
+    var twoBitmap:Bitmap?=null
+    var threeBitmap:Bitmap?=null
     var area_id:Int=0//工人ID
     var isPublicState:Int=0
     override fun setView(file: String) {
         if (img_one.isNullOrEmpty()){
             img_one=file
-            iv_oneView.loadImag(BuildConfig.DEV_DOMAIN+"/"+file, null, 0, 0)
-            rl_one.visibility=View.VISIBLE
+//            iv_oneView.loadImag(BuildConfig.DEV_DOMAIN+"/"+file, null, 0, 0)
+
 
         }else if (img_two.isNullOrEmpty()){
             img_two=file
-            iv_twoView.loadImag(BuildConfig.DEV_DOMAIN+"/"+file, null, 0, 0)
-            rl_two.visibility=View.VISIBLE
-        }else if(img_two.isNullOrEmpty()){
+//            iv_twoView.loadImag(BuildConfig.DEV_DOMAIN+"/"+file, null, 0, 0)
+        }else if(img_three.isNullOrEmpty()){
             img_three =file
-            iv_threeView.visibility=View.VISIBLE
-            iv_threeView.loadImag(BuildConfig.DEV_DOMAIN+"/"+file, null, 0, 0)
             iv_add.setImageResource(R.drawable.ic_delete)
+//            iv_threeView.loadImag(BuildConfig.DEV_DOMAIN+"/"+file, null, 0, 0)
         }
-
-
+    }
+    //MainActivity回调接口
+    override fun setPresenter(bitmap: Bitmap, file: File) {
+        if (ONE==0){
+            ONE=1
+            iv_oneView.setImageBitmap(bitmap)
+            rl_one.visibility=View.VISIBLE
+            oneBitmap=bitmap
+        }else if (TWO==0){
+            TWO=1
+            iv_twoView.setImageBitmap(bitmap)
+            rl_two.visibility=View.VISIBLE
+            twoBitmap=bitmap
+        }else{
+            THREE=1
+            iv_threeView.setImageBitmap(bitmap)
+            iv_threeView.visibility=View.VISIBLE
+            threeBitmap=bitmap
+        }
+        getPresenter().fileStore(file)
     }
     override fun createPresenter(): ProjectPresenter {
         return ProjectPresenter()
@@ -139,10 +160,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             getPresenter().isPublic()
         }
     }
-    //回调接口
-    override fun setPresenter(bitmap: Bitmap, file: File) {
-        getPresenter().fileStore(file)
-    }
+
 
     override fun initEvent(view: View?) {
         rl_project_worker_selector_1.setOnClickListener {
@@ -180,23 +198,41 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             startActivity(ProjectPublicNoteActivity::class.java)
         }
         iv_add.setOnClickListener{
-
-            if (img_one.isNullOrEmpty()||img_two.isNullOrEmpty()||img_three.isNullOrEmpty()){
+//            if (img_one.isNullOrEmpty()||img_two.isNullOrEmpty()||img_three.isNullOrEmpty()){
+            if (ONE==0||TWO==0||THREE==0){
                 var acs=activity as MainActivity
                 acs.showEditAvatarDialog()
             }else{
                 img_three=null
+                THREE=0
                 iv_threeView.visibility=View.INVISIBLE
                 iv_add.setImageResource(R.mipmap.add_img)
             }
         }
         iv_delOne.setOnClickListener{
-            img_one=null
-            rl_one.visibility=View.INVISIBLE
+            if (img_three!=null){
+                img_one=img_three
+                img_three=null
+                iv_oneView.setImageBitmap(threeBitmap)
+                iv_threeView.visibility=View.INVISIBLE
+                iv_add.setImageResource(R.mipmap.add_img)
+            }else{
+                img_one=null
+                rl_one.visibility=View.INVISIBLE
+            }
         }
         iv_delTwo.setOnClickListener{
-            img_two=null
-            rl_two.visibility=View.INVISIBLE
+            if (img_three!=null){
+                img_two=img_three
+                img_three=null
+                iv_threeView.visibility=View.INVISIBLE
+                iv_add.setImageResource(R.mipmap.add_img)
+                iv_twoView.setImageBitmap(threeBitmap)
+            }else{
+                img_two=null
+                rl_two.visibility=View.INVISIBLE
+            }
+
         }
         et_project_first_ratio.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -255,12 +291,12 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
 
     override fun successful(publicProjectsBean: PublicProjectsBean) {
         toast("发布成功")
-        if (!baozhengjing.isNullOrEmpty()){
+        var activity=activity as MainActivity
+        activity.setRadio(3)
+        if (charge.equals("1")){
             PayCenterActivity.startPayCenter(mContext,"1",publicProjectsBean.pt_id,publicProjectsBean.prepaid_price)
-            var activity=activity as MainActivity
-//            activity.showFragment(3)
-            activity.setRadio(3)
         }
+
     }
 
 
