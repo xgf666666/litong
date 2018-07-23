@@ -72,7 +72,11 @@ class MainActivity : BaseMvpViewActivity() {
         }
 
         ll_home_search.setOnClickListener {  startActivity(Intent(mContext, SearchProjectActivity::class.java)) }
-        tv_home_location.setOnClickListener { startActivityForResult(Intent(mContext, MapActivity::class.java),REQUEST_CODE) }
+        tv_home_location.setOnClickListener {
+            var intent = Intent(mContext, MapActivity::class.java)
+            intent.putExtra("type_location",2)
+            startActivityForResult(intent,REQUEST_CODE)
+        }
 
     }
 

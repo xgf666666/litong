@@ -69,7 +69,7 @@ class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_map_location)
         type = intent.getIntExtra("type_location", 0)
-        if(type != 0){
+        if(type == 1){
             lat = intent.getStringExtra("lat_location")
             lng = intent.getStringExtra("lng_location")
             Log.i("map_location", "lat::$lat::lng:$lng")
@@ -96,7 +96,7 @@ class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
     }
 
     fun init(){
-        if (type != 0){
+        if (type == 1){
             var latLng = LatLng(lat.toDouble(), lng.toDouble())
             maker(latLng,"目的地")
             var cameraUpdate = CameraUpdateFactory.newCameraPosition(CameraPosition(latLng, 17f, 30f, 0f))
@@ -154,11 +154,20 @@ class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
     override fun initEvent(){
         ib_back.setOnClickListener { finish() }
         btn_location_sure.setOnClickListener {
-            if (type != 0){
+            if (type == 1){
                 showDialog()
-            }else{
+            }else if (type == 2){
                 if (result != null && result?.regeocodeAddress != null){
                     Constants.putLocation(lats!!,logs!!,result?.regeocodeAddress?.pois!![0].title)   //存储经纬度，城市名
+                    var intent = Intent()
+                    intent.putExtra("location_result", result?.regeocodeAddress?.pois!!.get(0).title)
+                    setResult(MainActivity.RESULT_CODE,intent)
+                    finish()
+                }else{
+                    ToastUtils.showShort("无法定位")
+                }
+            }else if (type == 0){
+                if (result != null && result?.regeocodeAddress != null){
                     var intent = Intent()
                     intent.putExtra("location_result", result?.regeocodeAddress?.pois!!.get(0).title)
                     intent.putExtra("location_address",result?.regeocodeAddress?.formatAddress)
