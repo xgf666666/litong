@@ -78,7 +78,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         baozhengjing=""+publicWorker.prepaid.proportion
         et_project_first_ratio.setText(""+publicWorker.proportion.frist)
         et_project_second_ratio.setText(""+publicWorker.proportion.second)
-        tv_wei.setText(""+publicWorker.proportion.three+"%，保证金:"+baozhengjing+"%")
+        tv_wei.setText("尾款比例为:"+publicWorker.proportion.three+"%，保证金:"+baozhengjing+"%")
     }
     var datas:List<Worker>?=null
     private lateinit var imageChooseHelper: ImageChooseHelper
@@ -258,8 +258,8 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         if (!baozhengjing.isNullOrEmpty()){
             PayCenterActivity.startPayCenter(mContext,"1",publicProjectsBean.pt_id,publicProjectsBean.prepaid_price)
             var activity=activity as MainActivity
-            activity.showFragment(3)
-            activity.setRadio()
+//            activity.showFragment(3)
+            activity.setRadio(3)
         }
     }
 
@@ -356,13 +356,29 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
                 ?.style(NormalDialog.STYLE_TWO)
                 ?.contentTextColor(resources.getColor(R.color.color222222))
                 ?.contentTextSize(17f)
-                ?.btnText("取消","确定")
                 ?.btnTextSize(14f)
-                ?.btnTextColor(resources.getColor(R.color.color3078EF),resources.getColor(R.color.color3078EF))?.show()
-            normalDialog?.setOnBtnClickL(OnBtnClickL { normalDialog?.dismiss() }, OnBtnClickL {
-                normalDialog?.dismiss()
-                if (state==0)
-                startActivity(BosIdentyActivity::class.java)})
+            normalDialog?.setCancelable(false)
+            normalDialog?.setCanceledOnTouchOutside(false)
+            if (state==0){
+                normalDialog?.btnNum(2)?.btnText("首页","认证")
+                        ?.btnTextColor(resources.getColor(R.color.color3078EF),resources.getColor(R.color.color3078EF))?.show()
+                normalDialog?.setOnBtnClickL(OnBtnClickL {
+                    normalDialog?.dismiss()
+                    var activity=activity as MainActivity
+                    activity.setRadio(0)
+                }, OnBtnClickL {
+                    normalDialog?.dismiss()
+                    startActivity(BosIdentyActivity::class.java)})
+            }else if (state==1){
+                normalDialog?.btnNum(1)?.btnText("首页")?.btnTextColor(resources.getColor(R.color.color3078EF))?.show()
+                normalDialog?.setOnBtnClickL(OnBtnClickL {
+                    normalDialog?.dismiss()
+                    var activity=activity as MainActivity
+                    activity.setRadio(0)
+
+                })
+            }
+
         }
     }
     var log:String?=null
