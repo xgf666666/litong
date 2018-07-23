@@ -137,7 +137,11 @@ class MyIntroActivity : BaseMvpActivity<MyIntroPresenter>(), MyIntroContract.Vie
         when (v.id) {
         //头像点击
             R.id.ll_touxiang -> {
-                showEditAvatarDialog()
+                if (Constants.getUserData().user.grid==2){
+                    showEditAvatarDialog()
+                }else{
+                    showToast("会员才能修改头像")
+                }
             }
         //修改登录密码
             R.id.ll_change_login_pw -> {
