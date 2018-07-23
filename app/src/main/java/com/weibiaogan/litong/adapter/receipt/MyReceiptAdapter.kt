@@ -39,6 +39,8 @@ class MyReceiptAdapter(datas : List<MyReceiptBean>) : BaseQuickAdapter<MyReceipt
             }else{
                 helper?.getView<View>(R.id.tv_my_receipt_evaluate)?.visibility = View.GONE
             }
+        }else{
+            helper?.getView<View>(R.id.tv_my_receipt_evaluate)?.visibility = View.GONE
         }
     }
 }

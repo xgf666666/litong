@@ -286,12 +286,14 @@ class MapActivity : BaseMvpViewActivity(), AMap.OnMyLocationChangeListener {
                 ToastUtils.showShort("请先安装"+items[position])
                 dialog.dismiss()
             }else{
+                var isInstall = false
                 for (i in s){
                     if (items[position] == i){
+                        isInstall = true
                         OpenNavigationUtils.openMap(i,lat, lng)
                     }
                 }
-                ToastUtils.showShort("请先安装"+items[position])
+                if (!isInstall) ToastUtils.showShort("请先安装"+items[position])
             }
         }
 
