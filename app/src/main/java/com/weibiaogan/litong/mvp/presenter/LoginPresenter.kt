@@ -30,8 +30,8 @@ class LoginPresenter :  LoginConstract.Presenter() {
             getView()?.showToast("请输入正确的手机号")
         }
 
-        if (TextUtils.isEmpty(password) || password?.length ?: 0 < 5) {
-            getView()?.showToast("请输入正确的密码")
+        if (TextUtils.isEmpty(password) || password?.length ?: 0 < 6||password?.length ?: 0 >16) {
+            getView()?.showToast("请输入6到16位的密码")
             return
         }
 

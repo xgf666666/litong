@@ -92,12 +92,12 @@ class ForgetPwPresenter :  ForgetPwContract.Presenter() {
             getView()?.showToast("请输入正确的手机号")
             return
         }
-        if (TextUtils.isEmpty(newPw) || newPw.length < 6) {
-            getView()?.showToast("请输入密码,至少6位")
+        if (TextUtils.isEmpty(newPw) || newPw.length < 6||newPw.length>16) {
+            getView()?.showToast("请输入6到16位密码")
             return
         }
-        if (TextUtils.isEmpty(surePw) || surePw.length < 6) {
-            getView()?.showToast("请确认密码,至少6位")
+        if (TextUtils.isEmpty(surePw)) {
+            getView()?.showToast("请输入6到16位密码")
             return
         }
         if (newPw != surePw) {

@@ -117,8 +117,8 @@ class RegisterPresenter :  RegisterContracct.Presenter() {
         }else if (code!!.length!=6){
             getView()?.showToast("请输入6位验证码")
             return
-        }else if (TextUtils.isEmpty(newPassword)){
-            getView()?.showToast("请输入新密码")
+        }else if (newPassword?.length!!<6||newPassword?.length>16){
+            getView()?.showToast("请输入6到16位的密码")
             return
         }else if (TextUtils.isEmpty(checkPassword)){
             getView()?.showToast("请输入确认密码")

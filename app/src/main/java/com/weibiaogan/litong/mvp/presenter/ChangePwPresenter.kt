@@ -35,11 +35,13 @@ class ChangePwPresenter : ChangePwContract.Presenter() {
 
         val newPassword = getView()?.newPassword
 
-        if (newPassword?.length ?: 0 > 6) {
+        if (newPassword?.length ?: 0 > 6||newPassword?.length ?: 0<=16) {
             if (newPassword?.equals(checkPassword) == true) {
                 getView()?.showToast("新密码两次输入不一样")
                 return
             }
+        }else{
+            getView()?.showToast("请输入6到16位密码")
         }
 
         val userId = Constants.getToken().user_id.toString()

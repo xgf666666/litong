@@ -161,7 +161,8 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         }
     }
 
-
+    var oneInt:Int=0
+    var twoInt:Int=0
     override fun initEvent(view: View?) {
         rl_project_worker_selector_1.setOnClickListener {
             if (datas!=null){
@@ -234,12 +235,11 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             }
 
         }
+
         et_project_first_ratio.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 var two=et_project_second_ratio.getTString()!!
                 var one=s.toString()
-                var oneInt:Int=0
-                var twoInt:Int=0
                 if (one.isNullOrEmpty()){
                     oneInt=0
                 }else{
@@ -249,6 +249,9 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
                     twoInt=0
                 }else{
                     twoInt=two.toInt()
+                }
+                if (twoInt+oneInt>99){
+                    showToast("一期款跟跟二期款比例和要小于99")
                 }
                 tv_wei.setText("尾款比例为:"+(100-twoInt-oneInt)+"%，保证金:"+baozhengjing+"%")
             }
@@ -263,8 +266,6 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             override fun afterTextChanged(s: Editable?) {
                 var two=s.toString()!!
                 var one=et_project_first_ratio.getTString()
-                var oneInt:Int=0
-                var twoInt:Int=0
                 if (one.isNullOrEmpty()){
                     oneInt=0
                 }else{
@@ -274,6 +275,9 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
                     twoInt=0
                 }else{
                     twoInt=two.toInt()
+                }
+                if (twoInt+oneInt>99){
+                    showToast("一期款跟跟二期款比例和要小于99")
                 }
                 tv_wei.setText("尾款比例为:"+(100-twoInt-oneInt)+"%，保证金:"+baozhengjing+"%")
             }
@@ -321,6 +325,8 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
             ptImgs=ptImgs+","+img_two
         if (!img_three.isNullOrEmpty())
             ptImgs=ptImgs+","+img_three
+        if (oneInt+twoInt>99)
+            showToast("一期款跟跟二期款比例和要小于99")
         if (cb_note.isChecked){
             getPresenter().pullProject(projectName,projectIntroduction
                     ,projectEndtime,projectAddress,projectAreaId
@@ -428,6 +434,8 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
     }
     //时间选择器
     private fun getDate(){
+        var calendar:Calendar= Calendar.getInstance()
+        calendar.set(2100,12,31)
           var pvTime =  TimePickerBuilder(mContext, object : OnTimeSelectListener {
               override fun onTimeSelect(date: Date?, v: View?) {
                   var format="yyyy-MM-dd"
@@ -435,7 +443,8 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
                   et_project_endTime.setText(dateFormat.format(date))
               }
 
-          }).setLineSpacingMultiplier(2.2f).build().show()
+          }).setRangDate(Calendar.getInstance(),calendar)
+                  .setLineSpacingMultiplier(2.2f).build().show()
 
     }
 
