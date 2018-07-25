@@ -153,7 +153,8 @@
                     android:layout_marginLeft="48dp"
                     android:layout_gravity="center_vertical"
                     android:padding="8dp"
-                    android:button="@null" />
+                    android:button="@null"
+                    android:checked="true"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -161,7 +162,8 @@
                     android:text="否"
                     android:layout_marginLeft="8dp"
                     android:textColor="@color/color888888"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    />
 
             </LinearLayout>
             <LinearLayout
@@ -204,7 +206,8 @@
                     android:layout_marginLeft="17dp"
                     android:background="@drawable/select_renzheng"
                     android:button="@null"
-                    android:padding="8dp" />
+                    android:padding="8dp"
+                    android:checked="true"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -212,7 +215,8 @@
                     android:text="不能开"
                     android:layout_marginLeft="8dp"
                     android:textColor="@color/color888888"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -253,7 +257,8 @@
                     android:layout_marginLeft="48dp"
                     android:layout_gravity="center_vertical"
                     android:padding="8dp"
-                    android:button="@null" />
+                    android:button="@null"
+                    android:checked="true"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -286,7 +291,8 @@
                     android:layout_marginLeft="30dp"
                     android:background="@drawable/select_renzheng"
                     android:button="@null"
-                    android:padding="8dp" />
+                    android:padding="8dp"
+                    android:checked="true"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

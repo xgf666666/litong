@@ -11,6 +11,7 @@ import android.widget.CompoundButton
 import com.flyco.dialog.listener.OnOperItemClickL
 import com.flyco.dialog.widget.ActionSheetDialog
 import com.weibiaogan.litong.R
+import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.entity.Worker
 import com.weibiaogan.litong.extensions.toast
 import com.weibiaogan.litong.mvp.contract.WorkerIdentyTwoContrat
@@ -27,12 +28,13 @@ import kotlinx.android.synthetic.main.activity_worker_identy_two.*
 class WorkerIDentyTwoActivity : BaseMvpActivity<WorkerIdentyTwoPresenter>(),WorkerIdentyTwoContrat.View, CompoundButton.OnCheckedChangeListener {
     override fun succeful() {
         toast("成功")
+        Constants.getUserData().user.workerStat=1
         finish()
     }
-     var has_invoice:Int=-1
-    var is_company:Int=-1
-    var is_card:Int=-1
-    var is_insurance:Int=-1
+     var has_invoice:Int=0
+    var is_company:Int=0
+    var is_card:Int=0
+    var is_insurance:Int=0
     var map:HashMap<String,String>?=null
     var area_id:Int=0//工人ID
 

@@ -10,6 +10,7 @@ import com.blankj.utilcode.util.PermissionUtils
 import com.weibiaogan.litong.BuildConfig
 import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.R
+import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.dialog.ChooseImageDialogWrapper
 import com.weibiaogan.litong.extensions.toast
 import com.weibiaogan.litong.mvp.contract.BosIdentyContract
@@ -26,9 +27,9 @@ import kotlinx.android.synthetic.main.activity_bos_identy.*
  */
 class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContract.View, CompoundButton.OnCheckedChangeListener {
 
-    var is_company:Int=-1//判断是否选择公司
-    var is_card:Int=-1//判断是否有车
-    var is_insurance:Int=-1//判断是否有保险
+    var is_company:Int=0//判断是否选择公司
+    var is_card:Int=0//判断是否有车
+    var is_insurance:Int=0//判断是否有保险
     var ONE:Int=1//设置第一张图片
     var TWO:Int=2//设置第二张图片
     var FLAG:Int=0
@@ -42,10 +43,20 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
 //        }else{
 //            img_two=data
 //        }
-        imgList?.add(data)
+        if (imgList?.size==2){
+            if (FLAG==ONE){
+                imgList?.set(0,data)
+            }else{
+                imgList?.set(1,data)
+            }
+        }else{
+            imgList?.add(data)
+        }
+
     }
     override fun identySucceful() {
         toast("审核提交成功")
+        Constants.getUserData().user.bossStat=1
         finish()
     }
     private lateinit var imageChooseHelper: ImageChooseHelper

@@ -73,8 +73,9 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         dismissLoadingDialog()
 
     }
-
+    var publicWorkers: PublicWorker?=null
     override fun setWorker(publicWorker: PublicWorker) {
+        publicWorkers=publicWorker
         datas=publicWorker.area
         baozhengjing=""+publicWorker.prepaid.proportion
         charge=""+publicWorker.prepaid.charge
@@ -87,7 +88,6 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
     var ONE:Int=0//设置第一张图片
     var TWO:Int=0//设置第二张图片
     var THREE:Int=0//设置第三张图片
-    var FLAG:Int=0
     var img_one:String?=null//存放第一张推片地址
     var img_two:String?=null//存放第二张推片地址
     var img_three:String?=null//存放第三张推片地址
@@ -218,6 +218,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
                 iv_threeView.visibility=View.INVISIBLE
                 iv_add.setImageResource(R.mipmap.add_img)
             }else{
+                ONE=0
                 img_one=null
                 rl_one.visibility=View.INVISIBLE
             }
@@ -230,6 +231,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
                 iv_add.setImageResource(R.mipmap.add_img)
                 iv_twoView.setImageBitmap(threeBitmap)
             }else{
+                TWO=0
                 img_two=null
                 rl_two.visibility=View.INVISIBLE
             }
@@ -300,6 +302,30 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         if (charge.equals("1")){
             PayCenterActivity.startPayCenter(mContext,"1",publicProjectsBean.pt_id,publicProjectsBean.prepaid_price)
         }
+        et_project_name.setText("")
+        et_project_endTime.setText("")
+        et_project_location.setText("")
+        tv_select_one.setText("")
+        area_id=0
+        tv_select_two.setText("")
+        et_project_cost.setText("")
+        et_project_introduction.setText("")
+        tv_wei.setText("尾款比例为:"+publicWorkers?.proportion?.three+"%，保证金:"+baozhengjing+"%")
+        et_project_first_ratio.setText(""+publicWorkers?.proportion?.frist)
+        et_project_second_ratio.setText(""+publicWorkers?.proportion?.second)
+        iv_add.setImageResource(R.mipmap.add_img)
+        iv_threeView.visibility=View.INVISIBLE
+        rl_one.visibility=View.INVISIBLE
+        rl_two.visibility=View.INVISIBLE
+        ONE=0
+        TWO=0
+        THREE=0
+        img_one=null
+        img_two=null
+        img_three=null
+        oneBitmap=null
+        twoBitmap=null
+        threeBitmap=null
 
     }
 
@@ -390,9 +416,9 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
     }
     var normalDialog:NormalDialog?=null
     fun showDialog(text:String,state:Int) {
-        if (normalDialog==null){
+//        if (normalDialog==null){
             normalDialog=NormalDialog(mContext)
-        }
+//        }
         if (normalDialog?.isShowing==false){
             normalDialog?.isTitleShow(false)?.content(text)
                 ?.style(NormalDialog.STYLE_TWO)

@@ -45,7 +45,15 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
     var img_two:String?=null//存放第二张推片地址
     var imgList:ArrayList<String>?=null
     override fun setView(file: String) {
-        imgList?.add(file)
+        if (imgList?.size==2){
+            if (FLAG==ONE){
+                imgList?.set(0,file)
+            }else{
+                imgList?.set(1,file)
+            }
+        }else{
+            imgList?.add(file)
+        }
 //        if (FLAG==ONE){
 //            img_one=file
 //        }else{

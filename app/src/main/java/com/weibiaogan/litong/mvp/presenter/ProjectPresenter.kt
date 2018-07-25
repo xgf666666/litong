@@ -64,8 +64,8 @@ class ProjectPresenter : ProjectContract.Presenter() {
                 getView()?.showToast("项目地址不能为空")
                 return
             }
-            if (areaid.isNullOrEmpty()) {
-                getView()?.showToast("项目地址id不能为空")
+            if (areaid.equals("0")) {
+                getView()?.showToast("工人类型不能为空")
                 return
             }
             if (firstprice.isNullOrEmpty()) {
@@ -82,6 +82,10 @@ class ProjectPresenter : ProjectContract.Presenter() {
 
             if (allprice.isNullOrEmpty()) {
                 getView()?.showToast("项目金额不能为空")
+                return
+            }
+            if (ptimgs.isNullOrEmpty()){
+                getView()?.showToast("项目项目图片不能为空")
                 return
             }
 

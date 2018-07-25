@@ -233,7 +233,7 @@
                     android:layout_marginRight="14dp"
                     android:layout_weight="9"
                     android:background="@drawable/shape_edittext_bg"
-                    android:hint="非必填"
+                    android:hint="输入担保人姓名"
                     android:paddingLeft="10dp"
                     android:textSize="15sp"
                     android:layout_marginLeft="17dp"/>
@@ -244,7 +244,7 @@
                 android:layout_height="44dp"
                 android:layout_marginRight="14dp"
                 android:background="@drawable/shape_edittext_bg"
-                android:hint="非必填"
+                android:hint="输入担保人联系方式"
                 android:paddingLeft="10dp"
                 android:layout_marginLeft="92dp"
                 android:inputType="number"
@@ -288,7 +288,8 @@
                     android:layout_marginLeft="48dp"
                     android:layout_gravity="center_vertical"
                     android:padding="8dp"
-                    android:button="@null" />
+                    android:button="@null"
+                    android:checked="true"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -337,7 +338,8 @@
                     android:layout_marginLeft="51dp"
                     android:padding="5dp"
                     android:layout_gravity="center_vertical"
-                    android:button="@null" />
+                    android:button="@null"
+                    android:checked="true"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -369,10 +371,11 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:background="@drawable/select_renzheng"
-                    android:layout_marginLeft="33dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_gravity="center_vertical"
                     android:padding="5dp"
-                    android:button="@null" />
+                    android:button="@null"
+                    android:checked="true"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

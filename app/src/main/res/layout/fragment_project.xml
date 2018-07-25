@@ -182,7 +182,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="请选择" />
+                            android:hint="请选择" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -208,7 +208,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="请选择" />
+                            android:hint="请选择" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -406,7 +406,8 @@
                     <ImageView
                         android:id="@+id/iv_threeView"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
                     <ImageView
                         android:id="@+id/iv_add"
                         android:layout_width="wrap_content"
@@ -438,8 +439,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="7dp"
-                    android:gravity="center_vertical"
+                     android:gravity="center_vertical"
                     android:visibility="invisible">
                     <ImageView
                         android:id="@+id/iv_twoView"
