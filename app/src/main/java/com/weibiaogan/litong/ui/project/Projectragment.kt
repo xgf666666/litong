@@ -81,7 +81,12 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         charge=""+publicWorker.prepaid.charge
         et_project_first_ratio.setText(""+publicWorker.proportion.frist)
         et_project_second_ratio.setText(""+publicWorker.proportion.second)
-        tv_wei.setText("尾款比例为:"+publicWorker.proportion.three+"%，保证金:"+baozhengjing+"%")
+        if (charge.equals("1")){
+            tv_wei.setText("尾款比例为:"+publicWorker.proportion.three+"%，保证金:"+baozhengjing+"%")
+        }else{
+            tv_wei.setText("尾款比例为:"+publicWorker.proportion.three+"%")
+
+        }
     }
     var datas:List<Worker>?=null
     private lateinit var imageChooseHelper: ImageChooseHelper
@@ -310,7 +315,12 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         tv_select_two.setText("")
         et_project_cost.setText("")
         et_project_introduction.setText("")
-        tv_wei.setText("尾款比例为:"+publicWorkers?.proportion?.three+"%，保证金:"+baozhengjing+"%")
+        if (charge.equals("1")){
+            tv_wei.setText("尾款比例为:"+publicWorkers?.proportion?.three+"%，保证金:"+baozhengjing+"%")
+        }else{
+            tv_wei.setText("尾款比例为:"+publicWorkers?.proportion?.three+"%")
+
+        }
         et_project_first_ratio.setText(""+publicWorkers?.proportion?.frist)
         et_project_second_ratio.setText(""+publicWorkers?.proportion?.second)
         iv_add.setImageResource(R.mipmap.add_img)

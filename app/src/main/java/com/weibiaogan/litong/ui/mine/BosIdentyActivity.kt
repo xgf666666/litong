@@ -146,12 +146,13 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
     }
     private fun startactivity(){
        var map=HashMap<String,String>()
-        if (TextUtils.isEmpty(et_name.text)|| TextUtils.isEmpty(et_phone.text)|| TextUtils.isEmpty(et_shenfenzheng.text)||
-                imgList?.size!=2|| TextUtils.isEmpty(et_project_location.text)|| is_company==-1 ||is_card==-1||is_insurance==-1) {
+        if (TextUtils.isEmpty(et_name.text)|| imgList?.size!=2|| TextUtils.isEmpty(et_project_location.text)|| is_company==-1 ||is_card==-1||is_insurance==-1) {
             toast("请完善资料")
-        }else if(et_phone.text.toString().length!=11||et_shenfenzheng.text.toString().length!=18){
-            toast("请输入正确手机号码或身份证")
-        } else{
+        }else if(et_phone.text.toString().length!=11|| TextUtils.isEmpty(et_phone.text)){
+            toast("请输入正确手机号码")
+        }else if (et_shenfenzheng.text.toString().length!=18|| TextUtils.isEmpty(et_shenfenzheng.text)) {
+            toast("请输入正确的身份证")
+        }else {
             map.put("idcard_img",imgList?.get(0)+","+imgList?.get(1))
             map.put("idcard_number",et_shenfenzheng.text.toString())
             map.put("a_name",et_name.text.toString())
