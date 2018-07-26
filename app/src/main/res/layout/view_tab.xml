@@ -8,12 +8,17 @@
     android:background="@color/white">
 
         <TableLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             >
             <TableRow>
                 <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@drawable/shape_tab_bg"
                     android:gravity="center"
                     android:paddingLeft="@dimen/margin_19"
@@ -24,27 +29,9 @@
                     android:textColor="@color/text_color_first"
                     android:text="首款"/>
                 <TextView
-                    android:background="@drawable/shape_tab_bg"
-                    android:text="二期"
-                    android:gravity="center"
-                    android:paddingLeft="@dimen/margin_19"
-                    android:paddingRight="@dimen/margin_19"
-                    android:paddingTop="@dimen/margin_8"
-                    android:paddingBottom="@dimen/margin_8"
-                    android:textSize="@dimen/text_dimen_third"
-                    android:textColor="@color/text_color_first"/>
-                <TextView android:text="尾款"
-                    android:gravity="center"
-                    android:paddingLeft="@dimen/margin_19"
-                    android:paddingRight="@dimen/margin_19"
-                    android:paddingTop="@dimen/margin_8"
-                    android:paddingBottom="@dimen/margin_8"
-                    android:background="@drawable/shape_tab_bg"
-                    android:textSize="@dimen/text_dimen_third"
-                    android:textColor="@color/text_color_first"/>
-            </TableRow>
-            <TableRow>
-                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:id="@+id/tv_money_one"
                     android:text="￥10000"
                     android:background="@drawable/shape_tab_bg"
@@ -55,7 +42,25 @@
                     android:paddingBottom="@dimen/margin_8"
                     android:textSize="@dimen/text_dimen_third"
                     android:textColor="@color/text_color_first"/>
+            </TableRow>
+            <TableRow>
                 <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_tab_bg"
+                    android:text="二期"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/margin_19"
+                    android:paddingRight="@dimen/margin_19"
+                    android:paddingTop="@dimen/margin_8"
+                    android:paddingBottom="@dimen/margin_8"
+                    android:textSize="@dimen/text_dimen_third"
+                    android:textColor="@color/text_color_first"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:id="@+id/tv_money_two"
                     android:text="￥10000"
                     android:gravity="center"
@@ -66,7 +71,25 @@
                     android:paddingBottom="@dimen/margin_8"
                     android:textSize="@dimen/text_dimen_third"
                     android:textColor="@color/text_color_first"/>
+            </TableRow>
+            <TableRow>
                 <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="尾款"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/margin_19"
+                    android:paddingRight="@dimen/margin_19"
+                    android:paddingTop="@dimen/margin_8"
+                    android:paddingBottom="@dimen/margin_8"
+                    android:background="@drawable/shape_tab_bg"
+                    android:textSize="@dimen/text_dimen_third"
+                    android:textColor="@color/text_color_first"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:id="@+id/tv_money_three"
                     android:text="￥10000"
                     android:gravity="center"
