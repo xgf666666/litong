@@ -11,6 +11,7 @@ import com.weibiaogan.litong.entity.BlackBean
 import com.weibiaogan.litong.extensions.loadImag
 import com.weibiaogan.litong.utils.addData
 import com.weibiaogan.litong.utils.changeKm
+import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecActivity
 import de.hdodenhof.circleimageview.CircleImageView
@@ -25,6 +26,7 @@ import kotlinx.android.synthetic.main.activity_blacklist.*
 class BlacklistActivity : BaseMvpActivity<BlacklistContract.Presenter>(),BlacklistContract.View, OnRefreshLoadMoreListener {
 
     var mCurrentPage = 1
+    var mDelPosition = -1
 
     override fun getActivityLayoutId(): Int {
         return R.layout.activity_blacklist
@@ -41,6 +43,8 @@ class BlacklistActivity : BaseMvpActivity<BlacklistContract.Presenter>(),Blackli
     override fun initData() {
         initrecyclerView()
         getPresenter().getData(mCurrentPage)
+
+        refresh_black_list.initSmartRefresh()
     }
 
     override fun initEvent() {
@@ -56,6 +60,7 @@ class BlacklistActivity : BaseMvpActivity<BlacklistContract.Presenter>(),Blackli
 
         adapter.setOnItemChildClickListener { adapter, view, position ->
             //移除黑名单
+            mDelPosition = position
             getPresenter().delBack((adapter as BuybackAdapter).data[position].id.toString())
         }
 
@@ -66,6 +71,12 @@ class BlacklistActivity : BaseMvpActivity<BlacklistContract.Presenter>(),Blackli
 
     override fun addData(data: List<BlackBean>) {
         refresh_black_list.addData(adapter,data)
+    }
+
+    override fun delSuccess(msg: String) {
+        showToast(msg)
+        adapter.data.removeAt(mDelPosition)
+        adapter.notifyItemChanged(mDelPosition)
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout?) {

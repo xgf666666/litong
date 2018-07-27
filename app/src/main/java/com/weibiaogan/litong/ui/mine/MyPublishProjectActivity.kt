@@ -2,6 +2,7 @@ package com.weibiaogan.litong.ui.mine
 
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.scwang.smartrefresh.layout.api.RefreshLayout
@@ -16,6 +17,7 @@ import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
 import com.weibiaogan.litong.ui.project.PayCenterActivity
 import com.weibiaogan.litong.ui.receipt.EvaluateActivity
 import com.weibiaogan.litong.utils.addData
+import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_store_list.*
 
@@ -29,6 +31,8 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
     var adapter = MyPublishProjectAdapter(arrayListOf())
     var mCurrentPage = 1
     var mStat = 1
+
+    var mDelPosition = 0
 
 
     /**
@@ -61,6 +65,12 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
         rv_store_list_rv.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL,false)
         rv_store_list_rv.adapter = adapter
 
+        refresh_store_list.initSmartRefresh()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mCurrentPage = 1
         getPresenter().bossProjectList(mStat.toString(),mCurrentPage.toString())
     }
 
@@ -81,6 +91,7 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
             mStat = 2
         }
         getPresenter().bossProjectList(mStat.toString(),mCurrentPage.toString())
+        adapter.data.clear()
     }
 
     /**
@@ -122,6 +133,8 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
      */
     override fun cancelProject(msg: String) {
         showToast(msg)
+        //adapter.data.removeAt(mDelPosition)
+        //adapter.notifyItemChanged(mDelPosition)
     }
 
 
@@ -131,6 +144,7 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
         var bean = (adapter as MyPublishProjectAdapter).data[position]
         if (view?.id == R.id.tv_one){   //取消项目
+            //this.mDelPosition = position
             getPresenter().cancelProject(bean.pt_id.toString())
         }else if (view?.id == R.id.tv_two){
             when(bean.pt_stat){
@@ -153,8 +167,6 @@ class MyPublishProjectActivity : BaseMvpActivity<MyPublishProjectPresenter>(),My
         }else if (view?.id == R.id.tv_three){   //查看项目
             OrdersDetailActivity.startProjectDetail(mContext,bean.pt_id.toString())
         }
-        mCurrentPage = 1
-        getPresenter().bossProjectList(mStat.toString(),mCurrentPage.toString())
     }
 
 

@@ -2,6 +2,7 @@ package com.weibiaogan.litong.mvp.presenter
 
 import android.util.Log
 import com.weibiaogan.litong.common.Constants
+import com.weibiaogan.litong.entity.WorkEvaluateBean
 import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.WorkDetailConstract

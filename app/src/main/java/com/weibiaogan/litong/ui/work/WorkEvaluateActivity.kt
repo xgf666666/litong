@@ -5,7 +5,10 @@ import android.content.Intent
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.adapter.work.WorkEvaluateAdatper
@@ -13,6 +16,7 @@ import com.weibiaogan.litong.entity.WorkEvaluateBean
 import com.weibiaogan.litong.mvp.contract.WorkEvaluateConstract
 import com.weibiaogan.litong.mvp.presenter.WorkEvaluatePresenter
 import com.weibiaogan.litong.utils.addData
+import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_work_list.*
 
@@ -54,6 +58,8 @@ class WorkEvaluateActivity : BaseMvpActivity<WorkEvaluateConstract.Presenter>(),
 
         rv_work_list_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_work_list_rv.adapter = adapter
+
+        refresh_work_list.initSmartRefresh()
     }
 
     override fun initEvent() {

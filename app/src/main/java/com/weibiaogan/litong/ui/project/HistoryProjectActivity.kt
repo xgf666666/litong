@@ -11,6 +11,7 @@ import com.weibiaogan.litong.mvp.contract.HistoryprojectContract
 import com.weibiaogan.litong.mvp.presenter.HistoryprojectPresenter
 import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
 import com.weibiaogan.litong.utils.addData
+import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_history_project.*
 
@@ -45,6 +46,8 @@ class HistoryProjectActivity : BaseMvpActivity<HistoryprojectPresenter>(),Histor
         recyclerView.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         recyclerView.adapter = adapter
         adapter.isSuccess = true
+
+        smartrefreshlayout.initSmartRefresh()
 
         getPresenter().historyProject(mStat,mCurrentPage.toString(),mType.toString())
     }
@@ -84,6 +87,7 @@ class HistoryProjectActivity : BaseMvpActivity<HistoryprojectPresenter>(),Histor
             mType = 2
         }
         getPresenter().historyProject(mStat,mCurrentPage.toString(),mType.toString())
+        adapter.data.clear()
     }
 
     override fun getProjectBean(data: List<ProjectBean>) {

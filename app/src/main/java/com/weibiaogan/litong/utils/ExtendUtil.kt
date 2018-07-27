@@ -2,6 +2,7 @@ package com.weibiaogan.litong.utils
 
 import android.content.Context
 import android.content.Intent
+import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.flyco.dialog.listener.OnBtnClickL
@@ -9,7 +10,9 @@ import com.flyco.dialog.widget.NormalDialog
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.umeng.commonsdk.stateless.UMSLEnvelopeBuild.mContext
 import com.weibiaogan.litong.R
+import com.weibiaogan.litong.R.id.refresh_work_list
 import com.weibiaogan.litong.adapter.home.HomeAdapter
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.extensions.format
@@ -21,6 +24,7 @@ import com.xx.baseuilibrary.mvp.BaseMvpView
 import com.xx.baseutilslibrary.network.exception.ApiFaileException
 import com.xx.baseutilslibrary.network.exception.TokenInvalidException
 import io.reactivex.Observable
+import kotlinx.android.synthetic.main.activity_work_list.*
 import retrofit2.HttpException
 import java.math.BigDecimal
 import java.net.ConnectException
@@ -59,11 +63,11 @@ fun <T> SmartRefreshLayout.addData(adapter : BaseQuickAdapter<T,BaseViewHolder>,
             this.isEnableLoadMore = true
             this.isEnableRefresh = true
         }else{
+            ToastUtils.showShort("没有更多数据")
             adapter.setNewData(arrayListOf())
             this.isEnableLoadMore = false
             this.isEnableRefresh = false
         }
-
     }
 }
 
@@ -129,6 +133,13 @@ fun tokenError(context : Context,msg:String){
         dialog.dismiss()
         context.startActivity(Intent(context, LoginActivity::class.java))
     })
+}
+
+fun SmartRefreshLayout.initSmartRefresh(){
+    this.isEnableRefresh = false
+    this.isEnableLoadMore = false
+    this.setRefreshHeader(com.scwang.smartrefresh.layout.header.ClassicsHeader(context))
+    this.setRefreshFooter(com.scwang.smartrefresh.layout.footer.ClassicsFooter(context))
 }
 
 /**

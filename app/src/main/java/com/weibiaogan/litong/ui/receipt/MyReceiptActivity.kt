@@ -2,6 +2,7 @@ package com.weibiaogan.litong.ui.receipt
 
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.scwang.smartrefresh.layout.api.RefreshLayout
@@ -13,6 +14,7 @@ import com.weibiaogan.litong.mvp.contract.MyReceiptConstract
 import com.weibiaogan.litong.mvp.presenter.MyReceiptPresenter
 import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
 import com.weibiaogan.litong.utils.addData
+import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.BaseActivity
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_store_list.*
@@ -46,7 +48,13 @@ class MyReceiptActivity : BaseMvpActivity<MyReceiptConstract.Presenter>(), BaseQ
         rv_store_list_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_store_list_rv.adapter = adapter
 
-        getPresenter().workProjectList(stat.toString(),mCurrentPage.toString())
+        refresh_store_list.initSmartRefresh()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        onRefresh(null)
     }
 
     override fun initEvent() {
@@ -81,6 +89,7 @@ class MyReceiptActivity : BaseMvpActivity<MyReceiptConstract.Presenter>(), BaseQ
         }
         mCurrentPage = 1
         getPresenter().workProjectList(stat.toString(),mCurrentPage.toString())
+        adapter.data.clear()
     }
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {

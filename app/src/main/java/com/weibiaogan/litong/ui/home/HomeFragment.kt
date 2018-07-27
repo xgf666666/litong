@@ -29,6 +29,7 @@ import com.weibiaogan.litong.ui.project.HistoryProjectActivity
 import com.weibiaogan.litong.ui.store.StoreListActivity
 import com.weibiaogan.litong.ui.work.WorkListActivity
 import com.weibiaogan.litong.utils.addData
+import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -69,28 +70,17 @@ class HomeFragment : BaseMvpLcecFragment<LinearLayout, Any,HomeConstract.Model, 
     override fun initData() {
         //showContent()
         showLoading()
+
+        mCurrentPage = 1
+        presenter.getHomeData(mCurrentPage.toString())
         headView = LayoutInflater.from(mContext).inflate(R.layout.home_head_view, null, false)
         rv_home_bottom.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
 
         adapter.addHeaderView(headView)
 
         rv_home_bottom.adapter = adapter
-    }
 
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (!isHidden){
-            mCurrentPage = 1
-            presenter.getHomeData(mCurrentPage.toString())
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (!this.isHidden){
-            mCurrentPage = 1
-            presenter.getHomeData(mCurrentPage.toString())
-        }
+        refresh_home.initSmartRefresh()
     }
 
     fun getListMulti(bean : HomeBean) : List<HomeAdapter.HomeMultiItem>{
