@@ -3,15 +3,23 @@ package com.weibiaogan.litong.ui.project
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.os.Handler
+import android.os.Message
+import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
+import com.alipay.sdk.app.PayTask
 import com.blankj.utilcode.util.ActivityUtils
 import com.google.gson.Gson
+import com.tencent.mm.opensdk.modelpay.PayReq
+import com.tencent.mm.opensdk.openapi.WXAPIFactory
+import com.weibiaogan.litong.App
 import com.weibiaogan.litong.MainActivity
 import com.weibiaogan.litong.R
 import com.weibiaogan.litong.common.Constants
 import com.weibiaogan.litong.entity.MemberBean
 import com.weibiaogan.litong.entity.PayBean
+import com.weibiaogan.litong.entity.PayResult
 import com.weibiaogan.litong.mvp.contract.PayCenterConstract
 import com.weibiaogan.litong.mvp.presenter.PayCenterPresenter
 import com.weibiaogan.litong.ui.mine.KnowMemberActivity
@@ -20,6 +28,7 @@ import com.xx.anypay.XxAnyPay
 import com.xx.anypay.XxAnyPayResultCallBack
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_pay_center.*
+import java.net.URLEncoder
 
 /**
  * author: xiaoguagnfei
@@ -30,13 +39,13 @@ import kotlinx.android.synthetic.main.activity_pay_center.*
 
 class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstract.View, CompoundButton.OnCheckedChangeListener {
 
-//    private var mhandler:Handler= object : Handler() {
+//    private var mhandler: Handler = object : Handler() {
 //       override fun handleMessage(msg: Message?) {
 //           super.handleMessage(msg)
 //           if (msg?.what==1){
 //               Log.i("alipaysssss","支付宝调用3")
 //               var map=msg.obj as Map<String,String>
-//               var payResult=PayResult(map)
+//               var payResult= PayResult(map)
 //               var info=payResult.result
 //               var result= URLEncoder.encode(info,"utf-8")
 //               var resultStatus=payResult.resultStatus
@@ -44,9 +53,10 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
 //               Log.i("resultStatus",resultStatus+payResult.memo+"ddd"+result)
 //               if (resultStatus.equals("9000")){
 //                   showToast("支付成功")
-//                   App.getInstance()?.cleanListActivity()
+////                   App.getInstance()?.cleanListActivity()
+//                   ActivityUtils.finishActivity(MyPublishProjectActivity::class.java)
 //                   finish()
-
+//
 //               }
 //           }
 //       }
@@ -57,10 +67,11 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
 
     override fun payResult(payBean: PayBean) {
         //微信支付
+        dismissLoadingDialog()
 //        if (isPayTpye.equals("wechat")){
 //            var api= WXAPIFactory.createWXAPI(mActivity, null)
 //            api.registerApp(payBean.data.appid)
-//            var request=PayReq()
+//            var request= PayReq()
 //            request.appId=payBean.data.appid
 //            request.partnerId=payBean.data.mch_id
 //            request.prepayId=payBean.data.prepay_id
@@ -74,7 +85,6 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
 //            Log.i("alipaysssss","支付宝调用")
 //            setAliPay(payBean)//支付宝支付
 //        }
-        dismissLoadingDialog()
         XxAnyPay.intance
                 .openAnyPay(if (isPayTpye == "wechat") XxAnyPay.XXPAY_WX else XxAnyPay.XXPAY_ALI,if (isPayTpye == "wechat") Gson().toJson(payBean.data) else payBean.data.sign, object : XxAnyPayResultCallBack {
                     override fun onPayFiale(error: String) {

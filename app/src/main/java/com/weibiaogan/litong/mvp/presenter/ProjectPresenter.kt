@@ -48,44 +48,50 @@ class ProjectPresenter : ProjectContract.Presenter() {
         if (Constants.isLogin()) {
             val userId = Constants.getToken().user_id.toString()
             val token = Constants.getToken().token
-            if (ptname.isNullOrEmpty()) {
-                getView()?.showToast("项目名不能为空")
+            if (ptname.isNullOrEmpty()||ptdescribe.isNullOrEmpty()||endtime.isNullOrEmpty()||ptaddress.isNullOrEmpty()
+            ||areaid.equals("0")||firstprice.isNullOrEmpty()||secondprice.isNullOrEmpty()||allprice.isNullOrEmpty() ){
+                getView()?.showToast("请填写完整的项目信息")
                 return
             }
-            if (ptdescribe.isNullOrEmpty()) {
-                getView()?.showToast("项目描述不能为空")
-                return
-            }
-            if (endtime.equals("请选择项目完结时间")) {
-                getView()?.showToast("项目结束时间不能为空")
-                return
-            }
-            if (ptaddress.isNullOrEmpty()) {
-                getView()?.showToast("项目地址不能为空")
-                return
-            }
-            if (areaid.equals("0")) {
-                getView()?.showToast("工人类型不能为空")
-                return
-            }
-            if (firstprice.isNullOrEmpty()) {
-                getView()?.showToast("项目首付比例不能为空")
-                return
-            }
-            if (secondprice.isNullOrEmpty()) {
-                getView()?.showToast("项目二期比例不能为空")
-                return
-            }
+//            if (ptname.isNullOrEmpty()) {
+//                getView()?.showToast("项目名不能为空")
+//                return
+//            }
+//            if (ptdescribe.isNullOrEmpty()) {
+//                getView()?.showToast("项目描述不能为空")
+//                return
+//            }
+//            if (endtime.isNullOrEmpty()) {
+//                getView()?.showToast("项目结束时间不能为空")
+//                return
+//            }
+//            if (ptaddress.isNullOrEmpty()) {
+//                getView()?.showToast("项目地址不能为空")
+//                return
+//            }
+//            if (areaid.equals("0")) {
+//                getView()?.showToast("工人类型不能为空")
+//                return
+//            }
+//            if (firstprice.isNullOrEmpty()) {
+//                getView()?.showToast("项目首付比例不能为空")
+//                return
+//            }
+//            if (secondprice.isNullOrEmpty()) {
+//                getView()?.showToast("项目二期比例不能为空")
+//                return
+//            }
             if (!(firstprice.toInt()+secondprice.toInt()+threeprice.toInt()==100)) {
                 getView()?.showToast("付款比例加起来要100%")
-            }
-
-            if (allprice.isNullOrEmpty()) {
-                getView()?.showToast("项目金额不能为空")
                 return
             }
+
+//            if (allprice.isNullOrEmpty()) {
+//                getView()?.showToast("项目金额不能为空")
+//                return
+//            }
             if (ptimgs.isNullOrEmpty()){
-                getView()?.showToast("项目项目图片不能为空")
+                getView()?.showToast("请上传项目图片")
                 return
             }
 

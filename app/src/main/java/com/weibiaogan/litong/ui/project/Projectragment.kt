@@ -83,6 +83,7 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
         et_project_second_ratio.setText(""+publicWorker.proportion.second)
         if (charge.equals("1")){
             tv_wei.setText("尾款比例为:"+publicWorker.proportion.three+"%，保证金:"+baozhengjing+"%")
+            bt_submit.setText("去支付保证金")
         }else{
             tv_wei.setText("尾款比例为:"+publicWorker.proportion.three+"%")
 
@@ -426,11 +427,12 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
     }
     var normalDialog:NormalDialog?=null
     fun showDialog(text:String,state:Int) {
-//        if (normalDialog==null){
-            normalDialog=NormalDialog(mContext)
-//        }
-        if (normalDialog?.isShowing==false){
-            normalDialog?.isTitleShow(false)?.content(text)
+        if (normalDialog!=null){
+            normalDialog?.dismiss()
+        }
+    normalDialog=NormalDialog(mContext)
+
+    normalDialog?.isTitleShow(false)?.content(text)
                 ?.style(NormalDialog.STYLE_TWO)
                 ?.contentTextColor(resources.getColor(R.color.color222222))
                 ?.contentTextSize(17f)
@@ -455,7 +457,6 @@ class Projectragment : BaseMvpFragment<ProjectContract.Model, ProjectContract.Vi
                     activity.setRadio(0)
 
                 })
-            }
 
         }
     }

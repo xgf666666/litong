@@ -112,7 +112,7 @@ class RegisterPresenter :  RegisterContracct.Presenter() {
             getView()?.showToast("请输入正确的手机号")
             return
         }else if (TextUtils.isEmpty(code)){
-            getView()?.showToast("请输入验证")
+            getView()?.showToast("请输入验证码")
             return
         }else if (code!!.length!=6){
             getView()?.showToast("请输入6位验证码")

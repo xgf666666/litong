@@ -56,7 +56,10 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
     }
     override fun identySucceful() {
         toast("审核提交成功")
+        if (Constants.getUserData()!=null){
         Constants.getUserData().user.bossStat=1
+        }
+
         finish()
     }
     private lateinit var imageChooseHelper: ImageChooseHelper
@@ -206,10 +209,10 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
                 .setSize(200, 200)//裁剪尺寸
                 .setOnFinishChooseAndCropImageListener { bitmap, file ->
                     if (FLAG==ONE){
-                        iv_one.visibility= View.GONE
+//                        iv_one.visibility= View.INVISIBLE
                         iv_oneView.setImageBitmap(bitmap)
                     }else if (FLAG==TWO){
-                        iv_two.visibility= View.GONE
+//                        iv_two.visibility= View.INVISIBLE
                         iv_twoView.setImageBitmap(bitmap)
                     }
                     getPresenter().fileStore(file)

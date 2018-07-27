@@ -42,6 +42,7 @@ class LoginPresenter :  LoginConstract.Presenter() {
                 Constants.putToken(entity)
                 Constants.putPhone(mobile)
                 Constants.login()
+//                Constants.setUserData()
                 getView()?.loginSuccess()
             }
 

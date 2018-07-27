@@ -163,12 +163,12 @@ class WorkerIDentyOneActivity : BaseMvpActivity<WorkeridentyPresenter>(),WorkerI
                 .setSize(200, 200)//裁剪尺寸
                 .setOnFinishChooseAndCropImageListener { bitmap, file ->
                     if (FLAG==ONE){
-                        iv_one.visibility=View.GONE
-                        iv_one.isEnabled=false
+//                        iv_one.visibility=View.INVISIBLE
+//                        iv_one.isEnabled=false
                         iv_oneView.setImageBitmap(bitmap)
                     }else if (FLAG==TWO){
-                        iv_two.visibility= View.GONE
-                        iv_two.isEnabled=false
+//                        iv_two.visibility= View.INVISIBLE
+//                        iv_two.isEnabled=false
                         iv_twoView.setImageBitmap(bitmap)
                     }
 
