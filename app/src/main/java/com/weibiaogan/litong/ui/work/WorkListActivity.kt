@@ -10,6 +10,7 @@ import com.weibiaogan.litong.entity.WorkListBean
 import com.weibiaogan.litong.mvp.contract.WorkListConstract
 import com.weibiaogan.litong.mvp.presenter.WorkListPresenter
 import com.weibiaogan.litong.utils.addData
+import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_work_list.*
 
@@ -34,7 +35,7 @@ class WorkListActivity : BaseMvpActivity<WorkListConstract.Presenter>(),WorkList
 
     var adapter : WorkListAdapter = WorkListAdapter(arrayListOf())
 
-    var mCurrentPage = 1;
+    var mCurrentPage = 1
 
     override fun getActivityLayoutId(): Int = R.layout.activity_work_list
 
@@ -42,6 +43,8 @@ class WorkListActivity : BaseMvpActivity<WorkListConstract.Presenter>(),WorkList
         tv_work_title.text = resources.getString(R.string.work_list_title)
         rv_work_list_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_work_list_rv.adapter = adapter
+
+        refresh_work_list.initSmartRefresh()
 
         getPresenter().workerList(mCurrentPage.toString())
     }

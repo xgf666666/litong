@@ -13,6 +13,7 @@ import com.weibiaogan.litong.mvp.contract.SearchProjectContract
 import com.weibiaogan.litong.mvp.presenter.SearchProjectPresenter
 import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
 import com.weibiaogan.litong.utils.addData
+import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_search_project.*
 
@@ -44,6 +45,8 @@ class SearchProjectActivity : BaseMvpActivity<SearchProjectContract.Presenter>()
     override fun initData() {
         rv_search_project_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_search_project_rv.adapter = adapter
+
+        refresh_search_project.initSmartRefresh()
     }
 
     override fun initEvent() {

@@ -10,6 +10,7 @@ import com.weibiaogan.litong.entity.StoreListBean
 import com.weibiaogan.litong.mvp.contract.StoreListConstract
 import com.weibiaogan.litong.mvp.presenter.StoreListPresenter
 import com.weibiaogan.litong.utils.addData
+import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_store_list.*
 
@@ -52,6 +53,8 @@ class StoreListActivity : BaseMvpActivity<StoreListConstract.Presenter>(), View.
         rv_store_list_rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false)
         rv_store_list_rv.adapter = adapter
 
+        refresh_store_list.initSmartRefresh()
+
         getPresenter().storeList(mCurrentPage.toString(),mType.toString())
     }
 
@@ -72,6 +75,7 @@ class StoreListActivity : BaseMvpActivity<StoreListConstract.Presenter>(), View.
             mType = 2
         }
         getPresenter().storeList(mCurrentPage.toString(),mType.toString())
+        adapter.data.clear()
     }
 
     override fun initEvent() {

@@ -255,6 +255,7 @@ class MainActivity : BaseMvpViewActivity() {
 
         if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE){
             tv_home_location.text = data?.getStringExtra("location_result")
+            (fragments!![0] as HomeFragment).onRefresh(null)  //刷新首页数据
         }else if (requestCode==2&& resultCode == RESULT_CODE){
             var projectragment=fragments!![1] as Projectragment
             var lots:String=data?.getStringExtra("location_log")?:""

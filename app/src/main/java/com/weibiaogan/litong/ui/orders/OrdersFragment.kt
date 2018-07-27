@@ -1,6 +1,7 @@
 package com.weibiaogan.litong.ui.orders
 
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import android.widget.RelativeLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
@@ -11,6 +12,7 @@ import com.weibiaogan.litong.entity.ProjectBean
 import com.weibiaogan.litong.mvp.contract.OrdersContract
 import com.weibiaogan.litong.mvp.presenter.OrdersPresenter
 import com.weibiaogan.litong.utils.addData
+import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.mvp.lcec.BaseMvpLcecFragment
 import kotlinx.android.synthetic.main.fragment_orders.*
 
@@ -65,6 +67,7 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<ProjectBean>, Or
             mType = 2
         }
         presenter.historyProject(mStat,mCurrentPage.toString(),mType.toString())
+        adapter.data.clear()
     }
 
     override fun initData() {
@@ -76,12 +79,10 @@ class OrdersFragment : BaseMvpLcecFragment<RelativeLayout, List<ProjectBean>, Or
         recyclerView.adapter = adapter
         adapter.isSuccess = false
 
-    }
+        swiperefreshlayout.initSmartRefresh()
 
-    override fun onResume() {
-        super.onResume()
-        if (!isHidden)
         presenter.historyProject(mStat,mCurrentPage.toString(),mType.toString())
+
     }
 
     override fun setData(data: List<ProjectBean>) {

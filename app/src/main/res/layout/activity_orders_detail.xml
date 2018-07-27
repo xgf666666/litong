@@ -68,7 +68,7 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="12dp"
                         android:background="@color/white"
-                        android:text="广州市珠江新城天河区富力英凯1506"
+                        android:text=""
                         android:textColor="@color/color222222"
                         android:textSize="@dimen/text_dimen_first" />
 
@@ -80,7 +80,7 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="10dp"
                         android:background="@color/white"
-                        android:text="项目截止时间:2017.2.6"
+                        android:text=""
                         android:textColor="@color/color888888"
                         android:textSize="@dimen/text_dimen_fourth" />
 
@@ -93,7 +93,7 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="10dp"
                         android:background="@color/white"
-                        android:text="88888"
+                        android:text=""
                         android:textColor="#FF0000"
                         android:textSize="@dimen/text_dimen_third" />
                 </LinearLayout>
@@ -331,7 +331,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="张三"
+                            android:text=""
                             android:textColor="@color/color222222"
                             android:textSize="@dimen/text_dimen_third" />
 
@@ -340,7 +340,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="联系方式13000550550"
+                            android:text=""
                             android:textColor="@color/color888888"
                             android:textSize="@dimen/text_dimen_third" />
 

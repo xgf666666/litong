@@ -7,6 +7,7 @@ import com.weibiaogan.litong.extensions.loadDefulat
 import com.weibiaogan.litong.extensions.ui
 import com.weibiaogan.litong.mvp.contract.HomeConstract
 import com.weibiaogan.litong.mvp.model.HomeModel
+import com.weibiaogan.litong.utils.loadDefulatRefresh
 import com.weibiaogan.litong.utils.showToast
 import com.xx.baseutilslibrary.network.rx.XxBaseHttpObserver
 import kotlin.math.ln
@@ -18,7 +19,7 @@ import kotlin.math.ln
  */
 class HomePresenter : HomeConstract.Presenter() {
     override fun getHomeData(page: String) {
-        AppApi.Api().homeData(page, Constants.getLocation()[0], Constants.getLocation()[1])
+        AppApi.Api().homeData(page, Constants.getLocation()[0], Constants.getLocation()[1]).loadDefulatRefresh(page == "1",getView()!!)
                 .ui({
                     getView()?.setData(it.data)
                 }, {

@@ -15,6 +15,7 @@ import io.reactivex.Observable
 interface BlacklistContract {
     interface View : BaseMvpView {
         fun addData(data: List<BlackBean>)
+        fun delSuccess(msg:String)
     }
 
     abstract class Presenter : BaseMvpPresenter<Model, View>() {

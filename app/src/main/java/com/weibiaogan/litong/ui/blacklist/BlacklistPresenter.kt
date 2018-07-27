@@ -41,7 +41,7 @@ class BlacklistPresenter :  BlacklistContract.Presenter() {
             val token = Constants.getToken().token
             getModel().delBack(userId, token, "$id")
                     ?.ui({
-                        getView()?.showToast(it?.msg!!)
+                        getView()?.delSuccess(it?.msg!!)
                     }, {
                         getView()?.showToast(it)
                     })
