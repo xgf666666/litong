@@ -77,7 +77,7 @@ class LoginActivity:BaseMvpActivity<LoginPresenter>(),LoginConstract.View {
         intent.putExtra("register_type",mType)
         intent.putExtra("register_openid",mOpenId)
         startActivity(intent)
-        finish()
+        //finish()
     }
 
     fun login(type : Int){
