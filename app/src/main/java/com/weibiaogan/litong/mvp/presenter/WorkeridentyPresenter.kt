@@ -29,7 +29,7 @@ class WorkeridentyPresenter:WorkerIdentyContract.Presenter() {
         }
         )
     }
-    private fun imgUp(imagBase64: String) {
+     fun imgUp(imagBase64: String) {
         getModel().imgup(imagBase64).ui(
                 {
                     Log.i("qqqqq",it.msg+"地址"+it?.data?.imgUrl)

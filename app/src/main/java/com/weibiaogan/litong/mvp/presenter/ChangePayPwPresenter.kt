@@ -53,12 +53,10 @@ class ChangePayPwPresenter :  ChangePayPwContract.Presenter() {
             return
         }
 
-        if (newPassword.length ?: 0 > 6) {
-            if (newPassword == checkPassword) {
+            if (newPassword != checkPassword) {
                 getView()?.showToast("新密码两次输入不一样")
                 return
             }
-        }
 
         val userId = Constants.getToken().user_id.toString()
         val token = Constants.getToken().token

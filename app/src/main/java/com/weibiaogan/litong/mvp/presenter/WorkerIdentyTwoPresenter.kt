@@ -19,6 +19,7 @@ class WorkerIdentyTwoPresenter:WorkerIdentyTwoContrat.Presenter() {
             Log.i("chenggong",it?.msg)
             getView()?.succeful()
         },{
+            getView()?.showToast(it.message)
         })
     }
 

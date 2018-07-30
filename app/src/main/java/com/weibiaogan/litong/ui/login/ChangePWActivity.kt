@@ -40,7 +40,7 @@ class ChangePWActivity : BaseMvpActivity<ChangePwPresenter>(), ChangePwContract.
 
     override fun getNewPassword(): String = et_new_password.text.toString().trim()
 
-    override fun getCheckPassword(): String = et_check_password.toString().trim()
+    override fun getCheckPassword(): String = et_check_password.text.toString().trim()
 
     override fun getCode(): String {
         return et_code.text.toString().trim()

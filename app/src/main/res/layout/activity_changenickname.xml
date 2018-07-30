@@ -72,7 +72,7 @@
         android:layout_marginRight="15dp"
         android:textColor="@color/colorText999999"
         android:layout_marginTop="10dp"
-        android:text="1-7个字符，只能由中文、数字、“-”、“_”组成"
+        android:text="1-7个字符，由中文、数字、字符组成"
         android:textSize="13sp" />
 
     <Button

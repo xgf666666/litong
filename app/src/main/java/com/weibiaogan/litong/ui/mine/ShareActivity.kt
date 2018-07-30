@@ -138,7 +138,7 @@ class ShareActivity : BaseMvpActivity<SharePresenter>(),ShareContract.View {
         }
 
         override fun onCancel(p0: SHARE_MEDIA?) {
-//            showToast("分享取消")
+            showToast("分享取消")
         }
 
         override fun onError(p0: SHARE_MEDIA?, p1: Throwable?) {

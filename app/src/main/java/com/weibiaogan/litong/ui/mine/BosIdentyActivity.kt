@@ -4,8 +4,10 @@ import android.Manifest
 import android.content.Intent
 import android.os.Environment
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
+import com.blankj.utilcode.util.EncodeUtils
 import com.blankj.utilcode.util.PermissionUtils
 import com.weibiaogan.litong.BuildConfig
 import com.weibiaogan.litong.MainActivity
@@ -19,6 +21,7 @@ import com.weibiaogan.litong.ui.location.MapActivity
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
 import com.xx.baseutilslibrary.common.ImageChooseHelper
 import kotlinx.android.synthetic.main.activity_bos_identy.*
+import java.io.File
 
 /**
  * author: xiaoguagnfei
@@ -33,24 +36,26 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
     var ONE:Int=1//设置第一张图片
     var TWO:Int=2//设置第二张图片
     var FLAG:Int=0
-    var img_one:String?=null//存放第一张推片地址
-    var img_two:String?=null//存放第二张推片地址
     var imgList:ArrayList<String>?=null
+    var index:Int=0//统计添加的图片
+    var fileOne:String?=null
+    var fileTwo:String?=null
 
     override fun setView(data: String) {
-//        if (FLAG==ONE){
-//            img_one=data
-//        }else{
-//            img_two=data
-//        }
-        if (imgList?.size==2){
-            if (FLAG==ONE){
-                imgList?.set(0,data)
-            }else{
-                imgList?.set(1,data)
-            }
+        imgList?.add(data)
+        if (fileOne==fileTwo)
+//        Log.i("dfafaffa","我们一样"+fileTwo?.absolutePath+"我"+fileOne?.absolutePath)
+        else
+            Log.i("dfafaffa","我们不一样")
+        if (index==0){
+            index=1
+            (getPresenter() as BosIdentyPresenter).imgUp(fileTwo!!)
         }else{
-            imgList?.add(data)
+            if (imgList?.size==2) {
+                Log.i("dfafaffa",imgList?.get(0)+"我"+imgList?.get(1))
+                map?.put("idcard_img",imgList?.get(0)+","+imgList?.get(1))
+                getPresenter().bosIdenty(map!!)
+            }
         }
 
     }
@@ -59,7 +64,7 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
         if (Constants.getUserData()!=null){
         Constants.getUserData().user.bossStat=1
         }
-
+        dismissLoadingDialog()
         finish()
     }
     private lateinit var imageChooseHelper: ImageChooseHelper
@@ -135,11 +140,11 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
         bt_submit.setOnClickListener{
             startactivity()
         }
-        iv_one.setOnClickListener{
+        rl_addOne.setOnClickListener{
             FLAG=ONE
             showEditAvatarDialog()
         }
-        iv_two.setOnClickListener{
+        rl_addTwo.setOnClickListener{
             FLAG=TWO
             showEditAvatarDialog()
         }
@@ -147,32 +152,35 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
             startActivityForResult(Intent(this,MapActivity::class.java),2)
         }
     }
+    var map:HashMap<String,String>?=null
     private fun startactivity(){
-       var map=HashMap<String,String>()
-        if (TextUtils.isEmpty(et_name.text)|| imgList?.size!=2|| TextUtils.isEmpty(et_project_location.text)|| is_company==-1 ||is_card==-1||is_insurance==-1) {
+        map=HashMap<String,String>()
+        if (TextUtils.isEmpty(et_name.text)|| fileOne==null||fileTwo==null|| TextUtils.isEmpty(et_project_location.text)|| is_company==-1 ||is_card==-1||is_insurance==-1) {
             toast("请完善资料")
         }else if(et_phone.text.toString().length!=11|| TextUtils.isEmpty(et_phone.text)){
             toast("请输入正确手机号码")
         }else if (et_shenfenzheng.text.toString().length!=18|| TextUtils.isEmpty(et_shenfenzheng.text)) {
             toast("请输入正确的身份证")
         }else {
-            map.put("idcard_img",imgList?.get(0)+","+imgList?.get(1))
-            map.put("idcard_number",et_shenfenzheng.text.toString())
-            map.put("a_name",et_name.text.toString())
-            map.put("a_phone",et_phone.text.toString())
-            map.put("a_qualification",et_project_introduction.text.toString())
+//            map?.put("idcard_img",imgList?.get(0)+","+imgList?.get(1))
+            map?.put("idcard_number",et_shenfenzheng.text.toString())
+            map?.put("a_name",et_name.text.toString())
+            map?.put("a_phone",et_phone.text.toString())
+            map?.put("a_qualification",et_project_introduction.text.toString())
             if (!TextUtils.isEmpty(et_danbaoren.text)){
-                map.put("a_guarantor",et_danbaoren.text.toString())
+                map?.put("a_guarantor",et_danbaoren.text.toString())
             }
             if (!TextUtils.isEmpty(et_danbaorenPhone.text)){
-                map.put("guarantor_phone",et_danbaorenPhone.text.toString())
+                map?.put("guarantor_phone",et_danbaorenPhone.text.toString())
             }
-            map.put("a_address",et_project_location.text.toString())
-            map.put("is_company",""+is_company)
-            map.put("has_card",""+is_card)
-            map.put("has_insurance",""+is_insurance)
-            map.put("lat_long",lots+","+lats)
-            getPresenter().bosIdenty(map)
+            map?.put("a_address",et_project_location.text.toString())
+            map?.put("is_company",""+is_company)
+            map?.put("has_card",""+is_card)
+            map?.put("has_insurance",""+is_insurance)
+            map?.put("lat_long",lots+","+lats)
+//            getPresenter().bosIdenty(map)
+            showLoadingDialog()
+            (getPresenter() as BosIdentyPresenter).imgUp(fileOne!!)
         }
 
     }
@@ -209,13 +217,15 @@ class BosIdentyActivity : BaseMvpActivity<BosIdentyPresenter>(),BosIdentyContrac
                 .setSize(200, 200)//裁剪尺寸
                 .setOnFinishChooseAndCropImageListener { bitmap, file ->
                     if (FLAG==ONE){
-//                        iv_one.visibility= View.INVISIBLE
+                        iv_one.visibility= View.INVISIBLE
                         iv_oneView.setImageBitmap(bitmap)
+                        fileOne= EncodeUtils.base64Encode2String(file?.readBytes())
                     }else if (FLAG==TWO){
-//                        iv_two.visibility= View.INVISIBLE
+                        iv_two.visibility= View.INVISIBLE
                         iv_twoView.setImageBitmap(bitmap)
+                        fileTwo=EncodeUtils.base64Encode2String(file?.readBytes())
                     }
-                    getPresenter().fileStore(file)
+//                    getPresenter().fileStore(file)
                 }
                 .create()
     }

@@ -36,6 +36,7 @@ class LoginPresenter :  LoginConstract.Presenter() {
         }
 
         val encryptMD5ToString =password?.md5Salt()
+        Log.i("mima",encryptMD5ToString)
         getModel().login(mobile!!,encryptMD5ToString, object : XxBaseHttpObserver<LoginBean>() {
             override fun onCompleted(msg: String?, entity: LoginBean?) {
                 getView()?.showToast(msg)

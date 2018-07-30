@@ -71,7 +71,7 @@ class ModifyBindFragment2 : BaseMvpViewFragment() {
                         Constants.putPhone(phone)
                      finishActivity()
                     }, {
-                toast("出错")
+                toast(""+it.message)
             })
         }
     }
