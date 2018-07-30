@@ -19,7 +19,7 @@ class WorkListAdapter(workList : List<WorkListBean?>) : BaseQuickAdapter<WorkLis
         helper?.setText(R.id.tv_work_item_distance,item?.distance?.changeKm())
         helper?.setText(R.id.tv_work_item_location,item?.worker_address.toString())
         helper?.setText(R.id.tv_work_item_name_phone,item?.nickname + "  " + item?.user_phone.toString())
-        helper?.setText(R.id.tv_work_item_type,"服务类型" + item?.worker_service.toString())
+        helper?.setText(R.id.tv_work_item_type,"服务类型：" + item?.worker_service.toString())
 
         helper?.getView<CircleImageView>(R.id.cv_work_list_item_img)?.loadImag(item?.user_img!!,plach = R.mipmap.img_face)
 

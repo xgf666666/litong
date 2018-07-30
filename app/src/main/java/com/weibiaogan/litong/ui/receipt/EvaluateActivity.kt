@@ -9,6 +9,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import com.blankj.utilcode.util.EncodeUtils
 import com.blankj.utilcode.util.PermissionUtils
 import com.weibiaogan.litong.BuildConfig
 import com.weibiaogan.litong.R
@@ -34,7 +35,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
     var mBitmaps = arrayListOf<Bitmap>()
     var mImgs = arrayListOf<ImageView>()
     var mDImgs = arrayListOf<ImageView>()
-    var mFileImgs = arrayListOf<File>()
+    var mFileImgs = arrayListOf<String>()
 
     var type = 0   //0评论工人 1评论需求方
     var pt_id = ""
@@ -105,7 +106,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
 
                     //上传头像
                     //getPresenter().fileStore(file)
-                    mFileImgs.add(file)
+                    mFileImgs.add(EncodeUtils.base64Encode2String(file?.readBytes()))
                     mBitmaps.add(bitmap)
                     showImage()
                 }
@@ -153,7 +154,7 @@ class EvaluateActivity : BaseMvpActivity<EvaluateConstract.Presenter>(), View.On
             evaluate()
         }else{
             for (i in 0 until mFileImgs.size){
-                getPresenter().fileStore(mFileImgs[i])
+                (getPresenter() as EvaluatePresenter).imgUp(mFileImgs[i])
             }
         }
     }

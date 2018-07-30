@@ -62,7 +62,7 @@ class EvaluatePresenter : EvaluateConstract.Presenter(){
     }
 
 
-    private fun imgUp(imagBase64: String) {
+    fun imgUp(imagBase64: String) {
         getModel().imgup(imagBase64)
                 .loadDefulat(getView()!!)
                 .ui(

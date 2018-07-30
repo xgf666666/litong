@@ -22,6 +22,7 @@ public class TextDialog extends Dialog implements View.OnClickListener {
     private TextView mTv_cancel;
     private TextView mTv_confirm;
 
+
     public TextDialog(@NonNull Context context) {
         super(context);
         this.mContext=context;
