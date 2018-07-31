@@ -90,8 +90,7 @@ class BlacklistActivity : BaseMvpActivity<BlacklistContract.Presenter>(),Blackli
 
     class BuybackAdapter(data: List<BlackBean>) : BaseQuickAdapter<BlackBean, BaseViewHolder>(R.layout.item_backlist, data) {
         override fun convert(helper: BaseViewHolder?, item: BlackBean) {
-            helper?.setText(R.id.tv_name,item.nickname)
-                    ?.setText(R.id.tv_phone,item.user_phone)
+            helper?.setText(R.id.tv_name,item.nickname +" "+item.user_phone)
                     ?.setText(R.id.tv_distance,item.distance.changeKm())
                     ?.setText(R.id.tv_service_type,"服务类型："+item.worker_service)
                     ?.setText(R.id.tv_location,item.worker_address)

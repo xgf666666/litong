@@ -40,7 +40,7 @@
                 android:id="@+id/tv_work_item_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/margin_14"
+                android:layout_marginRight="@dimen/margin_3"
                 android:text="700m"
                 android:textSize="@dimen/text_dimen_fourth"
                 android:textColor="@color/text_color_third"
