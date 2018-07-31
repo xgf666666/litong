@@ -63,7 +63,7 @@ class ModifyBindFragment1 : BaseMvpViewFragment() {
                 val timeCount = 60
                 Observable.interval(0, 1, TimeUnit.SECONDS)
                         .take((timeCount + 1).toLong())
-                        .map { aLong -> timeCount - aLong!! }
+                            .map { aLong -> timeCount - aLong!! }
                         .doOnSubscribe {
                             //发送数据中,将发送按钮状态设置为不可用
                             setSendBtnEnable(false)

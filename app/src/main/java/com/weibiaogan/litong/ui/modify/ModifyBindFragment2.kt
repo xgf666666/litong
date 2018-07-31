@@ -61,10 +61,10 @@ class ModifyBindFragment2 : BaseMvpViewFragment() {
             }
 
 
-//            if (code.length != 6) {
-//                toast("验证码格式出错")
-//                return
-//            }
+            if (code.length != 6) {
+                toast("请输入正确的验证码")
+                return
+            }
             AppApi.Api().updateUserPhone(userId, token,phone, code).ui(
                     {
                         toast(it.msg+"")
