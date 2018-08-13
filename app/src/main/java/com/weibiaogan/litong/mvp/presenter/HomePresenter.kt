@@ -19,7 +19,7 @@ import kotlin.math.ln
  */
 class HomePresenter : HomeConstract.Presenter() {
     override fun getHomeData(page: String) {
-        AppApi.Api().homeData(page, Constants.getLocation()[0], Constants.getLocation()[1]).loadDefulatRefresh(page == "1",getView()!!)
+        AppApi.Api().homeData(page, Constants.getLocation()[0], Constants.getLocation()[1])
                 .ui({
                     getView()?.setData(it.data)
                 }, {

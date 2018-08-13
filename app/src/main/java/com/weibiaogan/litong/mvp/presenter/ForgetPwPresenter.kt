@@ -101,7 +101,7 @@ class ForgetPwPresenter :  ForgetPwContract.Presenter() {
             return
         }
         if (newPw != surePw) {
-            getView()?.showToast("两次输入密码不一致")
+            getView()?.showToast("两次密码输入不一致")
             return
         }
         if (TextUtils.isEmpty(vCode) ) {

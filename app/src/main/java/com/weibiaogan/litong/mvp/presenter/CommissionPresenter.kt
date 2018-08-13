@@ -42,6 +42,13 @@ class CommissionPresenter : CommissionContract.Presenter() {
     }
 
     override fun getData() {
+        var userId:String=Constants.getToken().user_id.toString()
+        var token:String=Constants.getToken().token
+        getModel().getData(userId,token).ui({
+            getView()?.getData(it.data?.system_content!!)
+        },{
+            getView()?.showToast(it)
+        })
 
     }
 

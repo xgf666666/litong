@@ -67,7 +67,6 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
 
     override fun payResult(payBean: PayBean) {
         //微信支付
-        dismissLoadingDialog()
 //        if (isPayTpye.equals("wechat")){
 //            var api= WXAPIFactory.createWXAPI(mActivity, null)
 //            api.registerApp(payBean.data.appid)
@@ -85,6 +84,7 @@ class PayCenterActivity : BaseMvpActivity<PayCenterPresenter>(),PayCenterConstra
 //            Log.i("alipaysssss","支付宝调用")
 //            setAliPay(payBean)//支付宝支付
 //        }
+        dismissLoadingDialog()
         XxAnyPay.intance
                 .openAnyPay(if (isPayTpye == "wechat") XxAnyPay.XXPAY_WX else XxAnyPay.XXPAY_ALI,if (isPayTpye == "wechat") Gson().toJson(payBean.data) else payBean.data.sign, object : XxAnyPayResultCallBack {
                     override fun onPayFiale(error: String) {

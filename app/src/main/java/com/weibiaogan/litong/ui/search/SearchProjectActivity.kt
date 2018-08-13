@@ -12,6 +12,8 @@ import com.weibiaogan.litong.entity.SearchProjectBean
 import com.weibiaogan.litong.mvp.contract.SearchProjectContract
 import com.weibiaogan.litong.mvp.presenter.SearchProjectPresenter
 import com.weibiaogan.litong.ui.orders.OrdersDetailActivity
+import com.weibiaogan.litong.ui.store.StoreDetailActivity
+import com.weibiaogan.litong.ui.work.WorkDetailActivity
 import com.weibiaogan.litong.utils.addData
 import com.weibiaogan.litong.utils.initSmartRefresh
 import com.xx.baseuilibrary.mvp.BaseMvpActivity
@@ -22,7 +24,7 @@ import kotlinx.android.synthetic.main.activity_search_project.*
  * date: 2018/7/5
  * describe:  项目搜索 页面
  */
-class SearchProjectActivity : BaseMvpActivity<SearchProjectContract.Presenter>(), View.OnClickListener , SearchProjectContract.View, OnRefreshLoadMoreListener {
+class SearchProjectActivity : BaseMvpActivity<SearchProjectPresenter>(), View.OnClickListener , SearchProjectContract.View, OnRefreshLoadMoreListener {
     override fun onLoadMore(refreshLayout: RefreshLayout?) {
         getPresenter().searchProject(mSearchContent,(++mCurrentPage).toString())
     }
@@ -38,7 +40,7 @@ class SearchProjectActivity : BaseMvpActivity<SearchProjectContract.Presenter>()
 
     var mSearchContent = ""
 
-    override fun createPresenter(): SearchProjectContract.Presenter = SearchProjectPresenter()
+    override fun createPresenter(): SearchProjectPresenter = SearchProjectPresenter()
 
     override fun getActivityLayoutId(): Int = R.layout.activity_search_project
 
@@ -50,8 +52,13 @@ class SearchProjectActivity : BaseMvpActivity<SearchProjectContract.Presenter>()
     }
 
     override fun initEvent() {
-        adapter?.setOnItemClickListener { adapter, view, position -> OrdersDetailActivity.startProjectDetail(mContext,(adapter as SearchProjectAdapter).data[position].pt_id.toString()) }
-
+        adapter?.setOnItemClickListener{ adapter, view, position ->
+                when((adapter as SearchProjectAdapter).data[position].type){
+                    1->OrdersDetailActivity.startProjectDetail(mContext,adapter .data[position].pt_id.toString())
+                    2->WorkDetailActivity.startWorkDetail(mContext,adapter .data[position].user_id)
+                    3->StoreDetailActivity.startStoreDetail(mContext,adapter.data[position].st_id)
+                }
+        }
         refresh_search_project.setOnRefreshLoadMoreListener(this)
 
         tv_search_project_search.setOnClickListener(this)

@@ -81,8 +81,8 @@ class ProjectPresenter : ProjectContract.Presenter() {
 //                getView()?.showToast("项目二期比例不能为空")
 //                return
 //            }
-            if (!(firstprice.toInt()+secondprice.toInt()+threeprice.toInt()==100)) {
-                getView()?.showToast("付款比例加起来要100%")
+            if (!(firstprice.toInt()+secondprice.toInt()<=99)) {
+                getView()?.showToast("首款跟二期款比例加起来要小于100%")
                 return
             }
 

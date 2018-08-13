@@ -21,7 +21,9 @@ import kotlinx.android.synthetic.main.activity_commission.*
  * describe:佣金余额
  */
 class CommissionActivity : BaseMvpActivity<CommissionPresenter>(), CommissionContract.View{
-
+    override fun getData(data: String) {
+        tv_content.text="最低提现为10.00，"+data
+    }
 
 
     override fun successful() {
@@ -47,6 +49,7 @@ class CommissionActivity : BaseMvpActivity<CommissionPresenter>(), CommissionCon
         if (userData != null) {
             tv_balance.text = "${userData?.user?.balance?.format(2) ?: "0.00"}"
         }
+        getPresenter().getData()
     }
 
     override fun initEvent() {

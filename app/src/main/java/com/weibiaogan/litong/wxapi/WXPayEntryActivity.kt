@@ -16,8 +16,8 @@ import com.tencent.mm.opensdk.openapi.IWXAPI
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
 
 
-//
-class WXPayEntryActivity :WxPayEntryActivity(){
+//:
+class WXPayEntryActivity:WxPayEntryActivity(){}
 //        Activity(), IWXAPIEventHandler {
 //    private var api: IWXAPI? = null
 //
@@ -53,4 +53,4 @@ class WXPayEntryActivity :WxPayEntryActivity(){
 //        api=WXAPIFactory.createWXAPI(this,"wx4fc9ff6e5c76f8bc")
 //        api?.handleIntent(getIntent(), this)
 //    }
-}
+//}

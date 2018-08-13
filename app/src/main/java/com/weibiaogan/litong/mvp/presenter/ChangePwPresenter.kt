@@ -35,9 +35,9 @@ class ChangePwPresenter : ChangePwContract.Presenter() {
 
         val newPassword = getView()?.newPassword
 
-        if (newPassword?.length ?: 0 > 6&&newPassword?.length ?: 0<=16) {
+        if (newPassword?.length ?: 0 >= 6&&newPassword?.length ?: 0<=16) {
             if (checkPassword!=newPassword) {
-                getView()?.showToast("新密码两次输入不一样")
+                getView()?.showToast("密码两次输入不一样")
                 return
             }
         }else{

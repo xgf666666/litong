@@ -32,9 +32,9 @@ android {
 
         buildConfigField "boolean", "IS_DEV", "false"
 
-        buildConfigField "String", "DEV_DOMAIN", "\"http://litong.goodbooy.cn\""
+        buildConfigField "String", "DEV_DOMAIN", "\"http://api.litongapp.com\""
 
-        buildConfigField "String", "RELEASE_DOMAIN", "\"http://litong.goodbooy.cn\""
+        buildConfigField "String", "RELEASE_DOMAIN", "\"http://api.litongapp.com\""
 
 
     }

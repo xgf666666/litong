@@ -41,7 +41,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="44dp"
         android:layout_width="wrap_content"
-        android:text="利通"
+        android:text="力利通"
         android:textSize="30sp"
         android:textColor="@color/colorAccent"
         android:layout_height="wrap_content" />

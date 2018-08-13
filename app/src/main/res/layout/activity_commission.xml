@@ -120,12 +120,12 @@
 
 
     <TextView
+        android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="10dp"
-        android:text="最低提现为10.00，请检查收款账号是否正确，一旦转出，不予退回"
         android:textColor="@color/color888888"
         android:textSize="14sp" />
 

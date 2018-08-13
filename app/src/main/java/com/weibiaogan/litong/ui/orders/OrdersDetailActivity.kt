@@ -86,7 +86,7 @@ class OrdersDetailActivity : BaseMvpActivity<OrdersDetailCOntract.Presenter>(),O
         tv_heimingdan.setOnClickListener { getPresenter().addBlack(mDetailBean?.pt_user_id.toString()) }
 
         //我要接单
-        tv_receipt_project.setOnClickListener { showDialog() }
+         tv_receipt_project.setOnClickListener { showDialog() }
     }
 
     fun showDialog(){

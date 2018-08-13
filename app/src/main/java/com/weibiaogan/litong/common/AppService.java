@@ -23,10 +23,12 @@ import com.weibiaogan.litong.entity.ShareUserBean;
 import com.weibiaogan.litong.entity.StoreDetailBean;
 import com.weibiaogan.litong.entity.StoreListBean;
 import com.weibiaogan.litong.entity.UserCenterBean;
+import com.weibiaogan.litong.entity.Withdraw;
 import com.weibiaogan.litong.entity.WorkDetailBean;
 import com.weibiaogan.litong.entity.WorkEvaluateBean;
 import com.weibiaogan.litong.entity.WorkListBean;
 import com.weibiaogan.litong.entity.Worker;
+import com.weibiaogan.litong.extensions.AnyExKt;
 import com.xx.baseutilslibrary.network.entity.ApiResponse;
 import com.xx.baseutilslibrary.network.entity.BaseResponseEntity;
 
@@ -220,6 +222,16 @@ public interface AppService {
             , @Field("type") String type
             , @Field("balance_payment") String balance_payment
     );
+    /**
+     * 提现之前获得手续费信息
+     *
+     * @param userId
+     * @param token
+     * @return
+     */
+    @POST("Withdraw/withdraw_before")
+    Observable<BaseResponseEntity<Withdraw>> getContent(@Header("userId") String userId
+            , @Header("token") String token);
 
     /**
      * 账单查询
@@ -390,7 +402,7 @@ public interface AppService {
      * @param lng
      * @return
      */
-    @GET("Hotkey/pro_search")
+    @GET("Hotkey/pro_search_new")
     Observable<BaseResponseEntity<List<SearchProjectBean>>> searchProject(@Query("pt_name") String pt_name , @Query("page") String page , @Query("lat") String lat , @Query("lng") String lng);
 
 
@@ -678,6 +690,13 @@ public interface AppService {
     @POST("login/reg_three")
     Observable<BaseResponseEntity<LoginBean>> regThree(@Field("phone") String phone,@Field("pwd") String pwd,@Field("code") String code,@Field("openid") String openid
             ,@Field("type") String type);
+    /**
+     * 商家入驻添加
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("User/add_store")
+    Observable<BaseResponseEntity<Object>> addShop(@Header("userId") String userId, @Header("token") String token,@FieldMap Map<String,String> map);
 }
 
 

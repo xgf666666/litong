@@ -1,5 +1,6 @@
 package com.weibiaogan.litong.mvp.contract
 
+import com.weibiaogan.litong.entity.Withdraw
 import com.xx.baseuilibrary.mvp.BaseMvpPresenter
 import com.xx.baseuilibrary.mvp.BaseMvpView
 import com.xx.baseutilslibrary.network.entity.BaseResponseEntity
@@ -14,6 +15,7 @@ import io.reactivex.Observable
 interface CommissionContract {
     interface View : BaseMvpView {
         fun successful()
+        fun getData(data:String)
 
     }
 
@@ -24,7 +26,7 @@ interface CommissionContract {
     }
 
     interface Model {
-        fun getData(page: Int, httpObserver: XxBaseHttpObserver<List<Any>>)
+        fun getData(userId: String, token: String):Observable<BaseResponseEntity<Withdraw>>
         fun withdrawAdd(userId: String, token: String?, cash: String, account: String, type: String,
                         balance_payment: String): Observable<BaseResponseEntity<Any>>
 

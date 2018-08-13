@@ -52,7 +52,7 @@ class MainActivity : BaseMvpViewActivity() {
     override fun initEvent() {
         radio.setOnCheckedChangeListener { _, checkedId ->
           /*  ll_search_area.visibility= if (checkedId==0) View.VISIBLE else View.GONE*/
-//            iv_setup.visibility=if (checkedId==3)View.VISIBLE else View.GONE
+//            iv_setup.visibility=if (checkedId==3)View.VISIBLE else View.
 
             //tb_cart_setup.visibility=if (checkedId==2) View.VISIBLE else View.GONE
             showFragment(checkedId)
