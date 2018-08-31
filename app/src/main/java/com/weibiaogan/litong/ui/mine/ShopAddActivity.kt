@@ -105,7 +105,7 @@ class ShopAddActivity : BaseMvpActivity<ShopAddPresenter>(),ShopAddContract.View
                 map.put("business_hours",et_time.text.toString())
                 map.put("st_phone",et_phone.text.toString())
                 map.put("st_img",filePath)
-                map.put("lat_long",lats+","+lots)
+                map.put("lat_long",lots+","+lats)
                 showLoadingDialog()
                 getPresenter().addShop(map)
             }
